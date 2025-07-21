@@ -1,5 +1,5 @@
 # usdm-ts
-A Typescript representation of the USDM model for clinical trials
+A Typescript representation of the USDM model for clinical trials: https://www.cdisc.org/ddf
 
 # Purpose
 A Typescript library that provides a structured representation of the USDM (Unified Study Data Model) for clinical trials. This library is designed to facilitate the management and manipulation of clinical trial data in a standardized format.
