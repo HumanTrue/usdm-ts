@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "rootDir": "src",
+    "outDir": "out",
+    "lib": [
+      "esnext"
+    ],
+    "strict": true,
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "incremental": true,
+    "strictNullChecks": true,
+    "noEmit": true,
+    "sourceMap": true
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+}
