@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from schema
-// Generated on: 2025-07-24T21:19:28.244Z
+// Generated on: 2025-07-24T21:25:23.626Z
 
 import { z } from "zod"
 // Import types for schema inference
@@ -2149,4 +2149,4 @@ export const schemas: Record<string, z.ZodTypeAny> = {
   ScheduledInstance: ScheduledInstanceSchema,
   StudyDesign: StudyDesignSchema,
   SyntaxTemplate: SyntaxTemplateSchema,
-};
+}

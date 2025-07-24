@@ -693,7 +693,8 @@ class ZodSchemaGenerator {
     for (const abstractName of this.abstractClassUnions.keys()) {
       output.push(`  ${abstractName}: ${abstractName}Schema,`);
     }
-    output.push('};');
+    output.push('}');
+    output.push('');
 
     return output.join('\n');
   }
