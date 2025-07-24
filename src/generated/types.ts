@@ -1,5 +1,5 @@
 // Auto-generated TypeScript interfaces from schema
-// Generated on: 2025-07-21T23:26:59.919Z
+// Generated on: 2025-07-24T18:39:42.210Z
 
 /**
  * The total amount (number), or the limits (minimum and maximum) of a variation.
@@ -8,14 +8,14 @@
  * @modifier Abstract
  * @subClasses Quantity, Range
  */
-export interface QuantityRange {
+export interface QuantityRangeAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
 }
 
@@ -32,7 +32,7 @@ export interface AliasCode {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * A combination of symbols that is used to represent the standard code.
@@ -43,7 +43,7 @@ export interface AliasCode {
    * @modelName standardCode
    * @modelRepresentation Attribute
    */
-  standardCode: Code;
+  standardCode: Code
 
   /**
    * Alternative combinations of symbols used to represent aliases or alternatives to the standard code.
@@ -54,19 +54,19 @@ export interface AliasCode {
    * @modelName standardCodeAliases
    * @modelRepresentation Attribute
    */
-  standardCodeAliases?: Code[];
+  standardCodeAliases?: Code[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -77,7 +77,7 @@ export interface AliasCode {
  * @modifier Concrete
  * @extends QuantityRange
  */
-export interface Quantity extends QuantityRange {
+export interface Quantity extends QuantityRangeAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -85,7 +85,7 @@ export interface Quantity extends QuantityRange {
    * @modelRepresentation Attribute
    * @inheritedFrom QuantityRange
    */
-  id: string;
+  id: string
 
   /**
    * A numerical quantity measured or assigned or computed.
@@ -96,7 +96,7 @@ export interface Quantity extends QuantityRange {
    * @modelName value
    * @modelRepresentation Attribute
    */
-  value: number;
+  value: number
 
   /**
    * The type of unit of measure being used to express a quantity.
@@ -107,19 +107,19 @@ export interface Quantity extends QuantityRange {
    * @modelName unit
    * @modelRepresentation Attribute
    */
-  unit?: AliasCode;
+  unit?: AliasCode
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -130,7 +130,7 @@ export interface Quantity extends QuantityRange {
  * @modifier Concrete
  * @extends QuantityRange
  */
-export interface Range extends QuantityRange {
+export interface Range extends QuantityRangeAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -138,7 +138,7 @@ export interface Range extends QuantityRange {
    * @modelRepresentation Attribute
    * @inheritedFrom QuantityRange
    */
-  id: string;
+  id: string
 
   /**
    * The smallest value in quantity or degree in a set of values.
@@ -149,7 +149,7 @@ export interface Range extends QuantityRange {
    * @modelName minValue
    * @modelRepresentation Attribute
    */
-  minValue: Quantity;
+  minValue: Quantity
 
   /**
    * The largest value in quantity or degree in a set of values.
@@ -160,7 +160,7 @@ export interface Range extends QuantityRange {
    * @modelName maxValue
    * @modelRepresentation Attribute
    */
-  maxValue: Quantity;
+  maxValue: Quantity
 
   /**
    * An indication as to whether the value range is almost, but not quite, exact.
@@ -171,19 +171,19 @@ export interface Range extends QuantityRange {
    * @modelName isApproximate
    * @modelRepresentation Attribute
    */
-  isApproximate: boolean;
+  isApproximate: boolean
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -195,25 +195,25 @@ export interface ExtensionClass {
    * @cardinality 1
    * @relationshipType Value
    */
-  id: string;
+  id: string
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  url: string;
+  url: string
 
   /**
    * @cardinality 1..*
    * @relationshipType Value
    */
-  extensionAttributes: ExtensionAttribute[];
+  extensionAttributes: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -225,79 +225,79 @@ export interface ExtensionAttribute {
    * @cardinality 1
    * @relationshipType Value
    */
-  id: string;
+  id: string
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  url: string;
+  url: string
 
   /**
    * @cardinality 0..1
    * @relationshipType Value
    */
-  valueString?: string;
+  valueString?: string
 
   /**
    * @cardinality 0..1
    * @relationshipType Value
    */
-  valueBoolean?: boolean;
+  valueBoolean?: boolean
 
   /**
    * @cardinality 0..1
    * @relationshipType Value
    */
-  valueInteger?: number;
+  valueInteger?: number
 
   /**
    * @cardinality 0..1
    * @relationshipType Value
    */
-  valueId?: string;
+  valueId?: string
 
   /**
    * @cardinality 0..1
    * @relationshipType Value
    */
-  valueQuantity?: Quantity;
+  valueQuantity?: Quantity
 
   /**
    * @cardinality 0..1
    * @relationshipType Value
    */
-  valueRange?: Range;
+  valueRange?: Range
 
   /**
    * @cardinality 0..1
    * @relationshipType Value
    */
-  valueCode?: Code;
+  valueCode?: Code
 
   /**
    * @cardinality 0..1
    * @relationshipType Value
    */
-  valueAliasCode?: AliasCode;
+  valueAliasCode?: AliasCode
 
   /**
    * @cardinality 0..1
    * @relationshipType Value
    */
-  valueExtensionClass?: ExtensionClass;
+  valueExtensionClass?: ExtensionClass
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -314,7 +314,7 @@ export interface Code {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal value of a code.
@@ -325,7 +325,7 @@ export interface Code {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code: string;
+  code: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the system used to assign and/or manage codes.
@@ -336,7 +336,7 @@ export interface Code {
    * @modelName codeSystem
    * @modelRepresentation Attribute
    */
-  codeSystem: string;
+  codeSystem: string
 
   /**
    * The version of the code system.
@@ -347,7 +347,7 @@ export interface Code {
    * @modelName codeSystemVersion
    * @modelRepresentation Attribute
    */
-  codeSystemVersion: string;
+  codeSystemVersion: string
 
   /**
    * Standardized or dictionary-derived human readable text associated with a code.
@@ -358,19 +358,19 @@ export interface Code {
    * @modelName decode
    * @modelRepresentation Attribute
    */
-  decode: string;
+  decode: string
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -387,7 +387,7 @@ export interface CommentAnnotation {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * An instance of unstructured text that represents the comment annotation.
@@ -398,7 +398,7 @@ export interface CommentAnnotation {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * A symbol or combination of symbols which is assigned to the comment annotation.
@@ -409,19 +409,19 @@ export interface CommentAnnotation {
    * @modelName codes
    * @modelRepresentation Attribute
    */
-  codes?: Code[];
+  codes?: Code[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -438,7 +438,7 @@ export interface Abbreviation {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal value of an instance of unstructured text that is used as the abbreviation.
@@ -449,7 +449,7 @@ export interface Abbreviation {
    * @modelName abbreviatedText
    * @modelRepresentation Attribute
    */
-  abbreviatedText: string;
+  abbreviatedText: string
 
   /**
    * The full literal representation of the abbreviation.
@@ -460,7 +460,7 @@ export interface Abbreviation {
    * @modelName expandedText
    * @modelRepresentation Attribute
    */
-  expandedText: string;
+  expandedText: string
 
   /**
    * A brief written record relevant to the abbreviation.
@@ -471,19 +471,19 @@ export interface Abbreviation {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -500,7 +500,7 @@ export interface Duration {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * An instance of unstructured text that represents the event duration.
@@ -511,7 +511,7 @@ export interface Duration {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text?: string;
+  text?: string
 
   /**
    * The value representing the amount of time over which the event occurs.
@@ -522,7 +522,7 @@ export interface Duration {
    * @modelName quantity
    * @modelRepresentation Attribute
    */
-  quantity?: QuantityRange;
+  quantity?: QuantityRange
 
   /**
    * An indication as to whether the event duration is planned to vary within and/or across subjects.
@@ -533,7 +533,7 @@ export interface Duration {
    * @modelName durationWillVary
    * @modelRepresentation Attribute
    */
-  durationWillVary: boolean;
+  durationWillVary: boolean
 
   /**
    * The explanation for why the event duration will vary within and/or across subjects.
@@ -544,19 +544,19 @@ export interface Duration {
    * @modelName reasonDurationWillVary
    * @modelRepresentation Attribute
    */
-  reasonDurationWillVary?: string;
+  reasonDurationWillVary?: string
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -573,7 +573,7 @@ export interface Address {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * A standardized representation of the complete set of components denoting the physical address of the person, business, building, or organization.
@@ -584,7 +584,7 @@ export interface Address {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text?: string;
+  text?: string
 
   /**
    * The street name and number, building number, apartment or unit number, or post office box number where an entity is physically located.
@@ -595,7 +595,7 @@ export interface Address {
    * @modelName lines
    * @modelRepresentation Attribute
    */
-  lines?: string[];
+  lines?: string[]
 
   /**
    * An administrative or territorial division of a city, town, county, parish, state, country, or other locality based on a shared characteristic.
@@ -606,7 +606,7 @@ export interface Address {
    * @modelName district
    * @modelRepresentation Attribute
    */
-  district?: string;
+  district?: string
 
   /**
    * A relatively large and/or densely populated area of human habitation with administrative or legal status that may be specified as a component of a postal address.
@@ -617,7 +617,7 @@ export interface Address {
    * @modelName city
    * @modelRepresentation Attribute
    */
-  city?: string;
+  city?: string
 
   /**
    * An alphanumeric code assigned to a mail delivery area.
@@ -628,7 +628,7 @@ export interface Address {
    * @modelName postalCode
    * @modelRepresentation Attribute
    */
-  postalCode?: string;
+  postalCode?: string
 
   /**
    * A sub-division of a country that forms part of a federal union. States are usually, but not always, more autonomous than provinces and may have different laws from the central government.
@@ -639,7 +639,7 @@ export interface Address {
    * @modelName state
    * @modelRepresentation Attribute
    */
-  state?: string;
+  state?: string
 
   /**
    * A sovereign nation occupying a distinct territory and ruled by an autonomous government.
@@ -650,19 +650,19 @@ export interface Address {
    * @modelName country
    * @modelRepresentation Attribute
    */
-  country?: Code;
+  country?: Code
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -679,7 +679,7 @@ export interface StudySite {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study site.
@@ -690,7 +690,7 @@ export interface StudySite {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study site.
@@ -701,7 +701,7 @@ export interface StudySite {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study site.
@@ -712,7 +712,7 @@ export interface StudySite {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * The country in which the study site is located.
@@ -723,19 +723,19 @@ export interface StudySite {
    * @modelName country
    * @modelRepresentation Attribute
    */
-  country: Code;
+  country: Code
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -752,7 +752,7 @@ export interface Organization {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the organization.
@@ -763,7 +763,7 @@ export interface Organization {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the organization.
@@ -774,7 +774,7 @@ export interface Organization {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A unique symbol that establishes identity of the organization. (BRIDG)
@@ -785,7 +785,7 @@ export interface Organization {
    * @modelName identifier
    * @modelRepresentation Attribute
    */
-  identifier: string;
+  identifier: string
 
   /**
    * The name of the organization that provides the identifier for the entity.
@@ -796,7 +796,7 @@ export interface Organization {
    * @modelName identifierScheme
    * @modelRepresentation Attribute
    */
-  identifierScheme: string;
+  identifierScheme: string
 
   /**
    * A characterization or classification of the formalized group of persons or other organizations collected together for a common purpose (such as administrative, legal, political) and the infrastructure to carry out that purpose.
@@ -807,7 +807,7 @@ export interface Organization {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * A USDM relationship between the Organization and Address classes which provides the legal address for an organization.
@@ -816,7 +816,7 @@ export interface Organization {
    * @modelName legalAddress
    * @modelRepresentation Relationship
    */
-  legalAddress?: Address;
+  legalAddress?: Address
 
   /**
    * A USDM relationship between the Organization and StudySite classes which identifies the set of study sites managed by the organization.
@@ -825,19 +825,19 @@ export interface Organization {
    * @modelName managedSites
    * @modelRepresentation Relationship
    */
-  managedSites?: StudySite[];
+  managedSites?: StudySite[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -848,14 +848,14 @@ export interface Organization {
  * @modifier Abstract
  * @subClasses AdministrableProductIdentifier, MedicalDeviceIdentifier, ReferenceIdentifier, StudyIdentifier
  */
-export interface Identifier {
+export interface IdentifierAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * An instance of structured text that represents the administrable product.
@@ -866,7 +866,7 @@ export interface Identifier {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * A USDM relationship between the AdministrableProductIdentifier and Organization class which provides the details associated with which provides the details associated with each organization that has assigned the administrable product identifier.
@@ -875,7 +875,7 @@ export interface Identifier {
    * @modelName scope
    * @modelRepresentation Relationship
    */
-  scopeId: Organization;
+  scopeId: Organization
 
 }
 
@@ -886,7 +886,7 @@ export interface Identifier {
  * @modifier Concrete
  * @extends Identifier
  */
-export interface AdministrableProductIdentifier extends Identifier {
+export interface AdministrableProductIdentifier extends IdentifierAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -894,7 +894,7 @@ export interface AdministrableProductIdentifier extends Identifier {
    * @modelRepresentation Attribute
    * @inheritedFrom Identifier
    */
-  id: string;
+  id: string
 
   /**
    * An instance of structured text that represents the administrable product.
@@ -906,7 +906,7 @@ export interface AdministrableProductIdentifier extends Identifier {
    * @modelRepresentation Attribute
    * @inheritedFrom Identifier
    */
-  text: string;
+  text: string
 
   /**
    * A USDM relationship between the AdministrableProductIdentifier and Organization class which provides the details associated with which provides the details associated with each organization that has assigned the administrable product identifier.
@@ -916,19 +916,19 @@ export interface AdministrableProductIdentifier extends Identifier {
    * @modelRepresentation Relationship
    * @inheritedFrom Identifier
    */
-  scopeId: Organization;
+  scopeId: Organization
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -945,7 +945,7 @@ export interface AdministrableProductProperty {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the administrable product property.
@@ -956,7 +956,7 @@ export interface AdministrableProductProperty {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * A characterization or classification of the administrable product property.
@@ -967,7 +967,7 @@ export interface AdministrableProductProperty {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * An instance of structured text that represents the administrable product property.
@@ -978,7 +978,7 @@ export interface AdministrableProductProperty {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * The numeric value associated with an administrable product property.
@@ -989,19 +989,19 @@ export interface AdministrableProductProperty {
    * @modelName quantity
    * @modelRepresentation Attribute
    */
-  quantity?: Quantity;
+  quantity?: Quantity
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1018,7 +1018,7 @@ export interface Strength {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the substance strength.
@@ -1029,7 +1029,7 @@ export interface Strength {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the substance strength.
@@ -1040,7 +1040,7 @@ export interface Strength {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the substance strength.
@@ -1051,7 +1051,7 @@ export interface Strength {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * The dividend of a fraction.
@@ -1062,7 +1062,7 @@ export interface Strength {
    * @modelName numerator
    * @modelRepresentation Attribute
    */
-  numerator: QuantityRange;
+  numerator: QuantityRange
 
   /**
    * The divisor of a fraction.
@@ -1073,19 +1073,19 @@ export interface Strength {
    * @modelName denominator
    * @modelRepresentation Attribute
    */
-  denominator?: Quantity;
+  denominator?: Quantity
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1102,7 +1102,7 @@ export interface Substance {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the substance.
@@ -1113,7 +1113,7 @@ export interface Substance {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the substance.
@@ -1124,7 +1124,7 @@ export interface Substance {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the substance.
@@ -1135,7 +1135,7 @@ export interface Substance {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A symbol or combination of symbols which is assigned to the substance.
@@ -1146,7 +1146,7 @@ export interface Substance {
    * @modelName codes
    * @modelRepresentation Attribute
    */
-  codes?: Code[];
+  codes?: Code[]
 
   /**
    * A USDM relationship between the Substance and Strength class which provides the values of the strengths of the substance.
@@ -1155,7 +1155,7 @@ export interface Substance {
    * @modelName strengths
    * @modelRepresentation Relationship
    */
-  strengths: Strength[];
+  strengths: Strength[]
 
   /**
    * A USDM relationship within the Substance class that identifies the association between two substances, one of which is used as a reference for the other.
@@ -1164,19 +1164,19 @@ export interface Substance {
    * @modelName referenceSubstance
    * @modelRepresentation Relationship
    */
-  referenceSubstance?: Substance;
+  referenceSubstance?: Substance
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1193,7 +1193,7 @@ export interface Ingredient {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The intended use of the ingredient within the context of the compounded substance or mixture.
@@ -1204,7 +1204,7 @@ export interface Ingredient {
    * @modelName role
    * @modelRepresentation Attribute
    */
-  role: Code;
+  role: Code
 
   /**
    * A USDM relationship between the Ingredient and Substance classes that identifies the substance associated with the ingredient.
@@ -1213,19 +1213,19 @@ export interface Ingredient {
    * @modelName substance
    * @modelRepresentation Relationship
    */
-  substance: Substance;
+  substance: Substance
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1242,7 +1242,7 @@ export interface AdministrableProduct {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the administrable product.
@@ -1253,7 +1253,7 @@ export interface AdministrableProduct {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the administrable product.
@@ -1264,7 +1264,7 @@ export interface AdministrableProduct {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the administrable product.
@@ -1275,7 +1275,7 @@ export interface AdministrableProduct {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * The physical form in which formulated ingredient(s) are presented in the administrable product.
@@ -1286,7 +1286,7 @@ export interface AdministrableProduct {
    * @modelName administrableDoseForm
    * @modelRepresentation Attribute
    */
-  administrableDoseForm: AliasCode;
+  administrableDoseForm: AliasCode
 
   /**
    * An indication as to whether the administrable product is obtained from a local or central source.
@@ -1297,7 +1297,7 @@ export interface AdministrableProduct {
    * @modelName sourcing
    * @modelRepresentation Attribute
    */
-  sourcing?: Code;
+  sourcing?: Code
 
   /**
    * An indication as to whether the administrable product is an investigational medicinal product or an auxiliary medicinal product.
@@ -1308,7 +1308,7 @@ export interface AdministrableProduct {
    * @modelName productDesignation
    * @modelRepresentation Attribute
    */
-  productDesignation: Code;
+  productDesignation: Code
 
   /**
    * The pharmacological class of the administrable product.
@@ -1319,7 +1319,7 @@ export interface AdministrableProduct {
    * @modelName pharmacologicClass
    * @modelRepresentation Attribute
    */
-  pharmacologicClass?: Code;
+  pharmacologicClass?: Code
 
   /**
    * A brief written record relevant to the administrable product.
@@ -1330,7 +1330,7 @@ export interface AdministrableProduct {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the AdministrableProduct and AdministrableProductIdentifier classes which provides the set of identifiers related to the administrable product.
@@ -1339,7 +1339,7 @@ export interface AdministrableProduct {
    * @modelName identifiers
    * @modelRepresentation Relationship
    */
-  identifiers?: AdministrableProductIdentifier[];
+  identifiers?: AdministrableProductIdentifier[]
 
   /**
    * A USDM relationship between the AdministrableProduct and AdministrableProductProperty classes which provides the set of properties related to the administrable product.
@@ -1348,7 +1348,7 @@ export interface AdministrableProduct {
    * @modelName properties
    * @modelRepresentation Relationship
    */
-  properties?: AdministrableProductProperty[];
+  properties?: AdministrableProductProperty[]
 
   /**
    * A USDM relationship between the AdministrableProduct and Ingredient classes which provides the set of ingredients related to the administrable product.
@@ -1357,19 +1357,19 @@ export interface AdministrableProduct {
    * @modelName ingredients
    * @modelRepresentation Relationship
    */
-  ingredients?: Ingredient[];
+  ingredients?: Ingredient[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1380,7 +1380,7 @@ export interface AdministrableProduct {
  * @modifier Concrete
  * @extends Identifier
  */
-export interface MedicalDeviceIdentifier extends Identifier {
+export interface MedicalDeviceIdentifier extends IdentifierAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -1388,7 +1388,7 @@ export interface MedicalDeviceIdentifier extends Identifier {
    * @modelRepresentation Attribute
    * @inheritedFrom Identifier
    */
-  id: string;
+  id: string
 
   /**
    * An instance of structured text that represents the medical device identifier.
@@ -1400,7 +1400,7 @@ export interface MedicalDeviceIdentifier extends Identifier {
    * @modelRepresentation Attribute
    * @inheritedFrom Identifier
    */
-  text: string;
+  text: string
 
   /**
    * A USDM relationship between the MedicalDeviceIdentifier and Organization classes which provides the details associated with each organization that has assigned the identifier.
@@ -1410,7 +1410,7 @@ export interface MedicalDeviceIdentifier extends Identifier {
    * @modelRepresentation Relationship
    * @inheritedFrom Identifier
    */
-  scopeId: Organization;
+  scopeId: Organization
 
   /**
    * A characterization or classification of the medical device identifier.
@@ -1421,19 +1421,19 @@ export interface MedicalDeviceIdentifier extends Identifier {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1450,7 +1450,7 @@ export interface MedicalDevice {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the medical device.
@@ -1461,7 +1461,7 @@ export interface MedicalDevice {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the medical device.
@@ -1472,7 +1472,7 @@ export interface MedicalDevice {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the medical device.
@@ -1483,7 +1483,7 @@ export interface MedicalDevice {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A form or variant of hardware; one of a sequence of copies of the physical components from which a computer is constructed, each incorporating new modifications.
@@ -1494,7 +1494,7 @@ export interface MedicalDevice {
    * @modelName hardwareVersion
    * @modelRepresentation Attribute
    */
-  hardwareVersion?: string;
+  hardwareVersion?: string
 
   /**
    * A form or variant of software; one of a sequence of copies of a software program, each incorporating new modifications. (NCI)
@@ -1505,7 +1505,7 @@ export interface MedicalDevice {
    * @modelName softwareVersion
    * @modelRepresentation Attribute
    */
-  softwareVersion?: string;
+  softwareVersion?: string
 
   /**
    * An indication as to whether the medical device is obtained from a local or central source.
@@ -1516,7 +1516,7 @@ export interface MedicalDevice {
    * @modelName sourcing
    * @modelRepresentation Attribute
    */
-  sourcing?: Code;
+  sourcing?: Code
 
   /**
    * A brief written record relevant to the medical device.
@@ -1527,7 +1527,7 @@ export interface MedicalDevice {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the MedicalDevice and AdministrableProduct classes which identifies the administrable product that is an integral component of the medical device.
@@ -1536,7 +1536,7 @@ export interface MedicalDevice {
    * @modelName embeddedProduct
    * @modelRepresentation Relationship
    */
-  embeddedProductId?: AdministrableProduct;
+  embeddedProductId?: AdministrableProduct
 
   /**
    * A USDM relationship between the MedicalDevice and MedicalDeviceIdentifier classes which provides the set of identifiers related to the medical device.
@@ -1545,19 +1545,19 @@ export interface MedicalDevice {
    * @modelName identifiers
    * @modelRepresentation Relationship
    */
-  identifiers?: MedicalDeviceIdentifier[];
+  identifiers?: MedicalDeviceIdentifier[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1574,7 +1574,7 @@ export interface Administration {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) for the administration of a product, agent, or therapy.
@@ -1585,7 +1585,7 @@ export interface Administration {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the administration of a product, agent, or therapy.
@@ -1596,7 +1596,7 @@ export interface Administration {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation for the administration of a product, agent, or therapy.
@@ -1607,7 +1607,7 @@ export interface Administration {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * The value representing the amount of an agent given to an individual at one time.
@@ -1618,7 +1618,7 @@ export interface Administration {
    * @modelName dose
    * @modelRepresentation Attribute
    */
-  dose?: Quantity;
+  dose?: Quantity
 
   /**
    * The number of doses administered per a specific interval.
@@ -1629,7 +1629,7 @@ export interface Administration {
    * @modelName frequency
    * @modelRepresentation Attribute
    */
-  frequency?: AliasCode;
+  frequency?: AliasCode
 
   /**
    * The pathway by which a substance is administered in order to reach the site of action in the body.
@@ -1640,7 +1640,7 @@ export interface Administration {
    * @modelName route
    * @modelRepresentation Attribute
    */
-  route?: AliasCode;
+  route?: AliasCode
 
   /**
    * The amount of time elapsed during the administration of an agent.
@@ -1651,7 +1651,7 @@ export interface Administration {
    * @modelName duration
    * @modelRepresentation Attribute
    */
-  duration: Duration;
+  duration: Duration
 
   /**
    * A brief written record relevant to the administration of the product, agent, or therapy.
@@ -1662,7 +1662,7 @@ export interface Administration {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Administration and AdministrableProductDefinition classes which identifies the administrable product associated with the administration of the product, agent, or therapy.
@@ -1671,7 +1671,7 @@ export interface Administration {
    * @modelName administrableProduct
    * @modelRepresentation Relationship
    */
-  administrableProductId?: AdministrableProduct;
+  administrableProductId?: AdministrableProduct
 
   /**
    * A USDM relationship between the Administration and MedicalDevice classes which identifies the medical device associated with an instance of product, agent, or therapy administration.
@@ -1680,19 +1680,19 @@ export interface Administration {
    * @modelName medicalDevice
    * @modelRepresentation Relationship
    */
-  medicalDeviceId?: MedicalDevice;
+  medicalDeviceId?: MedicalDevice
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1709,7 +1709,7 @@ export interface StudyIntervention {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study intervention.
@@ -1720,7 +1720,7 @@ export interface StudyIntervention {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study intervention.
@@ -1731,7 +1731,7 @@ export interface StudyIntervention {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study intervention.
@@ -1742,7 +1742,7 @@ export interface StudyIntervention {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * The intended use of the trial intervention within the context of the study design.
@@ -1753,7 +1753,7 @@ export interface StudyIntervention {
    * @modelName role
    * @modelRepresentation Attribute
    */
-  role: Code;
+  role: Code
 
   /**
    * The kind of product or procedure studied in a trial.
@@ -1764,7 +1764,7 @@ export interface StudyIntervention {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * A symbol or combination of symbols which is assigned to the study intervention.
@@ -1775,7 +1775,7 @@ export interface StudyIntervention {
    * @modelName codes
    * @modelRepresentation Attribute
    */
-  codes?: Code[];
+  codes?: Code[]
 
   /**
    * The value representing the minimum amount of time required to meet the criteria for response to study intervention.
@@ -1786,7 +1786,7 @@ export interface StudyIntervention {
    * @modelName minimumResponseDuration
    * @modelRepresentation Attribute
    */
-  minimumResponseDuration?: Quantity;
+  minimumResponseDuration?: Quantity
 
   /**
    * A brief written record relevant to the study intervention.
@@ -1797,7 +1797,7 @@ export interface StudyIntervention {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the StudyIntervention and AgentAdministration classes which identifies the set of agent administrations associated with the study intervention.
@@ -1806,19 +1806,19 @@ export interface StudyIntervention {
    * @modelName administrations
    * @modelRepresentation Relationship
    */
-  administrations?: Administration[];
+  administrations?: Administration[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1835,7 +1835,7 @@ export interface Procedure {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the procedure.
@@ -1846,7 +1846,7 @@ export interface Procedure {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the procedure.
@@ -1857,7 +1857,7 @@ export interface Procedure {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the procedure.
@@ -1868,7 +1868,7 @@ export interface Procedure {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A characterization or classification of the study procedure.
@@ -1879,7 +1879,7 @@ export interface Procedure {
    * @modelName procedureType
    * @modelRepresentation Attribute
    */
-  procedureType: string;
+  procedureType: string
 
   /**
    * A symbol or combination of symbols which is assigned to medical procedure.
@@ -1890,7 +1890,7 @@ export interface Procedure {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code: Code;
+  code: Code
 
   /**
    * A brief written record relevant to the procedure.
@@ -1901,7 +1901,7 @@ export interface Procedure {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Procedure and StudyInterventionclasses which provides the details associated with an instance of an intervention performed during the conduct of a procedure.
@@ -1910,19 +1910,19 @@ export interface Procedure {
    * @modelName studyIntervention
    * @modelRepresentation Relationship
    */
-  studyInterventionId?: StudyIntervention;
+  studyInterventionId?: StudyIntervention
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -1939,7 +1939,7 @@ export interface ResponseCode {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the response code.
@@ -1950,7 +1950,7 @@ export interface ResponseCode {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the response code.
@@ -1961,7 +1961,7 @@ export interface ResponseCode {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * An indication as to whether the response code is activated for use within a given usage context.
@@ -1972,7 +1972,7 @@ export interface ResponseCode {
    * @modelName isEnabled
    * @modelRepresentation Attribute
    */
-  isEnabled: boolean;
+  isEnabled: boolean
 
   /**
    * The literal value of a response code.
@@ -1983,19 +1983,19 @@ export interface ResponseCode {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code: Code;
+  code: Code
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -2012,7 +2012,7 @@ export interface BiomedicalConceptProperty {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the biomedical concept property.
@@ -2023,7 +2023,7 @@ export interface BiomedicalConceptProperty {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the biomedical concept property.
@@ -2034,7 +2034,7 @@ export interface BiomedicalConceptProperty {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * An indication as to whether the biomedical concept property is required.
@@ -2045,7 +2045,7 @@ export interface BiomedicalConceptProperty {
    * @modelName isRequired
    * @modelRepresentation Attribute
    */
-  isRequired: boolean;
+  isRequired: boolean
 
   /**
    * An indication as to whether the biomedical concept property is activated for use within a given usage context for a biomedical concept.
@@ -2056,7 +2056,7 @@ export interface BiomedicalConceptProperty {
    * @modelName isEnabled
    * @modelRepresentation Attribute
    */
-  isEnabled: boolean;
+  isEnabled: boolean
 
   /**
    * The structural format of the biomedical concept property response value. The datatype is carried in the attribute and influences the set of allowable values the attribute may assume. (After HL7)
@@ -2067,7 +2067,7 @@ export interface BiomedicalConceptProperty {
    * @modelName datatype
    * @modelRepresentation Attribute
    */
-  datatype: string;
+  datatype: string
 
   /**
    * A concept unique identifier assigned to a biomedical concept property that points to the meaning of that biomedical concept property.
@@ -2078,7 +2078,7 @@ export interface BiomedicalConceptProperty {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code: AliasCode;
+  code: AliasCode
 
   /**
    * A brief written record relevant to the biomedical concept property.
@@ -2089,7 +2089,7 @@ export interface BiomedicalConceptProperty {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the BiomedicalConceptProperty and ResponseCode classes which identifies the set of response codes associated with the biomedical concept property.
@@ -2098,19 +2098,19 @@ export interface BiomedicalConceptProperty {
    * @modelName responseCodes
    * @modelRepresentation Relationship
    */
-  responseCodes?: ResponseCode[];
+  responseCodes?: ResponseCode[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -2127,7 +2127,7 @@ export interface BiomedicalConcept {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the biomedical concept.
@@ -2138,7 +2138,7 @@ export interface BiomedicalConcept {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the biomedical concept.
@@ -2149,7 +2149,7 @@ export interface BiomedicalConcept {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A word or an expression that serves as a figurative, symbolic, or exact substitute for a biomedical concept, and which has the same meaning.
@@ -2160,7 +2160,7 @@ export interface BiomedicalConcept {
    * @modelName synonyms
    * @modelRepresentation Attribute
    */
-  synonyms?: string[];
+  synonyms?: string[]
 
   /**
    * A citation to an authoritative source for a biomedical concept.
@@ -2171,7 +2171,7 @@ export interface BiomedicalConcept {
    * @modelName reference
    * @modelRepresentation Attribute
    */
-  reference: string;
+  reference: string
 
   /**
    * A concept unique identifier assigned to a biomedical concept that points to the meaning of that biomedical concept.
@@ -2182,7 +2182,7 @@ export interface BiomedicalConcept {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code: AliasCode;
+  code: AliasCode
 
   /**
    * A brief written record relevant to the biomedical concept.
@@ -2193,7 +2193,7 @@ export interface BiomedicalConcept {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the BiomedicalConcept and BiomedicalConceptProperty classes which identifies the set of properties associated with the biomedical concept.
@@ -2202,19 +2202,19 @@ export interface BiomedicalConcept {
    * @modelName properties
    * @modelRepresentation Relationship
    */
-  properties?: BiomedicalConceptProperty[];
+  properties?: BiomedicalConceptProperty[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -2231,7 +2231,7 @@ export interface StudyEpoch {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study epoch, i.e., the named time period defined in the protocol, wherein a study activity is specified and unchanging throughout the interval, to support a study-specific purpose.
@@ -2242,7 +2242,7 @@ export interface StudyEpoch {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study epoch.
@@ -2253,7 +2253,7 @@ export interface StudyEpoch {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study epoch.
@@ -2264,7 +2264,7 @@ export interface StudyEpoch {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A characterization or classification of the study epoch, i.e., the named time period defined in the protocol, wherein a study activity is specified and unchanging throughout the interval, to support a study-specific purpose.
@@ -2275,7 +2275,7 @@ export interface StudyEpoch {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * A brief written record relevant to the study epoch.
@@ -2286,7 +2286,7 @@ export interface StudyEpoch {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship within the StudyEpoch class which identifies the study epoch that chronologically precedes the current study epoch.
@@ -2295,7 +2295,7 @@ export interface StudyEpoch {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: StudyEpoch;
+  previousId?: StudyEpoch
 
   /**
    * A USDM relationship within the StudyEpoch class which identifies the study epoch that chronologically follows the current study epoch.
@@ -2304,19 +2304,19 @@ export interface StudyEpoch {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: StudyEpoch;
+  nextId?: StudyEpoch
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -2327,14 +2327,14 @@ export interface StudyEpoch {
  * @modifier Abstract
  * @subClasses ScheduledActivityInstance, ScheduledDecisionInstance
  */
-export interface ScheduledInstance {
+export interface ScheduledInstanceAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the scheduled activity instance.
@@ -2345,7 +2345,7 @@ export interface ScheduledInstance {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the scheduled activity instance.
@@ -2356,7 +2356,7 @@ export interface ScheduledInstance {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the scheduled activity instance.
@@ -2367,7 +2367,7 @@ export interface ScheduledInstance {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A USDM relationship within the ScheduledActivityInstance class which identifies the default condition within a scheduled activity instance.
@@ -2376,7 +2376,7 @@ export interface ScheduledInstance {
    * @modelName defaultCondition
    * @modelRepresentation Relationship
    */
-  defaultConditionId?: ScheduledInstance;
+  defaultConditionId?: ScheduledInstance
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and StudyEpoch classes which identifies the study epoch associated with a scheduled activity instance.
@@ -2385,7 +2385,7 @@ export interface ScheduledInstance {
    * @modelName epoch
    * @modelRepresentation Relationship
    */
-  epochId?: StudyEpoch;
+  epochId?: StudyEpoch
 
 }
 
@@ -2402,19 +2402,19 @@ export interface ScheduleTimelineExit {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -2431,7 +2431,7 @@ export interface Timing {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the timing.
@@ -2442,7 +2442,7 @@ export interface Timing {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the timing.
@@ -2453,7 +2453,7 @@ export interface Timing {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the chronological relationship between temporal events.
@@ -2464,7 +2464,7 @@ export interface Timing {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A characterization or classification of the chronological relationship between temporal events.
@@ -2475,7 +2475,7 @@ export interface Timing {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * The name of the reference event used to define the temporal relationship with another event.
@@ -2486,7 +2486,7 @@ export interface Timing {
    * @modelName relativeToFrom
    * @modelRepresentation Attribute
    */
-  relativeToFrom: Code;
+  relativeToFrom: Code
 
   /**
    * The temporal value of the chronological relationship between temporal events.
@@ -2497,7 +2497,7 @@ export interface Timing {
    * @modelName value
    * @modelRepresentation Attribute
    */
-  value: string;
+  value: string
 
   /**
    * The short descriptive designation for the timing value.
@@ -2508,7 +2508,7 @@ export interface Timing {
    * @modelName valueLabel
    * @modelRepresentation Attribute
    */
-  valueLabel: string;
+  valueLabel: string
 
   /**
    * The short descriptive designation for a time period, or other type of interval, during which a temporal event may be achieved, obtained, or observed.
@@ -2519,7 +2519,7 @@ export interface Timing {
    * @modelName windowLabel
    * @modelRepresentation Attribute
    */
-  windowLabel?: string;
+  windowLabel?: string
 
   /**
    * The earliest chronological value of an allowable period of time during which a temporal event takes place.
@@ -2530,7 +2530,7 @@ export interface Timing {
    * @modelName windowLower
    * @modelRepresentation Attribute
    */
-  windowLower?: string;
+  windowLower?: string
 
   /**
    * The latest chronological value of an allowable period of time during which a temporal event takes place.
@@ -2541,7 +2541,7 @@ export interface Timing {
    * @modelName windowUpper
    * @modelRepresentation Attribute
    */
-  windowUpper?: string;
+  windowUpper?: string
 
   /**
    * A USDM relationship between the Timing and ScheduledInstance classes which identifies the scheduled instance (e.g., scheduled activity instances or scheduled decision instances) to which the timing is relative to.
@@ -2550,7 +2550,7 @@ export interface Timing {
    * @modelName relativeToScheduledInstance
    * @modelRepresentation Relationship
    */
-  relativeToScheduledInstanceId?: ScheduledInstance;
+  relativeToScheduledInstanceId?: ScheduledInstance
 
   /**
    * A USDM relationship between the Timing and ScheduledInstance classes which identifies the scheduled instance (e.g., scheduled activity instances or scheduled decision instances) to which the timing applies.
@@ -2559,19 +2559,19 @@ export interface Timing {
    * @modelName relativeFromScheduledInstance
    * @modelRepresentation Relationship
    */
-  relativeFromScheduledInstanceId: ScheduledInstance;
+  relativeFromScheduledInstanceId: ScheduledInstance
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -2588,7 +2588,7 @@ export interface ScheduleTimeline {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the schedule timeline.
@@ -2599,7 +2599,7 @@ export interface ScheduleTimeline {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the schedule timeline.
@@ -2610,7 +2610,7 @@ export interface ScheduleTimeline {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the schedule timeline.
@@ -2621,7 +2621,7 @@ export interface ScheduleTimeline {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A logical evaluation on which rests the validity of entry into a schedule timeline.
@@ -2632,7 +2632,7 @@ export interface ScheduleTimeline {
    * @modelName entryCondition
    * @modelRepresentation Attribute
    */
-  entryCondition: string;
+  entryCondition: string
 
   /**
    * An indication as to whether the timeline or timeline component is part of the central or principal timeline.
@@ -2643,7 +2643,7 @@ export interface ScheduleTimeline {
    * @modelName mainTimeline
    * @modelRepresentation Attribute
    */
-  mainTimeline: boolean;
+  mainTimeline: boolean
 
   /**
    * The period of time over which the scheduled timeline is intended to take place.
@@ -2654,7 +2654,7 @@ export interface ScheduleTimeline {
    * @modelName plannedDuration
    * @modelRepresentation Attribute
    */
-  plannedDuration?: Duration;
+  plannedDuration?: Duration
 
   /**
    * A USDM relationship between the ScheduleTimeline and ScheduledInstance classes which identifies the set of scheduled instances (e.g., scheduled activity instances or scheduled decision instances) associated with the scheduled timeline.
@@ -2663,7 +2663,7 @@ export interface ScheduleTimeline {
    * @modelName instances
    * @modelRepresentation Relationship
    */
-  instances?: ScheduledInstance[];
+  instances?: ScheduledInstance[]
 
   /**
    * A USDM relationship between the ScheduleTimeline and ScheduledInstance classes which defines the entry into a scheduled instance (e.g., scheduled activity instances or scheduled decision instances) for a timeline.
@@ -2672,7 +2672,7 @@ export interface ScheduleTimeline {
    * @modelName entry
    * @modelRepresentation Relationship
    */
-  entryId: ScheduledInstance;
+  entryId: ScheduledInstance
 
   /**
    * A USDM relationship between the ScheduleTimeline and ScheduleTimelineExit classes which identifies the set of exits from the scheduled timeline.
@@ -2681,7 +2681,7 @@ export interface ScheduleTimeline {
    * @modelName exits
    * @modelRepresentation Relationship
    */
-  exits?: ScheduleTimelineExit[];
+  exits?: ScheduleTimelineExit[]
 
   /**
    * A USDM relationship between the ScheduleTimeline and Timing classes which identifies the set of timings associated with the scheduled timeline.
@@ -2690,19 +2690,19 @@ export interface ScheduleTimeline {
    * @modelName timings
    * @modelRepresentation Relationship
    */
-  timings?: Timing[];
+  timings?: Timing[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -2719,7 +2719,7 @@ export interface BiomedicalConceptSurrogate {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the biomedical concept surrogate.
@@ -2730,7 +2730,7 @@ export interface BiomedicalConceptSurrogate {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the biomedical concept surrogate.
@@ -2741,7 +2741,7 @@ export interface BiomedicalConceptSurrogate {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the biomedical concept surrogate.
@@ -2752,7 +2752,7 @@ export interface BiomedicalConceptSurrogate {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A citation to an authoritative source for a biomedical concept surrogate.
@@ -2763,7 +2763,7 @@ export interface BiomedicalConceptSurrogate {
    * @modelName reference
    * @modelRepresentation Attribute
    */
-  reference?: string;
+  reference?: string
 
   /**
    * A brief written record relevant to the biomedical concept surrogate.
@@ -2774,19 +2774,19 @@ export interface BiomedicalConceptSurrogate {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -2803,7 +2803,7 @@ export interface BiomedicalConceptCategory {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the biomedical concept category.
@@ -2814,7 +2814,7 @@ export interface BiomedicalConceptCategory {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the biomedical concept category.
@@ -2825,7 +2825,7 @@ export interface BiomedicalConceptCategory {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the biomedical concept category.
@@ -2836,7 +2836,7 @@ export interface BiomedicalConceptCategory {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A symbol or combination of symbols which is assigned to the biomedical concept category.
@@ -2847,7 +2847,7 @@ export interface BiomedicalConceptCategory {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code?: AliasCode;
+  code?: AliasCode
 
   /**
    * A brief written record relevant to the biomedical concept category.
@@ -2858,7 +2858,7 @@ export interface BiomedicalConceptCategory {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the BiomedicalConceptCategory and BiomedicalConcept classes which identifies the set of biomedical concept members associated with the biomedical concept category.
@@ -2867,7 +2867,7 @@ export interface BiomedicalConceptCategory {
    * @modelName members
    * @modelRepresentation Relationship
    */
-  memberIds?: BiomedicalConcept[];
+  memberIds?: BiomedicalConcept[]
 
   /**
    * A USDM relationship within the BiomedicalConceptCategory class which identifies the set of child categories of a biomedical concept.
@@ -2876,19 +2876,19 @@ export interface BiomedicalConceptCategory {
    * @modelName children
    * @modelRepresentation Relationship
    */
-  childIds?: BiomedicalConceptCategory[];
+  childIds?: BiomedicalConceptCategory[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -2905,7 +2905,7 @@ export interface Activity {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study activity.
@@ -2916,7 +2916,7 @@ export interface Activity {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study activity.
@@ -2927,7 +2927,7 @@ export interface Activity {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study activity.
@@ -2938,7 +2938,7 @@ export interface Activity {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A brief written record relevant to the activity.
@@ -2949,7 +2949,7 @@ export interface Activity {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Activity and Procedure classes which identifies the set of defined procedures associated with the activity.
@@ -2958,7 +2958,7 @@ export interface Activity {
    * @modelName definedProcedures
    * @modelRepresentation Relationship
    */
-  definedProcedures?: Procedure[];
+  definedProcedures?: Procedure[]
 
   /**
    * A USDM relationship between the Activity and BiomedicalConcept classes which identifies the set of biomedical concepts associated with the activity.
@@ -2967,7 +2967,7 @@ export interface Activity {
    * @modelName biomedicalConcepts
    * @modelRepresentation Relationship
    */
-  biomedicalConceptIds?: BiomedicalConcept[];
+  biomedicalConceptIds?: BiomedicalConcept[]
 
   /**
    * A USDM relationship within the Activity class which identifies the activity that follows the current activity in the display order.
@@ -2976,7 +2976,7 @@ export interface Activity {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: Activity;
+  nextId?: Activity
 
   /**
    * A USDM relationship between the Activity and ScheduleTimeline classes which provides the details associated with an instance of the scheduled timeline related to the activity.
@@ -2985,7 +2985,7 @@ export interface Activity {
    * @modelName timeline
    * @modelRepresentation Relationship
    */
-  timelineId?: ScheduleTimeline;
+  timelineId?: ScheduleTimeline
 
   /**
    * A USDM relationship within the Activity class which identifies the set of child activities associated with an activity.
@@ -2994,7 +2994,7 @@ export interface Activity {
    * @modelName children
    * @modelRepresentation Relationship
    */
-  childIds?: Activity[];
+  childIds?: Activity[]
 
   /**
    * A USDM relationship within the Activity class which identifies the activity that precedes the current activity in the display order.
@@ -3003,7 +3003,7 @@ export interface Activity {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: Activity;
+  previousId?: Activity
 
   /**
    * A USDM relationship between the Activity and BiomedicalConceptSurrogate classes which identifies the set of biomedical concept surrogates associated with the activity.
@@ -3012,7 +3012,7 @@ export interface Activity {
    * @modelName bcSurrogates
    * @modelRepresentation Relationship
    */
-  bcSurrogateIds?: BiomedicalConceptSurrogate[];
+  bcSurrogateIds?: BiomedicalConceptSurrogate[]
 
   /**
    * A USDM relationship between the Activity and BiomedicalConceptCategory classes which identifies the set of biomedical concept categories associated with the activity.
@@ -3021,19 +3021,19 @@ export interface Activity {
    * @modelName bcCategories
    * @modelRepresentation Relationship
    */
-  bcCategoryIds?: BiomedicalConceptCategory[];
+  bcCategoryIds?: BiomedicalConceptCategory[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -3050,7 +3050,7 @@ export interface ParameterMap {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * Character strings bounded by angle brackets that act as containers for programming language elements.
@@ -3061,7 +3061,7 @@ export interface ParameterMap {
    * @modelName tag
    * @modelRepresentation Attribute
    */
-  tag: string;
+  tag: string
 
   /**
    * The reference for a tag used in programming languages, such as a markup language (e.g., HTML, XML), to store attributes and elements.
@@ -3072,19 +3072,19 @@ export interface ParameterMap {
    * @modelName reference
    * @modelRepresentation Attribute
    */
-  reference: string;
+  reference: string
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -3101,7 +3101,7 @@ export interface SyntaxTemplateDictionary {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the syntax template dictionary.
@@ -3112,7 +3112,7 @@ export interface SyntaxTemplateDictionary {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the syntax template dictionary.
@@ -3123,7 +3123,7 @@ export interface SyntaxTemplateDictionary {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the syntax template dictionary.
@@ -3134,7 +3134,7 @@ export interface SyntaxTemplateDictionary {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A USDM relationship between the SyntaxTemplateDictionary and ParameterMap classes which identifies the set of parameter maps (parameter map entries) associated with a syntax template dictionary.
@@ -3143,19 +3143,19 @@ export interface SyntaxTemplateDictionary {
    * @modelName parameterMaps
    * @modelRepresentation Relationship
    */
-  parameterMaps: ParameterMap[];
+  parameterMaps: ParameterMap[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -3166,14 +3166,14 @@ export interface SyntaxTemplateDictionary {
  * @modifier Abstract
  * @subClasses Characteristic, Condition, EligibilityCriterionItem, Endpoint, IntercurrentEvent, Objective
  */
-export interface SyntaxTemplate {
+export interface SyntaxTemplateAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the characteristic.
@@ -3184,7 +3184,7 @@ export interface SyntaxTemplate {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the characteristic.
@@ -3195,7 +3195,7 @@ export interface SyntaxTemplate {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the characteristic.
@@ -3206,7 +3206,7 @@ export interface SyntaxTemplate {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * An instance of structured text that represents the characteristic.
@@ -3217,7 +3217,7 @@ export interface SyntaxTemplate {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * A brief written record relevant to the characteristic.
@@ -3228,7 +3228,7 @@ export interface SyntaxTemplate {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Characteristic and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to characteristics.
@@ -3237,7 +3237,7 @@ export interface SyntaxTemplate {
    * @modelName dictionary
    * @modelRepresentation Relationship
    */
-  dictionaryId?: SyntaxTemplateDictionary;
+  dictionaryId?: SyntaxTemplateDictionary
 
 }
 
@@ -3248,7 +3248,7 @@ export interface SyntaxTemplate {
  * @modifier Concrete
  * @extends SyntaxTemplate
  */
-export interface EligibilityCriterionItem extends SyntaxTemplate {
+export interface EligibilityCriterionItem extends SyntaxTemplateAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -3256,7 +3256,7 @@ export interface EligibilityCriterionItem extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the eligibility criterion item.
@@ -3268,7 +3268,7 @@ export interface EligibilityCriterionItem extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the eligibility criterion item.
@@ -3280,7 +3280,7 @@ export interface EligibilityCriterionItem extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the eligibility criterion item.
@@ -3292,7 +3292,7 @@ export interface EligibilityCriterionItem extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  description?: string;
+  description?: string
 
   /**
    * An instance of structured text that represents the eligibility criterion item.
@@ -3304,7 +3304,7 @@ export interface EligibilityCriterionItem extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  text: string;
+  text: string
 
   /**
    * A brief written record relevant to the eligibility criterion item.
@@ -3316,29 +3316,29 @@ export interface EligibilityCriterionItem extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
-   * A USDM relationship between the EligibilityCriterionItem and SyntaxTemplateDictionary classes which provides the dictionary entry associated with a eligibility criterion item. 
+   * A USDM relationship between the EligibilityCriterionItem and SyntaxTemplateDictionary classes which provides the dictionary entry associated with a eligibility criterion item.
    * @cardinality 0..1
    * @relationshipType Ref
    * @modelName dictionary
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary;
+  dictionaryId?: SyntaxTemplateDictionary
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -3355,7 +3355,7 @@ export interface EligibilityCriterion {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study eligibility criterion.
@@ -3366,7 +3366,7 @@ export interface EligibilityCriterion {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study eligibility criterion.
@@ -3377,7 +3377,7 @@ export interface EligibilityCriterion {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study eligibility criterion.
@@ -3388,7 +3388,7 @@ export interface EligibilityCriterion {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A sequence of characters used to identify, name, or characterize the inclusion or exclusion criterion.
@@ -3399,7 +3399,7 @@ export interface EligibilityCriterion {
    * @modelName identifier
    * @modelRepresentation Attribute
    */
-  identifier: string;
+  identifier: string
 
   /**
    * A classification of the inclusion exclusion criterion.
@@ -3410,7 +3410,7 @@ export interface EligibilityCriterion {
    * @modelName category
    * @modelRepresentation Attribute
    */
-  category: Code;
+  category: Code
 
   /**
    * A brief written record relevant to the eligibility criterion.
@@ -3421,7 +3421,7 @@ export interface EligibilityCriterion {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the EligibilityCriterion and EligibilityCriterionItem classes which identifies the item belonging to the eligibility criterion.
@@ -3430,7 +3430,7 @@ export interface EligibilityCriterion {
    * @modelName criterionItem
    * @modelRepresentation Relationship
    */
-  criterionItemId: EligibilityCriterionItem;
+  criterionItemId: EligibilityCriterionItem
 
   /**
    * A USDM relationship within the EligibilityCriterion class which identifies the eligibility criterion that follows the current eligibility criterion in the display order.
@@ -3439,7 +3439,7 @@ export interface EligibilityCriterion {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: EligibilityCriterion;
+  nextId?: EligibilityCriterion
 
   /**
    * A USDM relationship within the EligibilityCriterion class which identifies the eligibility criterion that precedes the current eligibility criterion in the display order.
@@ -3448,19 +3448,19 @@ export interface EligibilityCriterion {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: EligibilityCriterion;
+  previousId?: EligibilityCriterion
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -3471,14 +3471,14 @@ export interface EligibilityCriterion {
  * @modifier Abstract
  * @subClasses StudyCohort, StudyDesignPopulation
  */
-export interface PopulationDefinition {
+export interface PopulationDefinitionAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study cohort.
@@ -3489,7 +3489,7 @@ export interface PopulationDefinition {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study cohort.
@@ -3500,7 +3500,7 @@ export interface PopulationDefinition {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study cohort.
@@ -3511,7 +3511,7 @@ export interface PopulationDefinition {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * The protocol-defined sex within the study cohort.
@@ -3522,7 +3522,7 @@ export interface PopulationDefinition {
    * @modelName plannedSex
    * @modelRepresentation Attribute
    */
-  plannedSex?: Code[];
+  plannedSex?: Code[]
 
   /**
    * An indication as to whether the study cohort includes healthy subjects, that is, subjects without the disease or condition under study.
@@ -3533,7 +3533,7 @@ export interface PopulationDefinition {
    * @modelName includesHealthySubjects
    * @modelRepresentation Attribute
    */
-  includesHealthySubjects: boolean;
+  includesHealthySubjects: boolean
 
   /**
    * The anticipated age of subjects within the study cohort.
@@ -3544,7 +3544,7 @@ export interface PopulationDefinition {
    * @modelName plannedAge
    * @modelRepresentation Attribute
    */
-  plannedAge?: Range;
+  plannedAge?: Range
 
   /**
    * The value representing the planned number of subjects that must complete the study in order to meet the objectives and endpoints of the study, within the study cohort.
@@ -3555,7 +3555,7 @@ export interface PopulationDefinition {
    * @modelName plannedCompletionNumber
    * @modelRepresentation Attribute
    */
-  plannedCompletionNumber?: QuantityRange;
+  plannedCompletionNumber?: QuantityRange
 
   /**
    * The value representing the planned number of subjects to be entered in a clinical trial, within the study cohort.
@@ -3566,7 +3566,7 @@ export interface PopulationDefinition {
    * @modelName plannedEnrollmentNumber
    * @modelRepresentation Attribute
    */
-  plannedEnrollmentNumber?: QuantityRange;
+  plannedEnrollmentNumber?: QuantityRange
 
   /**
    * A brief written record relevant to the study cohort.
@@ -3577,7 +3577,7 @@ export interface PopulationDefinition {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the StudyCohort and EligibilityCriterion classes which identifies the set of eligibility criteria associated with the study cohort.
@@ -3586,7 +3586,7 @@ export interface PopulationDefinition {
    * @modelName criteria
    * @modelRepresentation Relationship
    */
-  criterionIds?: EligibilityCriterion[];
+  criterionIds?: EligibilityCriterion[]
 
 }
 
@@ -3603,7 +3603,7 @@ export interface AnalysisPopulation {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * An instance of unstructured text that represents the analysis population.
@@ -3614,7 +3614,7 @@ export interface AnalysisPopulation {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the analysis population.
@@ -3625,7 +3625,7 @@ export interface AnalysisPopulation {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the analysis population.
@@ -3636,7 +3636,7 @@ export interface AnalysisPopulation {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the analysis population.
@@ -3647,7 +3647,7 @@ export interface AnalysisPopulation {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A brief written record relevant to the analysis population.
@@ -3658,7 +3658,7 @@ export interface AnalysisPopulation {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the AnalysisPopulation and PopulationDefinition classes which identifies the population definition of which the analysis population is a subset.
@@ -3667,19 +3667,19 @@ export interface AnalysisPopulation {
    * @modelName subsetOf
    * @modelRepresentation Relationship
    */
-  subsetOfIds?: PopulationDefinition[];
+  subsetOfIds?: PopulationDefinition[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -3696,7 +3696,7 @@ export interface PersonName {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * An instance of structured text that represents the person's full name.
@@ -3707,7 +3707,7 @@ export interface PersonName {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text?: string;
+  text?: string
 
   /**
    * A word or group of words indicating a person's last (family) name.
@@ -3718,7 +3718,7 @@ export interface PersonName {
    * @modelName familyName
    * @modelRepresentation Attribute
    */
-  familyName?: string;
+  familyName?: string
 
   /**
    * A word or group of words indicating a person's first (personal or given) name; the name that precedes the surname.
@@ -3729,7 +3729,7 @@ export interface PersonName {
    * @modelName givenNames
    * @modelRepresentation Attribute
    */
-  givenNames?: string[];
+  givenNames?: string[]
 
   /**
    * An affix occurring at the start of the person name string, usually denoting a title or honorific.
@@ -3740,7 +3740,7 @@ export interface PersonName {
    * @modelName prefixes
    * @modelRepresentation Attribute
    */
-  prefixes?: string[];
+  prefixes?: string[]
 
   /**
    * An affix occurring at the end of the person name, usually denoting educational or professional degrees and certifications, and/or filial rank.
@@ -3751,19 +3751,19 @@ export interface PersonName {
    * @modelName suffixes
    * @modelRepresentation Attribute
    */
-  suffixes?: string[];
+  suffixes?: string[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -3780,7 +3780,7 @@ export interface AssignedPerson {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the assigned person.
@@ -3791,7 +3791,7 @@ export interface AssignedPerson {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the assigned person.
@@ -3802,7 +3802,7 @@ export interface AssignedPerson {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the assigned person.
@@ -3813,7 +3813,7 @@ export interface AssignedPerson {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A word or group of words indicating the identity of an assigned person usually consisting of a first (personal) name and a last (family) name with an optional middle name. In some cultural traditions the family name comes first.
@@ -3824,7 +3824,7 @@ export interface AssignedPerson {
    * @modelName personName
    * @modelRepresentation Attribute
    */
-  personName: PersonName;
+  personName: PersonName
 
   /**
    * An identifying designation related to the assigned person's occupation.
@@ -3835,7 +3835,7 @@ export interface AssignedPerson {
    * @modelName jobTitle
    * @modelRepresentation Attribute
    */
-  jobTitle: string;
+  jobTitle: string
 
   /**
    * A USDM relationship between the AssignedPerson and Organization classes that identifies that organization to which the assigned person belongs.
@@ -3844,19 +3844,19 @@ export interface AssignedPerson {
    * @modelName organization
    * @modelRepresentation Relationship
    */
-  organizationId?: Organization;
+  organizationId?: Organization
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -3873,7 +3873,7 @@ export interface BiospecimenRetention {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the biospecimen retention.
@@ -3884,7 +3884,7 @@ export interface BiospecimenRetention {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the biospecimen retention.
@@ -3895,7 +3895,7 @@ export interface BiospecimenRetention {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the biospecimen retention.
@@ -3906,7 +3906,7 @@ export interface BiospecimenRetention {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * An indication as to whether biospecimens were retained.
@@ -3917,7 +3917,7 @@ export interface BiospecimenRetention {
    * @modelName isRetained
    * @modelRepresentation Attribute
    */
-  isRetained: boolean;
+  isRetained: boolean
 
   /**
    * An indication as to whether retained biospecimens contain DNA.
@@ -3928,19 +3928,19 @@ export interface BiospecimenRetention {
    * @modelName includesDNA
    * @modelRepresentation Attribute
    */
-  includesDNA?: boolean;
+  includesDNA?: boolean
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -3951,7 +3951,7 @@ export interface BiospecimenRetention {
  * @modifier Concrete
  * @extends SyntaxTemplate
  */
-export interface Characteristic extends SyntaxTemplate {
+export interface Characteristic extends SyntaxTemplateAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -3959,7 +3959,7 @@ export interface Characteristic extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the characteristic.
@@ -3971,7 +3971,7 @@ export interface Characteristic extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the characteristic.
@@ -3983,7 +3983,7 @@ export interface Characteristic extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the characteristic.
@@ -3995,7 +3995,7 @@ export interface Characteristic extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  description?: string;
+  description?: string
 
   /**
    * An instance of structured text that represents the characteristic.
@@ -4007,7 +4007,7 @@ export interface Characteristic extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  text: string;
+  text: string
 
   /**
    * A brief written record relevant to the characteristic.
@@ -4019,7 +4019,7 @@ export interface Characteristic extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Characteristic and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to characteristics.
@@ -4029,19 +4029,19 @@ export interface Characteristic extends SyntaxTemplate {
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary;
+  dictionaryId?: SyntaxTemplateDictionary
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4058,7 +4058,7 @@ export interface TransitionRule {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the transition rule.
@@ -4069,7 +4069,7 @@ export interface TransitionRule {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the transition rule.
@@ -4080,7 +4080,7 @@ export interface TransitionRule {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the transition rule.
@@ -4091,7 +4091,7 @@ export interface TransitionRule {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * An instance of unstructured text that represents the transition rule.
@@ -4102,19 +4102,19 @@ export interface TransitionRule {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4131,7 +4131,7 @@ export interface Encounter {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) for a protocol-defined study encounter.
@@ -4142,7 +4142,7 @@ export interface Encounter {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study encounter.
@@ -4153,7 +4153,7 @@ export interface Encounter {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the protocol-defined study encounter.
@@ -4164,7 +4164,7 @@ export interface Encounter {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A characterization or classification of the study encounter.
@@ -4175,7 +4175,7 @@ export interface Encounter {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * The environment/setting where the event, intervention, or finding occurred.
@@ -4186,7 +4186,7 @@ export interface Encounter {
    * @modelName environmentalSettings
    * @modelRepresentation Attribute
    */
-  environmentalSettings?: Code[];
+  environmentalSettings?: Code[]
 
   /**
    * The means by which an interaction occurs between the subject/participant and person or entity (e.g., a device).
@@ -4197,7 +4197,7 @@ export interface Encounter {
    * @modelName contactModes
    * @modelRepresentation Attribute
    */
-  contactModes?: Code[];
+  contactModes?: Code[]
 
   /**
    * A brief written record relevant to the study encounter.
@@ -4208,7 +4208,7 @@ export interface Encounter {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Encounter and TransitionRule classes which provides the details associated with a transition rule used to trigger the end of an encounter.
@@ -4217,7 +4217,7 @@ export interface Encounter {
    * @modelName transitionEndRule
    * @modelRepresentation Relationship
    */
-  transitionEndRule?: TransitionRule;
+  transitionEndRule?: TransitionRule
 
   /**
    * A USDM relationship within the Encounter class which identifies the encounter that chronologically follows the current encounter.
@@ -4226,7 +4226,7 @@ export interface Encounter {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: Encounter;
+  nextId?: Encounter
 
   /**
    * A USDM relationship between the Encounter and TransitionRule classes which provides the details associated with a transition rule used to trigger the start of an encounter.
@@ -4235,7 +4235,7 @@ export interface Encounter {
    * @modelName transitionStartRule
    * @modelRepresentation Relationship
    */
-  transitionStartRule?: TransitionRule;
+  transitionStartRule?: TransitionRule
 
   /**
    * A USDM relationship between the Encounter and Timing classes which provides information related to the scheduled timing of an encounter.
@@ -4244,7 +4244,7 @@ export interface Encounter {
    * @modelName scheduledAt
    * @modelRepresentation Relationship
    */
-  scheduledAtId?: Timing;
+  scheduledAtId?: Timing
 
   /**
    * A USDM relationship within the Encounter class which identifies the encounter that chronologically precedes the current encounter.
@@ -4253,19 +4253,19 @@ export interface Encounter {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: Encounter;
+  previousId?: Encounter
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4276,7 +4276,7 @@ export interface Encounter {
  * @modifier Concrete
  * @extends ScheduledInstance
  */
-export interface ScheduledActivityInstance extends ScheduledInstance {
+export interface ScheduledActivityInstance extends ScheduledInstanceAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -4284,7 +4284,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelRepresentation Attribute
    * @inheritedFrom ScheduledInstance
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the scheduled activity instance.
@@ -4296,7 +4296,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelRepresentation Attribute
    * @inheritedFrom ScheduledInstance
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the scheduled activity instance.
@@ -4308,7 +4308,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelRepresentation Attribute
    * @inheritedFrom ScheduledInstance
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the scheduled activity instance.
@@ -4320,7 +4320,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelRepresentation Attribute
    * @inheritedFrom ScheduledInstance
    */
-  description?: string;
+  description?: string
 
   /**
    * A USDM relationship within the ScheduledActivityInstance class which identifies the default condition within a scheduled activity instance.
@@ -4330,7 +4330,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelRepresentation Relationship
    * @inheritedFrom ScheduledInstance
    */
-  defaultConditionId?: ScheduledInstance;
+  defaultConditionId?: ScheduledInstance
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and StudyEpoch classes which identifies the study epoch associated with a scheduled activity instance.
@@ -4340,7 +4340,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelRepresentation Relationship
    * @inheritedFrom ScheduledInstance
    */
-  epochId?: StudyEpoch;
+  epochId?: StudyEpoch
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and Activity classes which identifies the set of activities associated with a scheduled activity instance.
@@ -4349,7 +4349,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelName activities
    * @modelRepresentation Relationship
    */
-  activityIds?: Activity[];
+  activityIds?: Activity[]
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and Encounter classes which defines the subject encounter associated with the ScheduleActivityInstance.
@@ -4358,7 +4358,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelName encounter
    * @modelRepresentation Relationship
    */
-  encounterId?: Encounter;
+  encounterId?: Encounter
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and ScheduleTimeline classes which provides the details associated with an instance of a scheduled timeline related to a scheduled activity instance.
@@ -4367,7 +4367,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelName timeline
    * @modelRepresentation Relationship
    */
-  timelineId?: ScheduleTimeline;
+  timelineId?: ScheduleTimeline
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and ScheduleTimelineExit classes which provides the details associated with the exit from a timeline related to a scheduled activity instance.
@@ -4376,19 +4376,19 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
    * @modelName timelineExit
    * @modelRepresentation Relationship
    */
-  timelineExitId?: ScheduleTimelineExit;
+  timelineExitId?: ScheduleTimelineExit
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4399,7 +4399,7 @@ export interface ScheduledActivityInstance extends ScheduledInstance {
  * @modifier Concrete
  * @extends SyntaxTemplate
  */
-export interface Condition extends SyntaxTemplate {
+export interface Condition extends SyntaxTemplateAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -4407,7 +4407,7 @@ export interface Condition extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the condition.
@@ -4419,7 +4419,7 @@ export interface Condition extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the condition.
@@ -4431,7 +4431,7 @@ export interface Condition extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the condition.
@@ -4443,7 +4443,7 @@ export interface Condition extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  description?: string;
+  description?: string
 
   /**
    * An instance of structured text that represents the condition.
@@ -4455,7 +4455,7 @@ export interface Condition extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  text: string;
+  text: string
 
   /**
    * A brief written record relevant to the condition.
@@ -4467,7 +4467,7 @@ export interface Condition extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Condition and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to conditions.
@@ -4477,7 +4477,7 @@ export interface Condition extends SyntaxTemplate {
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary;
+  dictionaryId?: SyntaxTemplateDictionary
 
   /**
    * A USDM relationship between the Condition and the ScheduledActivityInstance or Activity classes which identifies the scheduled activity instance or activity to which the condition belongs.
@@ -4486,7 +4486,7 @@ export interface Condition extends SyntaxTemplate {
    * @modelName context
    * @modelRepresentation Relationship
    */
-  contextIds?: Activity | ScheduledActivityInstance[];
+  contextIds?: (Activity | ScheduledActivityInstance)[]
 
   /**
    * A USDM relationship between the Condition and the Activity, Procedure, BiomedicalConcept, BiomedicalConceptSurrogate, or BiomedicalConceptCategory classes which identifies the procedure, activity, biomedical concept, biomedical concept surrogate, or biomedical concept category that applies to the condition.
@@ -4495,19 +4495,19 @@ export interface Condition extends SyntaxTemplate {
    * @modelName appliesTo
    * @modelRepresentation Relationship
    */
-  appliesToIds?: BiomedicalConceptCategory | Procedure | Activity | BiomedicalConcept | BiomedicalConceptSurrogate[];
+  appliesToIds?: (BiomedicalConceptCategory | Procedure | Activity | BiomedicalConcept | BiomedicalConceptSurrogate)[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4524,7 +4524,7 @@ export interface ConditionAssignment {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * An assumption on which rests the validity or effect of something else.
@@ -4535,7 +4535,7 @@ export interface ConditionAssignment {
    * @modelName condition
    * @modelRepresentation Attribute
    */
-  condition: string;
+  condition: string
 
   /**
    * A USDM relationship between the ConditionAssignment and ScheduledInstance classes which identifies the scheduled instance associated with the condition assignment.
@@ -4544,19 +4544,19 @@ export interface ConditionAssignment {
    * @modelName conditionTarget
    * @modelRepresentation Relationship
    */
-  conditionTargetId: ScheduledInstance;
+  conditionTargetId: ScheduledInstance
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4573,7 +4573,7 @@ export interface GeographicScope {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * A characterization or classification of the geographic scope.
@@ -4584,7 +4584,7 @@ export interface GeographicScope {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * A symbol or combination of symbols which is assigned to the geographic scope.
@@ -4595,19 +4595,19 @@ export interface GeographicScope {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code?: AliasCode;
+  code?: AliasCode
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4624,7 +4624,7 @@ export interface GovernanceDate {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study governance date
@@ -4635,7 +4635,7 @@ export interface GovernanceDate {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study governance date.
@@ -4646,7 +4646,7 @@ export interface GovernanceDate {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study governance date.
@@ -4657,7 +4657,7 @@ export interface GovernanceDate {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A characterization or classification of the study governance date.
@@ -4668,7 +4668,7 @@ export interface GovernanceDate {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * The information contained in the date field.
@@ -4679,7 +4679,7 @@ export interface GovernanceDate {
    * @modelName dateValue
    * @modelRepresentation Attribute
    */
-  dateValue: Date;
+  dateValue: Date
 
   /**
    * A USDM relationship between the GovernanceDate and GeographicScope classes which identifies the set of geographic scopes associated with the governance date.
@@ -4688,19 +4688,19 @@ export interface GovernanceDate {
    * @modelName geographicScopes
    * @modelRepresentation Relationship
    */
-  geographicScopes: GeographicScope[];
+  geographicScopes: GeographicScope[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4717,7 +4717,7 @@ export interface NarrativeContentItem {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the narrative content item.
@@ -4728,7 +4728,7 @@ export interface NarrativeContentItem {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * An instance of unstructured text that represents the narrative content item.
@@ -4739,19 +4739,19 @@ export interface NarrativeContentItem {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4768,7 +4768,7 @@ export interface NarrativeContent {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the narrative content.
@@ -4779,7 +4779,7 @@ export interface NarrativeContent {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The numeric identifier assigned to a particular document section containing narrative content.
@@ -4790,7 +4790,7 @@ export interface NarrativeContent {
    * @modelName sectionNumber
    * @modelRepresentation Attribute
    */
-  sectionNumber?: string;
+  sectionNumber?: string
 
   /**
    * An identifying designation for the document section containing narrative content.
@@ -4801,7 +4801,7 @@ export interface NarrativeContent {
    * @modelName sectionTitle
    * @modelRepresentation Attribute
    */
-  sectionTitle?: string;
+  sectionTitle?: string
 
   /**
    * An indication as to whether the section title is to be displayed in the document containing narrative content.
@@ -4812,7 +4812,7 @@ export interface NarrativeContent {
    * @modelName displaySectionTitle
    * @modelRepresentation Attribute
    */
-  displaySectionTitle: boolean;
+  displaySectionTitle: boolean
 
   /**
    * An indication as to whether the section number is to be displayed in the document containing narrative content.
@@ -4823,7 +4823,7 @@ export interface NarrativeContent {
    * @modelName displaySectionNumber
    * @modelRepresentation Attribute
    */
-  displaySectionNumber: boolean;
+  displaySectionNumber: boolean
 
   /**
    * A USDM relationship between the NarrativeContent and NarrativeContentItem classes which identifies the content item associated with the narrative content.
@@ -4832,7 +4832,7 @@ export interface NarrativeContent {
    * @modelName contentItem
    * @modelRepresentation Relationship
    */
-  contentItemId?: NarrativeContentItem;
+  contentItemId?: NarrativeContentItem
 
   /**
    * A USDM relationship within the NarrativeContent class which identifies the narrative content that precedes the current narrative content in the display order.
@@ -4841,7 +4841,7 @@ export interface NarrativeContent {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: NarrativeContent;
+  previousId?: NarrativeContent
 
   /**
    * A USDM relationship within the NarrativeContent class which identifies the narrative content that follows the current narrative content in the display order.
@@ -4850,7 +4850,7 @@ export interface NarrativeContent {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: NarrativeContent;
+  nextId?: NarrativeContent
 
   /**
    * A USDM relationship within the NarrativeContent class which identifies the set of child content associated with an instance of narrative content.
@@ -4859,19 +4859,19 @@ export interface NarrativeContent {
    * @modelName children
    * @modelRepresentation Relationship
    */
-  childIds?: NarrativeContent[];
+  childIds?: NarrativeContent[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4888,7 +4888,7 @@ export interface StudyDefinitionDocumentVersion {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * A condition of the study definition document at a point in time with respect to its state of readiness for implementation.
@@ -4899,7 +4899,7 @@ export interface StudyDefinitionDocumentVersion {
    * @modelName status
    * @modelRepresentation Attribute
    */
-  status: Code;
+  status: Code
 
   /**
    * A sequence of characters used to identify the version of the study definition document.
@@ -4910,7 +4910,7 @@ export interface StudyDefinitionDocumentVersion {
    * @modelName version
    * @modelRepresentation Attribute
    */
-  version: string;
+  version: string
 
   /**
    * A brief written record relevant to the study definition document version.
@@ -4921,7 +4921,7 @@ export interface StudyDefinitionDocumentVersion {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the StudyDefinitionDocumentVersion and GovernanceDate classes which provides the set of governance dates associated with the study definition document version.
@@ -4930,7 +4930,7 @@ export interface StudyDefinitionDocumentVersion {
    * @modelName dateValues
    * @modelRepresentation Relationship
    */
-  dateValues?: GovernanceDate[];
+  dateValues?: GovernanceDate[]
 
   /**
    * A USDM relationship between the StudyDefinitionDocumentVersion and NarrativeContent classes which identifies the set of narrative content associated with the version of the study definition document.
@@ -4939,19 +4939,19 @@ export interface StudyDefinitionDocumentVersion {
    * @modelName contents
    * @modelRepresentation Relationship
    */
-  contents?: NarrativeContent[];
+  contents?: NarrativeContent[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -4968,7 +4968,7 @@ export interface StudyDefinitionDocument {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study definition document.
@@ -4979,7 +4979,7 @@ export interface StudyDefinitionDocument {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study definition document.
@@ -4990,7 +4990,7 @@ export interface StudyDefinitionDocument {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study definition document.
@@ -5001,7 +5001,7 @@ export interface StudyDefinitionDocument {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A characterization or classification of the study definition document.
@@ -5012,7 +5012,7 @@ export interface StudyDefinitionDocument {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study definition document template.
@@ -5023,7 +5023,7 @@ export interface StudyDefinitionDocument {
    * @modelName templateName
    * @modelRepresentation Attribute
    */
-  templateName: string;
+  templateName: string
 
   /**
    * The language in which the study definition document is written.
@@ -5034,7 +5034,7 @@ export interface StudyDefinitionDocument {
    * @modelName language
    * @modelRepresentation Attribute
    */
-  language: Code;
+  language: Code
 
   /**
    * A brief written record relevant to the study definition document.
@@ -5045,7 +5045,7 @@ export interface StudyDefinitionDocument {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship within the StudyDefinitionDocument class which identifies the set of child documents of a study definition document.
@@ -5054,7 +5054,7 @@ export interface StudyDefinitionDocument {
    * @modelName children
    * @modelRepresentation Relationship
    */
-  childIds?: StudyDefinitionDocument[];
+  childIds?: StudyDefinitionDocument[]
 
   /**
    * A USDM relationship between the StudyDefinitionDocument and StudyDefinitionDocumentVersion classes which identifies the set of versions associated with the study definition document.
@@ -5063,19 +5063,19 @@ export interface StudyDefinitionDocument {
    * @modelName versions
    * @modelRepresentation Relationship
    */
-  versions?: StudyDefinitionDocumentVersion[];
+  versions?: StudyDefinitionDocumentVersion[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5092,7 +5092,7 @@ export interface DocumentContentReference {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The numeric identifier of a particular section for the document content reference.
@@ -5103,7 +5103,7 @@ export interface DocumentContentReference {
    * @modelName sectionNumber
    * @modelRepresentation Attribute
    */
-  sectionNumber: string;
+  sectionNumber: string
 
   /**
    * An identifying designation for a particular section for the document content reference.
@@ -5114,7 +5114,7 @@ export interface DocumentContentReference {
    * @modelName sectionTitle
    * @modelRepresentation Attribute
    */
-  sectionTitle: string;
+  sectionTitle: string
 
   /**
    * A USDM relationship between the DocumentContentReference and StudyDefinitionDocument classes which identifies the study definition document to which the document content reference applies.
@@ -5123,19 +5123,19 @@ export interface DocumentContentReference {
    * @modelName appliesTo
    * @modelRepresentation Relationship
    */
-  appliesToId: StudyDefinitionDocument;
+  appliesToId: StudyDefinitionDocument
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5146,7 +5146,7 @@ export interface DocumentContentReference {
  * @modifier Concrete
  * @extends SyntaxTemplate
  */
-export interface Endpoint extends SyntaxTemplate {
+export interface Endpoint extends SyntaxTemplateAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -5154,7 +5154,7 @@ export interface Endpoint extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study endpoint.
@@ -5166,7 +5166,7 @@ export interface Endpoint extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study endpoint.
@@ -5178,7 +5178,7 @@ export interface Endpoint extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study endpoint.
@@ -5190,7 +5190,7 @@ export interface Endpoint extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  description?: string;
+  description?: string
 
   /**
    * An instance of structured text that represents the study endpoint.
@@ -5202,7 +5202,7 @@ export interface Endpoint extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  text: string;
+  text: string
 
   /**
    * A brief written record relevant to the study endpoint.
@@ -5214,7 +5214,7 @@ export interface Endpoint extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Endpoint and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to study endpoints.
@@ -5224,7 +5224,7 @@ export interface Endpoint extends SyntaxTemplate {
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary;
+  dictionaryId?: SyntaxTemplateDictionary
 
   /**
    * A characterization or classification of the study endpoint that determines its category of importance relative to other study endpoints.
@@ -5235,7 +5235,7 @@ export interface Endpoint extends SyntaxTemplate {
    * @modelName level
    * @modelRepresentation Attribute
    */
-  level: Code;
+  level: Code
 
   /**
    * The textual representation of the study endpoint purpose.
@@ -5246,19 +5246,19 @@ export interface Endpoint extends SyntaxTemplate {
    * @modelName purpose
    * @modelRepresentation Attribute
    */
-  purpose: string;
+  purpose: string
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5269,7 +5269,7 @@ export interface Endpoint extends SyntaxTemplate {
  * @modifier Concrete
  * @extends SyntaxTemplate
  */
-export interface IntercurrentEvent extends SyntaxTemplate {
+export interface IntercurrentEvent extends SyntaxTemplateAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -5277,7 +5277,7 @@ export interface IntercurrentEvent extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the intercurrent event.
@@ -5289,7 +5289,7 @@ export interface IntercurrentEvent extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the intercurrent event.
@@ -5301,7 +5301,7 @@ export interface IntercurrentEvent extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the intercurrent event.
@@ -5313,7 +5313,7 @@ export interface IntercurrentEvent extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  description?: string;
+  description?: string
 
   /**
    * An instance of structured text that represents the intercurrent event.
@@ -5325,7 +5325,7 @@ export interface IntercurrentEvent extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  text: string;
+  text: string
 
   /**
    * A brief written record relevant to the intercurrent event.
@@ -5337,17 +5337,17 @@ export interface IntercurrentEvent extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
-   * A USDM relationship between the IntercurrentEvent and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to the intercurrent event. 
+   * A USDM relationship between the IntercurrentEvent and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to the intercurrent event.
    * @cardinality 0..1
    * @relationshipType Ref
    * @modelName dictionary
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary;
+  dictionaryId?: SyntaxTemplateDictionary
 
   /**
    * A textual description of the planned strategy to manage and/or mitigate intercurrent events.
@@ -5358,19 +5358,19 @@ export interface IntercurrentEvent extends SyntaxTemplate {
    * @modelName strategy
    * @modelRepresentation Attribute
    */
-  strategy: string;
+  strategy: string
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5387,7 +5387,7 @@ export interface Estimand {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * A synopsis of the clinical endpoint of interest within the analysis target study population.
@@ -5398,7 +5398,7 @@ export interface Estimand {
    * @modelName populationSummary
    * @modelRepresentation Attribute
    */
-  populationSummary: string;
+  populationSummary: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the estimand.
@@ -5409,7 +5409,7 @@ export interface Estimand {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the estimand.
@@ -5420,7 +5420,7 @@ export interface Estimand {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the estimand.
@@ -5431,7 +5431,7 @@ export interface Estimand {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A brief written record relevant to the study estimand.
@@ -5442,7 +5442,7 @@ export interface Estimand {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Estimand and AnalysisPopulation classes which provides the details associated with an instance of the analysis population used to partially define a study estimand.
@@ -5451,7 +5451,7 @@ export interface Estimand {
    * @modelName analysisPopulation
    * @modelRepresentation Relationship
    */
-  analysisPopulationId: AnalysisPopulation;
+  analysisPopulationId: AnalysisPopulation
 
   /**
    * A USDM relationship between the Estimand and Endpoint classes which provides the details associated with an instance of the variable of interest within a study endpoint used to partially define a study estimand.
@@ -5460,7 +5460,7 @@ export interface Estimand {
    * @modelName variableOfInterest
    * @modelRepresentation Relationship
    */
-  variableOfInterestId: Endpoint;
+  variableOfInterestId: Endpoint
 
   /**
    * A USDM relationship between the Estimand and IntercurrentEvent classes which identifies the set of intercurrent events associated with a study estimand.
@@ -5469,7 +5469,7 @@ export interface Estimand {
    * @modelName intercurrentEvents
    * @modelRepresentation Relationship
    */
-  intercurrentEvents: IntercurrentEvent[];
+  intercurrentEvents: IntercurrentEvent[]
 
   /**
    * A USDM relationship between the Estimand and StudyIntervention classes which identifies the set of study interventions associated with the Estimand.
@@ -5478,19 +5478,19 @@ export interface Estimand {
    * @modelName interventions
    * @modelRepresentation Relationship
    */
-  interventionIds: StudyIntervention[];
+  interventionIds: StudyIntervention[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5507,7 +5507,7 @@ export interface Indication {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the disease/condition indication.
@@ -5518,7 +5518,7 @@ export interface Indication {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the disease/condition indication.
@@ -5529,7 +5529,7 @@ export interface Indication {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the condition, disease or disorder that the clinical trial is intended to investigate or address.
@@ -5540,7 +5540,7 @@ export interface Indication {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * An indication as to whether the disease/condition indication under study is considered a rare disease.
@@ -5551,7 +5551,7 @@ export interface Indication {
    * @modelName isRareDisease
    * @modelRepresentation Attribute
    */
-  isRareDisease: boolean;
+  isRareDisease: boolean
 
   /**
    * A short sequence of characters that represents the disease/condition indication.
@@ -5562,7 +5562,7 @@ export interface Indication {
    * @modelName codes
    * @modelRepresentation Attribute
    */
-  codes?: Code[];
+  codes?: Code[]
 
   /**
    * A brief written record relevant to the disease/condition indication.
@@ -5573,19 +5573,19 @@ export interface Indication {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5596,7 +5596,7 @@ export interface Indication {
  * @modifier Concrete
  * @extends SyntaxTemplate
  */
-export interface Objective extends SyntaxTemplate {
+export interface Objective extends SyntaxTemplateAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -5604,7 +5604,7 @@ export interface Objective extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study objective.
@@ -5616,7 +5616,7 @@ export interface Objective extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study objective.
@@ -5628,7 +5628,7 @@ export interface Objective extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study objective. (BRIDG)
@@ -5640,7 +5640,7 @@ export interface Objective extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  description?: string;
+  description?: string
 
   /**
    * An instance of structured text that represents the study objective.
@@ -5652,7 +5652,7 @@ export interface Objective extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  text: string;
+  text: string
 
   /**
    * A brief written record relevant to the study objective.
@@ -5664,7 +5664,7 @@ export interface Objective extends SyntaxTemplate {
    * @modelRepresentation Attribute
    * @inheritedFrom SyntaxTemplate
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the Objective and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to study objectives.
@@ -5674,7 +5674,7 @@ export interface Objective extends SyntaxTemplate {
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary;
+  dictionaryId?: SyntaxTemplateDictionary
 
   /**
    * A characterization or classification of the study objective that determines its category of importance relative to other study objectives.
@@ -5685,7 +5685,7 @@ export interface Objective extends SyntaxTemplate {
    * @modelName level
    * @modelRepresentation Attribute
    */
-  level: Code;
+  level: Code
 
   /**
    * A USDM relationship between the Objective and Endpoint classes which identifies the set of endpoints associated with the study objective.
@@ -5694,19 +5694,19 @@ export interface Objective extends SyntaxTemplate {
    * @modelName endpoints
    * @modelRepresentation Relationship
    */
-  endpoints?: Endpoint[];
+  endpoints?: Endpoint[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5723,7 +5723,7 @@ export interface StudyArm {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study arm.
@@ -5734,7 +5734,7 @@ export interface StudyArm {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study arm.
@@ -5745,7 +5745,7 @@ export interface StudyArm {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study arm.
@@ -5756,7 +5756,7 @@ export interface StudyArm {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A characterization or classification of the study arm.
@@ -5767,7 +5767,7 @@ export interface StudyArm {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * A characterization or classification of the study arm with respect to where the study arm data originates.
@@ -5778,7 +5778,7 @@ export interface StudyArm {
    * @modelName dataOriginType
    * @modelRepresentation Attribute
    */
-  dataOriginType: Code;
+  dataOriginType: Code
 
   /**
    * The textual representation of the study arm data origin.
@@ -5789,7 +5789,7 @@ export interface StudyArm {
    * @modelName dataOriginDescription
    * @modelRepresentation Attribute
    */
-  dataOriginDescription: string;
+  dataOriginDescription: string
 
   /**
    * A brief written record relevant to the study arm.
@@ -5800,7 +5800,7 @@ export interface StudyArm {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the StudyArm and PopulationDefinition classes which identifies the set of populations associated with the study arm.
@@ -5809,19 +5809,19 @@ export interface StudyArm {
    * @modelName populations
    * @modelRepresentation Relationship
    */
-  populationIds?: PopulationDefinition[];
+  populationIds?: PopulationDefinition[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5838,7 +5838,7 @@ export interface StudyElement {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study design element.
@@ -5849,7 +5849,7 @@ export interface StudyElement {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study design element.
@@ -5860,7 +5860,7 @@ export interface StudyElement {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study design element.
@@ -5871,7 +5871,7 @@ export interface StudyElement {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A brief written record relevant to the study element.
@@ -5882,7 +5882,7 @@ export interface StudyElement {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the StudyElement and TransitionRule classes which provides the details associated with a transition rule used to trigger the end of a study element.
@@ -5891,7 +5891,7 @@ export interface StudyElement {
    * @modelName transitionEndRule
    * @modelRepresentation Relationship
    */
-  transitionEndRule?: TransitionRule;
+  transitionEndRule?: TransitionRule
 
   /**
    * A USDM relationship between the StudyElement and StudyIntervention classes which identifies the set of study interventions associated with the study element.
@@ -5900,7 +5900,7 @@ export interface StudyElement {
    * @modelName studyInterventions
    * @modelRepresentation Relationship
    */
-  studyInterventionIds?: StudyIntervention[];
+  studyInterventionIds?: StudyIntervention[]
 
   /**
    * A USDM relationship between the StudyElement and TransitionRule classes which provides the details associated with a transition rule used to trigger the start of a study element.
@@ -5909,19 +5909,19 @@ export interface StudyElement {
    * @modelName transitionStartRule
    * @modelRepresentation Relationship
    */
-  transitionStartRule?: TransitionRule;
+  transitionStartRule?: TransitionRule
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5938,7 +5938,7 @@ export interface StudyCell {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * A USDM relationship between the StudyCell and StudyArm classes which identifies the study arm associated with a study cell.
@@ -5947,7 +5947,7 @@ export interface StudyCell {
    * @modelName arm
    * @modelRepresentation Relationship
    */
-  armId: StudyArm;
+  armId: StudyArm
 
   /**
    * A USDM relationship between the StudyCell and StudyEpoch classes which identifies the study epoch associated with a study cell.
@@ -5956,7 +5956,7 @@ export interface StudyCell {
    * @modelName epoch
    * @modelRepresentation Relationship
    */
-  epochId: StudyEpoch;
+  epochId: StudyEpoch
 
   /**
    * A USDM relationship between the StudyCell and StudyElement classes which identifies the set of study elements associated with the study cell.
@@ -5965,19 +5965,19 @@ export interface StudyCell {
    * @modelName elements
    * @modelRepresentation Relationship
    */
-  elementIds: StudyElement[];
+  elementIds: StudyElement[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -5988,7 +5988,7 @@ export interface StudyCell {
  * @modifier Concrete
  * @extends PopulationDefinition
  */
-export interface StudyCohort extends PopulationDefinition {
+export interface StudyCohort extends PopulationDefinitionAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -5996,7 +5996,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study cohort.
@@ -6008,7 +6008,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study cohort.
@@ -6020,7 +6020,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study cohort.
@@ -6032,7 +6032,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  description?: string;
+  description?: string
 
   /**
    * The protocol-defined sex within the study cohort.
@@ -6044,7 +6044,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  plannedSex?: Code[];
+  plannedSex?: Code[]
 
   /**
    * An indication as to whether the study cohort includes healthy subjects, that is, subjects without the disease or condition under study.
@@ -6056,7 +6056,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  includesHealthySubjects: boolean;
+  includesHealthySubjects: boolean
 
   /**
    * The anticipated age of subjects within the study cohort.
@@ -6068,7 +6068,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  plannedAge?: Range;
+  plannedAge?: Range
 
   /**
    * The value representing the planned number of subjects that must complete the study in order to meet the objectives and endpoints of the study, within the study cohort.
@@ -6080,7 +6080,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  plannedCompletionNumber?: QuantityRange;
+  plannedCompletionNumber?: QuantityRange
 
   /**
    * The value representing the planned number of subjects to be entered in a clinical trial, within the study cohort.
@@ -6092,7 +6092,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  plannedEnrollmentNumber?: QuantityRange;
+  plannedEnrollmentNumber?: QuantityRange
 
   /**
    * A brief written record relevant to the study cohort.
@@ -6104,7 +6104,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the StudyCohort and EligibilityCriterion classes which identifies the set of eligibility criteria associated with the study cohort.
@@ -6114,7 +6114,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelRepresentation Relationship
    * @inheritedFrom PopulationDefinition
    */
-  criterionIds?: EligibilityCriterion[];
+  criterionIds?: EligibilityCriterion[]
 
   /**
    * A USDM relationship between the StudyCohort and Characteristic classes which identifies the set of subject characteristics associated with the study cohort.
@@ -6123,7 +6123,7 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelName characteristics
    * @modelRepresentation Relationship
    */
-  characteristics?: Characteristic[];
+  characteristics?: Characteristic[]
 
   /**
    * A USDM relationship between the StudyCohort and Indication classes which identifies the set of indications associated with the study cohort.
@@ -6132,19 +6132,19 @@ export interface StudyCohort extends PopulationDefinition {
    * @modelName indications
    * @modelRepresentation Relationship
    */
-  indicationIds?: Indication[];
+  indicationIds?: Indication[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -6155,7 +6155,7 @@ export interface StudyCohort extends PopulationDefinition {
  * @modifier Concrete
  * @extends PopulationDefinition
  */
-export interface StudyDesignPopulation extends PopulationDefinition {
+export interface StudyDesignPopulation extends PopulationDefinitionAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -6163,7 +6163,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study design population.
@@ -6175,7 +6175,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study design population.
@@ -6187,7 +6187,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study design population.
@@ -6199,7 +6199,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  description?: string;
+  description?: string
 
   /**
    * The protocol-defined sex within the study design population.
@@ -6211,7 +6211,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  plannedSex?: Code[];
+  plannedSex?: Code[]
 
   /**
    * An indication as to whether the study design population includes healthy subjects, that is, subjects without the disease or condition under study.
@@ -6223,7 +6223,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  includesHealthySubjects: boolean;
+  includesHealthySubjects: boolean
 
   /**
    * The anticipated age of subjects within the study design population.
@@ -6235,7 +6235,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  plannedAge?: Range;
+  plannedAge?: Range
 
   /**
    * The value representing the planned number of subjects that must complete the study in order to meet the objectives and endpoints of the study, within the study design population.
@@ -6247,7 +6247,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  plannedCompletionNumber?: QuantityRange;
+  plannedCompletionNumber?: QuantityRange
 
   /**
    * The value representing the planned number of subjects to be entered in a clinical trial, within the study design population.
@@ -6259,7 +6259,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  plannedEnrollmentNumber?: QuantityRange;
+  plannedEnrollmentNumber?: QuantityRange
 
   /**
    * A brief written record relevant to the study design population.
@@ -6271,7 +6271,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Attribute
    * @inheritedFrom PopulationDefinition
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the StudyDesignPopulation and EligibilityCriterion classes which identifies the set of eligibility criteria associated with the study design population.
@@ -6281,7 +6281,7 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelRepresentation Relationship
    * @inheritedFrom PopulationDefinition
    */
-  criterionIds?: EligibilityCriterion[];
+  criterionIds?: EligibilityCriterion[]
 
   /**
    * A USDM relationship between the StudyDesignPopulation and StudyCohort classes which identifies the set of study cohorts associated with the study design population.
@@ -6290,19 +6290,19 @@ export interface StudyDesignPopulation extends PopulationDefinition {
    * @modelName cohorts
    * @modelRepresentation Relationship
    */
-  cohorts?: StudyCohort[];
+  cohorts?: StudyCohort[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -6313,14 +6313,14 @@ export interface StudyDesignPopulation extends PopulationDefinition {
  * @modifier Abstract
  * @subClasses InterventionalStudyDesign, ObservationalStudyDesign
  */
-export interface StudyDesign {
+export interface StudyDesignAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the interventional study design.
@@ -6331,7 +6331,7 @@ export interface StudyDesign {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the interventional study design.
@@ -6342,7 +6342,7 @@ export interface StudyDesign {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the interventional study design.
@@ -6353,7 +6353,7 @@ export interface StudyDesign {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * Reason(s) for choosing the interventional study design. This may include reasons for the choice of control or comparator, as well as the scientific rationale for the study design.
@@ -6364,7 +6364,7 @@ export interface StudyDesign {
    * @modelName rationale
    * @modelRepresentation Attribute
    */
-  rationale: string;
+  rationale: string
 
   /**
    * A categorization of a disease, disorder, or other condition based on common characteristics and often associated with a medical specialty focusing on research and development of specific therapeutic interventions for the purpose of treatment and prevention, which is associated with the interventional study design.
@@ -6375,7 +6375,7 @@ export interface StudyDesign {
    * @modelName therapeuticAreas
    * @modelRepresentation Attribute
    */
-  therapeuticAreas?: Code[];
+  therapeuticAreas?: Code[]
 
   /**
    * The study type associated with the interventional study design.
@@ -6386,7 +6386,7 @@ export interface StudyDesign {
    * @modelName studyType
    * @modelRepresentation Attribute
    */
-  studyType?: Code;
+  studyType?: Code
 
   /**
    * The distinguishing qualities or prominent aspects of an interventional study design.
@@ -6397,7 +6397,7 @@ export interface StudyDesign {
    * @modelName characteristics
    * @modelRepresentation Attribute
    */
-  characteristics?: Code[];
+  characteristics?: Code[]
 
   /**
    * The study phase associated with the interventional study design.
@@ -6408,7 +6408,7 @@ export interface StudyDesign {
    * @modelName studyPhase
    * @modelRepresentation Attribute
    */
-  studyPhase?: AliasCode;
+  studyPhase?: AliasCode
 
   /**
    * A brief written record relevant to the interventional study design.
@@ -6419,7 +6419,7 @@ export interface StudyDesign {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Activity classes which identifies the set of activities associated with the interventional study design.
@@ -6428,7 +6428,7 @@ export interface StudyDesign {
    * @modelName activities
    * @modelRepresentation Relationship
    */
-  activities?: Activity[];
+  activities?: Activity[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and BiospecimenRetention classes which identifies the status of biospecimen retentions related to the interventional study design.
@@ -6437,7 +6437,7 @@ export interface StudyDesign {
    * @modelName biospecimenRetentions
    * @modelRepresentation Relationship
    */
-  biospecimenRetentions?: BiospecimenRetention[];
+  biospecimenRetentions?: BiospecimenRetention[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and EligibilityCriterion classes which identifies the set of eligibility criterion associated with the interventional study design.
@@ -6446,7 +6446,7 @@ export interface StudyDesign {
    * @modelName eligibilityCriteria
    * @modelRepresentation Relationship
    */
-  eligibilityCriteria: EligibilityCriterion[];
+  eligibilityCriteria: EligibilityCriterion[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Encounter classes which identifies the set of encounters associated with the interventional study design.
@@ -6455,7 +6455,7 @@ export interface StudyDesign {
    * @modelName encounters
    * @modelRepresentation Relationship
    */
-  encounters?: Encounter[];
+  encounters?: Encounter[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Estimand classes which identifies the set of estimands associated with the interventional study design.
@@ -6464,7 +6464,7 @@ export interface StudyDesign {
    * @modelName estimands
    * @modelRepresentation Relationship
    */
-  estimands?: Estimand[];
+  estimands?: Estimand[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Indication classes which identifies the set of indications associated with the interventional study design.
@@ -6473,7 +6473,7 @@ export interface StudyDesign {
    * @modelName indications
    * @modelRepresentation Relationship
    */
-  indications?: Indication[];
+  indications?: Indication[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Objective classes which identifies the set of objectives associated with the interventional study design.
@@ -6482,7 +6482,7 @@ export interface StudyDesign {
    * @modelName objectives
    * @modelRepresentation Relationship
    */
-  objectives?: Objective[];
+  objectives?: Objective[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and ScheduleTimeline classes which identifies the set of scheduled timelines associated with the interventional study design.
@@ -6491,7 +6491,7 @@ export interface StudyDesign {
    * @modelName scheduleTimelines
    * @modelRepresentation Relationship
    */
-  scheduleTimelines?: ScheduleTimeline[];
+  scheduleTimelines?: ScheduleTimeline[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyArm classes which identifies the set of study arms associated with the interventional study design.
@@ -6500,16 +6500,16 @@ export interface StudyDesign {
    * @modelName arms
    * @modelRepresentation Relationship
    */
-  arms: StudyArm[];
+  arms: StudyArm[]
 
   /**
-   * A USDM relationship between the InterventionalStudyDesign and StudyCell classes which identifies the set of study cells associated with the interventional study design. 
+   * A USDM relationship between the InterventionalStudyDesign and StudyCell classes which identifies the set of study cells associated with the interventional study design.
    * @cardinality 1..*
    * @relationshipType Value
    * @modelName studyCells
    * @modelRepresentation Relationship
    */
-  studyCells: StudyCell[];
+  studyCells: StudyCell[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyDefinitionDocumentVersion classes which identifies the version of the study definition documents associated with the interventional study design.
@@ -6518,7 +6518,7 @@ export interface StudyDesign {
    * @modelName documentVersions
    * @modelRepresentation Relationship
    */
-  documentVersionIds?: StudyDefinitionDocumentVersion[];
+  documentVersionIds?: StudyDefinitionDocumentVersion[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyElement classes which identifies the set of study elements associated with the interventional study design.
@@ -6527,7 +6527,7 @@ export interface StudyDesign {
    * @modelName elements
    * @modelRepresentation Relationship
    */
-  elements?: StudyElement[];
+  elements?: StudyElement[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyIntervention classes which identifies the set of study interventions associated with interventional study design.
@@ -6536,7 +6536,7 @@ export interface StudyDesign {
    * @modelName studyInterventions
    * @modelRepresentation Relationship
    */
-  studyInterventionIds?: StudyIntervention[];
+  studyInterventionIds?: StudyIntervention[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyEpoch classes which identifies the set of study epochs associated with the interventional study design.
@@ -6545,7 +6545,7 @@ export interface StudyDesign {
    * @modelName epochs
    * @modelRepresentation Relationship
    */
-  epochs: StudyEpoch[];
+  epochs: StudyEpoch[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyDesignPopulation classes which identifies the population associated with the interventional study design.
@@ -6554,13 +6554,13 @@ export interface StudyDesign {
    * @modelName population
    * @modelRepresentation Relationship
    */
-  population: StudyDesignPopulation;
+  population: StudyDesignPopulation
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  analysisPopulations?: AnalysisPopulation[];
+  analysisPopulations?: AnalysisPopulation[]
 
 }
 
@@ -6571,7 +6571,7 @@ export interface StudyDesign {
  * @modifier Concrete
  * @extends StudyDesign
  */
-export interface InterventionalStudyDesign extends StudyDesign {
+export interface InterventionalStudyDesign extends StudyDesignAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -6579,7 +6579,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the interventional study design.
@@ -6591,7 +6591,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the interventional study design.
@@ -6603,7 +6603,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the interventional study design.
@@ -6615,7 +6615,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  description?: string;
+  description?: string
 
   /**
    * Reason(s) for choosing the interventional study design. This may include reasons for the choice of control or comparator, as well as the scientific rationale for the study design.
@@ -6627,7 +6627,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  rationale: string;
+  rationale: string
 
   /**
    * A categorization of a disease, disorder, or other condition based on common characteristics and often associated with a medical specialty focusing on research and development of specific therapeutic interventions for the purpose of treatment and prevention, which is associated with the interventional study design.
@@ -6639,7 +6639,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  therapeuticAreas?: Code[];
+  therapeuticAreas?: Code[]
 
   /**
    * The study type associated with the interventional study design.
@@ -6651,7 +6651,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  studyType?: Code;
+  studyType?: Code
 
   /**
    * The distinguishing qualities or prominent aspects of an interventional study design.
@@ -6663,7 +6663,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  characteristics?: Code[];
+  characteristics?: Code[]
 
   /**
    * The study phase associated with the interventional study design.
@@ -6675,7 +6675,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  studyPhase?: AliasCode;
+  studyPhase?: AliasCode
 
   /**
    * A brief written record relevant to the interventional study design.
@@ -6687,7 +6687,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Activity classes which identifies the set of activities associated with the interventional study design.
@@ -6697,7 +6697,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  activities?: Activity[];
+  activities?: Activity[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and BiospecimenRetention classes which identifies the status of biospecimen retentions related to the interventional study design.
@@ -6707,7 +6707,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  biospecimenRetentions?: BiospecimenRetention[];
+  biospecimenRetentions?: BiospecimenRetention[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and EligibilityCriterion classes which identifies the set of eligibility criterion associated with the interventional study design.
@@ -6717,7 +6717,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  eligibilityCriteria: EligibilityCriterion[];
+  eligibilityCriteria: EligibilityCriterion[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Encounter classes which identifies the set of encounters associated with the interventional study design.
@@ -6727,7 +6727,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  encounters?: Encounter[];
+  encounters?: Encounter[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Estimand classes which identifies the set of estimands associated with the interventional study design.
@@ -6737,7 +6737,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  estimands?: Estimand[];
+  estimands?: Estimand[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Indication classes which identifies the set of indications associated with the interventional study design.
@@ -6747,7 +6747,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  indications?: Indication[];
+  indications?: Indication[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and Objective classes which identifies the set of objectives associated with the interventional study design.
@@ -6757,7 +6757,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  objectives?: Objective[];
+  objectives?: Objective[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and ScheduleTimeline classes which identifies the set of scheduled timelines associated with the interventional study design.
@@ -6767,7 +6767,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  scheduleTimelines?: ScheduleTimeline[];
+  scheduleTimelines?: ScheduleTimeline[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyArm classes which identifies the set of study arms associated with the interventional study design.
@@ -6777,17 +6777,17 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  arms: StudyArm[];
+  arms: StudyArm[]
 
   /**
-   * A USDM relationship between the InterventionalStudyDesign and StudyCell classes which identifies the set of study cells associated with the interventional study design. 
+   * A USDM relationship between the InterventionalStudyDesign and StudyCell classes which identifies the set of study cells associated with the interventional study design.
    * @cardinality 1..*
    * @relationshipType Value
    * @modelName studyCells
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  studyCells: StudyCell[];
+  studyCells: StudyCell[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyDefinitionDocumentVersion classes which identifies the version of the study definition documents associated with the interventional study design.
@@ -6797,7 +6797,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  documentVersionIds?: StudyDefinitionDocumentVersion[];
+  documentVersionIds?: StudyDefinitionDocumentVersion[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyElement classes which identifies the set of study elements associated with the interventional study design.
@@ -6807,7 +6807,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  elements?: StudyElement[];
+  elements?: StudyElement[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyIntervention classes which identifies the set of study interventions associated with interventional study design.
@@ -6817,7 +6817,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  studyInterventionIds?: StudyIntervention[];
+  studyInterventionIds?: StudyIntervention[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyEpoch classes which identifies the set of study epochs associated with the interventional study design.
@@ -6827,7 +6827,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  epochs: StudyEpoch[];
+  epochs: StudyEpoch[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyDesignPopulation classes which identifies the population associated with the interventional study design.
@@ -6837,7 +6837,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  population: StudyDesignPopulation;
+  population: StudyDesignPopulation
 
   /**
    * The general design of the strategy for assigning interventions to subjects in a clinical study. (clinicaltrials.gov)
@@ -6848,7 +6848,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelName model
    * @modelRepresentation Attribute
    */
-  model: Code;
+  model: Code
 
   /**
    * The nature of the interventional study for which information is being collected.
@@ -6859,7 +6859,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelName subTypes
    * @modelRepresentation Attribute
    */
-  subTypes?: Code[];
+  subTypes?: Code[]
 
   /**
    * The type of experimental design used to describe the level of awareness of the study subjects and/ or study personnel as it relates to the respective intervention(s) or assessments being observed, received or administered.
@@ -6870,7 +6870,7 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelName blindingSchema
    * @modelRepresentation Attribute
    */
-  blindingSchema?: AliasCode;
+  blindingSchema?: AliasCode
 
   /**
    * The planned purpose of the therapy, device, or agent under study in the clinical trial.
@@ -6881,25 +6881,25 @@ export interface InterventionalStudyDesign extends StudyDesign {
    * @modelName intentTypes
    * @modelRepresentation Attribute
    */
-  intentTypes?: Code[];
+  intentTypes?: Code[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  analysisPopulations?: AnalysisPopulation[];
+  analysisPopulations?: AnalysisPopulation[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -6916,7 +6916,7 @@ export interface Masking {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * An instance of unstructured text that represents how the masking is performed and maintained.
@@ -6927,7 +6927,7 @@ export interface Masking {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * An indication as to whether the study role is masked.
@@ -6938,19 +6938,19 @@ export interface Masking {
    * @modelName isMasked
    * @modelRepresentation Attribute
    */
-  isMasked: boolean;
+  isMasked: boolean
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -6961,7 +6961,7 @@ export interface Masking {
  * @modifier Concrete
  * @extends StudyDesign
  */
-export interface ObservationalStudyDesign extends StudyDesign {
+export interface ObservationalStudyDesign extends StudyDesignAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -6969,7 +6969,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the observational study design.
@@ -6981,7 +6981,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the observational study design.
@@ -6993,7 +6993,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the observational study design.
@@ -7005,7 +7005,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  description?: string;
+  description?: string
 
   /**
    * Reason(s) for choosing the observational study design. This may include reasons for the choice of control or comparator, as well as the scientific rationale for the study design.
@@ -7017,7 +7017,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  rationale: string;
+  rationale: string
 
   /**
    * A categorization of a disease, disorder, or other condition based on common characteristics and often associated with a medical specialty focusing on research and development of specific therapeutic interventions for the purpose of treatment and prevention, which is associated with the observational study design.
@@ -7029,7 +7029,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  therapeuticAreas?: Code[];
+  therapeuticAreas?: Code[]
 
   /**
    * The study type associated with the observational study design.
@@ -7041,7 +7041,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  studyType?: Code;
+  studyType?: Code
 
   /**
    * The distinguishing qualities or prominent aspects of an observational study design.
@@ -7053,7 +7053,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  characteristics?: Code[];
+  characteristics?: Code[]
 
   /**
    * The study phase associated with the observational study design.
@@ -7065,7 +7065,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  studyPhase?: AliasCode;
+  studyPhase?: AliasCode
 
   /**
    * A brief written record relevant to the observational study design.
@@ -7077,7 +7077,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Attribute
    * @inheritedFrom StudyDesign
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and Activity classes which identifies the set of activities associated with the observational study design.
@@ -7087,7 +7087,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  activities?: Activity[];
+  activities?: Activity[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and BiospecimenRetention classes which identifies the status of biospecimen retentions related to the observational study design.
@@ -7097,7 +7097,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  biospecimenRetentions?: BiospecimenRetention[];
+  biospecimenRetentions?: BiospecimenRetention[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and EligibilityCriterion classes which identifies the set of eligibility criterion associated with the observational study design.
@@ -7107,7 +7107,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  eligibilityCriteria: EligibilityCriterion[];
+  eligibilityCriteria: EligibilityCriterion[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and Encounter classes which identifies the set of encounters associated with the observational study design.
@@ -7117,7 +7117,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  encounters?: Encounter[];
+  encounters?: Encounter[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and Estimand classes which identifies the set of estimands associated with the observational study design.
@@ -7127,7 +7127,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  estimands?: Estimand[];
+  estimands?: Estimand[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and Indication classes which identifies the set of indications associated with the observational study design.
@@ -7137,7 +7137,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  indications?: Indication[];
+  indications?: Indication[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and Objective classes which identifies the set of objectives associated with the observational study design.
@@ -7147,7 +7147,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  objectives?: Objective[];
+  objectives?: Objective[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and ScheduleTimeline classes which identifies the set of scheduled timelines associated with the observational study design.
@@ -7157,7 +7157,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  scheduleTimelines?: ScheduleTimeline[];
+  scheduleTimelines?: ScheduleTimeline[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and StudyArm classes which identifies the set of study arms associated with the observational study design.
@@ -7167,17 +7167,17 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  arms: StudyArm[];
+  arms: StudyArm[]
 
   /**
-   * A USDM relationship between the ObservationalStudyDesign and StudyCell classes which identifies the set of study cells associated with the observational study design. 
+   * A USDM relationship between the ObservationalStudyDesign and StudyCell classes which identifies the set of study cells associated with the observational study design.
    * @cardinality 1..*
    * @relationshipType Value
    * @modelName studyCells
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  studyCells: StudyCell[];
+  studyCells: StudyCell[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and StudyDefinitionDocumentVersion classes which identifies the version of the study definition documents associated with the observational study design.
@@ -7187,7 +7187,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  documentVersionIds?: StudyDefinitionDocumentVersion[];
+  documentVersionIds?: StudyDefinitionDocumentVersion[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and StudyElement classes which identifies the set of study elements associated with the observational study design.
@@ -7197,7 +7197,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  elements?: StudyElement[];
+  elements?: StudyElement[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and StudyIntervention classes which identifies the set of study interventions associated with observational study design.
@@ -7207,7 +7207,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  studyInterventionIds?: StudyIntervention[];
+  studyInterventionIds?: StudyIntervention[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and StudyEpoch classes which identifies the set of study epochs associated with the observational study design.
@@ -7217,7 +7217,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  epochs: StudyEpoch[];
+  epochs: StudyEpoch[]
 
   /**
    * A USDM relationship between the ObservationalStudyDesign and StudyDesignPopulation classes which identifies the population associated with the observational study design.
@@ -7227,7 +7227,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  population: StudyDesignPopulation;
+  population: StudyDesignPopulation
 
   /**
    * The general design of the strategy for identifying and following up with participants during observational studies. (clinicaltrials.gov)
@@ -7238,7 +7238,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelName model
    * @modelRepresentation Attribute
    */
-  model: Code;
+  model: Code
 
   /**
    * The nature of the observational study for which information is being collected.
@@ -7249,7 +7249,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelName subTypes
    * @modelRepresentation Attribute
    */
-  subTypes?: Code[];
+  subTypes?: Code[]
 
   /**
    * The temporal relationship between the observation period and time of subject enrollment. (ClinicalTrials.gov)
@@ -7260,7 +7260,7 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelName timePerspective
    * @modelRepresentation Attribute
    */
-  timePerspective: Code;
+  timePerspective: Code
 
   /**
    * The sampling method used to assign study participants into groups or cohorts within an observational study.
@@ -7271,25 +7271,25 @@ export interface ObservationalStudyDesign extends StudyDesign {
    * @modelName samplingMethod
    * @modelRepresentation Attribute
    */
-  samplingMethod?: Code;
+  samplingMethod?: Code
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  analysisPopulations?: AnalysisPopulation[];
+  analysisPopulations?: AnalysisPopulation[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -7306,7 +7306,7 @@ export interface ProductOrganizationRole {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the product organization role.
@@ -7317,7 +7317,7 @@ export interface ProductOrganizationRole {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the product organization role.
@@ -7328,7 +7328,7 @@ export interface ProductOrganizationRole {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the product organization role.
@@ -7339,7 +7339,7 @@ export interface ProductOrganizationRole {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A symbol or combination of symbols which is assigned to the product organization role.
@@ -7350,7 +7350,7 @@ export interface ProductOrganizationRole {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code: Code;
+  code: Code
 
   /**
    * A USDM relationship between the ProductOrganizationRole and either the AdministrableProduct or MedicalDevice class that identifies the administrable product or medical device to which the product organization role applies.
@@ -7359,7 +7359,7 @@ export interface ProductOrganizationRole {
    * @modelName appliesTo
    * @modelRepresentation Relationship
    */
-  appliesToIds?: AdministrableProduct | MedicalDevice[];
+  appliesToIds?: (AdministrableProduct | MedicalDevice)[]
 
   /**
    * A USDM relationship between the ProductOrganizationRole and Organization classes which identifies the organization associated with the product organization role.
@@ -7368,19 +7368,19 @@ export interface ProductOrganizationRole {
    * @modelName organization
    * @modelRepresentation Relationship
    */
-  organizationId: Organization;
+  organizationId: Organization
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -7391,7 +7391,7 @@ export interface ProductOrganizationRole {
  * @modifier Concrete
  * @extends Identifier
  */
-export interface ReferenceIdentifier extends Identifier {
+export interface ReferenceIdentifier extends IdentifierAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -7399,7 +7399,7 @@ export interface ReferenceIdentifier extends Identifier {
    * @modelRepresentation Attribute
    * @inheritedFrom Identifier
    */
-  id: string;
+  id: string
 
   /**
    * An instance of structured text that represents the reference identifier.
@@ -7411,7 +7411,7 @@ export interface ReferenceIdentifier extends Identifier {
    * @modelRepresentation Attribute
    * @inheritedFrom Identifier
    */
-  text: string;
+  text: string
 
   /**
    * A USDM relationship between the ReferenceIdentifier and Organization classes which provides the details associated with each organization that has assigned the reference identifier.
@@ -7421,7 +7421,7 @@ export interface ReferenceIdentifier extends Identifier {
    * @modelRepresentation Relationship
    * @inheritedFrom Identifier
    */
-  scopeId: Organization;
+  scopeId: Organization
 
   /**
    * A characterization or classification of the reference identifier.
@@ -7432,19 +7432,19 @@ export interface ReferenceIdentifier extends Identifier {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -7455,7 +7455,7 @@ export interface ReferenceIdentifier extends Identifier {
  * @modifier Concrete
  * @extends ScheduledInstance
  */
-export interface ScheduledDecisionInstance extends ScheduledInstance {
+export interface ScheduledDecisionInstance extends ScheduledInstanceAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -7463,7 +7463,7 @@ export interface ScheduledDecisionInstance extends ScheduledInstance {
    * @modelRepresentation Attribute
    * @inheritedFrom ScheduledInstance
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the scheduled Decision instance.
@@ -7475,7 +7475,7 @@ export interface ScheduledDecisionInstance extends ScheduledInstance {
    * @modelRepresentation Attribute
    * @inheritedFrom ScheduledInstance
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the scheduled Decision instance.
@@ -7487,7 +7487,7 @@ export interface ScheduledDecisionInstance extends ScheduledInstance {
    * @modelRepresentation Attribute
    * @inheritedFrom ScheduledInstance
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the scheduled Decision instance.
@@ -7499,7 +7499,7 @@ export interface ScheduledDecisionInstance extends ScheduledInstance {
    * @modelRepresentation Attribute
    * @inheritedFrom ScheduledInstance
    */
-  description?: string;
+  description?: string
 
   /**
    * A USDM relationship within the ScheduledDecisionInstance class which identifies the default condition within a scheduled decision instance.
@@ -7509,7 +7509,7 @@ export interface ScheduledDecisionInstance extends ScheduledInstance {
    * @modelRepresentation Relationship
    * @inheritedFrom ScheduledInstance
    */
-  defaultConditionId?: ScheduledInstance;
+  defaultConditionId?: ScheduledInstance
 
   /**
    * A USDM relationship between the ScheduledDecisionInstance and StudyEpoch classes which identifies the study epoch associated with a scheduled decision instance.
@@ -7519,7 +7519,7 @@ export interface ScheduledDecisionInstance extends ScheduledInstance {
    * @modelRepresentation Relationship
    * @inheritedFrom ScheduledInstance
    */
-  epochId?: StudyEpoch;
+  epochId?: StudyEpoch
 
   /**
    * A USDM relationship between the ScheduledDecisionInstance and ConditionAssignment classes which identifies the set of condition assignments associated with a scheduled decision instance.
@@ -7528,19 +7528,19 @@ export interface ScheduledDecisionInstance extends ScheduledInstance {
    * @modelName conditionAssignments
    * @modelRepresentation Relationship
    */
-  conditionAssignments: ConditionAssignment[];
+  conditionAssignments: ConditionAssignment[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -7557,7 +7557,7 @@ export interface StudyAmendmentImpact {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * An instance of unstructured text that represents the study amendment impact.
@@ -7568,7 +7568,7 @@ export interface StudyAmendmentImpact {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * An indication as to whether the study amendment's impact on the study is substantial.
@@ -7579,7 +7579,7 @@ export interface StudyAmendmentImpact {
    * @modelName isSubstantial
    * @modelRepresentation Attribute
    */
-  isSubstantial: boolean;
+  isSubstantial: boolean
 
   /**
    * A characterization or classification of the study amendment impact.
@@ -7590,7 +7590,7 @@ export interface StudyAmendmentImpact {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * A brief written record relevant to the study amendment impact.
@@ -7601,19 +7601,19 @@ export interface StudyAmendmentImpact {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -7630,7 +7630,7 @@ export interface SubjectEnrollment {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the subject enrollment.
@@ -7641,7 +7641,7 @@ export interface SubjectEnrollment {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the subject enrollment..
@@ -7652,7 +7652,7 @@ export interface SubjectEnrollment {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the subject enrollment.
@@ -7663,7 +7663,7 @@ export interface SubjectEnrollment {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * The value representing the number of individuals enrolled in a study.
@@ -7674,7 +7674,7 @@ export interface SubjectEnrollment {
    * @modelName quantity
    * @modelRepresentation Attribute
    */
-  quantity: Quantity;
+  quantity: Quantity
 
   /**
    * A USDM relationship between the SubjectEnrollment and GeographicScope classes which identifies the geographic scope to which the subject enrollment applies.
@@ -7683,7 +7683,7 @@ export interface SubjectEnrollment {
    * @modelName forGeographicScope
    * @modelRepresentation Relationship
    */
-  forGeographicScope?: GeographicScope;
+  forGeographicScope?: GeographicScope
 
   /**
    * A USDM relationship between the SubjectEnrollment and StudyCohort classes which identifies the study cohort to which the subject enrollment applies.
@@ -7692,7 +7692,7 @@ export interface SubjectEnrollment {
    * @modelName forStudyCohort
    * @modelRepresentation Relationship
    */
-  forStudyCohortId?: StudyCohort;
+  forStudyCohortId?: StudyCohort
 
   /**
    * A USDM relationship between the SubjectEnrollment and StudySite classes which identifies the study site to which the subject enrollment applies.
@@ -7701,19 +7701,19 @@ export interface SubjectEnrollment {
    * @modelName forStudySite
    * @modelRepresentation Relationship
    */
-  forStudySiteId?: StudySite;
+  forStudySiteId?: StudySite
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -7730,7 +7730,7 @@ export interface StudyAmendmentReason {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The rationale for the change(s) to, or formal clarification of, a protocol that is not otherwise specified.
@@ -7741,7 +7741,7 @@ export interface StudyAmendmentReason {
    * @modelName otherReason
    * @modelRepresentation Attribute
    */
-  otherReason?: string;
+  otherReason?: string
 
   /**
    * A symbol or combination of symbols which is assigned to the study amendment reason.
@@ -7752,19 +7752,19 @@ export interface StudyAmendmentReason {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code: Code;
+  code: Code
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -7781,7 +7781,7 @@ export interface StudyChange {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study change.
@@ -7792,7 +7792,7 @@ export interface StudyChange {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study change.
@@ -7803,7 +7803,7 @@ export interface StudyChange {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study change.
@@ -7814,7 +7814,7 @@ export interface StudyChange {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * An explanation as to the logical reasons for why a study change has occurred.
@@ -7825,7 +7825,7 @@ export interface StudyChange {
    * @modelName rationale
    * @modelRepresentation Attribute
    */
-  rationale: string;
+  rationale: string
 
   /**
    * A short narrative representation describing the changes introduced in the current version of the study.
@@ -7836,7 +7836,7 @@ export interface StudyChange {
    * @modelName summary
    * @modelRepresentation Attribute
    */
-  summary: string;
+  summary: string
 
   /**
    * A USDM relationship between the StudyChange and DocumentContentReference class which provides the set of changed document sections related to the study change.
@@ -7845,19 +7845,19 @@ export interface StudyChange {
    * @modelName changedSections
    * @modelRepresentation Relationship
    */
-  changedSections: DocumentContentReference[];
+  changedSections: DocumentContentReference[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -7874,7 +7874,7 @@ export interface StudyAmendment {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study amendment.
@@ -7885,7 +7885,7 @@ export interface StudyAmendment {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study amendment.
@@ -7896,7 +7896,7 @@ export interface StudyAmendment {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study amendment.
@@ -7907,7 +7907,7 @@ export interface StudyAmendment {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A string of numerals that uniquely identifies a protocol amendment.
@@ -7918,7 +7918,7 @@ export interface StudyAmendment {
    * @modelName number
    * @modelRepresentation Attribute
    */
-  number: string;
+  number: string
 
   /**
    * A brief written record relevant to the study amendment.
@@ -7929,7 +7929,7 @@ export interface StudyAmendment {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A short narrative representation describing the changes introduced in the current version of the protocol.
@@ -7940,7 +7940,7 @@ export interface StudyAmendment {
    * @modelName summary
    * @modelRepresentation Attribute
    */
-  summary: string;
+  summary: string
 
   /**
    * A USDM relationship between the StudyAmendment and GeographicScope classes which identifies the set of geographic scopes associated with the study amendment.
@@ -7949,7 +7949,7 @@ export interface StudyAmendment {
    * @modelName geographicScopes
    * @modelRepresentation Relationship
    */
-  geographicScopes: GeographicScope[];
+  geographicScopes: GeographicScope[]
 
   /**
    * A USDM relationship between the StudyAmendment and GovernanceDate classes which provides the set of governance dates associated with the study amendment.
@@ -7958,7 +7958,7 @@ export interface StudyAmendment {
    * @modelName dateValues
    * @modelRepresentation Relationship
    */
-  dateValues?: GovernanceDate[];
+  dateValues?: GovernanceDate[]
 
   /**
    * A USDM relationship between the StudyAmendment and StudyAmendmentImpact classes which identifies the set of impacts that the study amendment has on the study or study subjects.
@@ -7967,7 +7967,7 @@ export interface StudyAmendment {
    * @modelName impacts
    * @modelRepresentation Relationship
    */
-  impacts?: StudyAmendmentImpact[];
+  impacts?: StudyAmendmentImpact[]
 
   /**
    * A USDM relationship between the StudyAmendment and SubjectEnrollment classes which provides the set of subject enrollments associated with the study amendment.
@@ -7976,7 +7976,7 @@ export interface StudyAmendment {
    * @modelName enrollments
    * @modelRepresentation Relationship
    */
-  enrollments?: SubjectEnrollment[];
+  enrollments?: SubjectEnrollment[]
 
   /**
    * A USDM relationship between the StudyAmendment and StudyAmendmentReason classes which identifies the set of secondary reasons for issuing the study amendment.
@@ -7985,7 +7985,7 @@ export interface StudyAmendment {
    * @modelName secondaryReasons
    * @modelRepresentation Relationship
    */
-  secondaryReasons?: StudyAmendmentReason[];
+  secondaryReasons?: StudyAmendmentReason[]
 
   /**
    * A USDM relationship between the StudyAmendment and  StudyChange classes which identifies the set of changes associated with the study amendment.
@@ -7994,7 +7994,7 @@ export interface StudyAmendment {
    * @modelName changes
    * @modelRepresentation Relationship
    */
-  changes: StudyChange[];
+  changes: StudyChange[]
 
   /**
    * A USDM relationship within the StudyAmendment class which identifies the study amendment that chronologically precedes the current study amendment.
@@ -8003,7 +8003,7 @@ export interface StudyAmendment {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: StudyAmendment;
+  previousId?: StudyAmendment
 
   /**
    * A USDM relationship between the StudyAmendment and StudyAmendmentReason classes which identifies the primary reason for issuing the study amendment.
@@ -8012,19 +8012,19 @@ export interface StudyAmendment {
    * @modelName primaryReason
    * @modelRepresentation Relationship
    */
-  primaryReason: StudyAmendmentReason;
+  primaryReason: StudyAmendmentReason
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -8035,7 +8035,7 @@ export interface StudyAmendment {
  * @modifier Concrete
  * @extends Identifier
  */
-export interface StudyIdentifier extends Identifier {
+export interface StudyIdentifier extends IdentifierAbstract {
   /**
    * @cardinality 1
    * @relationshipType Value
@@ -8043,7 +8043,7 @@ export interface StudyIdentifier extends Identifier {
    * @modelRepresentation Attribute
    * @inheritedFrom Identifier
    */
-  id: string;
+  id: string
 
   /**
    * An instance of structured text that represents the study identifier.
@@ -8055,7 +8055,7 @@ export interface StudyIdentifier extends Identifier {
    * @modelRepresentation Attribute
    * @inheritedFrom Identifier
    */
-  text: string;
+  text: string
 
   /**
    * A USDM relationship between the StudyIdentifier and Organization classes which provides the details associated with each organization that has assigned the study identifier.
@@ -8065,19 +8065,19 @@ export interface StudyIdentifier extends Identifier {
    * @modelRepresentation Relationship
    * @inheritedFrom Identifier
    */
-  scopeId: Organization;
+  scopeId: Organization
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -8094,7 +8094,7 @@ export interface StudyTitle {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * A characterization or classification of the study title.
@@ -8105,7 +8105,7 @@ export interface StudyTitle {
    * @modelName type
    * @modelRepresentation Attribute
    */
-  type: Code;
+  type: Code
 
   /**
    * An instance of unstructured text that represents the study title.
@@ -8116,19 +8116,19 @@ export interface StudyTitle {
    * @modelName text
    * @modelRepresentation Attribute
    */
-  text: string;
+  text: string
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -8145,7 +8145,7 @@ export interface StudyRole {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the study role.
@@ -8156,7 +8156,7 @@ export interface StudyRole {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the study role.
@@ -8167,7 +8167,7 @@ export interface StudyRole {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the study role.
@@ -8178,7 +8178,7 @@ export interface StudyRole {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A symbol or combination of symbols which is assigned to the study role.
@@ -8189,7 +8189,7 @@ export interface StudyRole {
    * @modelName code
    * @modelRepresentation Attribute
    */
-  code: Code;
+  code: Code
 
   /**
    * A brief written record relevant to the study role.
@@ -8200,7 +8200,7 @@ export interface StudyRole {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the StudyRole and AssignedPerson classes that identifies the set of individuals that are assigned to fill a particular role within the study.
@@ -8209,7 +8209,7 @@ export interface StudyRole {
    * @modelName assignedPersons
    * @modelRepresentation Relationship
    */
-  assignedPersons?: AssignedPerson[];
+  assignedPersons?: AssignedPerson[]
 
   /**
    * A USDM relationship between the StudyRole and Masking classes which describes the masking associated with the study role.
@@ -8218,7 +8218,7 @@ export interface StudyRole {
    * @modelName masking
    * @modelRepresentation Relationship
    */
-  masking?: Masking;
+  masking?: Masking
 
   /**
    * A USDM relationship between the StudyRole and Organization classes which identifies the set of organizations associated with the study role.
@@ -8227,7 +8227,7 @@ export interface StudyRole {
    * @modelName organizations
    * @modelRepresentation Relationship
    */
-  organizationIds?: Organization[];
+  organizationIds?: Organization[]
 
   /**
    * A USDM relationship between the StudyRole and either StudyVersion or StudyDesign classes that identifies the study version or study design to which the study role applies.
@@ -8236,19 +8236,19 @@ export interface StudyRole {
    * @modelName appliesTo
    * @modelRepresentation Relationship
    */
-  appliesToIds?: StudyVersion | StudyDesign[];
+  appliesToIds?: (StudyVersion | StudyDesign)[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -8265,7 +8265,7 @@ export interface StudyVersion {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * A sequence of characters used to identify, name, or characterize the study version.
@@ -8276,7 +8276,7 @@ export interface StudyVersion {
    * @modelName versionIdentifier
    * @modelRepresentation Attribute
    */
-  versionIdentifier: string;
+  versionIdentifier: string
 
   /**
    * A therapeutic area classification based on the structure and operations of the business unit.
@@ -8287,7 +8287,7 @@ export interface StudyVersion {
    * @modelName businessTherapeuticAreas
    * @modelRepresentation Attribute
    */
-  businessTherapeuticAreas?: Code[];
+  businessTherapeuticAreas?: Code[]
 
   /**
    * A statement describing the overall rationale of the study. This field describes the contribution of this study to product development, i.e., what knowledge is being contributed from the conduct of this study.
@@ -8298,7 +8298,7 @@ export interface StudyVersion {
    * @modelName rationale
    * @modelRepresentation Attribute
    */
-  rationale: string;
+  rationale: string
 
   /**
    * A brief written record relevant to the study version.
@@ -8309,7 +8309,7 @@ export interface StudyVersion {
    * @modelName notes
    * @modelRepresentation Attribute
    */
-  notes?: CommentAnnotation[];
+  notes?: CommentAnnotation[]
 
   /**
    * A USDM relationship between the StudyVersion and Abbreviation classes which provides the set of abbreviations associated with the study version.
@@ -8318,7 +8318,7 @@ export interface StudyVersion {
    * @modelName abbreviations
    * @modelRepresentation Relationship
    */
-  abbreviations?: Abbreviation[];
+  abbreviations?: Abbreviation[]
 
   /**
    * A USDM relationship between the StudyVersion and GovernanceDate classes which provides the set of governance dates associated with the study version.
@@ -8327,7 +8327,7 @@ export interface StudyVersion {
    * @modelName dateValues
    * @modelRepresentation Relationship
    */
-  dateValues?: GovernanceDate[];
+  dateValues?: GovernanceDate[]
 
   /**
    * A USDM relationship between the StudyVersion and ReferenceIdentifier classes which identifies the set of reference identifiers associated with the study version.
@@ -8336,7 +8336,7 @@ export interface StudyVersion {
    * @modelName referenceIdentifiers
    * @modelRepresentation Relationship
    */
-  referenceIdentifiers?: ReferenceIdentifier[];
+  referenceIdentifiers?: ReferenceIdentifier[]
 
   /**
    * A USDM relationship between the StudyVersion and StudyAmendment classes which identifies the set of study amendments associated with the study version.
@@ -8345,7 +8345,7 @@ export interface StudyVersion {
    * @modelName amendments
    * @modelRepresentation Relationship
    */
-  amendments?: StudyAmendment[];
+  amendments?: StudyAmendment[]
 
   /**
    * A USDM relationship between the StudyVersion and StudyDefinitionDocumentVersion classes which identifies the version of the study definition document associated with the study version.
@@ -8354,7 +8354,7 @@ export interface StudyVersion {
    * @modelName documentVersions
    * @modelRepresentation Relationship
    */
-  documentVersionIds?: StudyDefinitionDocumentVersion[];
+  documentVersionIds?: StudyDefinitionDocumentVersion[]
 
   /**
    * A USDM relationship between the StudyVersion and StudyDesign classes which identifies the set of study designs associated with the study version.
@@ -8363,7 +8363,7 @@ export interface StudyVersion {
    * @modelName studyDesigns
    * @modelRepresentation Relationship
    */
-  studyDesigns?: StudyDesign[];
+  studyDesigns?: StudyDesign[]
 
   /**
    * A USDM relationship between the StudyVersion and StudyIdentifier classes which identifies the set of study identifiers associated with the study version.
@@ -8372,7 +8372,7 @@ export interface StudyVersion {
    * @modelName studyIdentifiers
    * @modelRepresentation Relationship
    */
-  studyIdentifiers: StudyIdentifier[];
+  studyIdentifiers: StudyIdentifier[]
 
   /**
    * A USDM relationship between the StudyVersion and StudyTitle classes which identifies the set of study titles associated with the study version.
@@ -8381,97 +8381,97 @@ export interface StudyVersion {
    * @modelName titles
    * @modelRepresentation Relationship
    */
-  titles: StudyTitle[];
+  titles: StudyTitle[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  eligibilityCriterionItems?: EligibilityCriterionItem[];
+  eligibilityCriterionItems?: EligibilityCriterionItem[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  narrativeContentItems?: NarrativeContentItem[];
+  narrativeContentItems?: NarrativeContentItem[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  roles?: StudyRole[];
+  roles?: StudyRole[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  organizations?: Organization[];
+  organizations?: Organization[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  studyInterventions?: StudyIntervention[];
+  studyInterventions?: StudyIntervention[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  administrableProducts?: AdministrableProduct[];
+  administrableProducts?: AdministrableProduct[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  medicalDevices?: MedicalDevice[];
+  medicalDevices?: MedicalDevice[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  productOrganizationRoles?: ProductOrganizationRole[];
+  productOrganizationRoles?: ProductOrganizationRole[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  biomedicalConcepts?: BiomedicalConcept[];
+  biomedicalConcepts?: BiomedicalConcept[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  bcCategories?: BiomedicalConceptCategory[];
+  bcCategories?: BiomedicalConceptCategory[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  bcSurrogates?: BiomedicalConceptSurrogate[];
+  bcSurrogates?: BiomedicalConceptSurrogate[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  dictionaries?: SyntaxTemplateDictionary[];
+  dictionaries?: SyntaxTemplateDictionary[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  conditions?: Condition[];
+  conditions?: Condition[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
 
@@ -8488,7 +8488,7 @@ export interface Study {
    * @modelName id
    * @modelRepresentation Attribute
    */
-  id: string;
+  id: string
 
   /**
    * The literal identifier (i.e., distinctive designation) of the clinical study.
@@ -8499,7 +8499,7 @@ export interface Study {
    * @modelName name
    * @modelRepresentation Attribute
    */
-  name: string;
+  name: string
 
   /**
    * The short descriptive designation for the clinical study.
@@ -8510,7 +8510,7 @@ export interface Study {
    * @modelName label
    * @modelRepresentation Attribute
    */
-  label?: string;
+  label?: string
 
   /**
    * A narrative representation of the clinical study.
@@ -8521,7 +8521,7 @@ export interface Study {
    * @modelName description
    * @modelRepresentation Attribute
    */
-  description?: string;
+  description?: string
 
   /**
    * A USDM relationship between the Study and StudyVersion classes which identifies the set of versions associated with the study.
@@ -8530,7 +8530,7 @@ export interface Study {
    * @modelName versions
    * @modelRepresentation Relationship
    */
-  versions?: StudyVersion[];
+  versions?: StudyVersion[]
 
   /**
    * A USDM relationship between the Study and StudyDefinitionDocument classes signifying that the study is documented in a study definition document.
@@ -8539,18 +8539,26 @@ export interface Study {
    * @modelName documentedBy
    * @modelRepresentation Relationship
    */
-  documentedBy?: StudyDefinitionDocument[];
+  documentedBy?: StudyDefinitionDocument[]
 
   /**
    * @cardinality 0..*
    * @relationshipType Value
    */
-  extensionAttributes?: ExtensionAttribute[];
+  extensionAttributes?: ExtensionAttribute[]
 
   /**
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string;
+  instanceType: string
 
 }
+
+// Union types for abstract classes
+export type Identifier = AdministrableProductIdentifier | MedicalDeviceIdentifier | ReferenceIdentifier | StudyIdentifier;
+export type PopulationDefinition = StudyCohort | StudyDesignPopulation;
+export type QuantityRange = Quantity | Range;
+export type ScheduledInstance = ScheduledActivityInstance | ScheduledDecisionInstance;
+export type StudyDesign = InterventionalStudyDesign | ObservationalStudyDesign;
+export type SyntaxTemplate = Characteristic | Condition | EligibilityCriterionItem | Endpoint | IntercurrentEvent | Objective;
