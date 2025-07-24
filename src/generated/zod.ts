@@ -1,5 +1,5 @@
 // Auto-generated Zod schemas from schema
-// Generated on: 2025-07-24T18:39:42.256Z
+// Generated on: 2025-07-24T21:19:28.244Z
 
 import { z } from "zod"
 // Import types for schema inference
@@ -2024,42 +2024,42 @@ export const StudySchema: z.ZodSchema<Study> = z.object({
  * @preferredTerm Identifier
  * @nciCode C25364
  */
-export const IdentifierSchema: z.ZodUnion<[typeof AdministrableProductIdentifierSchema, typeof MedicalDeviceIdentifierSchema, typeof ReferenceIdentifierSchema, typeof StudyIdentifierSchema]> = z.union([AdministrableProductIdentifierSchema, MedicalDeviceIdentifierSchema, ReferenceIdentifierSchema, StudyIdentifierSchema]);
+export const IdentifierSchema: z.ZodUnion<[typeof AdministrableProductIdentifierSchema, typeof MedicalDeviceIdentifierSchema, typeof ReferenceIdentifierSchema, typeof StudyIdentifierSchema]> = z.union([AdministrableProductIdentifierSchema, MedicalDeviceIdentifierSchema, ReferenceIdentifierSchema, StudyIdentifierSchema])
 
 /**
  * A concise explanation of the meaning of a population.
  * @preferredTerm Population Definition
  * @nciCode C207593
  */
-export const PopulationDefinitionSchema: z.ZodUnion<[typeof StudyCohortSchema, typeof StudyDesignPopulationSchema]> = z.union([StudyCohortSchema, StudyDesignPopulationSchema]);
+export const PopulationDefinitionSchema: z.ZodUnion<[typeof StudyCohortSchema, typeof StudyDesignPopulationSchema]> = z.union([StudyCohortSchema, StudyDesignPopulationSchema])
 
 /**
  * The total amount (number), or the limits (minimum and maximum) of a variation.
  * @preferredTerm Quantity or Range
  * @nciCode C217000
  */
-export const QuantityRangeSchema: z.ZodUnion<[typeof QuantitySchema, typeof RangeSchema]> = z.union([QuantitySchema, RangeSchema]);
+export const QuantityRangeSchema: z.ZodUnion<[typeof QuantitySchema, typeof RangeSchema]> = z.union([QuantitySchema, RangeSchema])
 
 /**
  * A scheduled occurrence of a temporal event.
  * @preferredTerm Scheduled Instance
  * @nciCode C201299
  */
-export const ScheduledInstanceSchema: z.ZodUnion<[typeof ScheduledActivityInstanceSchema, typeof ScheduledDecisionInstanceSchema]> = z.union([ScheduledActivityInstanceSchema, ScheduledDecisionInstanceSchema]);
+export const ScheduledInstanceSchema: z.ZodUnion<[typeof ScheduledActivityInstanceSchema, typeof ScheduledDecisionInstanceSchema]> = z.union([ScheduledActivityInstanceSchema, ScheduledDecisionInstanceSchema])
 
 /**
  * A plan detailing how a study will be performed in order to represent the phenomenon under examination, to answer the research questions that have been asked, and informing the statistical approach.
  * @preferredTerm Study Design
  * @nciCode C15320
  */
-export const StudyDesignSchema: z.ZodUnion<[typeof InterventionalStudyDesignSchema, typeof ObservationalStudyDesignSchema]> = z.union([InterventionalStudyDesignSchema, ObservationalStudyDesignSchema]);
+export const StudyDesignSchema: z.ZodUnion<[typeof InterventionalStudyDesignSchema, typeof ObservationalStudyDesignSchema]> = z.union([InterventionalStudyDesignSchema, ObservationalStudyDesignSchema])
 
 /**
  * A standardized pattern used for the arrangement of words and phrases to create well-formed, structured sentences.
  * @preferredTerm Syntax Template
  * @nciCode C207596
  */
-export const SyntaxTemplateSchema: z.ZodUnion<[typeof CharacteristicSchema, typeof ConditionSchema, typeof EligibilityCriterionItemSchema, typeof EndpointSchema, typeof IntercurrentEventSchema, typeof ObjectiveSchema]> = z.union([CharacteristicSchema, ConditionSchema, EligibilityCriterionItemSchema, EndpointSchema, IntercurrentEventSchema, ObjectiveSchema]);
+export const SyntaxTemplateSchema: z.ZodUnion<[typeof CharacteristicSchema, typeof ConditionSchema, typeof EligibilityCriterionItemSchema, typeof EndpointSchema, typeof IntercurrentEventSchema, typeof ObjectiveSchema]> = z.union([CharacteristicSchema, ConditionSchema, EligibilityCriterionItemSchema, EndpointSchema, IntercurrentEventSchema, ObjectiveSchema])
 
 // Master schema object for easy access
 export const schemas: Record<string, z.ZodTypeAny> = {

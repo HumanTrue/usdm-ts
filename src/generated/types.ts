@@ -1,5 +1,5 @@
 // Auto-generated TypeScript interfaces from schema
-// Generated on: 2025-07-24T18:39:42.210Z
+// Generated on: 2025-07-24T21:19:28.198Z
 
 /**
  * The total amount (number), or the limits (minimum and maximum) of a variation.
@@ -8556,9 +8556,9 @@ export interface Study {
 }
 
 // Union types for abstract classes
-export type Identifier = AdministrableProductIdentifier | MedicalDeviceIdentifier | ReferenceIdentifier | StudyIdentifier;
-export type PopulationDefinition = StudyCohort | StudyDesignPopulation;
-export type QuantityRange = Quantity | Range;
-export type ScheduledInstance = ScheduledActivityInstance | ScheduledDecisionInstance;
-export type StudyDesign = InterventionalStudyDesign | ObservationalStudyDesign;
-export type SyntaxTemplate = Characteristic | Condition | EligibilityCriterionItem | Endpoint | IntercurrentEvent | Objective;
+export type Identifier = AdministrableProductIdentifier | MedicalDeviceIdentifier | ReferenceIdentifier | StudyIdentifier
+export type PopulationDefinition = StudyCohort | StudyDesignPopulation
+export type QuantityRange = Quantity | Range
+export type ScheduledInstance = ScheduledActivityInstance | ScheduledDecisionInstance
+export type StudyDesign = InterventionalStudyDesign | ObservationalStudyDesign
+export type SyntaxTemplate = Characteristic | Condition | EligibilityCriterionItem | Endpoint | IntercurrentEvent | Objective

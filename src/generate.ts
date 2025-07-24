@@ -356,7 +356,7 @@ class TypeScriptInterfaceGenerator {
     if (this.abstractClassUnions.size > 0) {
       output.push('// Union types for abstract classes');
       for (const [abstractName, subClasses] of this.abstractClassUnions) {
-        output.push(`export type ${abstractName} = ${subClasses.join(' | ')};`);
+        output.push(`export type ${abstractName} = ${subClasses.join(' | ')}`);
       }
       output.push('');
     }
@@ -678,7 +678,7 @@ class ZodSchemaGenerator {
         }
         
         // Use consistent naming: QuantityRangeSchema validates QuantityRange
-        output.push(`export const ${abstractName}Schema: z.ZodUnion<[${subSchemas.map(s => `typeof ${s}`).join(', ')}]> = z.union([${subSchemas.join(', ')}]);`);
+        output.push(`export const ${abstractName}Schema: z.ZodUnion<[${subSchemas.map(s => `typeof ${s}`).join(', ')}]> = z.union([${subSchemas.join(', ')}])`);
         output.push('');
       }
     }
