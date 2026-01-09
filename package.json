@@ -1,11 +1,15 @@
 {
   "name": "usdm-ts",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "type": "module",
   "description": "A Typescript library that provides a structured representation of the USDM (Unified Study Data Model) for clinical trials.",
   "scripts": {
     "build": "tsc",
-    "generate": "tsx src/generate.ts"
+    "generate": "tsx src/generate.ts",
+    "schema": "tsx scripts/xsd-to-json-schema.ts",
+    "lint": "eslint .",
+    "release": "tsx scripts/release.ts",
+    "release:dry-run": "tsx scripts/release.ts --dry-run"
   },
   "keywords": [
     "usdm",
@@ -20,15 +24,26 @@
     "pnpm": ">=10.12.1",
     "npm": "please-use-pnpm"
   },
-  "exports": [
-    "./src/generated/types.ts",
-    "./src/generated/zod.ts"
-  ],
+  "exports": {
+    "./types": "./src/generated/types.ts",
+    "./zod": "./src/generated/zod.ts",
+    "./schema": "./schemas/USDM_schema_4_0.json",
+    "./api-schema": "./schemas/USDM_API_4_0.json",
+    "./codelists": "./schemas/codelist_index.json"
+  },
   "dependencies": {
     "@types/node": "^24.0.15",
+    "fast-xml-parser": "^5.0.9",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "yaml": "^2.8.0",
     "zod": "^4.0.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@typescript-eslint/eslint-plugin": "^8.52.0",
+    "@typescript-eslint/parser": "^8.52.0",
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0"
   }
 }
