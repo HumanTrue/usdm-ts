@@ -1,6 +1,11 @@
 import * as fs from "fs/promises";
 import * as path from "path";
 
+interface ExampleInfo {
+  name: string;
+  code: string;
+}
+
 interface TypeInfo {
   name: string;
   description: string;
@@ -87,6 +92,50 @@ async function parseTypes(typesPath: string): Promise<TypeInfo[]> {
 }
 
 /**
+ * Parse examples file to extract code between markers
+ */
+async function parseExamples(examplesPath: string): Promise<ExampleInfo[]> {
+  const content = await fs.readFile(examplesPath, "utf-8");
+  const examples: ExampleInfo[] = [];
+
+  // Match code between README_EXAMPLE_START and README_EXAMPLE_END markers
+  const pattern = /\/\/\s*README_EXAMPLE_(\w+)_START\n([\s\S]*?)\/\/\s*README_EXAMPLE_\1_END/g;
+  let match;
+
+  while ((match = pattern.exec(content)) !== null) {
+    const name = match[1];
+    const code = match[2].trim();
+    examples.push({ name, code });
+  }
+
+  // Also support a single unnamed example with simpler markers
+  const simplePattern = /\/\/\s*README_EXAMPLE_START\n([\s\S]*?)\/\/\s*README_EXAMPLE_END/g;
+  let simpleMatch;
+
+  while ((simpleMatch = simplePattern.exec(content)) !== null) {
+    const code = simpleMatch[1].trim();
+    examples.push({ name: "USAGE", code });
+  }
+
+  return examples;
+}
+
+/**
+ * Generate markdown code block from example
+ * Prepends the standard import for USAGE examples
+ */
+function generateExampleMarkdown(example: ExampleInfo): string {
+  let code = example.code;
+
+  // For USAGE examples, prepend the package import
+  if (example.name === "USAGE") {
+    code = "import type { Study } from \"usdm-ts/types\"\n\n" + code;
+  }
+
+  return "```typescript\n" + code + "\n```";
+}
+
+/**
  * Generate markdown table from type info
  */
 function generateMarkdownTable(types: TypeInfo[]): string {
@@ -132,7 +181,7 @@ async function updateReadme(readmePath: string, content: string): Promise<void> 
       readme.trimEnd() +
       "\n\n" +
       startMarker +
-      "\n## Generated Types\n\n" +
+      "\n# Generated Types\n\n" +
       content +
       "\n" +
       endMarker +
@@ -152,11 +201,45 @@ async function updateReadme(readmePath: string, content: string): Promise<void> 
 }
 
 /**
+ * Update README.md with example code between markers
+ */
+async function updateReadmeExamples(
+  readmePath: string,
+  examples: ExampleInfo[]
+): Promise<void> {
+  let readme = await fs.readFile(readmePath, "utf-8");
+
+  for (const example of examples) {
+    const startMarker = `<!-- EXAMPLE_${example.name}_START -->`;
+    const endMarker = `<!-- EXAMPLE_${example.name}_END -->`;
+
+    const startIndex = readme.indexOf(startMarker);
+    const endIndex = readme.indexOf(endMarker);
+
+    if (startIndex === -1 || endIndex === -1) {
+      console.log(`Markers for example "${example.name}" not found in README.md - skipping`);
+      continue;
+    }
+
+    const markdown = generateExampleMarkdown(example);
+    readme =
+      readme.slice(0, startIndex + startMarker.length) +
+      "\n" +
+      markdown +
+      "\n" +
+      readme.slice(endIndex);
+  }
+
+  await fs.writeFile(readmePath, readme);
+}
+
+/**
  * Main function
  */
 async function main(): Promise<void> {
   const projectRoot = path.resolve(import.meta.dirname, "..");
   const typesPath = path.join(projectRoot, "src/generated/types.ts");
+  const examplesPath = path.join(projectRoot, "src/examples/readme.ts");
   const readmePath = path.join(projectRoot, "README.md");
 
   console.log("Parsing types from:", typesPath);
@@ -165,8 +248,17 @@ async function main(): Promise<void> {
 
   const markdown = generateMarkdownTable(types);
 
-  console.log("Updating README.md...");
+  console.log("Updating README.md with types...");
   await updateReadme(readmePath, markdown);
+
+  console.log("Parsing examples from:", examplesPath);
+  const examples = await parseExamples(examplesPath);
+  console.log(`Found ${examples.length} examples`);
+
+  if (examples.length > 0) {
+    console.log("Updating README.md with examples...");
+    await updateReadmeExamples(readmePath, examples);
+  }
 
   console.log("Documentation generated successfully!");
 }

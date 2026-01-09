@@ -1,8 +1,7 @@
-# usdm-ts
-A Typescript representation of the USDM model for clinical trials: https://www.cdisc.org/ddf
+# USDM Model for Typescript
+A Typescript representation of the [USDM model](https://www.cdisc.org/ddf) for applications in clinical trials.
 
-# Purpose
-A Typescript library that provides a structured representation of the USDM (Unified Study Data Model) for clinical trials. This library is designed to facilitate the management and manipulation of clinical trial data in a standardized format.
+USDM (Unified Study Data Model) is a standardized framework for describing a clinical trial. It's a digitized format of a clinical trial protocol. This library provides Typescript interfaces and types that correspond to the components of the USDM, enabling developers to work with clinical trial data in a consistent and structured manner.
 
 Structure of the provided objects is meant to match the data definition defined here: https://github.com/cdisc-org/DDF-RA/blob/main/Deliverables/UML/dataStructure.yml
 
@@ -10,43 +9,51 @@ Structure of the provided objects is meant to match the data definition defined 
 
 ```bash
 npm install usdm-ts
+# ^-- Note that currently, this package is not published to NPM. You can install it directly from the GitHub repository:
+npm install git+ssh://git@github.com:HumanTrue/usdm-ts.git#[VERSION]
 ```
 
 # Usage
 
+<!-- EXAMPLE_USAGE_START -->
 ```typescript
-import { Study } from 'usdm-ts';
+import type { Study } from "usdm-ts/types"
+
 const study: Study = {
-  id: 'study-123',
-  name: 'Example Clinical Trial',
-  description: 'A clinical trial to test the efficacy of a new drug.',
-  startDate: new Date('2023-01-01'),
-  endDate: new Date('2024-01-01'),
-  sites: [],
-  subjects: [],
-  interventions: [],
-  outcomes: []
-};
-
+  instanceType: "Study",
+  id: "study-123",
+  name: "Example Clinical Trial",
+  description: "A clinical trial to test the efficacy of a new drug.",
+  label: "TRIAL-001",
+  versions: [],
+}
 ```
+<!-- EXAMPLE_USAGE_END -->
 
-# Building
+# Building / Development
+
+We use `pnpm` as our package manager. To install dependencies, run:
+
 ```bash
-pnpm run build
+pnpm install
 ```
 
-# Generating Types & Zod
+To build the project, run:
+
+```bash
+pnpm build
+```
+To generate the types and Zod schemas from the USDM data structure definition, run:
 ```bash
 pnpm run generate
 ```
-
-# Generating Documentation
+To run generate documentation, run:
 ```bash
-pnpm run docs
+pnpm docs
 ```
 
 <!-- GENERATED_TYPES_START -->
-## Generated Types
+# Generated Types
 
 | Type | Description | NCI Code |
 |------|-------------|----------|
