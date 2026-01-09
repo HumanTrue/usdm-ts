@@ -1,0 +1,3042 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:usdm:schema:USDM_schema_4_0",
+  "title": "USDM Schema",
+  "description": "Generated from XSD schema definition",
+  "type": "object",
+  "definitions": {
+    "Abbreviation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "abbreviatedText": {
+          "type": "string"
+        },
+        "expandedText": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "abbreviatedText",
+        "expandedText"
+      ],
+      "additionalProperties": false
+    },
+    "Activity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "activity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Activity"
+          }
+        },
+        "biomedicalConcept": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BiomedicalConcept"
+          }
+        },
+        "biomedicalConceptCategory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BiomedicalConceptCategory"
+          }
+        },
+        "biomedicalConceptSurrogate": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BiomedicalConceptSurrogate"
+          }
+        },
+        "procedure": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Procedure"
+          }
+        },
+        "scheduleTimeline": {
+          "$ref": "#/definitions/ScheduleTimeline"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "$ref": "#/definitions/Code"
+        },
+        "district": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "AdministrableProduct": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "administrableDoseForm": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "pharmacologicClass": {
+          "$ref": "#/definitions/Code"
+        },
+        "productDesignation": {
+          "$ref": "#/definitions/Code"
+        },
+        "sourcing": {
+          "$ref": "#/definitions/Code"
+        },
+        "administrableProductIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdministrableProductIdentifier"
+          }
+        },
+        "administrableProductProperty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdministrableProductProperty"
+          }
+        },
+        "ingredient": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ingredient"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "administrableDoseForm",
+        "name",
+        "productDesignation"
+      ],
+      "additionalProperties": false
+    },
+    "AdministrableProductIdentifier": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "AdministrableProductProperty": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "quantity": {
+          "$ref": "#/definitions/Quantity"
+        },
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "text",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Administration": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dose": {
+          "$ref": "#/definitions/Quantity"
+        },
+        "duration": {
+          "$ref": "#/definitions/Duration"
+        },
+        "frequency": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "route": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "administrableProduct": {
+          "$ref": "#/definitions/AdministrableProduct"
+        },
+        "medicalDevice": {
+          "$ref": "#/definitions/MedicalDevice"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "duration",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "AliasCode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "standardCode": {
+          "$ref": "#/definitions/Code"
+        },
+        "standardCodeAliases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "standardCode"
+      ],
+      "additionalProperties": false
+    },
+    "AnalysisPopulation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "text": {
+          "type": "string"
+        },
+        "populationDefinition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PopulationDefinition"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "AssignedPerson": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "jobTitle": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "personName": {
+          "$ref": "#/definitions/PersonName"
+        },
+        "organization": {
+          "$ref": "#/definitions/Organization"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "jobTitle",
+        "name",
+        "personName"
+      ],
+      "additionalProperties": false
+    },
+    "BiomedicalConcept": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "reference": {
+          "type": "string"
+        },
+        "synonyms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "biomedicalConceptProperty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BiomedicalConceptProperty"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "code",
+        "name",
+        "reference"
+      ],
+      "additionalProperties": false
+    },
+    "BiomedicalConceptCategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "biomedicalConcept": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BiomedicalConcept"
+          }
+        },
+        "biomedicalConceptCategory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BiomedicalConceptCategory"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "BiomedicalConceptProperty": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "datatype": {
+          "type": "string"
+        },
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "isRequired": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "responseCode": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResponseCode"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "code",
+        "datatype",
+        "isEnabled",
+        "isRequired",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "BiomedicalConceptSurrogate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "reference": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "BiospecimenRetention": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "includesDNA": {
+          "type": "boolean"
+        },
+        "isRetained": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "isRetained",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "Characteristic": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "Code": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "codeSystem": {
+          "type": "string"
+        },
+        "codeSystemVersion": {
+          "type": "string"
+        },
+        "decode": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "code",
+        "codeSystem",
+        "codeSystemVersion",
+        "decode"
+      ],
+      "additionalProperties": false
+    },
+    "CommentAnnotation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "Condition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "ConditionAssignment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "scheduledInstance": {
+          "$ref": "#/definitions/ScheduledInstance"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "condition",
+        "scheduledInstance"
+      ],
+      "additionalProperties": false
+    },
+    "DocumentContentReference": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "sectionNumber": {
+          "type": "string"
+        },
+        "sectionTitle": {
+          "type": "string"
+        },
+        "studyDefinitionDocument": {
+          "$ref": "#/definitions/StudyDefinitionDocument"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "sectionNumber",
+        "sectionTitle",
+        "studyDefinitionDocument"
+      ],
+      "additionalProperties": false
+    },
+    "Duration": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "durationWillVary": {
+          "type": "boolean"
+        },
+        "quantity": {
+          "$ref": "#/definitions/QuantityRange"
+        },
+        "reasonDurationWillVary": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "durationWillVary"
+      ],
+      "additionalProperties": false
+    },
+    "EligibilityCriterion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/definitions/Code"
+        },
+        "description": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "eligibilityCriterion": {
+          "$ref": "#/definitions/EligibilityCriterion"
+        },
+        "eligibilityCriterionItem": {
+          "$ref": "#/definitions/EligibilityCriterionItem"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "category",
+        "identifier",
+        "name",
+        "eligibilityCriterionItem"
+      ],
+      "additionalProperties": false
+    },
+    "EligibilityCriterionItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "Encounter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "contactModes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "environmentalSettings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "encounter": {
+          "$ref": "#/definitions/Encounter"
+        },
+        "timing": {
+          "$ref": "#/definitions/Timing"
+        },
+        "transitionRule": {
+          "$ref": "#/definitions/TransitionRule"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "Endpoint": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "Estimand": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "populationSummary": {
+          "type": "string"
+        },
+        "analysisPopulation": {
+          "$ref": "#/definitions/AnalysisPopulation"
+        },
+        "endpoint": {
+          "$ref": "#/definitions/Endpoint"
+        },
+        "intercurrentEvent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IntercurrentEvent"
+          }
+        },
+        "studyIntervention": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyIntervention"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "populationSummary",
+        "analysisPopulation",
+        "endpoint",
+        "intercurrentEvent",
+        "studyIntervention"
+      ],
+      "additionalProperties": false
+    },
+    "GeographicScope": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "GovernanceDate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "dateValue": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "geographicScope": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GeographicScope"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "dateValue",
+        "name",
+        "type",
+        "geographicScope"
+      ],
+      "additionalProperties": false
+    },
+    "Identifier": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "organization": {
+          "$ref": "#/definitions/Organization"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "text",
+        "organization"
+      ],
+      "additionalProperties": false
+    },
+    "Indication": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "isRareDisease": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "isRareDisease",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "Ingredient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "role": {
+          "$ref": "#/definitions/Code"
+        },
+        "substance": {
+          "$ref": "#/definitions/Substance"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "role",
+        "substance"
+      ],
+      "additionalProperties": false
+    },
+    "IntercurrentEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "InterventionalStudyDesign": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "Masking": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "isMasked": {
+          "type": "boolean"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "isMasked",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "MedicalDevice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "hardwareVersion": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "softwareVersion": {
+          "type": "string"
+        },
+        "sourcing": {
+          "$ref": "#/definitions/Code"
+        },
+        "administrableProduct": {
+          "$ref": "#/definitions/AdministrableProduct"
+        },
+        "medicalDeviceIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedicalDeviceIdentifier"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "MedicalDeviceIdentifier": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "NarrativeContent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "displaySectionNumber": {
+          "type": "boolean"
+        },
+        "displaySectionTitle": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "sectionNumber": {
+          "type": "string"
+        },
+        "sectionTitle": {
+          "type": "string"
+        },
+        "narrativeContent": {
+          "$ref": "#/definitions/NarrativeContent"
+        },
+        "narrativeContentItem": {
+          "$ref": "#/definitions/NarrativeContentItem"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "displaySectionNumber",
+        "displaySectionTitle",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "NarrativeContentItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "Objective": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "ObservationalStudyDesign": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "Organization": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "identifierScheme": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "studySite": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudySite"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "identifier",
+        "identifierScheme",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "ParameterMap": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "reference",
+        "tag"
+      ],
+      "additionalProperties": false
+    },
+    "PersonName": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "familyName": {
+          "type": "string"
+        },
+        "givenNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "suffixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "PopulationDefinition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "includesHealthySubjects": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "plannedAge": {
+          "$ref": "#/definitions/Range"
+        },
+        "plannedCompletionNumber": {
+          "$ref": "#/definitions/QuantityRange"
+        },
+        "plannedEnrollmentNumber": {
+          "$ref": "#/definitions/QuantityRange"
+        },
+        "plannedSex": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "eligibilityCriterion": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EligibilityCriterion"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "includesHealthySubjects",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "Procedure": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "procedureType": {
+          "type": "string"
+        },
+        "studyIntervention": {
+          "$ref": "#/definitions/StudyIntervention"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "code",
+        "name",
+        "procedureType"
+      ],
+      "additionalProperties": false
+    },
+    "ProductOrganizationRole": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "administrableProduct": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdministrableProduct"
+          }
+        },
+        "medicalDevice": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedicalDevice"
+          }
+        },
+        "organization": {
+          "$ref": "#/definitions/Organization"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "code",
+        "name",
+        "organization"
+      ],
+      "additionalProperties": false
+    },
+    "Quantity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "QuantityRange": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "Range": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "ReferenceIdentifier": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "ResponseCode": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "code",
+        "isEnabled",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "ScheduledActivityInstance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "ScheduledDecisionInstance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "ScheduledInstance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "scheduledInstance": {
+          "$ref": "#/definitions/ScheduledInstance"
+        },
+        "studyEpoch": {
+          "$ref": "#/definitions/StudyEpoch"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "ScheduleTimeline": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "entryCondition": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "mainTimeline": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "plannedDuration": {
+          "$ref": "#/definitions/Duration"
+        },
+        "scheduledInstance": {
+          "$ref": "#/definitions/ScheduledInstance"
+        },
+        "scheduleTimelineExit": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScheduleTimelineExit"
+          }
+        },
+        "timing": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Timing"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "entryCondition",
+        "mainTimeline",
+        "name",
+        "scheduledInstance"
+      ],
+      "additionalProperties": false
+    },
+    "ScheduleTimelineExit": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "Strength": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "denominator": {
+          "$ref": "#/definitions/Quantity"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "numerator": {
+          "$ref": "#/definitions/QuantityRange"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "numerator"
+      ],
+      "additionalProperties": false
+    },
+    "Study": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "studyDefinitionDocument": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyDefinitionDocument"
+          }
+        },
+        "studyVersion": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyVersion"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "StudyAmendment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "number": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "geographicScope": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GeographicScope"
+          }
+        },
+        "governanceDate": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GovernanceDate"
+          }
+        },
+        "studyAmendment": {
+          "$ref": "#/definitions/StudyAmendment"
+        },
+        "studyAmendmentImpact": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyAmendmentImpact"
+          }
+        },
+        "studyAmendmentReason": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyAmendmentReason"
+          }
+        },
+        "studyChange": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyChange"
+          }
+        },
+        "subjectEnrollment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubjectEnrollment"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "number",
+        "summary",
+        "geographicScope",
+        "studyAmendmentReason",
+        "studyChange"
+      ],
+      "additionalProperties": false
+    },
+    "StudyAmendmentImpact": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "isSubstantial": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "isSubstantial",
+        "text",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "StudyAmendmentReason": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "otherReason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "code"
+      ],
+      "additionalProperties": false
+    },
+    "StudyArm": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "dataOriginDescription": {
+          "type": "string"
+        },
+        "dataOriginType": {
+          "$ref": "#/definitions/Code"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "populationDefinition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PopulationDefinition"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "dataOriginDescription",
+        "dataOriginType",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "StudyCell": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "studyArm": {
+          "$ref": "#/definitions/StudyArm"
+        },
+        "studyElement": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyElement"
+          }
+        },
+        "studyEpoch": {
+          "$ref": "#/definitions/StudyEpoch"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "studyArm",
+        "studyElement",
+        "studyEpoch"
+      ],
+      "additionalProperties": false
+    },
+    "StudyChange": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "documentContentReference": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DocumentContentReference"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "rationale",
+        "summary",
+        "documentContentReference"
+      ],
+      "additionalProperties": false
+    },
+    "StudyCohort": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "StudyDefinitionDocument": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "language": {
+          "$ref": "#/definitions/Code"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "templateName": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "studyDefinitionDocument": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyDefinitionDocument"
+          }
+        },
+        "studyDefinitionDocumentVersion": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyDefinitionDocumentVersion"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "language",
+        "name",
+        "templateName",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "StudyDefinitionDocumentVersion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "status": {
+          "$ref": "#/definitions/Code"
+        },
+        "version": {
+          "type": "string"
+        },
+        "governanceDate": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GovernanceDate"
+          }
+        },
+        "narrativeContent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NarrativeContent"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "status",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "StudyDesign": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "characteristics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "studyPhase": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "studyType": {
+          "$ref": "#/definitions/Code"
+        },
+        "therapeuticAreas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "activity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Activity"
+          }
+        },
+        "biospecimenRetention": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BiospecimenRetention"
+          }
+        },
+        "eligibilityCriterion": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EligibilityCriterion"
+          }
+        },
+        "encounter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Encounter"
+          }
+        },
+        "estimand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Estimand"
+          }
+        },
+        "indication": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Indication"
+          }
+        },
+        "objective": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Objective"
+          }
+        },
+        "scheduleTimeline": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScheduleTimeline"
+          }
+        },
+        "studyArm": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyArm"
+          }
+        },
+        "studyCell": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyCell"
+          }
+        },
+        "studyDefinitionDocumentVersion": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyDefinitionDocumentVersion"
+          }
+        },
+        "studyDesignPopulation": {
+          "$ref": "#/definitions/StudyDesignPopulation"
+        },
+        "studyElement": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyElement"
+          }
+        },
+        "studyEpoch": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyEpoch"
+          }
+        },
+        "studyIntervention": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyIntervention"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "rationale",
+        "eligibilityCriterion",
+        "studyArm",
+        "studyCell",
+        "studyDesignPopulation",
+        "studyEpoch"
+      ],
+      "additionalProperties": false
+    },
+    "StudyDesignPopulation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "StudyElement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "studyIntervention": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyIntervention"
+          }
+        },
+        "transitionRule": {
+          "$ref": "#/definitions/TransitionRule"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "StudyEpoch": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "studyEpoch": {
+          "$ref": "#/definitions/StudyEpoch"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "StudyIdentifier": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType"
+      ],
+      "additionalProperties": false
+    },
+    "StudyIntervention": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "minimumResponseDuration": {
+          "$ref": "#/definitions/Quantity"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "role": {
+          "$ref": "#/definitions/Code"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "administration": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Administration"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "role",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "StudyRole": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "assignedPerson": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssignedPerson"
+          }
+        },
+        "masking": {
+          "$ref": "#/definitions/Masking"
+        },
+        "organization": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Organization"
+          }
+        },
+        "studyDesign": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyDesign"
+          }
+        },
+        "studyVersion": {
+          "$ref": "#/definitions/StudyVersion"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "code",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "StudySite": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "country": {
+          "$ref": "#/definitions/Code"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "country",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "StudyTitle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "text",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "StudyVersion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "businessTherapeuticAreas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "versionIdentifier": {
+          "type": "string"
+        },
+        "abbreviation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Abbreviation"
+          }
+        },
+        "governanceDate": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GovernanceDate"
+          }
+        },
+        "referenceIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReferenceIdentifier"
+          }
+        },
+        "studyAmendment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyAmendment"
+          }
+        },
+        "studyDefinitionDocumentVersion": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyDefinitionDocumentVersion"
+          }
+        },
+        "studyDesign": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyDesign"
+          }
+        },
+        "studyIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyIdentifier"
+          }
+        },
+        "studyTitle": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StudyTitle"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "rationale",
+        "versionIdentifier",
+        "studyIdentifier",
+        "studyTitle"
+      ],
+      "additionalProperties": false
+    },
+    "SubjectEnrollment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "quantity": {
+          "$ref": "#/definitions/Quantity"
+        },
+        "geographicScope": {
+          "$ref": "#/definitions/GeographicScope"
+        },
+        "studyCohort": {
+          "$ref": "#/definitions/StudyCohort"
+        },
+        "studySite": {
+          "$ref": "#/definitions/StudySite"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "quantity"
+      ],
+      "additionalProperties": false
+    },
+    "Substance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Code"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "strength": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Strength"
+          }
+        },
+        "substance": {
+          "$ref": "#/definitions/Substance"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "strength"
+      ],
+      "additionalProperties": false
+    },
+    "SyntaxTemplate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          }
+        },
+        "text": {
+          "type": "string"
+        },
+        "syntaxTemplateDictionary": {
+          "$ref": "#/definitions/SyntaxTemplateDictionary"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "SyntaxTemplateDictionary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameterMap": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParameterMap"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "parameterMap"
+      ],
+      "additionalProperties": false
+    },
+    "Timing": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "relativeToFrom": {
+          "$ref": "#/definitions/Code"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "value": {
+          "type": "string"
+        },
+        "valueLabel": {
+          "type": "string"
+        },
+        "windowLabel": {
+          "type": "string"
+        },
+        "windowLower": {
+          "type": "string"
+        },
+        "windowUpper": {
+          "type": "string"
+        },
+        "scheduledInstance": {
+          "$ref": "#/definitions/ScheduledInstance"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "relativeToFrom",
+        "type",
+        "value",
+        "valueLabel",
+        "scheduledInstance"
+      ],
+      "additionalProperties": false
+    },
+    "TransitionRule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name",
+        "text"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,1002 @@
+<?xml  version='1.0' encoding='utf-8' ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Abbreviation" type="Abbreviation"/>
+	<xs:complexType name="Abbreviation">
+    <xs:sequence>
+			<xs:element name="abbreviatedText" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="expandedText" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Activity" type="Activity"/>
+	<xs:complexType name="Activity">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Activity" type="Activity" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Activity" type="Activity" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Activity" type="Activity" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BiomedicalConcept" type="BiomedicalConcept" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BiomedicalConceptCategory" type="BiomedicalConceptCategory" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BiomedicalConceptSurrogate" type="BiomedicalConceptSurrogate" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Procedure" type="Procedure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ScheduleTimeline" type="ScheduleTimeline" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Address" type="Address"/>
+	<xs:complexType name="Address">
+		<xs:sequence>
+			<xs:element name="city" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="country" type="Code" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="district" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="lines" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="postalCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="state" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AdministrableProduct" type="AdministrableProduct"/>
+	<xs:complexType name="AdministrableProduct">
+		<xs:sequence>
+			<xs:element name="administrableDoseForm" type="AliasCode" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="pharmacologicClass" type="Code" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="productDesignation" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="sourcing" type="Code" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="AdministrableProductIdentifier" type="AdministrableProductIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="AdministrableProductProperty" type="AdministrableProductProperty" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Ingredient" type="Ingredient" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AdministrableProductIdentifier" type="AdministrableProductIdentifier"/>
+	<xs:complexType name="AdministrableProductIdentifier">
+		<xs:complexContent>
+			<xs:extension base="Identifier">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AdministrableProductProperty" type="AdministrableProductProperty"/>
+	<xs:complexType name="AdministrableProductProperty">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="quantity" type="Quantity" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Administration" type="Administration"/>
+	<xs:complexType name="Administration">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="dose" type="Quantity" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="duration" type="Duration" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="frequency" type="AliasCode" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="route" type="AliasCode" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="AdministrableProduct" type="AdministrableProduct" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MedicalDevice" type="MedicalDevice" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AliasCode" type="AliasCode"/>
+	<xs:complexType name="AliasCode">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="standardCode" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="standardCodeAliases" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AnalysisPopulation" type="AnalysisPopulation"/>
+	<xs:complexType name="AnalysisPopulation">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PopulationDefinition" type="PopulationDefinition" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AssignedPerson" type="AssignedPerson"/>
+	<xs:complexType name="AssignedPerson">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="jobTitle" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="personName" type="PersonName" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Organization" type="Organization" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BiomedicalConcept" type="BiomedicalConcept"/>
+	<xs:complexType name="BiomedicalConcept">
+		<xs:sequence>
+			<xs:element name="code" type="AliasCode" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="reference" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="synonyms" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BiomedicalConceptProperty" type="BiomedicalConceptProperty" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BiomedicalConceptCategory" type="BiomedicalConceptCategory"/>
+	<xs:complexType name="BiomedicalConceptCategory">
+		<xs:sequence>
+			<xs:element name="code" type="AliasCode" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BiomedicalConcept" type="BiomedicalConcept" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BiomedicalConceptCategory" type="BiomedicalConceptCategory" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BiomedicalConceptProperty" type="BiomedicalConceptProperty"/>
+	<xs:complexType name="BiomedicalConceptProperty">
+		<xs:sequence>
+			<xs:element name="code" type="AliasCode" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="datatype" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="isEnabled" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="isRequired" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ResponseCode" type="ResponseCode" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BiomedicalConceptSurrogate" type="BiomedicalConceptSurrogate"/>
+	<xs:complexType name="BiomedicalConceptSurrogate">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="reference" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BiospecimenRetention" type="BiospecimenRetention"/>
+	<xs:complexType name="BiospecimenRetention">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="includesDNA" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="isRetained" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Characteristic" type="Characteristic"/>
+	<xs:complexType name="Characteristic">
+		<xs:complexContent>
+			<xs:extension base="SyntaxTemplate">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Code" type="Code"/>
+	<xs:complexType name="Code">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="codeSystem" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="codeSystemVersion" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="decode" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CommentAnnotation" type="CommentAnnotation"/>
+	<xs:complexType name="CommentAnnotation">
+		<xs:sequence>
+			<xs:element name="codes" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Condition" type="Condition"/>
+	<xs:complexType name="Condition">
+		<xs:complexContent>
+			<xs:extension base="SyntaxTemplate">
+				<xs:sequence>
+					<xs:element name="Activity" type="Activity" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Activity" type="Activity" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="BiomedicalConcept" type="BiomedicalConcept" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="BiomedicalConceptCategory" type="BiomedicalConceptCategory" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="BiomedicalConceptSurrogate" type="BiomedicalConceptSurrogate" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Procedure" type="Procedure" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="ScheduledActivityInstance" type="ScheduledActivityInstance" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ConditionAssignment" type="ConditionAssignment"/>
+	<xs:complexType name="ConditionAssignment">
+		<xs:sequence>
+			<xs:element name="condition" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ScheduledInstance" type="ScheduledInstance" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="DocumentContentReference" type="DocumentContentReference"/>
+	<xs:complexType name="DocumentContentReference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="sectionNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="sectionTitle" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StudyDefinitionDocument" type="StudyDefinitionDocument" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Duration" type="Duration"/>
+	<xs:complexType name="Duration">
+		<xs:sequence>
+			<xs:element name="durationWillVary" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="quantity" type="QuantityRange" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="reasonDurationWillVary" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EligibilityCriterion" type="EligibilityCriterion"/>
+	<xs:complexType name="EligibilityCriterion">
+		<xs:sequence>
+			<xs:element name="category" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="identifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="EligibilityCriterion" type="EligibilityCriterion" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="EligibilityCriterion" type="EligibilityCriterion" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="EligibilityCriterionItem" type="EligibilityCriterionItem" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EligibilityCriterionItem" type="EligibilityCriterionItem"/>
+	<xs:complexType name="EligibilityCriterionItem">
+		<xs:complexContent>
+			<xs:extension base="SyntaxTemplate">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Encounter" type="Encounter"/>
+	<xs:complexType name="Encounter">
+		<xs:sequence>
+			<xs:element name="contactModes" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="environmentalSettings" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Encounter" type="Encounter" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Encounter" type="Encounter" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Timing" type="Timing" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="TransitionRule" type="TransitionRule" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="TransitionRule" type="TransitionRule" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Endpoint" type="Endpoint"/>
+	<xs:complexType name="Endpoint">
+		<xs:complexContent>
+			<xs:extension base="SyntaxTemplate">
+				<xs:sequence>
+					<xs:element name="level" type="Code" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="purpose" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Estimand" type="Estimand"/>
+	<xs:complexType name="Estimand">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="populationSummary" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="AnalysisPopulation" type="AnalysisPopulation" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Endpoint" type="Endpoint" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="IntercurrentEvent" type="IntercurrentEvent" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="StudyIntervention" type="StudyIntervention" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GeographicScope" type="GeographicScope"/>
+	<xs:complexType name="GeographicScope">
+		<xs:sequence>
+			<xs:element name="code" type="AliasCode" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GovernanceDate" type="GovernanceDate"/>
+	<xs:complexType name="GovernanceDate">
+		<xs:sequence>
+			<xs:element name="dateValue" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="GeographicScope" type="GeographicScope" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Identifier" type="Identifier"/>
+	<xs:complexType name="Identifier" abstract="true">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Organization" type="Organization" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Indication" type="Indication"/>
+	<xs:complexType name="Indication">
+		<xs:sequence>
+			<xs:element name="codes" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="isRareDisease" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Ingredient" type="Ingredient"/>
+	<xs:complexType name="Ingredient">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="role" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Substance" type="Substance" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="IntercurrentEvent" type="IntercurrentEvent"/>
+	<xs:complexType name="IntercurrentEvent">
+		<xs:complexContent>
+			<xs:extension base="SyntaxTemplate">
+				<xs:sequence>
+					<xs:element name="strategy" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="InterventionalStudyDesign" type="InterventionalStudyDesign"/>
+	<xs:complexType name="InterventionalStudyDesign">
+		<xs:complexContent>
+			<xs:extension base="StudyDesign">
+				<xs:sequence>
+					<xs:element name="blindingSchema" type="AliasCode" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="intentTypes" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="model" type="Code" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="subTypes" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Masking" type="Masking"/>
+	<xs:complexType name="Masking">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="isMasked" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MedicalDevice" type="MedicalDevice"/>
+	<xs:complexType name="MedicalDevice">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="hardwareVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="softwareVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="sourcing" type="Code" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="AdministrableProduct" type="AdministrableProduct" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MedicalDeviceIdentifier" type="MedicalDeviceIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MedicalDeviceIdentifier" type="MedicalDeviceIdentifier"/>
+	<xs:complexType name="MedicalDeviceIdentifier">
+		<xs:complexContent>
+			<xs:extension base="Identifier">
+				<xs:sequence>
+					<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="NarrativeContent" type="NarrativeContent"/>
+	<xs:complexType name="NarrativeContent">
+		<xs:sequence>
+			<xs:element name="displaySectionNumber" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="displaySectionTitle" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="sectionNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="sectionTitle" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NarrativeContent" type="NarrativeContent" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="NarrativeContent" type="NarrativeContent" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NarrativeContent" type="NarrativeContent" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NarrativeContentItem" type="NarrativeContentItem" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="NarrativeContentItem" type="NarrativeContentItem"/>
+	<xs:complexType name="NarrativeContentItem">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Objective" type="Objective"/>
+	<xs:complexType name="Objective">
+		<xs:complexContent>
+			<xs:extension base="SyntaxTemplate">
+				<xs:sequence>
+					<xs:element name="level" type="Code" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="Endpoint" type="Endpoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ObservationalStudyDesign" type="ObservationalStudyDesign"/>
+	<xs:complexType name="ObservationalStudyDesign">
+		<xs:complexContent>
+			<xs:extension base="StudyDesign">
+				<xs:sequence>
+					<xs:element name="model" type="Code" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="samplingMethod" type="Code" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="subTypes" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="timePerspective" type="Code" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Organization" type="Organization"/>
+	<xs:complexType name="Organization">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="identifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="identifierScheme" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Address" type="Address" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StudySite" type="StudySite" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ParameterMap" type="ParameterMap"/>
+	<xs:complexType name="ParameterMap">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="reference" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="tag" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PersonName" type="PersonName"/>
+	<xs:complexType name="PersonName">
+		<xs:sequence>
+			<xs:element name="familyName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="givenNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="prefixes" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="suffixes" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PopulationDefinition" type="PopulationDefinition"/>
+	<xs:complexType name="PopulationDefinition" abstract="true">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="includesHealthySubjects" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="plannedAge" type="Range" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="plannedCompletionNumber" type="QuantityRange" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="plannedEnrollmentNumber" type="QuantityRange" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="plannedSex" type="Code" minOccurs="0" maxOccurs="2"/>
+			<xs:element name="EligibilityCriterion" type="EligibilityCriterion" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Procedure" type="Procedure"/>
+	<xs:complexType name="Procedure">
+		<xs:sequence>
+			<xs:element name="code" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="procedureType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StudyIntervention" type="StudyIntervention" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductOrganizationRole" type="ProductOrganizationRole"/>
+	<xs:complexType name="ProductOrganizationRole">
+		<xs:sequence>
+			<xs:element name="code" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="AdministrableProduct" type="AdministrableProduct" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="MedicalDevice" type="MedicalDevice" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Organization" type="Organization" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Quantity" type="Quantity"/>
+	<xs:complexType name="Quantity">
+		<xs:complexContent>
+			<xs:extension base="QuantityRange">
+				<xs:sequence>
+					<xs:element name="unit" type="AliasCode" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="value" type="xs:float" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="QuantityRange" type="QuantityRange"/>
+	<xs:complexType name="QuantityRange" abstract="true">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Range" type="Range"/>
+	<xs:complexType name="Range">
+		<xs:complexContent>
+			<xs:extension base="QuantityRange">
+				<xs:sequence>
+					<xs:element name="isApproximate" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="maxValue" type="Quantity" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="minValue" type="Quantity" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ReferenceIdentifier" type="ReferenceIdentifier"/>
+	<xs:complexType name="ReferenceIdentifier">
+		<xs:complexContent>
+			<xs:extension base="Identifier">
+				<xs:sequence>
+					<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ResponseCode" type="ResponseCode"/>
+	<xs:complexType name="ResponseCode">
+		<xs:sequence>
+			<xs:element name="code" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="isEnabled" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ScheduledActivityInstance" type="ScheduledActivityInstance"/>
+	<xs:complexType name="ScheduledActivityInstance">
+		<xs:complexContent>
+			<xs:extension base="ScheduledInstance">
+				<xs:sequence>
+					<xs:element name="Activity" type="Activity" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Encounter" type="Encounter" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="ScheduleTimeline" type="ScheduleTimeline" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="ScheduleTimelineExit" type="ScheduleTimelineExit" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ScheduledDecisionInstance" type="ScheduledDecisionInstance"/>
+	<xs:complexType name="ScheduledDecisionInstance">
+		<xs:complexContent>
+			<xs:extension base="ScheduledInstance">
+				<xs:sequence>
+					<xs:element name="ConditionAssignment" type="ConditionAssignment" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ScheduledInstance" type="ScheduledInstance"/>
+	<xs:complexType name="ScheduledInstance" abstract="true">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ScheduledInstance" type="ScheduledInstance" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StudyEpoch" type="StudyEpoch" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ScheduleTimeline" type="ScheduleTimeline"/>
+	<xs:complexType name="ScheduleTimeline">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="entryCondition" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="mainTimeline" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="plannedDuration" type="Duration" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ScheduledInstance" type="ScheduledInstance" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ScheduledInstance" type="ScheduledInstance" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ScheduleTimelineExit" type="ScheduleTimelineExit" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Timing" type="Timing" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ScheduleTimelineExit" type="ScheduleTimelineExit"/>
+	<xs:complexType name="ScheduleTimelineExit">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Strength" type="Strength"/>
+	<xs:complexType name="Strength">
+		<xs:sequence>
+			<xs:element name="denominator" type="Quantity" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="numerator" type="QuantityRange" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Study" type="Study"/>
+	<xs:complexType name="Study">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StudyDefinitionDocument" type="StudyDefinitionDocument" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyVersion" type="StudyVersion" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyAmendment" type="StudyAmendment"/>
+	<xs:complexType name="StudyAmendment">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="number" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="summary" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="GeographicScope" type="GeographicScope" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="GovernanceDate" type="GovernanceDate" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyAmendment" type="StudyAmendment" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StudyAmendmentImpact" type="StudyAmendmentImpact" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyAmendmentReason" type="StudyAmendmentReason" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StudyAmendmentReason" type="StudyAmendmentReason" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyChange" type="StudyChange" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="SubjectEnrollment" type="SubjectEnrollment" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyAmendmentImpact" type="StudyAmendmentImpact"/>
+	<xs:complexType name="StudyAmendmentImpact">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="isSubstantial" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyAmendmentReason" type="StudyAmendmentReason"/>
+	<xs:complexType name="StudyAmendmentReason">
+		<xs:sequence>
+			<xs:element name="code" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="otherReason" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyArm" type="StudyArm"/>
+	<xs:complexType name="StudyArm">
+		<xs:sequence>
+			<xs:element name="dataOriginDescription" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="dataOriginType" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PopulationDefinition" type="PopulationDefinition" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyCell" type="StudyCell"/>
+	<xs:complexType name="StudyCell">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StudyArm" type="StudyArm" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StudyElement" type="StudyElement" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="StudyEpoch" type="StudyEpoch" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyChange" type="StudyChange"/>
+	<xs:complexType name="StudyChange">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="rationale" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="summary" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DocumentContentReference" type="DocumentContentReference" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyCohort" type="StudyCohort"/>
+	<xs:complexType name="StudyCohort">
+		<xs:complexContent>
+			<xs:extension base="PopulationDefinition">
+				<xs:sequence>
+					<xs:element name="Characteristic" type="Characteristic" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Indication" type="Indication" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="StudyDefinitionDocument" type="StudyDefinitionDocument"/>
+	<xs:complexType name="StudyDefinitionDocument">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="language" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="templateName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StudyDefinitionDocument" type="StudyDefinitionDocument" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyDefinitionDocumentVersion" type="StudyDefinitionDocumentVersion" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyDefinitionDocumentVersion" type="StudyDefinitionDocumentVersion"/>
+	<xs:complexType name="StudyDefinitionDocumentVersion">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="status" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="version" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="GovernanceDate" type="GovernanceDate" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="NarrativeContent" type="NarrativeContent" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyDesign" type="StudyDesign"/>
+	<xs:complexType name="StudyDesign" abstract="true">
+		<xs:sequence>
+			<xs:element name="characteristics" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="rationale" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="studyPhase" type="AliasCode" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="studyType" type="Code" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="therapeuticAreas" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Activity" type="Activity" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BiospecimenRetention" type="BiospecimenRetention" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="EligibilityCriterion" type="EligibilityCriterion" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="Encounter" type="Encounter" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Estimand" type="Estimand" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Indication" type="Indication" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Objective" type="Objective" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ScheduleTimeline" type="ScheduleTimeline" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyArm" type="StudyArm" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="StudyCell" type="StudyCell" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="StudyDefinitionDocumentVersion" type="StudyDefinitionDocumentVersion" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyDesignPopulation" type="StudyDesignPopulation" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StudyElement" type="StudyElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyEpoch" type="StudyEpoch" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="StudyIntervention" type="StudyIntervention" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyDesignPopulation" type="StudyDesignPopulation"/>
+	<xs:complexType name="StudyDesignPopulation">
+		<xs:complexContent>
+			<xs:extension base="PopulationDefinition">
+				<xs:sequence>
+					<xs:element name="StudyCohort" type="StudyCohort" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="StudyElement" type="StudyElement"/>
+	<xs:complexType name="StudyElement">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyIntervention" type="StudyIntervention" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="TransitionRule" type="TransitionRule" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="TransitionRule" type="TransitionRule" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyEpoch" type="StudyEpoch"/>
+	<xs:complexType name="StudyEpoch">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StudyEpoch" type="StudyEpoch" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StudyEpoch" type="StudyEpoch" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyIdentifier" type="StudyIdentifier"/>
+	<xs:complexType name="StudyIdentifier">
+		<xs:complexContent>
+			<xs:extension base="Identifier">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="StudyIntervention" type="StudyIntervention"/>
+	<xs:complexType name="StudyIntervention">
+		<xs:sequence>
+			<xs:element name="codes" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="minimumResponseDuration" type="Quantity" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="role" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Administration" type="Administration" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyRole" type="StudyRole"/>
+	<xs:complexType name="StudyRole">
+		<xs:sequence>
+			<xs:element name="code" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="AssignedPerson" type="AssignedPerson" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Masking" type="Masking" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Organization" type="Organization" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyDesign" type="StudyDesign" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyVersion" type="StudyVersion" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudySite" type="StudySite"/>
+	<xs:complexType name="StudySite">
+		<xs:sequence>
+			<xs:element name="country" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyTitle" type="StudyTitle"/>
+	<xs:complexType name="StudyTitle">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StudyVersion" type="StudyVersion"/>
+	<xs:complexType name="StudyVersion">
+		<xs:sequence>
+			<xs:element name="businessTherapeuticAreas" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="rationale" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="versionIdentifier" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Abbreviation" type="Abbreviation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="GovernanceDate" type="GovernanceDate" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ReferenceIdentifier" type="ReferenceIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyAmendment" type="StudyAmendment" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyDefinitionDocumentVersion" type="StudyDefinitionDocumentVersion" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyDesign" type="StudyDesign" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StudyIdentifier" type="StudyIdentifier" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="StudyTitle" type="StudyTitle" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SubjectEnrollment" type="SubjectEnrollment"/>
+	<xs:complexType name="SubjectEnrollment">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="quantity" type="Quantity" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="GeographicScope" type="GeographicScope" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StudyCohort" type="StudyCohort" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StudySite" type="StudySite" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Substance" type="Substance"/>
+	<xs:complexType name="Substance">
+		<xs:sequence>
+			<xs:element name="codes" type="Code" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Strength" type="Strength" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="Substance" type="Substance" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SyntaxTemplate" type="SyntaxTemplate"/>
+	<xs:complexType name="SyntaxTemplate" abstract="true">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="notes" type="CommentAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="SyntaxTemplateDictionary" type="SyntaxTemplateDictionary" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SyntaxTemplateDictionary" type="SyntaxTemplateDictionary"/>
+	<xs:complexType name="SyntaxTemplateDictionary">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ParameterMap" type="ParameterMap" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Timing" type="Timing"/>
+	<xs:complexType name="Timing">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="relativeToFrom" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="type" type="Code" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="value" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="valueLabel" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="windowLabel" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="windowLower" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="windowUpper" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ScheduledInstance" type="ScheduledInstance" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ScheduledInstance" type="ScheduledInstance" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TransitionRule" type="TransitionRule"/>
+	<xs:complexType name="TransitionRule">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
