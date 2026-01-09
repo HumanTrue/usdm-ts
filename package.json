@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "generate": "tsx src/generate.ts",
+    "docs": "tsx scripts/generate-docs.ts",
     "schema": "tsx scripts/xsd-to-json-schema.ts",
     "lint": "eslint .",
     "release": "tsx scripts/release.ts",
