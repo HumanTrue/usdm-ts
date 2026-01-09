@@ -34,10 +34,15 @@ class TypeScriptInterfaceGenerator {
   private schema: Schema;
   private generatedInterfaces: Set<string> = new Set();
   private abstractClassUnions: Map<string, string[]> = new Map(); // Track abstract class unions
+  private circularDeps: Set<string> = new Set();
 
   constructor(schema: Schema) {
     this.schema = schema;
     this.buildAbstractClassUnions(); // Build the union map during construction
+  }
+
+  public getCircularDeps(): Set<string> {
+    return this.circularDeps;
   } 
   /**
    * Build a map of abstract classes to their concrete subclasses
@@ -63,7 +68,7 @@ class TypeScriptInterfaceGenerator {
       if (visited.has(name)) return;
 
       if (visiting.has(name)) {
-        console.warn(`Circular dependency detected involving ${name}`);
+        this.circularDeps.add(name);
         return;
       }
 
@@ -306,7 +311,6 @@ class TypeScriptInterfaceGenerator {
 
     // Add header
     output.push("// Auto-generated TypeScript interfaces from schema");
-    output.push("// Generated on: " + new Date().toISOString());
     output.push("");
 
     // Generate all entities (both abstract and concrete)
@@ -343,10 +347,15 @@ class ZodSchemaGenerator {
   private generatedSchemas: Set<string> = new Set();
   private generationOrder: string[] = [];
   private abstractClassUnions: Map<string, string[]> = new Map();
+  private circularDeps: Set<string> = new Set();
 
   constructor(schema: Schema) {
     this.schema = schema;
     this.buildAbstractClassUnions();
+  }
+
+  public getCircularDeps(): Set<string> {
+    return this.circularDeps;
   }
 
   /**
@@ -603,7 +612,6 @@ class ZodSchemaGenerator {
 
     // Add header
     output.push("// Auto-generated Zod schemas from schema");
-    output.push("// Generated on: " + new Date().toISOString());
     output.push("");
     output.push("import { z } from \"zod\"");
 
@@ -681,7 +689,7 @@ class ZodSchemaGenerator {
       if (visited.has(name)) return;
 
       if (visiting.has(name)) {
-        console.warn(`Circular dependency detected involving ${name}`);
+        this.circularDeps.add(name);
         return;
       }
 
@@ -746,7 +754,7 @@ class ZodSchemaGenerator {
 export async function generateInterfacesFromSchema(
   inputPath: string,
   outputPath: string
-): Promise<void> {
+): Promise<Set<string>> {
   try {
     // Read the schema file
     const fileContent = await fs.readFile(inputPath, "utf-8");
@@ -762,8 +770,9 @@ export async function generateInterfacesFromSchema(
     await fs.writeFile(outputPath, generatedCode);
 
     console.log(`✅ Successfully generated TypeScript interfaces to: ${outputPath}`);
+    return generator.getCircularDeps();
   }
- catch (error) {
+  catch (error) {
     console.error("❌ Error generating interfaces:", error);
     throw error;
   }
@@ -775,7 +784,7 @@ export async function generateInterfacesFromSchema(
 export async function generateZodSchemasFromSchema(
   inputPath: string,
   outputPath: string
-): Promise<void> {
+): Promise<Set<string>> {
   try {
     // Read the schema file
     const fileContent = await fs.readFile(inputPath, "utf-8");
@@ -791,8 +800,9 @@ export async function generateZodSchemasFromSchema(
     await fs.writeFile(outputPath, generatedCode);
 
     console.log(`✅ Successfully generated Zod schemas to: ${outputPath}`);
+    return generator.getCircularDeps();
   }
- catch (error) {
+  catch (error) {
     console.error("❌ Error generating Zod schemas:", error);
     throw error;
   }
@@ -813,10 +823,17 @@ export async function generateAllFromSchema(
   const interfacesPath = options.interfacesOutput || path.join(dir, `src/generated/types.ts`);
   const zodPath = options.zodOutput || path.join(dir, `src/generated/zod.ts`);
 
-  await Promise.all([
+  const [interfaceCircularDeps, zodCircularDeps] = await Promise.all([
     generateInterfacesFromSchema(inputPath, interfacesPath),
     generateZodSchemasFromSchema(inputPath, zodPath)
   ]);
+
+  // Combine and report circular dependencies
+  const allCircularDeps = new Set([...interfaceCircularDeps, ...zodCircularDeps]);
+  if (allCircularDeps.size > 0) {
+    const sorted = [...allCircularDeps].sort();
+    console.log(`\n⚠️  Circular dependencies detected (${sorted.length} types): ${sorted.join(", ")}`);
+  }
 }
 
 await generateAllFromSchema("./src/dataStructure.yml", {
