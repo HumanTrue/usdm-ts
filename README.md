@@ -10,7 +10,7 @@ Structure of the provided objects is meant to match the data definition defined 
 ```bash
 npm install usdm-ts
 # ^-- Note that currently, this package is not published to NPM. You can install it directly from the GitHub repository:
-npm install git+ssh://git@github.com:HumanTrue/usdm-ts.git#[VERSION]
+npm install git+ssh://git@github.com:HumanTrue/usdm-ts.git#v[VERSION]
 ```
 
 # Usage
