@@ -1,9 +1,9 @@
 // Auto-generated Zod schemas from schema
-// Generated on: 2025-07-24T21:25:23.626Z
+// Generated on: 2026-01-09T01:49:35.202Z
 
 import { z } from "zod"
 // Import types for schema inference
-import {
+import type {
   Abbreviation,
   Activity,
   Address,
@@ -84,12 +84,6 @@ import {
   SyntaxTemplateDictionary,
   Timing,
   TransitionRule,
-  Identifier,
-  PopulationDefinition,
-  QuantityRange,
-  ScheduledInstance,
-  StudyDesign,
-  SyntaxTemplate,
 } from "./types"
 
 /**
