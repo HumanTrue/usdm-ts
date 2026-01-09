@@ -131,7 +131,7 @@ class TypeScriptInterfaceGenerator {
       if (typeof type === "string") {
         return type;
       }
- else if (type.$ref) {
+      else if (type.$ref) {
         const refType = type.$ref.replace("#/", "");
         
         // Check if this is a primitive type reference
@@ -379,11 +379,11 @@ class ZodSchemaGenerator {
       min = minStr === "" ? 0 : parseInt(minStr);
       max = maxStr === "*" ? undefined : parseInt(maxStr);
     }
- else if (cardinality === "*") {
+    else if (cardinality === "*") {
       min = 0;
       max = undefined;
     }
- else if (cardinality.match(/^\d+$/)) {
+    else if (cardinality.match(/^\d+$/)) {
       min = max = parseInt(cardinality);
     }
 
