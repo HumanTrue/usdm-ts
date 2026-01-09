@@ -1,6 +1,6 @@
 {
   "name": "usdm-ts",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "type": "module",
   "description": "A Typescript library that provides a structured representation of the USDM (Unified Study Data Model) for clinical trials.",
   "scripts": {
@@ -9,6 +9,7 @@
     "docs": "tsx scripts/generate-docs.ts",
     "schema": "tsx scripts/xsd-to-json-schema.ts",
     "lint": "eslint .",
+    "prepublishOnly": "pnpm build && pnpm docs",
     "release": "tsx scripts/release.ts",
     "release:dry-run": "tsx scripts/release.ts --dry-run"
   },
@@ -25,12 +26,15 @@
     "pnpm": ">=10.12.1",
     "npm": "please-use-pnpm"
   },
+  "files": [
+    "src/generated/types.ts",
+    "src/generated/zod.ts",
+    "schemas/USDM_schema_4_0.json"
+  ],
   "exports": {
     "./types": "./src/generated/types.ts",
     "./zod": "./src/generated/zod.ts",
-    "./schema": "./schemas/USDM_schema_4_0.json",
-    "./api-schema": "./schemas/USDM_API_4_0.json",
-    "./codelists": "./schemas/codelist_index.json"
+    "./schema": "./schemas/USDM_schema_4_0.json"
   },
   "dependencies": {
     "@types/node": "^24.0.15",
