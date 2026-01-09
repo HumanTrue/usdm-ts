@@ -1,5 +1,4 @@
 // Auto-generated TypeScript interfaces from schema
-// Generated on: 2026-01-09T01:49:35.134Z
 
 /**
  * The total amount (number), or the limits (minimum and maximum) of a variation.

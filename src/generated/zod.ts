@@ -1,5 +1,4 @@
 // Auto-generated Zod schemas from schema
-// Generated on: 2026-01-09T01:49:35.202Z
 
 import { z } from "zod"
 // Import types for schema inference
