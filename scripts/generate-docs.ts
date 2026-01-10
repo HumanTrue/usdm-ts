@@ -15,73 +15,107 @@ interface TypeInfo {
 }
 
 /**
- * Parse types.ts to extract interface and type information
+ * Parse a single type file to extract interface information
  */
-async function parseTypes(typesPath: string): Promise<TypeInfo[]> {
-  const content = await fs.readFile(typesPath, "utf-8");
-  const types: TypeInfo[] = [];
-
+function parseTypeFile(content: string): TypeInfo | null {
   // Match complete JSDoc block followed by export interface or export type
-  // The pattern uses [^*]|(\*(?!/)) to match any char except *, or * not followed by /
-  // This prevents matching across multiple JSDoc blocks
-  const pattern = /\/\*\*((?:[^*]|\*(?!\/))*)\*\/\s*export\s+(interface|type)\s+(\w+)/g;
-  let match;
+  const pattern = /\/\*\*((?:[^*]|\*(?!\/))*)\*\/\s*export\s+(interface|type)\s+(\w+)/;
+  const match = pattern.exec(content);
 
-  while ((match = pattern.exec(content)) !== null) {
-    const jsdocContent = match[1];
-    const name = match[3];
+  if (!match) return null;
 
-    // Skip Abstract versions - we'll use the union types instead
-    if (name.endsWith("Abstract")) {
+  const jsdocContent = match[1];
+  const name = match[3];
+
+  // Skip Abstract versions - we'll use the union types instead
+  if (name.endsWith("Abstract")) {
+    return null;
+  }
+
+  // Parse JSDoc content - extract description from lines before any @tag
+  const lines = jsdocContent.split("\n");
+  const descriptionLines: string[] = [];
+  let foundDescription = false;
+
+  for (const line of lines) {
+    const lineMatch = line.match(/^\s*\*\s?(.*)/);
+    if (!lineMatch) continue;
+
+    const lineContent = lineMatch[1].trim();
+
+    if (!lineContent && !foundDescription) {
       continue;
     }
 
-    // Parse JSDoc content - extract description from lines before any @tag
-    // Each line in JSDoc starts with " * " (space, asterisk, space)
-    const lines = jsdocContent.split("\n");
-    const descriptionLines: string[] = [];
-    let foundDescription = false;
-
-    for (const line of lines) {
-      // Match the JSDoc line pattern: optional whitespace, asterisk, optional space, then content
-      const lineMatch = line.match(/^\s*\*\s?(.*)/);
-      if (!lineMatch) continue;
-
-      const lineContent = lineMatch[1].trim();
-
-      // Skip empty lines at the start
-      if (!lineContent && !foundDescription) {
-        continue;
-      }
-
-      // Stop at the first @tag
-      if (lineContent.startsWith("@")) {
-        break;
-      }
-
-      if (lineContent) {
-        foundDescription = true;
-        descriptionLines.push(lineContent);
-      }
+    if (lineContent.startsWith("@")) {
+      break;
     }
 
-    const description = descriptionLines.join(" ");
+    if (lineContent) {
+      foundDescription = true;
+      descriptionLines.push(lineContent);
+    }
+  }
 
-    const preferredTermMatch = jsdocContent.match(/@preferredTerm\s+(.+)/);
-    const preferredTerm = preferredTermMatch?.[1]?.trim();
+  const description = descriptionLines.join(" ");
 
-    const nciCodeMatch = jsdocContent.match(/@nciCode\s+(\S+)/);
-    const nciCode = nciCodeMatch?.[1]?.trim();
+  const preferredTermMatch = jsdocContent.match(/@preferredTerm\s+(.+)/);
+  const preferredTerm = preferredTermMatch?.[1]?.trim();
 
-    const modifierMatch = jsdocContent.match(/@modifier\s+(\S+)/);
-    const modifier = modifierMatch?.[1]?.trim();
+  const nciCodeMatch = jsdocContent.match(/@nciCode\s+(\S+)/);
+  const nciCode = nciCodeMatch?.[1]?.trim();
 
+  const modifierMatch = jsdocContent.match(/@modifier\s+(\S+)/);
+  const modifier = modifierMatch?.[1]?.trim();
+
+  return {
+    name,
+    description,
+    preferredTerm,
+    nciCode,
+    modifier,
+  };
+}
+
+/**
+ * Parse types directory to extract interface and type information
+ */
+async function parseTypes(typesDir: string): Promise<TypeInfo[]> {
+  const types: TypeInfo[] = [];
+
+  // Read all .ts files in the directory
+  const files = await fs.readdir(typesDir);
+
+  for (const file of files) {
+    // Skip index.ts and non-.ts files
+    if (file === "index.ts" || !file.endsWith(".ts")) {
+      continue;
+    }
+
+    const filePath = path.join(typesDir, file);
+    const content = await fs.readFile(filePath, "utf-8");
+    const typeInfo = parseTypeFile(content);
+
+    if (typeInfo) {
+      types.push(typeInfo);
+    }
+  }
+
+  // Parse index.ts for union types
+  const indexPath = path.join(typesDir, "index.ts");
+  const indexContent = await fs.readFile(indexPath, "utf-8");
+
+  // Match union type exports: export type Name = Type1 | Type2
+  const unionPattern = /export type (\w+) = ([^;\n]+)/g;
+  let unionMatch;
+
+  while ((unionMatch = unionPattern.exec(indexContent)) !== null) {
+    const name = unionMatch[1];
+    // Union types don't have JSDoc in index.ts, so we use a generic description
     types.push({
       name,
-      description,
-      preferredTerm,
-      nciCode,
-      modifier,
+      description: "-",
+      nciCode: undefined,
     });
   }
 
@@ -238,12 +272,12 @@ async function updateReadmeExamples(
  */
 async function main(): Promise<void> {
   const projectRoot = path.resolve(import.meta.dirname, "..");
-  const typesPath = path.join(projectRoot, "src/generated/types.ts");
+  const typesDir = path.join(projectRoot, "src/generated/types");
   const examplesPath = path.join(projectRoot, "src/examples/readme.ts");
   const readmePath = path.join(projectRoot, "README.md");
 
-  console.log("Parsing types from:", typesPath);
-  const types = await parseTypes(typesPath);
+  console.log("Parsing types from:", typesDir);
+  const types = await parseTypes(typesDir);
   console.log(`Found ${types.length} types`);
 
   const markdown = generateMarkdownTable(types);

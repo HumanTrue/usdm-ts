@@ -83,7 +83,7 @@ import type {
   SyntaxTemplateDictionary,
   Timing,
   TransitionRule,
-} from "./types"
+} from "./types/index"
 
 /**
  * An alternative symbol or combination of symbols which is assigned to the members of a collection.

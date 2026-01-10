@@ -53,7 +53,7 @@ pnpm docs
 ```
 
 <!-- GENERATED_TYPES_START -->
-# Generated Types
+## Generated Types
 
 | Type | Description | NCI Code |
 |------|-------------|----------|
@@ -88,6 +88,7 @@ pnpm docs
 | `ExtensionClass` | - | - |
 | `GeographicScope` | The extent or range related to the physical location of an entity. | [C207591](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C207591) |
 | `GovernanceDate` | Any of the dates associated with event milestones within a clinical study's oversight and management framework. | [C207595](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C207595) |
+| `Identifier` | - | - |
 | `Indication` | The disease or condition the intervention will diagnose, treat, prevent, cure, or mitigate. | [C41184](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C41184) |
 | `Ingredient` | Any component that constitutes a part of a compounded substance or mixture. | [C51981](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C51981) |
 | `IntercurrentEvent` | An event(s) occurring after treatment initiation that affects either the interpretation or the existence of the measurements associated with the clinical question of interest. (ICH E9 Addendum on Estimands) | [C188815](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C188815) |
@@ -102,14 +103,17 @@ pnpm docs
 | `Organization` | A formalized group of persons or other organizations collected together for a common purpose (such as administrative, legal, political) and the infrastructure to carry out that purpose. (BRIDG) | [C19711](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C19711) |
 | `ParameterMap` | The paired name and value for a given parameter. | [C207456](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C207456) |
 | `PersonName` | A word or group of words indicating the identity of a person usually consisting of a first (personal) name and a last (family) name with an optional middle name. In some cultural traditions the family name comes first. | [C25191](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C25191) |
+| `PopulationDefinition` | - | - |
 | `Procedure` | Any activity performed by manual and/or instrumental means for the purpose of diagnosis, assessment, therapy, prevention, or palliative care. | [C98769](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C98769) |
 | `ProductOrganizationRole` | A designation that identifies the function of an organization within the context of the product. | [C215502](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C215502) |
 | `Quantity` | How much there is of something that can be measured; the total amount or number. | [C25256](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C25256) |
+| `QuantityRange` | - | - |
 | `Range` | An expression that defines the lower and upper limits of a variation. | [C38013](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C38013) |
 | `ReferenceIdentifier` | A sequence of characters used to identify, name, or characterize the reference. | [C82531](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C82531) |
 | `ResponseCode` | A symbol or combination of symbols representing the response to the question. | [C201347](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C201347) |
 | `ScheduledActivityInstance` | A scheduled occurrence of an activity event. | [C201350](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C201350) |
 | `ScheduledDecisionInstance` | A scheduled occurrence of a decision event. | [C201351](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C201351) |
+| `ScheduledInstance` | - | - |
 | `ScheduleTimeline` | A chronological schedule of planned temporal events. | [C201348](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C201348) |
 | `ScheduleTimelineExit` | To go out of or leave the schedule timeline. | [C201349](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C201349) |
 | `Strength` | The content of an substance expressed quantitatively per dosage unit, per unit of volume, or per unit of weight, according to the pharmaceutical dose form of the product. | [C215495](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C215495) |
@@ -123,6 +127,7 @@ pnpm docs
 | `StudyCohort` | A group of individuals who share a set of characteristics (e.g., exposures, experiences, attributes), which logically defines a population under study. | [C61512](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C61512) |
 | `StudyDefinitionDocument` | Any physical or electronic document that is related to defining a study or part of a study. | [C215490](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C215490) |
 | `StudyDefinitionDocumentVersion` | A representation of a particular edition or snapshot of the study definition document as it exists at a particular point in time. | [C215491](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C215491) |
+| `StudyDesign` | - | - |
 | `StudyDesignPopulation` | The population within the general population to which the study results can be generalized. | [C142728](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C142728) |
 | `StudyElement` | A basic building block for time within a clinical study comprising the following characteristics: a description of what happens to the subject during the element; a definition of the start of the element; a rule for ending the element. | [C142735](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C142735) |
 | `StudyEpoch` | A named time period defined in the protocol, wherein a study activity is specified and unchanging throughout the interval, to support a study-specific purpose. | [C71738](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C71738) |
@@ -134,6 +139,7 @@ pnpm docs
 | `StudyVersion` | A plan at a particular point in time for a study. | [C188816](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C188816) |
 | `SubjectEnrollment` | The act of enrolling subjects into a study. The subject will have met the inclusion/exclusion criteria to participate in the trial and will have signed an informed consent form. (CDISC Glossary) | [C37948](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C37948) |
 | `Substance` | Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical. | [C45306](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C45306) |
+| `SyntaxTemplate` | - | - |
 | `SyntaxTemplateDictionary` | A reference source that provides a listing of valid parameter names and values used in syntax template text strings. | [C207597](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C207597) |
 | `Timing` | The chronological relationship between temporal events. | [C80484](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C80484) |
 | `TransitionRule` | A guide that governs the allocation of subjects to operational options at a discrete decision point or branch (e.g., assignment to a particular arm, discontinuation) within a clinical trial plan. | [C82567](https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C82567) |

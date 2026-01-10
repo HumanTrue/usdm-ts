@@ -33,12 +33,13 @@ type PrimitiveType = typeof PRIMITIVE_TYPES[number];
 class TypeScriptInterfaceGenerator {
   private schema: Schema;
   private generatedInterfaces: Set<string> = new Set();
-  private abstractClassUnions: Map<string, string[]> = new Map(); // Track abstract class unions
+  private abstractClassUnions: Map<string, string[]> = new Map();
 
   constructor(schema: Schema) {
     this.schema = schema;
-    this.buildAbstractClassUnions(); // Build the union map during construction
-  } 
+    this.buildAbstractClassUnions();
+  }
+
   /**
    * Build a map of abstract classes to their concrete subclasses
    */
@@ -52,67 +53,6 @@ class TypeScriptInterfaceGenerator {
   }
 
   /**
-   * Topological sort for dependency order - include all entities
-   */
-  private topologicalSort(entities: string[]): string[] {
-    const visited = new Set<string>();
-    const visiting = new Set<string>(); // For cycle detection
-    const result: string[] = [];
-
-    const visit = (name: string) => {
-      if (visited.has(name)) return;
-
-      if (visiting.has(name)) {
-        return;
-      }
-
-      visiting.add(name);
-
-      const entity = this.schema[name];
-      if (!entity) {
-        visiting.delete(name);
-        return;
-      }
-
-      // Visit super classes first
-      if (entity["Super Classes"]) {
-        for (const superRef of entity["Super Classes"]) {
-          const superName = superRef.$ref.replace("#/", "");
-          if (this.schema[superName] && !visited.has(superName)) {
-            visit(superName);
-          }
-        }
-      }
-
-      // Visit referenced types in attributes
-      for (const attr of Object.values(entity.Attributes)) {
-        for (const type of attr.Type) {
-          if (typeof type === "object" && type.$ref) {
-            const refName = type.$ref.replace("#/", "");
-            // Only visit if it's not a primitive type and exists in schema
-            if (!PRIMITIVE_TYPES.includes(refName as PrimitiveType) && this.schema[refName] && !visited.has(refName)) {
-              visit(refName);
-            }
-          }
-        }
-      }
-
-      visiting.delete(name);
-      visited.add(name);
-      result.push(name);
-    };
-
-    // Visit all entities
-    for (const name of entities) {
-      if (!visited.has(name)) {
-        visit(name);
-      }
-    }
-
-    return result;
-  }
-
-  /**
    * Parse cardinality to determine if field is optional and/or array
    */
   private parseCardinality(cardinality: string): { optional: boolean; isArray: boolean } {
@@ -123,7 +63,67 @@ class TypeScriptInterfaceGenerator {
   }
 
   /**
-   * Convert schema type to TypeScript type, using union type names for abstract classes
+   * Check if a type is an abstract union type (defined in index.ts)
+   */
+  private isUnionType(refType: string): boolean {
+    return this.abstractClassUnions.has(refType);
+  }
+
+  /**
+   * Get all referenced types for an entity (for generating imports)
+   * Returns { localImports: Set<string>, indexImports: Set<string> }
+   */
+  private getReferencedTypes(name: string, entity: SchemaEntity): { localImports: Set<string>; indexImports: Set<string> } {
+    const localImports = new Set<string>();
+    const indexImports = new Set<string>();
+    const interfaceName = entity.Modifier === "Abstract" ? `${name}Abstract` : name;
+
+    // Add super class references (these are always local imports)
+    if (entity["Super Classes"]) {
+      for (const superRef of entity["Super Classes"]) {
+        const superName = superRef.$ref.replace("#/", "");
+        if (PRIMITIVE_TYPES.includes(superName as PrimitiveType)) continue;
+
+        const typeName = this.schema[superName]?.Modifier === "Abstract"
+          ? `${superName}Abstract`
+          : superName;
+
+        if (typeName !== interfaceName) {
+          localImports.add(typeName);
+        }
+      }
+    }
+
+    // Add attribute type references
+    for (const attr of Object.values(entity.Attributes)) {
+      for (const type of attr.Type) {
+        if (typeof type === "object" && type.$ref) {
+          const refType = type.$ref.replace("#/", "");
+          if (PRIMITIVE_TYPES.includes(refType as PrimitiveType)) continue;
+
+          // If it's an abstract union type, import from index.ts
+          if (this.isUnionType(refType)) {
+            indexImports.add(refType);
+          }
+          else {
+            // Regular type - import locally
+            const typeName = this.schema[refType]?.Modifier === "Abstract"
+              ? `${refType}Abstract`
+              : refType;
+
+            if (typeName !== interfaceName) {
+              localImports.add(typeName);
+            }
+          }
+        }
+      }
+    }
+
+    return { localImports, indexImports };
+  }
+
+  /**
+   * Convert schema type to TypeScript type
    */
   private convertType(types: Array<string | { $ref: string }>): string {
     const tsTypes = types.map(type => {
@@ -132,8 +132,7 @@ class TypeScriptInterfaceGenerator {
       }
       else if (type.$ref) {
         const refType = type.$ref.replace("#/", "");
-        
-        // Check if this is a primitive type reference
+
         if (PRIMITIVE_TYPES.includes(refType as PrimitiveType)) {
           switch (refType) {
             case "string": return "string";
@@ -146,14 +145,11 @@ class TypeScriptInterfaceGenerator {
           }
         }
 
-        // For abstract classes, just return the type name (we'll define it as a union)
-        // For concrete classes, also just return the type name
         return refType;
       }
       return "unknown";
     });
 
-    // Map remaining schema types to TypeScript types
     const mappedTypes = tsTypes.map(type => {
       switch (type) {
         case "string": return "string";
@@ -162,11 +158,10 @@ class TypeScriptInterfaceGenerator {
         case "boolean": return "boolean";
         case "date": return "Date";
         case "datetime": return "Date";
-        default: return type; // Keep as is - will be either a concrete interface or union type
+        default: return type;
       }
     });
 
-    // Return union type if multiple types
     return mappedTypes.length > 1 ? mappedTypes.join(" | ") : (mappedTypes[0] ?? "unknown");
   }
 
@@ -252,43 +247,34 @@ class TypeScriptInterfaceGenerator {
   }
 
   /**
-   * Generate a single TypeScript interface
+   * Generate interface body (without imports)
    */
-  private generateInterface(name: string, entity: SchemaEntity): string {
+  private generateInterfaceBody(name: string, entity: SchemaEntity): string {
     const lines: string[] = [];
 
-    // Add interface JSDoc
     lines.push(this.generateInterfaceJSDoc(entity));
 
-    // Handle inheritance
     const superClasses = entity["Super Classes"]?.map(ref => {
       const superName = ref.$ref.replace("#/", "");
-      // If super class is abstract, reference the Abstract version
-      return this.schema[superName]?.Modifier === "Abstract" 
-        ? `${superName}Abstract` 
+      return this.schema[superName]?.Modifier === "Abstract"
+        ? `${superName}Abstract`
         : superName;
     }) || [];
-    
-    const extendsClause = superClasses.length > 0 ? ` extends ${superClasses.join(", ")}` : "";
 
+    const extendsClause = superClasses.length > 0 ? ` extends ${superClasses.join(", ")}` : "";
     const interfaceName = entity.Modifier === "Abstract" ? `${name}Abstract` : name;
     lines.push(`export interface ${interfaceName}${extendsClause} {`);
 
-    // Generate properties
     for (const [attrName, attr] of Object.entries(entity.Attributes)) {
       const { optional, isArray } = this.parseCardinality(attr.Cardinality);
       let baseType = this.convertType(attr.Type);
-      if(baseType.includes(" | ")) {
-        // If the type is a union, we need to wrap it in parentheses
+      if (baseType.includes(" | ")) {
         baseType = `(${baseType})`;
       }
       const finalType = isArray ? `${baseType}[]` : baseType;
       const optionalMark = optional ? "?" : "";
 
-      // Add JSDoc for property
       lines.push(this.generateJSDoc(attr, "  "));
-
-      // Add property
       lines.push(`  ${attrName}${optionalMark}: ${finalType}`);
       lines.push("");
     }
@@ -298,41 +284,105 @@ class TypeScriptInterfaceGenerator {
   }
 
   /**
-   * Generate all TypeScript interfaces and union types
+   * Generate a single file for an interface
    */
-  public generate(): string {
-    const output: string[] = [];
+  private generateFile(name: string, entity: SchemaEntity): string {
+    const lines: string[] = [];
 
-    // Add header
-    output.push("// Auto-generated TypeScript interfaces from schema");
-    output.push("");
+    lines.push("// Auto-generated - do not edit");
+    lines.push("");
 
-    // Generate all entities (both abstract and concrete)
+    // Generate imports
+    const { localImports, indexImports } = this.getReferencedTypes(name, entity);
+
+    // Import from local files
+    const sortedLocalImports = [...localImports].sort();
+    for (const ref of sortedLocalImports) {
+      lines.push(`import type { ${ref} } from "./${ref}"`);
+    }
+
+    // Import union types from index.ts
+    if (indexImports.size > 0) {
+      const sortedIndexImports = [...indexImports].sort();
+      lines.push(`import type { ${sortedIndexImports.join(", ")} } from "./index"`);
+    }
+
+    if (localImports.size > 0 || indexImports.size > 0) {
+      lines.push("");
+    }
+
+    // Generate interface body
+    lines.push(this.generateInterfaceBody(name, entity));
+    lines.push("");
+
+    return lines.join("\n");
+  }
+
+  /**
+   * Generate index.ts that re-exports all types
+   */
+  private generateIndex(entityNames: string[]): string {
+    const lines: string[] = [];
+
+    lines.push("// Auto-generated - do not edit");
+    lines.push("// Re-exports all USDM types");
+    lines.push("");
+
+    // Export all interfaces (sorted)
+    const sortedNames = [...entityNames].sort();
+    for (const name of sortedNames) {
+      const entity = this.schema[name];
+      if (entity) {
+        const interfaceName = entity.Modifier === "Abstract" ? `${name}Abstract` : name;
+        lines.push(`export type { ${interfaceName} } from "./${interfaceName}"`);
+      }
+    }
+
+    lines.push("");
+
+    // Generate union type aliases for abstract classes
+    if (this.abstractClassUnions.size > 0) {
+      lines.push("// Union types for abstract classes");
+
+      // Need to import the concrete types for unions
+      for (const [, subClasses] of this.abstractClassUnions) {
+        for (const subClass of subClasses) {
+          lines.push(`import type { ${subClass} } from "./${subClass}"`);
+        }
+      }
+      lines.push("");
+
+      for (const [abstractName, subClasses] of this.abstractClassUnions) {
+        lines.push(`export type ${abstractName} = ${subClasses.join(" | ")}`);
+      }
+      lines.push("");
+    }
+
+    return lines.join("\n");
+  }
+
+  /**
+   * Generate all TypeScript interface files
+   * Returns a Map of filename -> content
+   */
+  public generate(): Map<string, string> {
+    const files = new Map<string, string>();
     const allEntities = Object.keys(this.schema);
-    
-    // Use topological sort to ensure correct order
-    const sorted = this.topologicalSort(allEntities);
 
-    // Generate each interface
-    for (const name of sorted) {
+    // Generate individual files for each entity
+    for (const name of allEntities) {
       const entity = this.schema[name];
       if (!this.generatedInterfaces.has(name) && entity) {
-        output.push(this.generateInterface(name, entity));
-        output.push("");
+        const interfaceName = entity.Modifier === "Abstract" ? `${name}Abstract` : name;
+        files.set(`${interfaceName}.ts`, this.generateFile(name, entity));
         this.generatedInterfaces.add(name);
       }
     }
 
-    // Generate union type aliases for abstract classes
-    if (this.abstractClassUnions.size > 0) {
-      output.push("// Union types for abstract classes");
-      for (const [abstractName, subClasses] of this.abstractClassUnions) {
-        output.push(`export type ${abstractName} = ${subClasses.join(" | ")}`);
-      }
-      output.push("");
-    }
+    // Generate index.ts
+    files.set("index.ts", this.generateIndex(allEntities));
 
-    return output.join("\n");
+    return files;
   }
 }
 
@@ -616,7 +666,7 @@ class ZodSchemaGenerator {
     concreteEntities.forEach(name => {
       output.push(`  ${name},`);
     });
-    output.push("} from \"./types\"");
+    output.push("} from \"./types/index\"");
     output.push("");
 
     // Sort concrete entities to ensure dependencies are generated first
@@ -736,12 +786,9 @@ class ZodSchemaGenerator {
 /**
  * Main function to parse schema file and generate TypeScript interfaces
  */
-/**
- * Main function to parse schema file and generate TypeScript interfaces
- */
 export async function generateInterfacesFromSchema(
   inputPath: string,
-  outputPath: string
+  outputDir: string
 ): Promise<void> {
   try {
     // Read the schema file
@@ -752,12 +799,25 @@ export async function generateInterfacesFromSchema(
 
     // Generate TypeScript interfaces
     const generator = new TypeScriptInterfaceGenerator(schema);
-    const generatedCode = generator.generate();
+    const files = generator.generate();
 
-    // Write to output file
-    await fs.writeFile(outputPath, generatedCode);
+    // Create output directory if it doesn't exist
+    await fs.mkdir(outputDir, { recursive: true });
 
-    console.log(`✅ Successfully generated TypeScript interfaces to: ${outputPath}`);
+    // Clean existing .ts files in directory
+    const existingFiles = await fs.readdir(outputDir);
+    for (const file of existingFiles) {
+      if (file.endsWith(".ts")) {
+        await fs.unlink(path.join(outputDir, file));
+      }
+    }
+
+    // Write all generated files
+    for (const [filename, content] of files) {
+      await fs.writeFile(path.join(outputDir, filename), content);
+    }
+
+    console.log(`✅ Successfully generated ${files.size} TypeScript interface files to: ${outputDir}`);
   }
   catch (error) {
     console.error("❌ Error generating interfaces:", error);
@@ -800,22 +860,22 @@ export async function generateZodSchemasFromSchema(
 export async function generateAllFromSchema(
   inputPath: string,
   options: {
-    interfacesOutput?: string;
+    interfacesOutputDir?: string;
     zodOutput?: string;
   } = {}
 ): Promise<void> {
   const dir = path.dirname(inputPath);
 
-  const interfacesPath = options.interfacesOutput || path.join(dir, `src/generated/types.ts`);
+  const interfacesDir = options.interfacesOutputDir || path.join(dir, `src/generated/types`);
   const zodPath = options.zodOutput || path.join(dir, `src/generated/zod.ts`);
 
   await Promise.all([
-    generateInterfacesFromSchema(inputPath, interfacesPath),
+    generateInterfacesFromSchema(inputPath, interfacesDir),
     generateZodSchemasFromSchema(inputPath, zodPath)
   ]);
 }
 
 await generateAllFromSchema("./src/dataStructure.yml", {
-  interfacesOutput: "src/generated/types.ts",
+  interfacesOutputDir: "src/generated/types",
   zodOutput: "src/generated/zod.ts"
 });
