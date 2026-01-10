@@ -188,7 +188,12 @@ function generateMarkdownTable(types: TypeInfo[]): string {
     // Escape pipe characters in description
     const escapedDesc = desc.replace(/\|/g, "\\|");
 
-    lines.push(`| \`${name}\` | ${escapedDesc} | ${nciCode} |`);
+    // Link to source file (union types are in index.ts)
+    const sourceFile = name.includes(" ") || ["Identifier", "PopulationDefinition", "QuantityRange", "ScheduledInstance", "StudyDesign", "SyntaxTemplate"].includes(name)
+      ? "src/generated/types/index.ts"
+      : `src/generated/types/${name}.ts`;
+
+    lines.push(`| [\`${name}\`](${sourceFile}) | ${escapedDesc} | ${nciCode} |`);
   }
 
   return lines.join("\n");
@@ -225,7 +230,7 @@ async function updateReadme(readmePath: string, content: string): Promise<void> 
     // Replace content between markers
     updatedReadme =
       readme.slice(0, startIndex + startMarker.length) +
-      "\n## Generated Types\n\n" +
+      "\n# Generated Types\n\n" +
       content +
       "\n" +
       readme.slice(endIndex);
