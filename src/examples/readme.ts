@@ -8,7 +8,7 @@
  * injecting into the README.
  */
 
-import type { Study } from "../generated/types/index"
+import type { Study } from "@/types"
 
 // README_EXAMPLE_START
 const study: Study = {
