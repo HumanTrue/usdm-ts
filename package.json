@@ -1,10 +1,10 @@
 {
   "name": "usdm-ts",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "type": "module",
   "description": "A Typescript library that provides a structured representation of the USDM (Unified Study Data Model) for clinical trials.",
   "scripts": {
-    "postinstall": "bash scripts/setup-references.sh",
+    "postinstall": "test -f scripts/setup-references.sh && bash scripts/setup-references.sh || true",
     "build": "tsc",
     "generate": "tsx src/generate.ts",
     "generate-docs": "tsx scripts/generate-docs.ts",
