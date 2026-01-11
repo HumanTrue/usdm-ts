@@ -5,6 +5,53 @@
   "description": "Generated from XSD schema definition",
   "type": "object",
   "definitions": {
+    "ExtensionAttribute": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "valueArray": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "valueObject": {
+          "type": "object"
+        },
+        "valueBoolean": {
+          "type": "boolean"
+        },
+        "valueInteger": {
+          "type": "integer"
+        },
+        "valueDouble": {
+          "type": "number"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "instanceType",
+        "name"
+      ],
+      "additionalProperties": false
+    },
     "Abbreviation": {
       "type": "object",
       "properties": {
@@ -13,6 +60,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "abbreviatedText": {
           "type": "string"
@@ -43,6 +96,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -109,6 +168,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "city": {
           "type": "string"
         },
@@ -148,6 +213,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "administrableDoseForm": {
           "$ref": "#/definitions/AliasCode"
@@ -212,6 +283,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -228,6 +305,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "name": {
           "type": "string"
@@ -259,6 +342,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -311,6 +400,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "standardCode": {
           "$ref": "#/definitions/Code"
         },
@@ -336,6 +431,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -379,6 +480,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "description": {
           "type": "string"
         },
@@ -415,6 +522,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "code": {
           "$ref": "#/definitions/AliasCode"
@@ -465,6 +578,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "code": {
           "$ref": "#/definitions/AliasCode"
         },
@@ -511,6 +630,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "code": {
           "$ref": "#/definitions/AliasCode"
@@ -563,6 +688,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "description": {
           "type": "string"
         },
@@ -598,6 +729,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "description": {
           "type": "string"
         },
@@ -630,6 +767,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -646,6 +789,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "code": {
           "type": "string"
@@ -679,6 +828,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "codes": {
           "type": "array",
           "items": {
@@ -704,6 +859,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -720,6 +881,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "condition": {
           "type": "string"
@@ -744,6 +911,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "sectionNumber": {
           "type": "string"
@@ -773,6 +946,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "durationWillVary": {
           "type": "boolean"
         },
@@ -801,6 +980,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "category": {
           "$ref": "#/definitions/Code"
@@ -848,6 +1033,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -864,6 +1055,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "contactModes": {
           "type": "array",
@@ -921,6 +1118,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -937,6 +1140,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -996,6 +1205,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "code": {
           "$ref": "#/definitions/AliasCode"
         },
@@ -1018,6 +1233,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "dateValue": {
           "type": "string"
@@ -1060,6 +1281,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "text": {
           "type": "string"
         },
@@ -1083,6 +1310,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "codes": {
           "type": "array",
@@ -1126,6 +1359,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "role": {
           "$ref": "#/definitions/Code"
         },
@@ -1149,6 +1388,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1165,6 +1410,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1181,6 +1432,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "isMasked": {
           "type": "boolean"
@@ -1205,6 +1462,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -1255,6 +1518,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1271,6 +1540,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "displaySectionNumber": {
           "type": "boolean"
@@ -1312,6 +1587,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "name": {
           "type": "string"
         },
@@ -1335,6 +1616,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1351,6 +1638,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1367,6 +1660,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "identifier": {
           "type": "string"
@@ -1412,6 +1711,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "reference": {
           "type": "string"
         },
@@ -1435,6 +1740,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "familyName": {
           "type": "string"
@@ -1475,6 +1786,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -1533,6 +1850,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "code": {
           "$ref": "#/definitions/Code"
         },
@@ -1575,6 +1898,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "code": {
           "$ref": "#/definitions/Code"
@@ -1621,6 +1950,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1637,6 +1972,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1653,6 +1994,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1669,6 +2016,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1685,6 +2038,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "code": {
           "$ref": "#/definitions/Code"
@@ -1716,6 +2075,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1732,6 +2097,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1748,6 +2119,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -1780,6 +2157,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -1833,6 +2216,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -1849,6 +2238,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "denominator": {
           "$ref": "#/definitions/Quantity"
@@ -1882,6 +2277,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -1920,6 +2321,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -2003,6 +2410,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "isSubstantial": {
           "type": "boolean"
         },
@@ -2037,6 +2450,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "code": {
           "$ref": "#/definitions/Code"
         },
@@ -2059,6 +2478,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "dataOriginDescription": {
           "type": "string"
@@ -2110,6 +2535,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "studyArm": {
           "$ref": "#/definitions/StudyArm"
         },
@@ -2140,6 +2571,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -2181,6 +2618,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -2197,6 +2640,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -2254,6 +2703,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "notes": {
           "type": "array",
           "items": {
@@ -2295,6 +2750,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "characteristics": {
           "type": "array",
@@ -2441,6 +2902,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -2457,6 +2924,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -2499,6 +2972,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "description": {
           "type": "string"
         },
@@ -2537,6 +3016,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         }
       },
       "required": [
@@ -2553,6 +3038,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "codes": {
           "type": "array",
@@ -2608,6 +3099,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "code": {
           "$ref": "#/definitions/Code"
@@ -2669,6 +3166,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "country": {
           "$ref": "#/definitions/Code"
         },
@@ -2699,6 +3202,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "text": {
           "type": "string"
         },
@@ -2722,6 +3231,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "businessTherapeuticAreas": {
           "type": "array",
@@ -2809,6 +3324,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "description": {
           "type": "string"
         },
@@ -2847,6 +3368,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "codes": {
           "type": "array",
@@ -2890,6 +3417,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "description": {
           "type": "string"
         },
@@ -2929,6 +3462,12 @@
         "instanceType": {
           "type": "string"
         },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
+        },
         "description": {
           "type": "string"
         },
@@ -2961,6 +3500,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"
@@ -3016,6 +3561,12 @@
         },
         "instanceType": {
           "type": "string"
+        },
+        "extensionAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          }
         },
         "description": {
           "type": "string"

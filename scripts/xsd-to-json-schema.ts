@@ -153,6 +153,11 @@ function convertComplexType(complexType: XSDComplexType): {
   // Add common USDM properties that exist on all entities
   properties.id = { type: "string" };
   properties.instanceType = { type: "string" };
+  // extensionAttributes is allowed on all USDM entities per the specification
+  properties.extensionAttributes = {
+    type: "array",
+    items: { $ref: "#/definitions/ExtensionAttribute" }
+  };
   required.push("id", "instanceType");
 
   const sequence = complexType["xs:sequence"];
@@ -218,6 +223,29 @@ async function convertXsdToJsonSchema(
     description: "Generated from XSD schema definition",
     type: "object",
     definitions: {},
+  };
+
+  // Add ExtensionAttribute definition - allowed on all USDM entities per the specification
+  jsonSchema.definitions.ExtensionAttribute = {
+    type: "object",
+    properties: {
+      id: { type: "string" },
+      instanceType: { type: "string" },
+      name: { type: "string" },
+      value: { type: "string" },
+      valueArray: { type: "array", items: { type: "string" } },
+      valueObject: { type: "object" },
+      valueBoolean: { type: "boolean" },
+      valueInteger: { type: "integer" },
+      valueDouble: { type: "number" },
+      // ExtensionAttribute can also have extensionAttributes (recursive)
+      extensionAttributes: {
+        type: "array",
+        items: { $ref: "#/definitions/ExtensionAttribute" }
+      }
+    },
+    required: ["id", "instanceType", "name"],
+    additionalProperties: false,
   };
 
   // Extract complex types
