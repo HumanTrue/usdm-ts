@@ -1,800 +1,1040 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "urn:usdm:schema:USDM_schema_4_0",
-  "title": "USDM Schema",
-  "description": "Generated from XSD schema definition",
+  "title": "USDM 4.0 Schema",
+  "description": "JSON Schema for USDM (Unified Study Definitions Model) 4.0 documents. Extracted from cdisc-rules-engine authoritative source.",
   "type": "object",
   "definitions": {
-    "ExtensionAttribute": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        },
-        "valueArray": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "valueObject": {
-          "type": "object"
-        },
-        "valueBoolean": {
-          "type": "boolean"
-        },
-        "valueInteger": {
-          "type": "integer"
-        },
-        "valueDouble": {
-          "type": "number"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "instanceType",
-        "name"
-      ],
-      "additionalProperties": false
-    },
     "Abbreviation": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "abbreviatedText": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "expandedText": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "notes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/CommentAnnotation"
-          }
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Abbreviation"
+          ],
+          "const": "Abbreviation"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "abbreviatedText",
-        "expandedText"
-      ],
-      "additionalProperties": false
+        "expandedText",
+        "instanceType"
+      ]
     },
     "Activity": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previousId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nextId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "childIds": {
           "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+            "type": "string"
+          },
+          "type": "array"
         },
-        "activity": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Activity"
-          }
-        },
-        "biomedicalConcept": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BiomedicalConcept"
-          }
-        },
-        "biomedicalConceptCategory": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BiomedicalConceptCategory"
-          }
-        },
-        "biomedicalConceptSurrogate": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BiomedicalConceptSurrogate"
-          }
-        },
-        "procedure": {
-          "type": "array",
+        "definedProcedures": {
           "items": {
             "$ref": "#/definitions/Procedure"
-          }
+          },
+          "type": "array"
         },
-        "scheduleTimeline": {
-          "$ref": "#/definitions/ScheduleTimeline"
+        "biomedicalConceptIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bcCategoryIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bcSurrogateIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "timelineId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Activity"
+          ],
+          "const": "Activity"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "name"
-      ],
-      "additionalProperties": false
+        "name",
+        "instanceType"
+      ]
     },
     "Address": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "city": {
-          "type": "string"
-        },
-        "country": {
-          "$ref": "#/definitions/Code"
-        },
-        "district": {
-          "type": "string"
-        },
-        "lines": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "postalCode": {
-          "type": "string"
-        },
-        "state": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "text": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lines": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "district": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "postalCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "country": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Code"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Address"
+          ],
+          "const": "Address"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "AdministrableProduct": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pharmacologicClass": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Code"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "administrableDoseForm": {
           "$ref": "#/definitions/AliasCode"
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
-        },
-        "pharmacologicClass": {
-          "$ref": "#/definitions/Code"
         },
         "productDesignation": {
           "$ref": "#/definitions/Code"
         },
         "sourcing": {
-          "$ref": "#/definitions/Code"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Code"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "administrableProductIdentifier": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AdministrableProductIdentifier"
-          }
-        },
-        "administrableProductProperty": {
-          "type": "array",
+        "properties": {
           "items": {
             "$ref": "#/definitions/AdministrableProductProperty"
-          }
+          },
+          "type": "array"
         },
-        "ingredient": {
-          "type": "array",
+        "identifiers": {
+          "items": {
+            "$ref": "#/definitions/AdministrableProductIdentifier"
+          },
+          "type": "array"
+        },
+        "ingredients": {
           "items": {
             "$ref": "#/definitions/Ingredient"
-          }
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "AdministrableProduct"
+          ],
+          "const": "AdministrableProduct"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "administrableDoseForm",
         "name",
-        "productDesignation"
-      ],
-      "additionalProperties": false
+        "administrableDoseForm",
+        "productDesignation",
+        "instanceType"
+      ]
     },
     "AdministrableProductIdentifier": {
       "type": "object",
       "properties": {
         "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extensionAttributes": {
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          },
+          "type": "array"
+        },
+        "text": {
+          "type": "string"
+        },
+        "scopeId": {
           "type": "string"
         },
         "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
+          "type": "string",
+          "enum": [
+            "AdministrableProductIdentifier"
+          ],
+          "const": "AdministrableProductIdentifier"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "text",
+        "scopeId",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "AdministrableProductProperty": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
-        },
-        "quantity": {
-          "$ref": "#/definitions/Quantity"
+          "type": "string",
+          "minLength": 1
         },
         "text": {
           "type": "string"
         },
         "type": {
           "$ref": "#/definitions/Code"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "AdministrableProductProperty"
+          ],
+          "const": "AdministrableProductProperty"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
         "text",
-        "type"
-      ],
-      "additionalProperties": false
+        "type",
+        "instanceType"
+      ]
     },
     "Administration": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "description": {
-          "type": "string"
-        },
-        "dose": {
-          "$ref": "#/definitions/Quantity"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "duration": {
           "$ref": "#/definitions/Duration"
         },
-        "frequency": {
-          "$ref": "#/definitions/AliasCode"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "dose": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "route": {
-          "$ref": "#/definitions/AliasCode"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AliasCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "administrableProduct": {
-          "$ref": "#/definitions/AdministrableProduct"
+        "frequency": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AliasCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "medicalDevice": {
-          "$ref": "#/definitions/MedicalDevice"
+        "administrableProductId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "medicalDeviceId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Administration"
+          ],
+          "const": "Administration"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "name",
         "duration",
-        "name"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "AliasCode": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "standardCode": {
           "$ref": "#/definitions/Code"
         },
         "standardCodeAliases": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/Code"
-          }
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "AliasCode"
+          ],
+          "const": "AliasCode"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "standardCode"
-      ],
-      "additionalProperties": false
+        "standardCode",
+        "instanceType"
+      ]
     },
     "AnalysisPopulation": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "text": {
           "type": "string"
         },
-        "populationDefinition": {
-          "type": "array",
+        "subsetOfIds": {
           "items": {
-            "$ref": "#/definitions/PopulationDefinition"
-          }
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "AnalysisPopulation"
+          ],
+          "const": "AnalysisPopulation"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "text"
-      ],
-      "additionalProperties": false
+        "text",
+        "instanceType"
+      ]
     },
     "AssignedPerson": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "jobTitle": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "personName": {
           "$ref": "#/definitions/PersonName"
         },
-        "organization": {
-          "$ref": "#/definitions/Organization"
+        "jobTitle": {
+          "type": "string"
+        },
+        "organizationId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "AssignedPerson"
+          ],
+          "const": "AssignedPerson"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "jobTitle",
         "name",
-        "personName"
-      ],
-      "additionalProperties": false
+        "personName",
+        "jobTitle",
+        "instanceType"
+      ]
     },
     "BiomedicalConcept": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "code": {
-          "$ref": "#/definitions/AliasCode"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "synonyms": {
           "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+            "type": "string"
+          },
+          "type": "array"
         },
         "reference": {
           "type": "string"
         },
-        "synonyms": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "biomedicalConceptProperty": {
-          "type": "array",
+        "properties": {
           "items": {
             "$ref": "#/definitions/BiomedicalConceptProperty"
-          }
+          },
+          "type": "array"
+        },
+        "code": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "BiomedicalConcept"
+          ],
+          "const": "BiomedicalConcept"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "code",
         "name",
-        "reference"
-      ],
-      "additionalProperties": false
+        "reference",
+        "code",
+        "instanceType"
+      ]
     },
     "BiomedicalConceptCategory": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "code": {
-          "$ref": "#/definitions/AliasCode"
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "childIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "memberIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "code": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AliasCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "notes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/CommentAnnotation"
-          }
+          },
+          "type": "array"
         },
-        "biomedicalConcept": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BiomedicalConcept"
-          }
-        },
-        "biomedicalConceptCategory": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BiomedicalConceptCategory"
-          }
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "BiomedicalConceptCategory"
+          ],
+          "const": "BiomedicalConceptCategory"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "name"
-      ],
-      "additionalProperties": false
+        "name",
+        "instanceType"
+      ]
     },
     "BiomedicalConceptProperty": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
-        "code": {
-          "$ref": "#/definitions/AliasCode"
+        "name": {
+          "type": "string",
+          "minLength": 1
         },
-        "datatype": {
-          "type": "string"
-        },
-        "isEnabled": {
-          "type": "boolean"
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "isRequired": {
           "type": "boolean"
         },
-        "label": {
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "datatype": {
           "type": "string"
         },
-        "name": {
-          "type": "string"
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
-        },
-        "responseCode": {
-          "type": "array",
+        "responseCodes": {
           "items": {
             "$ref": "#/definitions/ResponseCode"
-          }
+          },
+          "type": "array"
+        },
+        "code": {
+          "$ref": "#/definitions/AliasCode"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "BiomedicalConceptProperty"
+          ],
+          "const": "BiomedicalConceptProperty"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "code",
-        "datatype",
-        "isEnabled",
+        "name",
         "isRequired",
-        "name"
-      ],
-      "additionalProperties": false
+        "isEnabled",
+        "datatype",
+        "code",
+        "instanceType"
+      ]
     },
     "BiomedicalConceptSurrogate": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "reference": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "BiomedicalConceptSurrogate"
+          ],
+          "const": "BiomedicalConceptSurrogate"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "name"
-      ],
-      "additionalProperties": false
+        "name",
+        "instanceType"
+      ]
     },
     "BiospecimenRetention": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "description": {
-          "type": "string"
-        },
-        "includesDNA": {
-          "type": "boolean"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "isRetained": {
           "type": "boolean"
         },
-        "label": {
-          "type": "string"
+        "includesDNA": {
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
-        "name": {
-          "type": "string"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "BiospecimenRetention"
+          ],
+          "const": "BiospecimenRetention"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "name",
         "isRetained",
-        "name"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "Characteristic": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "dictionaryId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Characteristic"
+          ],
+          "const": "Characteristic"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "text",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "Code": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "code": {
           "type": "string"
@@ -807,116 +1047,181 @@
         },
         "decode": {
           "type": "string"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Code"
+          ],
+          "const": "Code"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "code",
         "codeSystem",
         "codeSystemVersion",
-        "decode"
-      ],
-      "additionalProperties": false
+        "decode",
+        "instanceType"
+      ]
     },
     "CommentAnnotation": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "codes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
+          },
+          "type": "array"
         },
         "text": {
           "type": "string"
+        },
+        "codes": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "CommentAnnotation"
+          ],
+          "const": "CommentAnnotation"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "text"
-      ],
-      "additionalProperties": false
+        "text",
+        "instanceType"
+      ]
     },
     "Condition": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "dictionaryId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "contextIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "appliesToIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Condition"
+          ],
+          "const": "Condition"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "text",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "ConditionAssignment": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "condition": {
           "type": "string"
         },
-        "scheduledInstance": {
-          "$ref": "#/definitions/ScheduledInstance"
+        "conditionTargetId": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ConditionAssignment"
+          ],
+          "const": "ConditionAssignment"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "condition",
-        "scheduledInstance"
-      ],
-      "additionalProperties": false
+        "conditionTargetId",
+        "instanceType"
+      ]
     },
     "DocumentContentReference": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "sectionNumber": {
           "type": "string"
@@ -924,628 +1229,1277 @@
         "sectionTitle": {
           "type": "string"
         },
-        "studyDefinitionDocument": {
-          "$ref": "#/definitions/StudyDefinitionDocument"
+        "appliesToId": {
+          "type": "string"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "DocumentContentReference"
+          ],
+          "const": "DocumentContentReference"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "sectionNumber",
         "sectionTitle",
-        "studyDefinitionDocument"
-      ],
-      "additionalProperties": false
+        "appliesToId",
+        "instanceType"
+      ]
     },
     "Duration": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "$ref": "#/definitions/Range"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "durationWillVary": {
           "type": "boolean"
         },
-        "quantity": {
-          "$ref": "#/definitions/QuantityRange"
-        },
         "reasonDurationWillVary": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "text": {
-          "type": "string"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Duration"
+          ],
+          "const": "Duration"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "durationWillVary"
-      ],
-      "additionalProperties": false
+        "durationWillVary",
+        "instanceType"
+      ]
     },
     "EligibilityCriterion": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "category": {
           "$ref": "#/definitions/Code"
         },
-        "description": {
-          "type": "string"
-        },
         "identifier": {
           "type": "string"
         },
-        "label": {
+        "criterionItemId": {
           "type": "string"
         },
-        "name": {
-          "type": "string"
+        "nextId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "previousId": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "notes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/CommentAnnotation"
-          }
+          },
+          "type": "array"
         },
-        "eligibilityCriterion": {
-          "$ref": "#/definitions/EligibilityCriterion"
-        },
-        "eligibilityCriterionItem": {
-          "$ref": "#/definitions/EligibilityCriterionItem"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "EligibilityCriterion"
+          ],
+          "const": "EligibilityCriterion"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "name",
         "category",
         "identifier",
-        "name",
-        "eligibilityCriterionItem"
-      ],
-      "additionalProperties": false
+        "criterionItemId",
+        "instanceType"
+      ]
     },
     "EligibilityCriterionItem": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "dictionaryId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "EligibilityCriterionItem"
+          ],
+          "const": "EligibilityCriterionItem"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "text",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "Encounter": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "contactModes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "environmentalSettings": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "type": {
           "$ref": "#/definitions/Code"
         },
-        "encounter": {
-          "$ref": "#/definitions/Encounter"
+        "previousId": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "timing": {
-          "$ref": "#/definitions/Timing"
+        "nextId": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "transitionRule": {
-          "$ref": "#/definitions/TransitionRule"
+        "scheduledAtId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "environmentalSettings": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "contactModes": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "transitionStartRule": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TransitionRule"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transitionEndRule": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TransitionRule"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Encounter"
+          ],
+          "const": "Encounter"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "type"
-      ],
-      "additionalProperties": false
+        "type",
+        "instanceType"
+      ]
     },
     "Endpoint": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "dictionaryId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "level": {
+          "$ref": "#/definitions/Code"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Endpoint"
+          ],
+          "const": "Endpoint"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "text",
+        "purpose",
+        "level",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "Estimand": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "populationSummary": {
           "type": "string"
         },
-        "analysisPopulation": {
-          "$ref": "#/definitions/AnalysisPopulation"
+        "analysisPopulationId": {
+          "type": "string"
         },
-        "endpoint": {
-          "$ref": "#/definitions/Endpoint"
-        },
-        "intercurrentEvent": {
+        "interventionIds": {
+          "items": {
+            "type": "string"
+          },
           "type": "array",
+          "minItems": 1
+        },
+        "variableOfInterestId": {
+          "type": "string"
+        },
+        "intercurrentEvents": {
           "items": {
             "$ref": "#/definitions/IntercurrentEvent"
-          }
-        },
-        "studyIntervention": {
+          },
           "type": "array",
+          "minItems": 1
+        },
+        "notes": {
           "items": {
-            "$ref": "#/definitions/StudyIntervention"
-          }
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Estimand"
+          ],
+          "const": "Estimand"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
         "populationSummary",
-        "analysisPopulation",
-        "endpoint",
-        "intercurrentEvent",
-        "studyIntervention"
-      ],
-      "additionalProperties": false
+        "analysisPopulationId",
+        "interventionIds",
+        "variableOfInterestId",
+        "intercurrentEvents",
+        "instanceType"
+      ]
+    },
+    "ExtensionAttribute": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string"
+        },
+        "valueString": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valueBoolean": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "valueInteger": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "valueId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valueQuantity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valueRange": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Range"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valueCode": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Code"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valueAliasCode": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AliasCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valueExtensionClass": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ExtensionClass"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "extensionAttributes": {
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ExtensionAttribute"
+          ],
+          "const": "ExtensionAttribute"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "url",
+        "instanceType"
+      ]
+    },
+    "ExtensionClass": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string"
+        },
+        "extensionAttributes": {
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ExtensionClass"
+          ],
+          "const": "ExtensionClass"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "url",
+        "extensionAttributes",
+        "instanceType"
+      ]
     },
     "GeographicScope": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "code": {
-          "$ref": "#/definitions/AliasCode"
+          },
+          "type": "array"
         },
         "type": {
           "$ref": "#/definitions/Code"
+        },
+        "code": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AliasCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "GeographicScope"
+          ],
+          "const": "GeographicScope"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "type"
-      ],
-      "additionalProperties": false
+        "type",
+        "instanceType"
+      ]
     },
     "GovernanceDate": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "dateValue": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "type": {
           "$ref": "#/definitions/Code"
         },
-        "geographicScope": {
-          "type": "array",
+        "dateValue": {
+          "type": "string",
+          "format": "date"
+        },
+        "geographicScopes": {
           "items": {
             "$ref": "#/definitions/GeographicScope"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "instanceType",
-        "dateValue",
-        "name",
-        "type",
-        "geographicScope"
-      ],
-      "additionalProperties": false
-    },
-    "Identifier": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
+          },
+          "type": "array",
+          "minItems": 1
         },
         "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "text": {
-          "type": "string"
-        },
-        "organization": {
-          "$ref": "#/definitions/Organization"
+          "type": "string",
+          "enum": [
+            "GovernanceDate"
+          ],
+          "const": "GovernanceDate"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "text",
-        "organization"
-      ],
+        "name",
+        "type",
+        "dateValue",
+        "geographicScopes",
+        "instanceType"
+      ]
+    },
+    "HTTPValidationError": {
+      "type": "object",
+      "properties": {
+        "detail": {
+          "items": {
+            "$ref": "#/definitions/ValidationError"
+          },
+          "type": "array"
+        }
+      },
       "additionalProperties": false
     },
     "Indication": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
-        "codes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "description": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "codes": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
         },
         "isRareDisease": {
           "type": "boolean"
         },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
         "notes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/CommentAnnotation"
-          }
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Indication"
+          ],
+          "const": "Indication"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "name",
         "isRareDisease",
-        "name"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "Ingredient": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "role": {
           "$ref": "#/definitions/Code"
         },
         "substance": {
           "$ref": "#/definitions/Substance"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Ingredient"
+          ],
+          "const": "Ingredient"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "role",
-        "substance"
-      ],
-      "additionalProperties": false
+        "substance",
+        "instanceType"
+      ]
     },
     "IntercurrentEvent": {
       "type": "object",
       "properties": {
         "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extensionAttributes": {
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "dictionaryId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "strategy": {
           "type": "string"
         },
         "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
+          "type": "string",
+          "enum": [
+            "IntercurrentEvent"
+          ],
+          "const": "IntercurrentEvent"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "text",
+        "strategy",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "InterventionalStudyDesign": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "studyType": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Code"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "studyPhase": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AliasCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "therapeuticAreas": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "characteristics": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "encounters": {
+          "items": {
+            "$ref": "#/definitions/Encounter"
+          },
+          "type": "array"
+        },
+        "activities": {
+          "items": {
+            "$ref": "#/definitions/Activity"
+          },
+          "type": "array"
+        },
+        "arms": {
+          "items": {
+            "$ref": "#/definitions/StudyArm"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "studyCells": {
+          "items": {
+            "$ref": "#/definitions/StudyCell"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "epochs": {
+          "items": {
+            "$ref": "#/definitions/StudyEpoch"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "elements": {
+          "items": {
+            "$ref": "#/definitions/StudyElement"
+          },
+          "type": "array"
+        },
+        "estimands": {
+          "items": {
+            "$ref": "#/definitions/Estimand"
+          },
+          "type": "array"
+        },
+        "indications": {
+          "items": {
+            "$ref": "#/definitions/Indication"
+          },
+          "type": "array"
+        },
+        "studyInterventionIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "objectives": {
+          "items": {
+            "$ref": "#/definitions/Objective"
+          },
+          "type": "array"
+        },
+        "population": {
+          "$ref": "#/definitions/StudyDesignPopulation"
+        },
+        "scheduleTimelines": {
+          "items": {
+            "$ref": "#/definitions/ScheduleTimeline"
+          },
+          "type": "array"
+        },
+        "biospecimenRetentions": {
+          "items": {
+            "$ref": "#/definitions/BiospecimenRetention"
+          },
+          "type": "array"
+        },
+        "documentVersionIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "eligibilityCriteria": {
+          "items": {
+            "$ref": "#/definitions/EligibilityCriterion"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "analysisPopulations": {
+          "items": {
+            "$ref": "#/definitions/AnalysisPopulation"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "subTypes": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "model": {
+          "$ref": "#/definitions/Code"
+        },
+        "intentTypes": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "blindingSchema": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AliasCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "InterventionalStudyDesign"
+          ],
+          "const": "InterventionalStudyDesign"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "arms",
+        "studyCells",
+        "rationale",
+        "epochs",
+        "population",
+        "eligibilityCriteria",
+        "model",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "Masking": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "text": {
+          "type": "string"
         },
         "isMasked": {
           "type": "boolean"
         },
-        "text": {
-          "type": "string"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Masking"
+          ],
+          "const": "Masking"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "text",
         "isMasked",
-        "text"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "MedicalDevice": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "hardwareVersion": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hardwareVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "softwareVersion": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "embeddedProductId": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "sourcing": {
-          "$ref": "#/definitions/Code"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Code"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "administrableProduct": {
-          "$ref": "#/definitions/AdministrableProduct"
-        },
-        "medicalDeviceIdentifier": {
-          "type": "array",
+        "identifiers": {
           "items": {
             "$ref": "#/definitions/MedicalDeviceIdentifier"
-          }
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "MedicalDevice"
+          ],
+          "const": "MedicalDevice"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "name"
-      ],
-      "additionalProperties": false
+        "name",
+        "instanceType"
+      ]
     },
     "MedicalDeviceIdentifier": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "text": {
+          "type": "string"
+        },
+        "scopeId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "MedicalDeviceIdentifier"
+          ],
+          "const": "MedicalDeviceIdentifier"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "text",
+        "scopeId",
+        "type",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "NarrativeContent": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sectionNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sectionTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "displaySectionNumber": {
           "type": "boolean"
@@ -1553,795 +2507,1227 @@
         "displaySectionTitle": {
           "type": "boolean"
         },
-        "name": {
-          "type": "string"
+        "childIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
-        "sectionNumber": {
-          "type": "string"
+        "previousId": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "sectionTitle": {
-          "type": "string"
+        "nextId": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "narrativeContent": {
-          "$ref": "#/definitions/NarrativeContent"
+        "contentItemId": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "narrativeContentItem": {
-          "$ref": "#/definitions/NarrativeContentItem"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "NarrativeContent"
+          ],
+          "const": "NarrativeContent"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "name",
         "displaySectionNumber",
         "displaySectionTitle",
-        "name"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "NarrativeContentItem": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "text": {
           "type": "string"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "NarrativeContentItem"
+          ],
+          "const": "NarrativeContentItem"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "text"
-      ],
-      "additionalProperties": false
+        "text",
+        "instanceType"
+      ]
     },
     "Objective": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "dictionaryId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "level": {
+          "$ref": "#/definitions/Code"
+        },
+        "endpoints": {
+          "items": {
+            "$ref": "#/definitions/Endpoint"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Objective"
+          ],
+          "const": "Objective"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "text",
+        "level",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "ObservationalStudyDesign": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "studyType": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Code"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "studyPhase": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AliasCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "therapeuticAreas": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "characteristics": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "encounters": {
+          "items": {
+            "$ref": "#/definitions/Encounter"
+          },
+          "type": "array"
+        },
+        "activities": {
+          "items": {
+            "$ref": "#/definitions/Activity"
+          },
+          "type": "array"
+        },
+        "arms": {
+          "items": {
+            "$ref": "#/definitions/StudyArm"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "studyCells": {
+          "items": {
+            "$ref": "#/definitions/StudyCell"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "epochs": {
+          "items": {
+            "$ref": "#/definitions/StudyEpoch"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "elements": {
+          "items": {
+            "$ref": "#/definitions/StudyElement"
+          },
+          "type": "array"
+        },
+        "estimands": {
+          "items": {
+            "$ref": "#/definitions/Estimand"
+          },
+          "type": "array"
+        },
+        "indications": {
+          "items": {
+            "$ref": "#/definitions/Indication"
+          },
+          "type": "array"
+        },
+        "studyInterventionIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "objectives": {
+          "items": {
+            "$ref": "#/definitions/Objective"
+          },
+          "type": "array"
+        },
+        "population": {
+          "$ref": "#/definitions/StudyDesignPopulation"
+        },
+        "scheduleTimelines": {
+          "items": {
+            "$ref": "#/definitions/ScheduleTimeline"
+          },
+          "type": "array"
+        },
+        "biospecimenRetentions": {
+          "items": {
+            "$ref": "#/definitions/BiospecimenRetention"
+          },
+          "type": "array"
+        },
+        "documentVersionIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "eligibilityCriteria": {
+          "items": {
+            "$ref": "#/definitions/EligibilityCriterion"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "analysisPopulations": {
+          "items": {
+            "$ref": "#/definitions/AnalysisPopulation"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "subTypes": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "model": {
+          "$ref": "#/definitions/Code"
+        },
+        "timePerspective": {
+          "$ref": "#/definitions/Code"
+        },
+        "samplingMethod": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Code"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ObservationalStudyDesign"
+          ],
+          "const": "ObservationalStudyDesign"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "arms",
+        "studyCells",
+        "rationale",
+        "epochs",
+        "population",
+        "eligibilityCriteria",
+        "model",
+        "timePerspective",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "Organization": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "identifier": {
-          "type": "string"
-        },
-        "identifierScheme": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "type": {
           "$ref": "#/definitions/Code"
         },
-        "address": {
-          "$ref": "#/definitions/Address"
+        "identifierScheme": {
+          "type": "string"
         },
-        "studySite": {
-          "type": "array",
+        "identifier": {
+          "type": "string"
+        },
+        "legalAddress": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Address"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "managedSites": {
           "items": {
             "$ref": "#/definitions/StudySite"
-          }
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Organization"
+          ],
+          "const": "Organization"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "identifier",
-        "identifierScheme",
         "name",
-        "type"
-      ],
-      "additionalProperties": false
+        "type",
+        "identifierScheme",
+        "identifier",
+        "instanceType"
+      ]
     },
     "ParameterMap": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "tag": {
+          "type": "string"
         },
         "reference": {
           "type": "string"
         },
-        "tag": {
-          "type": "string"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ParameterMap"
+          ],
+          "const": "ParameterMap"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "tag",
         "reference",
-        "tag"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "PersonName": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "familyName": {
-          "type": "string"
-        },
-        "givenNames": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "prefixes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "suffixes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          },
+          "type": "array"
         },
         "text": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "familyName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "givenNames": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "prefixes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "suffixes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "PersonName"
+          ],
+          "const": "PersonName"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
         "instanceType"
-      ],
-      "additionalProperties": false
-    },
-    "PopulationDefinition": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "includesHealthySubjects": {
-          "type": "boolean"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
-        },
-        "plannedAge": {
-          "$ref": "#/definitions/Range"
-        },
-        "plannedCompletionNumber": {
-          "$ref": "#/definitions/QuantityRange"
-        },
-        "plannedEnrollmentNumber": {
-          "$ref": "#/definitions/QuantityRange"
-        },
-        "plannedSex": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "eligibilityCriterion": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EligibilityCriterion"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "instanceType",
-        "includesHealthySubjects",
-        "name"
-      ],
-      "additionalProperties": false
+      ]
     },
     "Procedure": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "code": {
-          "$ref": "#/definitions/Code"
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "procedureType": {
           "type": "string"
         },
-        "studyIntervention": {
-          "$ref": "#/definitions/StudyIntervention"
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "studyInterventionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Procedure"
+          ],
+          "const": "Procedure"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "code",
         "name",
-        "procedureType"
-      ],
-      "additionalProperties": false
+        "procedureType",
+        "code",
+        "instanceType"
+      ]
     },
     "ProductOrganizationRole": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "code": {
           "$ref": "#/definitions/Code"
         },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "administrableProduct": {
-          "type": "array",
+        "appliesToIds": {
           "items": {
-            "$ref": "#/definitions/AdministrableProduct"
-          }
+            "type": "string"
+          },
+          "type": "array"
         },
-        "medicalDevice": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MedicalDevice"
-          }
+        "organizationId": {
+          "type": "string"
         },
-        "organization": {
-          "$ref": "#/definitions/Organization"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ProductOrganizationRole"
+          ],
+          "const": "ProductOrganizationRole"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "code",
         "name",
-        "organization"
-      ],
-      "additionalProperties": false
+        "code",
+        "organizationId",
+        "instanceType"
+      ]
     },
     "Quantity": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "instanceType"
-      ],
-      "additionalProperties": false
-    },
-    "QuantityRange": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
+          },
+          "type": "array"
+        },
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AliasCode"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
+          "type": "string",
+          "enum": [
+            "Quantity"
+          ],
+          "const": "Quantity"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "value",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "Range": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "minValue": {
+          "$ref": "#/definitions/Quantity"
+        },
+        "maxValue": {
+          "$ref": "#/definitions/Quantity"
+        },
+        "isApproximate": {
+          "type": "boolean"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Range"
+          ],
+          "const": "Range"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "minValue",
+        "maxValue",
+        "isApproximate",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "ReferenceIdentifier": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "text": {
+          "type": "string"
+        },
+        "scopeId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ReferenceIdentifier"
+          ],
+          "const": "ReferenceIdentifier"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "text",
+        "scopeId",
+        "type",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "ResponseCode": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
-        "code": {
-          "$ref": "#/definitions/Code"
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "isEnabled": {
           "type": "boolean"
         },
-        "label": {
-          "type": "string"
+        "code": {
+          "$ref": "#/definitions/Code"
         },
-        "name": {
-          "type": "string"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ResponseCode"
+          ],
+          "const": "ResponseCode"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "code",
+        "name",
         "isEnabled",
-        "name"
-      ],
-      "additionalProperties": false
-    },
-    "ScheduledActivityInstance": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
-        }
-      },
-      "required": [
-        "id",
+        "code",
         "instanceType"
-      ],
-      "additionalProperties": false
-    },
-    "ScheduledDecisionInstance": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "instanceType"
-      ],
-      "additionalProperties": false
-    },
-    "ScheduledInstance": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "scheduledInstance": {
-          "$ref": "#/definitions/ScheduledInstance"
-        },
-        "studyEpoch": {
-          "$ref": "#/definitions/StudyEpoch"
-        }
-      },
-      "required": [
-        "id",
-        "instanceType",
-        "name"
-      ],
-      "additionalProperties": false
+      ]
     },
     "ScheduleTimeline": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
-        "description": {
-          "type": "string"
-        },
-        "entryCondition": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "minLength": 1
         },
         "label": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "mainTimeline": {
           "type": "boolean"
         },
-        "name": {
+        "entryCondition": {
           "type": "string"
         },
-        "plannedDuration": {
-          "$ref": "#/definitions/Duration"
+        "entryId": {
+          "type": "string"
         },
-        "scheduledInstance": {
-          "$ref": "#/definitions/ScheduledInstance"
-        },
-        "scheduleTimelineExit": {
-          "type": "array",
+        "exits": {
           "items": {
             "$ref": "#/definitions/ScheduleTimelineExit"
-          }
+          },
+          "type": "array"
         },
-        "timing": {
-          "type": "array",
+        "timings": {
           "items": {
             "$ref": "#/definitions/Timing"
-          }
+          },
+          "type": "array"
+        },
+        "instances": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/ScheduledActivityInstance"
+              },
+              {
+                "$ref": "#/definitions/ScheduledDecisionInstance"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "plannedDuration": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Duration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ScheduleTimeline"
+          ],
+          "const": "ScheduleTimeline"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "entryCondition",
-        "mainTimeline",
         "name",
-        "scheduledInstance"
-      ],
-      "additionalProperties": false
+        "mainTimeline",
+        "entryCondition",
+        "entryId",
+        "instanceType"
+      ]
     },
     "ScheduleTimelineExit": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ScheduleTimelineExit"
+          ],
+          "const": "ScheduleTimelineExit"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
+    },
+    "ScheduledActivityInstance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extensionAttributes": {
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "defaultConditionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "epochId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "timelineId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "timelineExitId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "activityIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "encounterId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ScheduledActivityInstance"
+          ],
+          "const": "ScheduledActivityInstance"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "instanceType"
+      ]
+    },
+    "ScheduledDecisionInstance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extensionAttributes": {
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "defaultConditionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "epochId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "conditionAssignments": {
+          "items": {
+            "$ref": "#/definitions/ConditionAssignment"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "ScheduledDecisionInstance"
+          ],
+          "const": "ScheduledDecisionInstance"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "conditionAssignments",
+        "instanceType"
+      ]
     },
     "Strength": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "denominator": {
-          "$ref": "#/definitions/Quantity"
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "numerator": {
-          "$ref": "#/definitions/QuantityRange"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "$ref": "#/definitions/Range"
+            }
+          ]
+        },
+        "denominator": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Strength"
+          ],
+          "const": "Strength"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "numerator"
-      ],
-      "additionalProperties": false
+        "numerator",
+        "instanceType"
+      ]
     },
     "Study": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "studyDefinitionDocument": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyDefinitionDocument"
-          }
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "studyVersion": {
-          "type": "array",
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "versions": {
           "items": {
             "$ref": "#/definitions/StudyVersion"
-          }
+          },
+          "type": "array"
+        },
+        "documentedBy": {
+          "items": {
+            "$ref": "#/definitions/StudyDefinitionDocument"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Study"
+          ],
+          "const": "Study"
         }
       },
+      "additionalProperties": false,
       "required": [
-        "id",
-        "instanceType",
-        "name"
-      ],
-      "additionalProperties": false
+        "name",
+        "instanceType"
+      ]
     },
     "StudyAmendment": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "number": {
           "type": "string"
@@ -2349,141 +3735,192 @@
         "summary": {
           "type": "string"
         },
-        "geographicScope": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GeographicScope"
-          }
+        "primaryReason": {
+          "$ref": "#/definitions/StudyAmendmentReason"
         },
-        "governanceDate": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GovernanceDate"
-          }
-        },
-        "studyAmendment": {
-          "$ref": "#/definitions/StudyAmendment"
-        },
-        "studyAmendmentImpact": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyAmendmentImpact"
-          }
-        },
-        "studyAmendmentReason": {
-          "type": "array",
+        "secondaryReasons": {
           "items": {
             "$ref": "#/definitions/StudyAmendmentReason"
-          }
+          },
+          "type": "array"
         },
-        "studyChange": {
-          "type": "array",
+        "changes": {
           "items": {
             "$ref": "#/definitions/StudyChange"
-          }
-        },
-        "subjectEnrollment": {
+          },
           "type": "array",
+          "minItems": 1
+        },
+        "impacts": {
+          "items": {
+            "$ref": "#/definitions/StudyAmendmentImpact"
+          },
+          "type": "array"
+        },
+        "geographicScopes": {
+          "items": {
+            "$ref": "#/definitions/GeographicScope"
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "enrollments": {
           "items": {
             "$ref": "#/definitions/SubjectEnrollment"
-          }
+          },
+          "type": "array"
+        },
+        "dateValues": {
+          "items": {
+            "$ref": "#/definitions/GovernanceDate"
+          },
+          "type": "array"
+        },
+        "previousId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyAmendment"
+          ],
+          "const": "StudyAmendment"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
         "number",
         "summary",
-        "geographicScope",
-        "studyAmendmentReason",
-        "studyChange"
-      ],
-      "additionalProperties": false
+        "primaryReason",
+        "changes",
+        "geographicScopes",
+        "instanceType"
+      ]
     },
     "StudyAmendmentImpact": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
+        },
+        "text": {
+          "type": "string"
         },
         "isSubstantial": {
           "type": "boolean"
         },
         "notes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/CommentAnnotation"
-          }
+          },
+          "type": "array"
         },
-        "text": {
-          "type": "string"
-        },
-        "type": {
-          "$ref": "#/definitions/Code"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyAmendmentImpact"
+          ],
+          "const": "StudyAmendmentImpact"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "isSubstantial",
+        "type",
         "text",
-        "type"
-      ],
-      "additionalProperties": false
+        "isSubstantial",
+        "instanceType"
+      ]
     },
     "StudyAmendmentReason": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "code": {
           "$ref": "#/definitions/Code"
         },
         "otherReason": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyAmendmentReason"
+          ],
+          "const": "StudyAmendmentReason"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "code"
-      ],
-      "additionalProperties": false
+        "code",
+        "instanceType"
+      ]
     },
     "StudyArm": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "$ref": "#/definitions/Code"
         },
         "dataOriginDescription": {
           "type": "string"
@@ -2491,583 +3928,695 @@
         "dataOriginType": {
           "$ref": "#/definitions/Code"
         },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
+        "populationIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "notes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/CommentAnnotation"
-          }
+          },
+          "type": "array"
         },
-        "type": {
-          "$ref": "#/definitions/Code"
-        },
-        "populationDefinition": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PopulationDefinition"
-          }
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyArm"
+          ],
+          "const": "StudyArm"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "name",
+        "type",
         "dataOriginDescription",
         "dataOriginType",
-        "name",
-        "type"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "StudyCell": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
-        "studyArm": {
-          "$ref": "#/definitions/StudyArm"
+        "armId": {
+          "type": "string"
         },
-        "studyElement": {
-          "type": "array",
+        "epochId": {
+          "type": "string"
+        },
+        "elementIds": {
           "items": {
-            "$ref": "#/definitions/StudyElement"
-          }
+            "type": "string"
+          },
+          "type": "array",
+          "minItems": 1
         },
-        "studyEpoch": {
-          "$ref": "#/definitions/StudyEpoch"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyCell"
+          ],
+          "const": "StudyCell"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "studyArm",
-        "studyElement",
-        "studyEpoch"
-      ],
-      "additionalProperties": false
+        "armId",
+        "epochId",
+        "elementIds",
+        "instanceType"
+      ]
     },
     "StudyChange": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "summary": {
           "type": "string"
         },
         "rationale": {
           "type": "string"
         },
-        "summary": {
-          "type": "string"
-        },
-        "documentContentReference": {
-          "type": "array",
+        "changedSections": {
           "items": {
             "$ref": "#/definitions/DocumentContentReference"
-          }
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyChange"
+          ],
+          "const": "StudyChange"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "rationale",
         "summary",
-        "documentContentReference"
-      ],
-      "additionalProperties": false
+        "rationale",
+        "changedSections",
+        "instanceType"
+      ]
     },
     "StudyCohort": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "includesHealthySubjects": {
+          "type": "boolean"
+        },
+        "plannedEnrollmentNumber": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "$ref": "#/definitions/Range"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "plannedCompletionNumber": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "$ref": "#/definitions/Range"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "plannedSex": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array",
+          "maxItems": 2
+        },
+        "criterionIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "plannedAge": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Range"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "characteristics": {
+          "items": {
+            "$ref": "#/definitions/Characteristic"
+          },
+          "type": "array"
+        },
+        "indicationIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyCohort"
+          ],
+          "const": "StudyCohort"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "includesHealthySubjects",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "StudyDefinitionDocument": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
-        "description": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "minLength": 1
         },
         "label": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "language": {
           "$ref": "#/definitions/Code"
         },
-        "name": {
-          "type": "string"
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "type": {
+          "$ref": "#/definitions/Code"
         },
         "templateName": {
           "type": "string"
         },
-        "type": {
-          "$ref": "#/definitions/Code"
-        },
-        "studyDefinitionDocument": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyDefinitionDocument"
-          }
-        },
-        "studyDefinitionDocumentVersion": {
-          "type": "array",
+        "versions": {
           "items": {
             "$ref": "#/definitions/StudyDefinitionDocumentVersion"
-          }
+          },
+          "type": "array"
+        },
+        "childIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyDefinitionDocument"
+          ],
+          "const": "StudyDefinitionDocument"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "language",
         "name",
+        "language",
+        "type",
         "templateName",
-        "type"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "StudyDefinitionDocumentVersion": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
-        },
-        "status": {
-          "$ref": "#/definitions/Code"
+          },
+          "type": "array"
         },
         "version": {
           "type": "string"
         },
-        "governanceDate": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GovernanceDate"
-          }
-        },
-        "narrativeContent": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/NarrativeContent"
-          }
-        }
-      },
-      "required": [
-        "id",
-        "instanceType",
-        "status",
-        "version"
-      ],
-      "additionalProperties": false
-    },
-    "StudyDesign": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "characteristics": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
-        },
-        "rationale": {
-          "type": "string"
-        },
-        "studyPhase": {
-          "$ref": "#/definitions/AliasCode"
-        },
-        "studyType": {
+        "status": {
           "$ref": "#/definitions/Code"
         },
-        "therapeuticAreas": {
-          "type": "array",
+        "dateValues": {
           "items": {
-            "$ref": "#/definitions/Code"
-          }
+            "$ref": "#/definitions/GovernanceDate"
+          },
+          "type": "array"
         },
-        "activity": {
-          "type": "array",
+        "contents": {
           "items": {
-            "$ref": "#/definitions/Activity"
-          }
+            "$ref": "#/definitions/NarrativeContent"
+          },
+          "type": "array"
         },
-        "biospecimenRetention": {
-          "type": "array",
+        "notes": {
           "items": {
-            "$ref": "#/definitions/BiospecimenRetention"
-          }
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
         },
-        "eligibilityCriterion": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EligibilityCriterion"
-          }
-        },
-        "encounter": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Encounter"
-          }
-        },
-        "estimand": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Estimand"
-          }
-        },
-        "indication": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Indication"
-          }
-        },
-        "objective": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Objective"
-          }
-        },
-        "scheduleTimeline": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ScheduleTimeline"
-          }
-        },
-        "studyArm": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyArm"
-          }
-        },
-        "studyCell": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyCell"
-          }
-        },
-        "studyDefinitionDocumentVersion": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyDefinitionDocumentVersion"
-          }
-        },
-        "studyDesignPopulation": {
-          "$ref": "#/definitions/StudyDesignPopulation"
-        },
-        "studyElement": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyElement"
-          }
-        },
-        "studyEpoch": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyEpoch"
-          }
-        },
-        "studyIntervention": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyIntervention"
-          }
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyDefinitionDocumentVersion"
+          ],
+          "const": "StudyDefinitionDocumentVersion"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "name",
-        "rationale",
-        "eligibilityCriterion",
-        "studyArm",
-        "studyCell",
-        "studyDesignPopulation",
-        "studyEpoch"
-      ],
-      "additionalProperties": false
+        "version",
+        "status",
+        "instanceType"
+      ]
     },
     "StudyDesignPopulation": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "includesHealthySubjects": {
+          "type": "boolean"
+        },
+        "plannedEnrollmentNumber": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "$ref": "#/definitions/Range"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "plannedCompletionNumber": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "$ref": "#/definitions/Range"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "plannedSex": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array",
+          "maxItems": 2
+        },
+        "criterionIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "plannedAge": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Range"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "cohorts": {
+          "items": {
+            "$ref": "#/definitions/StudyCohort"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyDesignPopulation"
+          ],
+          "const": "StudyDesignPopulation"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "name",
+        "includesHealthySubjects",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "StudyElement": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transitionStartRule": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TransitionRule"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transitionEndRule": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TransitionRule"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "studyInterventionIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "notes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/CommentAnnotation"
-          }
+          },
+          "type": "array"
         },
-        "studyIntervention": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyIntervention"
-          }
-        },
-        "transitionRule": {
-          "$ref": "#/definitions/TransitionRule"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyElement"
+          ],
+          "const": "StudyElement"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "name"
-      ],
-      "additionalProperties": false
+        "name",
+        "instanceType"
+      ]
     },
     "StudyEpoch": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "type": {
           "$ref": "#/definitions/Code"
         },
-        "studyEpoch": {
-          "$ref": "#/definitions/StudyEpoch"
+        "previousId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nextId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyEpoch"
+          ],
+          "const": "StudyEpoch"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "type"
-      ],
-      "additionalProperties": false
+        "type",
+        "instanceType"
+      ]
     },
     "StudyIdentifier": {
       "type": "object",
       "properties": {
         "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extensionAttributes": {
+          "items": {
+            "$ref": "#/definitions/ExtensionAttribute"
+          },
+          "type": "array"
+        },
+        "text": {
+          "type": "string"
+        },
+        "scopeId": {
           "type": "string"
         },
         "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
+          "type": "string",
+          "enum": [
+            "StudyIdentifier"
+          ],
+          "const": "StudyIdentifier"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
+        "text",
+        "scopeId",
         "instanceType"
-      ],
-      "additionalProperties": false
+      ]
     },
     "StudyIntervention": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "codes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "minimumResponseDuration": {
-          "$ref": "#/definitions/Quantity"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "role": {
           "$ref": "#/definitions/Code"
@@ -3075,449 +4624,618 @@
         "type": {
           "$ref": "#/definitions/Code"
         },
-        "administration": {
-          "type": "array",
+        "minimumResponseDuration": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Quantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "codes": {
+          "items": {
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
+        },
+        "administrations": {
           "items": {
             "$ref": "#/definitions/Administration"
-          }
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyIntervention"
+          ],
+          "const": "StudyIntervention"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
         "role",
-        "type"
-      ],
-      "additionalProperties": false
+        "type",
+        "instanceType"
+      ]
     },
     "StudyRole": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "code": {
           "$ref": "#/definitions/Code"
         },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "notes": {
-          "type": "array",
+        "appliesToIds": {
           "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
+            "type": "string"
+          },
+          "type": "array"
         },
-        "assignedPerson": {
-          "type": "array",
+        "assignedPersons": {
           "items": {
             "$ref": "#/definitions/AssignedPerson"
-          }
+          },
+          "type": "array"
+        },
+        "organizationIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
         "masking": {
-          "$ref": "#/definitions/Masking"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Masking"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "organization": {
-          "type": "array",
+        "notes": {
           "items": {
-            "$ref": "#/definitions/Organization"
-          }
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
         },
-        "studyDesign": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyDesign"
-          }
-        },
-        "studyVersion": {
-          "$ref": "#/definitions/StudyVersion"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyRole"
+          ],
+          "const": "StudyRole"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "name",
         "code",
-        "name"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "StudySite": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "country": {
           "$ref": "#/definitions/Code"
         },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudySite"
+          ],
+          "const": "StudySite"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
+        "name",
         "country",
-        "name"
-      ],
-      "additionalProperties": false
+        "instanceType"
+      ]
     },
     "StudyTitle": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
         },
         "text": {
           "type": "string"
         },
         "type": {
           "$ref": "#/definitions/Code"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyTitle"
+          ],
+          "const": "StudyTitle"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "text",
-        "type"
-      ],
-      "additionalProperties": false
+        "type",
+        "instanceType"
+      ]
     },
     "StudyVersion": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "businessTherapeuticAreas": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Code"
-          }
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
-        },
-        "rationale": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "versionIdentifier": {
           "type": "string"
         },
-        "abbreviation": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Abbreviation"
-          }
+        "rationale": {
+          "type": "string"
         },
-        "governanceDate": {
-          "type": "array",
+        "documentVersionIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "dateValues": {
           "items": {
             "$ref": "#/definitions/GovernanceDate"
-          }
+          },
+          "type": "array"
         },
-        "referenceIdentifier": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ReferenceIdentifier"
-          }
-        },
-        "studyAmendment": {
-          "type": "array",
+        "amendments": {
           "items": {
             "$ref": "#/definitions/StudyAmendment"
-          }
+          },
+          "type": "array"
         },
-        "studyDefinitionDocumentVersion": {
-          "type": "array",
+        "businessTherapeuticAreas": {
           "items": {
-            "$ref": "#/definitions/StudyDefinitionDocumentVersion"
-          }
+            "$ref": "#/definitions/Code"
+          },
+          "type": "array"
         },
-        "studyDesign": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/StudyDesign"
-          }
-        },
-        "studyIdentifier": {
-          "type": "array",
+        "studyIdentifiers": {
           "items": {
             "$ref": "#/definitions/StudyIdentifier"
-          }
-        },
-        "studyTitle": {
+          },
           "type": "array",
+          "minItems": 1
+        },
+        "referenceIdentifiers": {
+          "items": {
+            "$ref": "#/definitions/ReferenceIdentifier"
+          },
+          "type": "array"
+        },
+        "studyDesigns": {
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/InterventionalStudyDesign"
+              },
+              {
+                "$ref": "#/definitions/ObservationalStudyDesign"
+              }
+            ]
+          },
+          "type": "array"
+        },
+        "titles": {
           "items": {
             "$ref": "#/definitions/StudyTitle"
-          }
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "eligibilityCriterionItems": {
+          "items": {
+            "$ref": "#/definitions/EligibilityCriterionItem"
+          },
+          "type": "array"
+        },
+        "narrativeContentItems": {
+          "items": {
+            "$ref": "#/definitions/NarrativeContentItem"
+          },
+          "type": "array"
+        },
+        "abbreviations": {
+          "items": {
+            "$ref": "#/definitions/Abbreviation"
+          },
+          "type": "array"
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/definitions/StudyRole"
+          },
+          "type": "array"
+        },
+        "organizations": {
+          "items": {
+            "$ref": "#/definitions/Organization"
+          },
+          "type": "array"
+        },
+        "studyInterventions": {
+          "items": {
+            "$ref": "#/definitions/StudyIntervention"
+          },
+          "type": "array"
+        },
+        "administrableProducts": {
+          "items": {
+            "$ref": "#/definitions/AdministrableProduct"
+          },
+          "type": "array"
+        },
+        "medicalDevices": {
+          "items": {
+            "$ref": "#/definitions/MedicalDevice"
+          },
+          "type": "array"
+        },
+        "productOrganizationRoles": {
+          "items": {
+            "$ref": "#/definitions/ProductOrganizationRole"
+          },
+          "type": "array"
+        },
+        "biomedicalConcepts": {
+          "items": {
+            "$ref": "#/definitions/BiomedicalConcept"
+          },
+          "type": "array"
+        },
+        "bcCategories": {
+          "items": {
+            "$ref": "#/definitions/BiomedicalConceptCategory"
+          },
+          "type": "array"
+        },
+        "bcSurrogates": {
+          "items": {
+            "$ref": "#/definitions/BiomedicalConceptSurrogate"
+          },
+          "type": "array"
+        },
+        "dictionaries": {
+          "items": {
+            "$ref": "#/definitions/SyntaxTemplateDictionary"
+          },
+          "type": "array"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/Condition"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/CommentAnnotation"
+          },
+          "type": "array"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "StudyVersion"
+          ],
+          "const": "StudyVersion"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
-        "rationale",
         "versionIdentifier",
-        "studyIdentifier",
-        "studyTitle"
-      ],
-      "additionalProperties": false
+        "rationale",
+        "studyIdentifiers",
+        "titles",
+        "instanceType"
+      ]
     },
     "SubjectEnrollment": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "quantity": {
           "$ref": "#/definitions/Quantity"
         },
-        "geographicScope": {
-          "$ref": "#/definitions/GeographicScope"
+        "forGeographicScope": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/GeographicScope"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "studyCohort": {
-          "$ref": "#/definitions/StudyCohort"
+        "forStudyCohortId": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "studySite": {
-          "$ref": "#/definitions/StudySite"
+        "forStudySiteId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "SubjectEnrollment"
+          ],
+          "const": "SubjectEnrollment"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "quantity"
-      ],
-      "additionalProperties": false
+        "quantity",
+        "instanceType"
+      ]
     },
     "Substance": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "codes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/Code"
-          }
+          },
+          "type": "array"
         },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "strength": {
-          "type": "array",
+        "strengths": {
           "items": {
             "$ref": "#/definitions/Strength"
-          }
+          },
+          "type": "array",
+          "minItems": 1
         },
-        "substance": {
-          "$ref": "#/definitions/Substance"
-        }
-      },
-      "required": [
-        "id",
-        "instanceType",
-        "name",
-        "strength"
-      ],
-      "additionalProperties": false
-    },
-    "SyntaxTemplate": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
+        "referenceSubstance": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Substance"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "instanceType": {
-          "type": "string"
-        },
-        "extensionAttributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "notes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommentAnnotation"
-          }
-        },
-        "text": {
-          "type": "string"
-        },
-        "syntaxTemplateDictionary": {
-          "$ref": "#/definitions/SyntaxTemplateDictionary"
+          "type": "string",
+          "enum": [
+            "Substance"
+          ],
+          "const": "Substance"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "text"
-      ],
-      "additionalProperties": false
+        "strengths",
+        "instanceType"
+      ]
     },
     "SyntaxTemplateDictionary": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "parameterMap": {
-          "type": "array",
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "parameterMaps": {
           "items": {
             "$ref": "#/definitions/ParameterMap"
-          }
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "SyntaxTemplateDictionary"
+          ],
+          "const": "SyntaxTemplateDictionary"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "parameterMap"
-      ],
-      "additionalProperties": false
+        "parameterMaps",
+        "instanceType"
+      ]
     },
     "Timing": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
-        "relativeToFrom": {
-          "$ref": "#/definitions/Code"
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "type": {
           "$ref": "#/definitions/Code"
@@ -3528,66 +5246,169 @@
         "valueLabel": {
           "type": "string"
         },
-        "windowLabel": {
+        "relativeToFrom": {
+          "$ref": "#/definitions/Code"
+        },
+        "relativeFromScheduledInstanceId": {
           "type": "string"
+        },
+        "relativeToScheduledInstanceId": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "windowLower": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "windowUpper": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "scheduledInstance": {
-          "$ref": "#/definitions/ScheduledInstance"
+        "windowLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "Timing"
+          ],
+          "const": "Timing"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "relativeToFrom",
         "type",
         "value",
         "valueLabel",
-        "scheduledInstance"
-      ],
-      "additionalProperties": false
+        "relativeToFrom",
+        "relativeFromScheduledInstanceId",
+        "instanceType"
+      ]
     },
     "TransitionRule": {
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "extensionAttributes": {
-          "type": "array",
           "items": {
             "$ref": "#/definitions/ExtensionAttribute"
-          }
-        },
-        "description": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
+          },
+          "type": "array"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "text": {
           "type": "string"
+        },
+        "instanceType": {
+          "type": "string",
+          "enum": [
+            "TransitionRule"
+          ],
+          "const": "TransitionRule"
         }
       },
+      "additionalProperties": false,
       "required": [
         "id",
-        "instanceType",
         "name",
-        "text"
-      ],
-      "additionalProperties": false
+        "text",
+        "instanceType"
+      ]
+    },
+    "ValidationError": {
+      "type": "object",
+      "properties": {
+        "loc": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "type": "array",
+          "minItems": 1
+        },
+        "msg": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "loc",
+        "msg",
+        "type"
+      ]
     }
-  }
+  },
+  "properties": {
+    "study": {
+      "$ref": "#/definitions/Study"
+    },
+    "usdmVersion": {
+      "type": "string",
+      "title": "Usdmversion"
+    },
+    "systemName": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Systemname"
+    },
+    "systemVersion": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Systemversion"
+    }
+  },
+  "required": [
+    "study",
+    "usdmVersion"
+  ]
 }
