@@ -31,14 +31,16 @@
   "files": [
     "src/generated/types/",
     "src/generated/zod.ts",
+    "src/schema.ts",
+    "src/codelists.ts",
     "schemas/USDM_schema_4_0.json",
     "schemas/codelist_index.json"
   ],
   "exports": {
     "./types": "./src/generated/types/index.ts",
     "./zod": "./src/generated/zod.ts",
-    "./schema": "./schemas/USDM_schema_4_0.json",
-    "./codelists": "./schemas/codelist_index.json"
+    "./usdm-schema": "./src/schema.ts",
+    "./codelists": "./src/codelists.ts"
   },
   "dependencies": {
     "@types/node": "^24.0.15",
