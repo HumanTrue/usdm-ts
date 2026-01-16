@@ -86,7 +86,7 @@ async function createVersionFile(version: string): Promise<void> {
  * @packageDocumentation
  */
 
-export const VERSION = "${version}";
+export const VERSION = "${version}"
 `
 
   await writeFile(versionFilePath, content, "utf-8")
