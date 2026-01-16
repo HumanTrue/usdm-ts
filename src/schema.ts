@@ -3,6 +3,20 @@
  * @packageDocumentation
  */
 
-import usdmSchema from "./USDM_schema_4_0.json" with { type: "json" }
+import usdmSchemaJson from "./USDM_schema_4_0.json" with { type: "json" }
 
+export interface USDMSchema {
+  $schema: string
+  $id: string
+  definitions: Record<string, {
+    type?: string | string[]
+    properties?: Record<string, any>
+    required?: string[]
+    additionalProperties?: boolean
+    [key: string]: any
+  }>
+  [key: string]: any
+}
+
+const usdmSchema: USDMSchema = usdmSchemaJson as USDMSchema
 export default usdmSchema
