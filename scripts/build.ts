@@ -26,6 +26,9 @@ const filesToKeep = [
 ]
 
 console.log("Embedding codelist data...")
+// Save original codelists.ts content before replacing
+const originalCodelistsSource = readFileSync("src/codelists.ts", "utf-8")
+
 const codelistData = JSON.parse(readFileSync("src/codelist_index.json", "utf-8"))
 const codelistsSource = `/**
  * Codelist index with embedded data
@@ -61,9 +64,8 @@ writeFileSync("src/codelists.ts", codelistsSource)
 console.log("Building TypeScript...")
 execSync("tsc", { stdio: "inherit" })
 
-console.log("Restoring codelists.ts template for development...")
-const templateSource = readFileSync("src/codelists.template.ts", "utf-8")
-writeFileSync("src/codelists.ts", templateSource)
+console.log("Restoring codelists.ts for development...")
+writeFileSync("src/codelists.ts", originalCodelistsSource)
 
 console.log("Cleaning dist directory to keep only exported files...")
 
