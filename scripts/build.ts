@@ -5,12 +5,13 @@ import { join } from "path"
 const distDir = "dist"
 const tempDistDir = "dist-temp"
 
-// Files to keep in dist (based on package.json exports)
+// Directories to keep entirely (for generated types)
+const dirsToKeep = [
+  "generated/types"  // Keep all individual type definition files
+]
+
+// Specific files to keep in dist (based on package.json exports)
 const filesToKeep = [
-  "generated/types/index.js",
-  "generated/types/index.d.ts",
-  "generated/types/index.js.map",
-  "generated/types/index.d.ts.map",
   "generated/zod.js",
   "generated/zod.d.ts",
   "generated/zod.js.map",
@@ -106,7 +107,19 @@ if (existsSync(tempDistDir)) {
 }
 mkdirSync(tempDistDir, { recursive: true })
 
-// Copy files to temp directory
+// Copy entire directories to temp
+for (const dir of dirsToKeep) {
+  const sourcePath = join(distDir, dir)
+  const destPath = join(tempDistDir, dir)
+
+  if (existsSync(sourcePath)) {
+    cpSync(sourcePath, destPath, { recursive: true })
+  } else {
+    console.warn(`Warning: Expected directory not found: ${sourcePath}`)
+  }
+}
+
+// Copy individual files to temp directory
 for (const file of filesToKeep) {
   const sourcePath = join(distDir, file)
   const destPath = join(tempDistDir, file)
