@@ -25,6 +25,36 @@ const filesToKeep = [
   "codelists.d.ts.map"
 ]
 
+console.log("Embedding schema data...")
+// Save original schema.ts content before replacing
+const originalSchemaSource = readFileSync("src/schema.ts", "utf-8")
+
+const schemaData = JSON.parse(readFileSync("src/USDM_schema_4_0.json", "utf-8"))
+const schemaSource = `/**
+ * USDM Schema with embedded data
+ * This file is auto-generated during the build process
+ * @packageDocumentation
+ */
+
+export interface USDMSchema {
+  $schema: string
+  $id: string
+  definitions: Record<string, {
+    type?: string | string[]
+    properties?: Record<string, any>
+    required?: string[]
+    additionalProperties?: boolean
+    [key: string]: any
+  }>
+  [key: string]: any
+}
+
+const usdmSchema: USDMSchema = ${JSON.stringify(schemaData, null, 2)}
+
+export default usdmSchema
+`
+writeFileSync("src/schema.ts", schemaSource)
+
 console.log("Embedding codelist data...")
 // Save original codelists.ts content before replacing
 const originalCodelistsSource = readFileSync("src/codelists.ts", "utf-8")
@@ -64,7 +94,8 @@ writeFileSync("src/codelists.ts", codelistsSource)
 console.log("Building TypeScript...")
 execSync("tsc", { stdio: "inherit" })
 
-console.log("Restoring codelists.ts for development...")
+console.log("Restoring source files for development...")
+writeFileSync("src/schema.ts", originalSchemaSource)
 writeFileSync("src/codelists.ts", originalCodelistsSource)
 
 console.log("Cleaning dist directory to keep only exported files...")
