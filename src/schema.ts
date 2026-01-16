@@ -3,6 +3,6 @@
  * @packageDocumentation
  */
 
-import usdmSchema from "./USDM_schema_4_0.json" with { type: "json" };
+import usdmSchema from "./USDM_schema_4_0.json" with { type: "json" }
 
-export default usdmSchema;
+export default usdmSchema

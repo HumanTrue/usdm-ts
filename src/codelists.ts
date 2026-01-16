@@ -3,6 +3,6 @@
  * @packageDocumentation
  */
 
-import codelistIndex from "./codelist_index.json" with { type: "json" };
+import codelistIndex from "./codelist_index.json" with { type: "json" }
 
-export default codelistIndex;
+export default codelistIndex

@@ -17,7 +17,7 @@ const study: Study = {
   name: "Example Clinical Trial",
   description: "A clinical trial to test the efficacy of a new drug.",
   label: "TRIAL-001",
-  versions: [],
+  versions: []
 }
 // README_EXAMPLE_END
 
