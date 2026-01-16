@@ -11,6 +11,7 @@
     "schema": "python3 scripts/extract-usdm-schema.py",
     "update-codelists": "python3 scripts/update-codelists-from-sdtmct.py",
     "lint": "eslint .",
+    "prepare": "pnpm build",
     "prepublishOnly": "pnpm build && pnpm generate-docs",
     "release": "tsx scripts/release.ts",
     "release:dry-run": "tsx scripts/release.ts --dry-run"
