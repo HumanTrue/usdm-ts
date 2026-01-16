@@ -2,6 +2,7 @@
 node_modules
 tsconfig.tsbuildinfo
 .claude
+dist
 
 # Reference repos (cloned for development, not committed)
 references/cdisc-rules-engine/

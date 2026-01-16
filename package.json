@@ -1,11 +1,11 @@
 {
   "name": "usdm-ts",
-  "version": "0.9.10",
+  "version": "0.9.11",
   "type": "module",
   "description": "A Typescript library that provides a structured representation of the USDM (Unified Study Data Model) for clinical trials.",
   "scripts": {
     "postinstall": "test -f scripts/setup-references.sh && bash scripts/setup-references.sh || true",
-    "build": "tsc",
+    "build": "tsx scripts/build.ts",
     "generate": "tsx src/generate.ts",
     "generate-docs": "tsx scripts/generate-docs.ts",
     "schema": "python3 scripts/extract-usdm-schema.py",
@@ -29,18 +29,25 @@
     "npm": "please-use-pnpm"
   },
   "files": [
-    "src/generated/types/",
-    "src/generated/zod.ts",
-    "src/schema.ts",
-    "src/codelists.ts",
-    "schemas/USDM_schema_4_0.json",
-    "schemas/codelist_index.json"
+    "dist/"
   ],
   "exports": {
-    "./types": "./src/generated/types/index.ts",
-    "./zod": "./src/generated/zod.ts",
-    "./usdm-schema": "./src/schema.ts",
-    "./codelists": "./src/codelists.ts"
+    "./types": {
+      "types": "./dist/generated/types/index.d.ts",
+      "default": "./dist/generated/types/index.js"
+    },
+    "./zod": {
+      "types": "./dist/generated/zod.d.ts",
+      "default": "./dist/generated/zod.js"
+    },
+    "./usdm-schema": {
+      "types": "./dist/schema.d.ts",
+      "default": "./dist/schema.js"
+    },
+    "./codelists": {
+      "types": "./dist/codelists.d.ts",
+      "default": "./dist/codelists.js"
+    }
   },
   "dependencies": {
     "@types/node": "^24.0.15",

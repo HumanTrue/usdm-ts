@@ -21,7 +21,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 CACHE_DIR = PROJECT_ROOT / "references" / "cdisc-rules-engine" / "resources" / "cache"
-OUTPUT_FILE = PROJECT_ROOT / "schemas" / "USDM_schema_4_0.json"
+OUTPUT_FILE = PROJECT_ROOT / "src" / "USDM_schema_4_0.json"
 
 
 def find_usdm_schema():

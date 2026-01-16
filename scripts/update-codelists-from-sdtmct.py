@@ -16,7 +16,7 @@ from pathlib import Path
 # Paths
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
-CODELIST_INDEX = PROJECT_ROOT / "schemas" / "codelist_index.json"
+CODELIST_INDEX = PROJECT_ROOT / "src" / "codelist_index.json"
 CACHE_DIR = PROJECT_ROOT / "references" / "cdisc-rules-engine" / "resources" / "cache"
 
 
