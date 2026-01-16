@@ -1,5 +1,6 @@
 /**
  * Re-export of codelist_index.json with proper import assertion for Node.js 20+
+ * This file is used during development. During build, it gets replaced with embedded data.
  * @packageDocumentation
  */
 

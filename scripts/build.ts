@@ -1,5 +1,5 @@
 import { execSync } from "child_process"
-import { cpSync, existsSync, mkdirSync, rmSync } from "fs"
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "fs"
 import { join } from "path"
 
 const distDir = "dist"
@@ -25,8 +25,45 @@ const filesToKeep = [
   "codelists.d.ts.map"
 ]
 
+console.log("Embedding codelist data...")
+const codelistData = JSON.parse(readFileSync("src/codelist_index.json", "utf-8"))
+const codelistsSource = `/**
+ * Codelist index with embedded data
+ * This file is auto-generated during the build process
+ * @packageDocumentation
+ */
+
+export interface CodelistValue {
+  code: string
+  term: string
+  synonyms?: string | null
+  definition: string
+  [key: string]: any
+}
+
+export interface CodelistEntry {
+  codelist_code: string
+  extensible: boolean
+  values: CodelistValue[]
+  [key: string]: any
+}
+
+export interface CodelistIndex {
+  [key: string]: CodelistEntry
+}
+
+const codelistIndex: CodelistIndex = ${JSON.stringify(codelistData, null, 2)}
+
+export default codelistIndex
+`
+writeFileSync("src/codelists.ts", codelistsSource)
+
 console.log("Building TypeScript...")
 execSync("tsc", { stdio: "inherit" })
+
+console.log("Restoring codelists.ts template for development...")
+const templateSource = readFileSync("src/codelists.template.ts", "utf-8")
+writeFileSync("src/codelists.ts", templateSource)
 
 console.log("Cleaning dist directory to keep only exported files...")
 
