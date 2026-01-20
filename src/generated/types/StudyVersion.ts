@@ -127,7 +127,7 @@ export interface StudyVersion {
    * @modelName documentVersions
    * @modelRepresentation Relationship
    */
-  documentVersionIds?: StudyDefinitionDocumentVersion[]
+  documentVersionIds?: (string | StudyDefinitionDocumentVersion)[]
 
   /**
    * A USDM relationship between the StudyVersion and StudyDesign classes which identifies the set of study designs associated with the study version.

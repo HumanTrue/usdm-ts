@@ -47,7 +47,7 @@ export interface DocumentContentReference {
    * @modelName appliesTo
    * @modelRepresentation Relationship
    */
-  appliesToId: StudyDefinitionDocument
+  appliesToId: (string | StudyDefinitionDocument)
 
   /**
    * @cardinality 0..*

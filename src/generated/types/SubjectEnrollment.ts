@@ -81,7 +81,7 @@ export interface SubjectEnrollment {
    * @modelName forStudyCohort
    * @modelRepresentation Relationship
    */
-  forStudyCohortId?: StudyCohort
+  forStudyCohortId?: (string | StudyCohort)
 
   /**
    * A USDM relationship between the SubjectEnrollment and StudySite classes which identifies the study site to which the subject enrollment applies.
@@ -90,7 +90,7 @@ export interface SubjectEnrollment {
    * @modelName forStudySite
    * @modelRepresentation Relationship
    */
-  forStudySiteId?: StudySite
+  forStudySiteId?: (string | StudySite)
 
   /**
    * @cardinality 0..*

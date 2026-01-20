@@ -36,6 +36,6 @@ export interface IdentifierAbstract {
    * @modelName scope
    * @modelRepresentation Relationship
    */
-  scopeId: Organization
+  scopeId: (string | Organization)
 
 }

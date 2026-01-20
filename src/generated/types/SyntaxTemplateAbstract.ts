@@ -81,6 +81,6 @@ export interface SyntaxTemplateAbstract {
    * @modelName dictionary
    * @modelRepresentation Relationship
    */
-  dictionaryId?: SyntaxTemplateDictionary
+  dictionaryId?: (string | SyntaxTemplateDictionary)
 
 }

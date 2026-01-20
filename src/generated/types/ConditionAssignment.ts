@@ -36,7 +36,7 @@ export interface ConditionAssignment {
    * @modelName conditionTarget
    * @modelRepresentation Relationship
    */
-  conditionTargetId: ScheduledInstance
+  conditionTargetId: (string | ScheduledInstance)
 
   /**
    * @cardinality 0..*

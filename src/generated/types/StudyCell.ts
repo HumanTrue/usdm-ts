@@ -27,7 +27,7 @@ export interface StudyCell {
    * @modelName arm
    * @modelRepresentation Relationship
    */
-  armId: StudyArm
+  armId: (string | StudyArm)
 
   /**
    * A USDM relationship between the StudyCell and StudyEpoch classes which identifies the study epoch associated with a study cell.
@@ -36,7 +36,7 @@ export interface StudyCell {
    * @modelName epoch
    * @modelRepresentation Relationship
    */
-  epochId: StudyEpoch
+  epochId: (string | StudyEpoch)
 
   /**
    * A USDM relationship between the StudyCell and StudyElement classes which identifies the set of study elements associated with the study cell.
@@ -45,7 +45,7 @@ export interface StudyCell {
    * @modelName elements
    * @modelRepresentation Relationship
    */
-  elementIds: StudyElement[]
+  elementIds: (string | StudyElement)[]
 
   /**
    * @cardinality 0..*

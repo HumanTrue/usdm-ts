@@ -83,7 +83,7 @@ export interface Activity {
    * @modelName biomedicalConcepts
    * @modelRepresentation Relationship
    */
-  biomedicalConceptIds?: BiomedicalConcept[]
+  biomedicalConceptIds?: (string | BiomedicalConcept)[]
 
   /**
    * A USDM relationship within the Activity class which identifies the activity that follows the current activity in the display order.
@@ -92,7 +92,7 @@ export interface Activity {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: Activity
+  nextId?: (string | Activity)
 
   /**
    * A USDM relationship between the Activity and ScheduleTimeline classes which provides the details associated with an instance of the scheduled timeline related to the activity.
@@ -101,7 +101,7 @@ export interface Activity {
    * @modelName timeline
    * @modelRepresentation Relationship
    */
-  timelineId?: ScheduleTimeline
+  timelineId?: (string | ScheduleTimeline)
 
   /**
    * A USDM relationship within the Activity class which identifies the set of child activities associated with an activity.
@@ -110,7 +110,7 @@ export interface Activity {
    * @modelName children
    * @modelRepresentation Relationship
    */
-  childIds?: Activity[]
+  childIds?: (string | Activity)[]
 
   /**
    * A USDM relationship within the Activity class which identifies the activity that precedes the current activity in the display order.
@@ -119,7 +119,7 @@ export interface Activity {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: Activity
+  previousId?: (string | Activity)
 
   /**
    * A USDM relationship between the Activity and BiomedicalConceptSurrogate classes which identifies the set of biomedical concept surrogates associated with the activity.
@@ -128,7 +128,7 @@ export interface Activity {
    * @modelName bcSurrogates
    * @modelRepresentation Relationship
    */
-  bcSurrogateIds?: BiomedicalConceptSurrogate[]
+  bcSurrogateIds?: (string | BiomedicalConceptSurrogate)[]
 
   /**
    * A USDM relationship between the Activity and BiomedicalConceptCategory classes which identifies the set of biomedical concept categories associated with the activity.
@@ -137,7 +137,7 @@ export interface Activity {
    * @modelName bcCategories
    * @modelRepresentation Relationship
    */
-  bcCategoryIds?: BiomedicalConceptCategory[]
+  bcCategoryIds?: (string | BiomedicalConceptCategory)[]
 
   /**
    * @cardinality 0..*

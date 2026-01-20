@@ -59,7 +59,7 @@ export interface ScheduledInstanceAbstract {
    * @modelName defaultCondition
    * @modelRepresentation Relationship
    */
-  defaultConditionId?: ScheduledInstance
+  defaultConditionId?: (string | ScheduledInstance)
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and StudyEpoch classes which identifies the study epoch associated with a scheduled activity instance.
@@ -68,6 +68,6 @@ export interface ScheduledInstanceAbstract {
    * @modelName epoch
    * @modelRepresentation Relationship
    */
-  epochId?: StudyEpoch
+  epochId?: (string | StudyEpoch)
 
 }

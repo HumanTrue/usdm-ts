@@ -81,7 +81,7 @@ export interface StudyEpoch {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: StudyEpoch
+  previousId?: (string | StudyEpoch)
 
   /**
    * A USDM relationship within the StudyEpoch class which identifies the study epoch that chronologically follows the current study epoch.
@@ -90,7 +90,7 @@ export interface StudyEpoch {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: StudyEpoch
+  nextId?: (string | StudyEpoch)
 
   /**
    * @cardinality 0..*

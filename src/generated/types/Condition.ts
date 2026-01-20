@@ -96,7 +96,7 @@ export interface Condition extends SyntaxTemplateAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary
+  dictionaryId?: (string | SyntaxTemplateDictionary)
 
   /**
    * A USDM relationship between the Condition and the ScheduledActivityInstance or Activity classes which identifies the scheduled activity instance or activity to which the condition belongs.
@@ -105,7 +105,7 @@ export interface Condition extends SyntaxTemplateAbstract {
    * @modelName context
    * @modelRepresentation Relationship
    */
-  contextIds?: (Activity | ScheduledActivityInstance)[]
+  contextIds?: (string | Activity | ScheduledActivityInstance)[]
 
   /**
    * A USDM relationship between the Condition and the Activity, Procedure, BiomedicalConcept, BiomedicalConceptSurrogate, or BiomedicalConceptCategory classes which identifies the procedure, activity, biomedical concept, biomedical concept surrogate, or biomedical concept category that applies to the condition.
@@ -114,7 +114,7 @@ export interface Condition extends SyntaxTemplateAbstract {
    * @modelName appliesTo
    * @modelRepresentation Relationship
    */
-  appliesToIds?: (BiomedicalConceptCategory | Procedure | Activity | BiomedicalConcept | BiomedicalConceptSurrogate)[]
+  appliesToIds?: (string | BiomedicalConceptCategory | Procedure | Activity | BiomedicalConcept | BiomedicalConceptSurrogate)[]
 
   /**
    * @cardinality 0..*

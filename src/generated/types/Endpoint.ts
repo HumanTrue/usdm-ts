@@ -91,7 +91,7 @@ export interface Endpoint extends SyntaxTemplateAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary
+  dictionaryId?: (string | SyntaxTemplateDictionary)
 
   /**
    * A characterization or classification of the study endpoint that determines its category of importance relative to other study endpoints.

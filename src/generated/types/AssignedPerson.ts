@@ -81,7 +81,7 @@ export interface AssignedPerson {
    * @modelName organization
    * @modelRepresentation Relationship
    */
-  organizationId?: Organization
+  organizationId?: (string | Organization)
 
   /**
    * @cardinality 0..*

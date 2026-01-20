@@ -70,7 +70,7 @@ export interface ScheduledActivityInstance extends ScheduledInstanceAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom ScheduledInstance
    */
-  defaultConditionId?: ScheduledInstance
+  defaultConditionId?: (string | ScheduledInstance)
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and StudyEpoch classes which identifies the study epoch associated with a scheduled activity instance.
@@ -80,7 +80,7 @@ export interface ScheduledActivityInstance extends ScheduledInstanceAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom ScheduledInstance
    */
-  epochId?: StudyEpoch
+  epochId?: (string | StudyEpoch)
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and Activity classes which identifies the set of activities associated with a scheduled activity instance.
@@ -89,7 +89,7 @@ export interface ScheduledActivityInstance extends ScheduledInstanceAbstract {
    * @modelName activities
    * @modelRepresentation Relationship
    */
-  activityIds?: Activity[]
+  activityIds?: (string | Activity)[]
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and Encounter classes which defines the subject encounter associated with the ScheduleActivityInstance.
@@ -98,7 +98,7 @@ export interface ScheduledActivityInstance extends ScheduledInstanceAbstract {
    * @modelName encounter
    * @modelRepresentation Relationship
    */
-  encounterId?: Encounter
+  encounterId?: (string | Encounter)
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and ScheduleTimeline classes which provides the details associated with an instance of a scheduled timeline related to a scheduled activity instance.
@@ -107,7 +107,7 @@ export interface ScheduledActivityInstance extends ScheduledInstanceAbstract {
    * @modelName timeline
    * @modelRepresentation Relationship
    */
-  timelineId?: ScheduleTimeline
+  timelineId?: (string | ScheduleTimeline)
 
   /**
    * A USDM relationship between the ScheduledActivityInstance and ScheduleTimelineExit classes which provides the details associated with the exit from a timeline related to a scheduled activity instance.
@@ -116,7 +116,7 @@ export interface ScheduledActivityInstance extends ScheduledInstanceAbstract {
    * @modelName timelineExit
    * @modelRepresentation Relationship
    */
-  timelineExitId?: ScheduleTimelineExit
+  timelineExitId?: (string | ScheduleTimelineExit)
 
   /**
    * @cardinality 0..*

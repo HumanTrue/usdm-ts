@@ -151,7 +151,7 @@ export interface StudyAmendment {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: StudyAmendment
+  previousId?: (string | StudyAmendment)
 
   /**
    * A USDM relationship between the StudyAmendment and StudyAmendmentReason classes which identifies the primary reason for issuing the study amendment.

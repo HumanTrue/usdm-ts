@@ -104,7 +104,7 @@ export interface StudyRole {
    * @modelName organizations
    * @modelRepresentation Relationship
    */
-  organizationIds?: Organization[]
+  organizationIds?: (string | Organization)[]
 
   /**
    * A USDM relationship between the StudyRole and either StudyVersion or StudyDesign classes that identifies the study version or study design to which the study role applies.
@@ -113,7 +113,7 @@ export interface StudyRole {
    * @modelName appliesTo
    * @modelRepresentation Relationship
    */
-  appliesToIds?: (StudyVersion | StudyDesign)[]
+  appliesToIds?: (string | StudyVersion | StudyDesign)[]
 
   /**
    * @cardinality 0..*

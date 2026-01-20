@@ -104,7 +104,7 @@ export interface StudyDefinitionDocument {
    * @modelName children
    * @modelRepresentation Relationship
    */
-  childIds?: StudyDefinitionDocument[]
+  childIds?: (string | StudyDefinitionDocument)[]
 
   /**
    * A USDM relationship between the StudyDefinitionDocument and StudyDefinitionDocumentVersion classes which identifies the set of versions associated with the study definition document.

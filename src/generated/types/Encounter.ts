@@ -114,7 +114,7 @@ export interface Encounter {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: Encounter
+  nextId?: (string | Encounter)
 
   /**
    * A USDM relationship between the Encounter and TransitionRule classes which provides the details associated with a transition rule used to trigger the start of an encounter.
@@ -132,7 +132,7 @@ export interface Encounter {
    * @modelName scheduledAt
    * @modelRepresentation Relationship
    */
-  scheduledAtId?: Timing
+  scheduledAtId?: (string | Timing)
 
   /**
    * A USDM relationship within the Encounter class which identifies the encounter that chronologically precedes the current encounter.
@@ -141,7 +141,7 @@ export interface Encounter {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: Encounter
+  previousId?: (string | Encounter)
 
   /**
    * @cardinality 0..*

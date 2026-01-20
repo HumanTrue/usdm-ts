@@ -136,7 +136,7 @@ export interface Timing {
    * @modelName relativeToScheduledInstance
    * @modelRepresentation Relationship
    */
-  relativeToScheduledInstanceId?: ScheduledInstance
+  relativeToScheduledInstanceId?: (string | ScheduledInstance)
 
   /**
    * A USDM relationship between the Timing and ScheduledInstance classes which identifies the scheduled instance (e.g., scheduled activity instances or scheduled decision instances) to which the timing applies.
@@ -145,7 +145,7 @@ export interface Timing {
    * @modelName relativeFromScheduledInstance
    * @modelRepresentation Relationship
    */
-  relativeFromScheduledInstanceId: ScheduledInstance
+  relativeFromScheduledInstanceId: (string | ScheduledInstance)
 
   /**
    * @cardinality 0..*

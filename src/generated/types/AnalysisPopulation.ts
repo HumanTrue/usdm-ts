@@ -81,7 +81,7 @@ export interface AnalysisPopulation {
    * @modelName subsetOf
    * @modelRepresentation Relationship
    */
-  subsetOfIds?: PopulationDefinition[]
+  subsetOfIds?: (string | PopulationDefinition)[]
 
   /**
    * @cardinality 0..*

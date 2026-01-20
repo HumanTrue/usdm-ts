@@ -93,7 +93,7 @@ export interface EligibilityCriterion {
    * @modelName criterionItem
    * @modelRepresentation Relationship
    */
-  criterionItemId: EligibilityCriterionItem
+  criterionItemId: (string | EligibilityCriterionItem)
 
   /**
    * A USDM relationship within the EligibilityCriterion class which identifies the eligibility criterion that follows the current eligibility criterion in the display order.
@@ -102,7 +102,7 @@ export interface EligibilityCriterion {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: EligibilityCriterion
+  nextId?: (string | EligibilityCriterion)
 
   /**
    * A USDM relationship within the EligibilityCriterion class which identifies the eligibility criterion that precedes the current eligibility criterion in the display order.
@@ -111,7 +111,7 @@ export interface EligibilityCriterion {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: EligibilityCriterion
+  previousId?: (string | EligibilityCriterion)
 
   /**
    * @cardinality 0..*

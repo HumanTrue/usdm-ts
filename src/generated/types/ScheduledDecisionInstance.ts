@@ -67,7 +67,7 @@ export interface ScheduledDecisionInstance extends ScheduledInstanceAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom ScheduledInstance
    */
-  defaultConditionId?: ScheduledInstance
+  defaultConditionId?: (string | ScheduledInstance)
 
   /**
    * A USDM relationship between the ScheduledDecisionInstance and StudyEpoch classes which identifies the study epoch associated with a scheduled decision instance.
@@ -77,7 +77,7 @@ export interface ScheduledDecisionInstance extends ScheduledInstanceAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom ScheduledInstance
    */
-  epochId?: StudyEpoch
+  epochId?: (string | StudyEpoch)
 
   /**
    * A USDM relationship between the ScheduledDecisionInstance and ConditionAssignment classes which identifies the set of condition assignments associated with a scheduled decision instance.

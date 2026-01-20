@@ -42,7 +42,7 @@ export interface MedicalDeviceIdentifier extends IdentifierAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom Identifier
    */
-  scopeId: Organization
+  scopeId: (string | Organization)
 
   /**
    * A characterization or classification of the medical device identifier.

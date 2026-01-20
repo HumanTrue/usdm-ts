@@ -142,7 +142,7 @@ export interface StudyDesignPopulation extends PopulationDefinitionAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom PopulationDefinition
    */
-  criterionIds?: EligibilityCriterion[]
+  criterionIds?: (string | EligibilityCriterion)[]
 
   /**
    * A USDM relationship between the StudyDesignPopulation and StudyCohort classes which identifies the set of study cohorts associated with the study design population.

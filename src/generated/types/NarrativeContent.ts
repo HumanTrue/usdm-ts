@@ -80,7 +80,7 @@ export interface NarrativeContent {
    * @modelName contentItem
    * @modelRepresentation Relationship
    */
-  contentItemId?: NarrativeContentItem
+  contentItemId?: (string | NarrativeContentItem)
 
   /**
    * A USDM relationship within the NarrativeContent class which identifies the narrative content that precedes the current narrative content in the display order.
@@ -89,7 +89,7 @@ export interface NarrativeContent {
    * @modelName previous
    * @modelRepresentation Relationship
    */
-  previousId?: NarrativeContent
+  previousId?: (string | NarrativeContent)
 
   /**
    * A USDM relationship within the NarrativeContent class which identifies the narrative content that follows the current narrative content in the display order.
@@ -98,7 +98,7 @@ export interface NarrativeContent {
    * @modelName next
    * @modelRepresentation Relationship
    */
-  nextId?: NarrativeContent
+  nextId?: (string | NarrativeContent)
 
   /**
    * A USDM relationship within the NarrativeContent class which identifies the set of child content associated with an instance of narrative content.
@@ -107,7 +107,7 @@ export interface NarrativeContent {
    * @modelName children
    * @modelRepresentation Relationship
    */
-  childIds?: NarrativeContent[]
+  childIds?: (string | NarrativeContent)[]
 
   /**
    * @cardinality 0..*

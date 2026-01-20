@@ -90,7 +90,7 @@ export interface Characteristic extends SyntaxTemplateAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary
+  dictionaryId?: (string | SyntaxTemplateDictionary)
 
   /**
    * @cardinality 0..*

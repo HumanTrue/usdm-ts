@@ -41,7 +41,7 @@ export interface AdministrableProductIdentifier extends IdentifierAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom Identifier
    */
-  scopeId: Organization
+  scopeId: (string | Organization)
 
   /**
    * @cardinality 0..*

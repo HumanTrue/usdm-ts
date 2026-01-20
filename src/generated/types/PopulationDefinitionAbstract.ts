@@ -128,6 +128,6 @@ export interface PopulationDefinitionAbstract {
    * @modelName criteria
    * @modelRepresentation Relationship
    */
-  criterionIds?: EligibilityCriterion[]
+  criterionIds?: (string | EligibilityCriterion)[]
 
 }

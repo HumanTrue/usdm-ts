@@ -103,7 +103,7 @@ export interface ScheduleTimeline {
    * @modelName entry
    * @modelRepresentation Relationship
    */
-  entryId: ScheduledInstance
+  entryId: (string | ScheduledInstance)
 
   /**
    * A USDM relationship between the ScheduleTimeline and ScheduleTimelineExit classes which identifies the set of exits from the scheduled timeline.

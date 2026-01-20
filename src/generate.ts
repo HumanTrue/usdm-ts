@@ -123,8 +123,9 @@ class TypeScriptInterfaceGenerator {
 
   /**
    * Convert schema type to TypeScript type
+   * If relationshipType is "Ref", creates a union of string | ObjectType
    */
-  private convertType(types: Array<string | { $ref: string }>): string {
+  private convertType(types: Array<string | { $ref: string }>, relationshipType?: string): string {
     const tsTypes = types.map(type => {
       if (typeof type === "string") {
         return type
@@ -160,7 +161,14 @@ class TypeScriptInterfaceGenerator {
       }
     })
 
-    return mappedTypes.length > 1 ? mappedTypes.join(" | ") : (mappedTypes[0] ?? "unknown")
+    let baseType = mappedTypes.length > 1 ? mappedTypes.join(" | ") : (mappedTypes[0] ?? "unknown")
+
+    // If this is a Ref relationship and doesn't already include string, add string as an alternative
+    if (relationshipType === "Ref" && !mappedTypes.includes("string")) {
+      baseType = `string | ${baseType}`
+    }
+
+    return baseType
   }
 
   /**
@@ -265,7 +273,7 @@ class TypeScriptInterfaceGenerator {
 
     for (const [attrName, attr] of Object.entries(entity.Attributes)) {
       const { optional, isArray } = this.parseCardinality(attr.Cardinality)
-      let baseType = this.convertType(attr.Type)
+      let baseType = this.convertType(attr.Type, attr["Relationship Type"])
       if (baseType.includes(" | ")) {
         baseType = `(${baseType})`
       }
@@ -464,12 +472,13 @@ class ZodSchemaGenerator {
   }
 
   /**
-   * Convert schema type to Zod schema, handling abstract class unions
+   * Convert schema type to Zod schema, handling abstract class unions and Ref relationships
    */
   private convertTypeToZod(
     types: Array<string | { $ref: string }>,
     cardinality: { optional: boolean; isArray: boolean; min?: number; max?: number },
-    currentEntity?: string
+    currentEntity?: string,
+    relationshipType?: string
   ): string {
     const zodTypes = types.map(type => {
       if (typeof type === "string") {
@@ -514,6 +523,11 @@ class ZodSchemaGenerator {
     let baseSchema = zodTypes.length > 1
       ? `z.union([${zodTypes.join(", ")}])`
       : (zodTypes[0] ?? "z.unknown()")
+
+    // If this is a Ref relationship and doesn't already include string, add string as an alternative
+    if (relationshipType === "Ref" && !zodTypes.some(t => t === "z.string()")) {
+      baseSchema = `z.union([z.string(), ${baseSchema}])`
+    }
 
     // Handle arrays
     if (cardinality.isArray) {
@@ -618,7 +632,7 @@ class ZodSchemaGenerator {
     // Generate properties
     for (const [attrName, attr] of Object.entries(allAttributes)) {
       const cardinalityInfo = this.parseCardinality(attr.Cardinality)
-      const zodType = this.convertTypeToZod(attr.Type, cardinalityInfo, name)
+      const zodType = this.convertTypeToZod(attr.Type, cardinalityInfo, name, attr["Relationship Type"])
 
       // Add description as comment
       if (attr.Definition != null) {

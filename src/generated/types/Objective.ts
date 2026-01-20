@@ -92,7 +92,7 @@ export interface Objective extends SyntaxTemplateAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary
+  dictionaryId?: (string | SyntaxTemplateDictionary)
 
   /**
    * A characterization or classification of the study objective that determines its category of importance relative to other study objectives.

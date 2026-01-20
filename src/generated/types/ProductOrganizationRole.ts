@@ -72,7 +72,7 @@ export interface ProductOrganizationRole {
    * @modelName appliesTo
    * @modelRepresentation Relationship
    */
-  appliesToIds?: (AdministrableProduct | MedicalDevice)[]
+  appliesToIds?: (string | AdministrableProduct | MedicalDevice)[]
 
   /**
    * A USDM relationship between the ProductOrganizationRole and Organization classes which identifies the organization associated with the product organization role.
@@ -81,7 +81,7 @@ export interface ProductOrganizationRole {
    * @modelName organization
    * @modelRepresentation Relationship
    */
-  organizationId: Organization
+  organizationId: (string | Organization)
 
   /**
    * @cardinality 0..*

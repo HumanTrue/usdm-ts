@@ -84,7 +84,7 @@ export interface Estimand {
    * @modelName analysisPopulation
    * @modelRepresentation Relationship
    */
-  analysisPopulationId: AnalysisPopulation
+  analysisPopulationId: (string | AnalysisPopulation)
 
   /**
    * A USDM relationship between the Estimand and Endpoint classes which provides the details associated with an instance of the variable of interest within a study endpoint used to partially define a study estimand.
@@ -93,7 +93,7 @@ export interface Estimand {
    * @modelName variableOfInterest
    * @modelRepresentation Relationship
    */
-  variableOfInterestId: Endpoint
+  variableOfInterestId: (string | Endpoint)
 
   /**
    * A USDM relationship between the Estimand and IntercurrentEvent classes which identifies the set of intercurrent events associated with a study estimand.
@@ -111,7 +111,7 @@ export interface Estimand {
    * @modelName interventions
    * @modelRepresentation Relationship
    */
-  interventionIds: StudyIntervention[]
+  interventionIds: (string | StudyIntervention)[]
 
   /**
    * @cardinality 0..*

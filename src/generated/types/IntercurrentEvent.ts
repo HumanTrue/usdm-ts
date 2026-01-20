@@ -90,7 +90,7 @@ export interface IntercurrentEvent extends SyntaxTemplateAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom SyntaxTemplate
    */
-  dictionaryId?: SyntaxTemplateDictionary
+  dictionaryId?: (string | SyntaxTemplateDictionary)
 
   /**
    * A textual description of the planned strategy to manage and/or mitigate intercurrent events.

@@ -118,7 +118,7 @@ export interface Administration {
    * @modelName administrableProduct
    * @modelRepresentation Relationship
    */
-  administrableProductId?: AdministrableProduct
+  administrableProductId?: (string | AdministrableProduct)
 
   /**
    * A USDM relationship between the Administration and MedicalDevice classes which identifies the medical device associated with an instance of product, agent, or therapy administration.
@@ -127,7 +127,7 @@ export interface Administration {
    * @modelName medicalDevice
    * @modelRepresentation Relationship
    */
-  medicalDeviceId?: MedicalDevice
+  medicalDeviceId?: (string | MedicalDevice)
 
   /**
    * @cardinality 0..*

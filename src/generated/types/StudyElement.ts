@@ -80,7 +80,7 @@ export interface StudyElement {
    * @modelName studyInterventions
    * @modelRepresentation Relationship
    */
-  studyInterventionIds?: StudyIntervention[]
+  studyInterventionIds?: (string | StudyIntervention)[]
 
   /**
    * A USDM relationship between the StudyElement and TransitionRule classes which provides the details associated with a transition rule used to trigger the start of a study element.

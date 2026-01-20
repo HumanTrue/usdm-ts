@@ -143,7 +143,7 @@ export interface StudyCohort extends PopulationDefinitionAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom PopulationDefinition
    */
-  criterionIds?: EligibilityCriterion[]
+  criterionIds?: (string | EligibilityCriterion)[]
 
   /**
    * A USDM relationship between the StudyCohort and Characteristic classes which identifies the set of subject characteristics associated with the study cohort.
@@ -161,7 +161,7 @@ export interface StudyCohort extends PopulationDefinitionAbstract {
    * @modelName indications
    * @modelRepresentation Relationship
    */
-  indicationIds?: Indication[]
+  indicationIds?: (string | Indication)[]
 
   /**
    * @cardinality 0..*

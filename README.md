@@ -32,6 +32,71 @@ const study: Study = {
 ```
 <!-- EXAMPLE_USAGE_END -->
 
+## Reference Fields: String IDs vs Full Objects
+
+All reference fields (marked with `Relationship Type: Ref` in the USDM schema) support **both string IDs and full object references** for maximum flexibility:
+
+```typescript
+import type { ScheduledActivityInstance, StudyEpoch } from "usdm-ts/types"
+
+// ✅ Option 1: Use string IDs (schema conformance)
+const instance1: ScheduledActivityInstance = {
+  id: "instance1",
+  name: "Baseline Visit",
+  instanceType: "ScheduledActivityInstance",
+  epochId: "epoch1"  // Just the ID
+}
+
+// ✅ Option 2: Use full objects (API convenience)
+const instance2: ScheduledActivityInstance = {
+  id: "instance2",
+  name: "Treatment Visit",
+  instanceType: "ScheduledActivityInstance",
+  epochId: {  // Full object
+    id: "epoch2",
+    name: "Treatment Phase",
+    instanceType: "StudyEpoch",
+    // ... other epoch fields
+  }
+}
+```
+
+This dual-format support applies to all reference relationships including:
+
+- `epochId` in `ScheduledActivityInstance` and `StudyCell`
+- `entryId` in `ScheduleTimeline`
+- `relativeFromScheduledInstanceId` and `relativeToScheduledInstanceId` in `Timing`
+- `scopeId` in identifier types (`StudyIdentifier`, `MedicalDeviceIdentifier`, etc.)
+- `criterionItemId` in `EligibilityCriterion`
+- And all other fields with `Relationship Type: Ref`
+
+### Validation with Zod
+
+The generated Zod schemas also support both formats:
+
+```typescript
+import { ScheduledActivityInstanceSchema } from "usdm-ts/zod"
+
+// Both formats validate successfully
+ScheduledActivityInstanceSchema.parse({
+  id: "instance1",
+  name: "Visit 1",
+  instanceType: "ScheduledActivityInstance",
+  epochId: "epoch1"  // ✅ String validates
+})
+
+ScheduledActivityInstanceSchema.parse({
+  id: "instance2",
+  name: "Visit 2",
+  instanceType: "ScheduledActivityInstance",
+  epochId: {  // ✅ Object validates
+    id: "epoch2",
+    name: "Treatment",
+    instanceType: "StudyEpoch"
+  }
+})
+```
+
 # Building / Development
 
 We use `pnpm` as our package manager. To install dependencies, run:

@@ -82,7 +82,7 @@ export interface BiomedicalConceptCategory {
    * @modelName members
    * @modelRepresentation Relationship
    */
-  memberIds?: BiomedicalConcept[]
+  memberIds?: (string | BiomedicalConcept)[]
 
   /**
    * A USDM relationship within the BiomedicalConceptCategory class which identifies the set of child categories of a biomedical concept.
@@ -91,7 +91,7 @@ export interface BiomedicalConceptCategory {
    * @modelName children
    * @modelRepresentation Relationship
    */
-  childIds?: BiomedicalConceptCategory[]
+  childIds?: (string | BiomedicalConceptCategory)[]
 
   /**
    * @cardinality 0..*

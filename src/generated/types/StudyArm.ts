@@ -104,7 +104,7 @@ export interface StudyArm {
    * @modelName populations
    * @modelRepresentation Relationship
    */
-  populationIds?: PopulationDefinition[]
+  populationIds?: (string | PopulationDefinition)[]
 
   /**
    * @cardinality 0..*

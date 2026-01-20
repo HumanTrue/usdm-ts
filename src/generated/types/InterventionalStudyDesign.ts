@@ -255,7 +255,7 @@ export interface InterventionalStudyDesign extends StudyDesignAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  documentVersionIds?: StudyDefinitionDocumentVersion[]
+  documentVersionIds?: (string | StudyDefinitionDocumentVersion)[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyElement classes which identifies the set of study elements associated with the interventional study design.
@@ -275,7 +275,7 @@ export interface InterventionalStudyDesign extends StudyDesignAbstract {
    * @modelRepresentation Relationship
    * @inheritedFrom StudyDesign
    */
-  studyInterventionIds?: StudyIntervention[]
+  studyInterventionIds?: (string | StudyIntervention)[]
 
   /**
    * A USDM relationship between the InterventionalStudyDesign and StudyEpoch classes which identifies the set of study epochs associated with the interventional study design.

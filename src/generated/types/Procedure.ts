@@ -93,7 +93,7 @@ export interface Procedure {
    * @modelName studyIntervention
    * @modelRepresentation Relationship
    */
-  studyInterventionId?: StudyIntervention
+  studyInterventionId?: (string | StudyIntervention)
 
   /**
    * @cardinality 0..*

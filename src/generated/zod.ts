@@ -82,7 +82,7 @@ import type {
   Substance,
   SyntaxTemplateDictionary,
   Timing,
-  TransitionRule
+  TransitionRule,
 } from "./types/index"
 
 /**
@@ -97,7 +97,7 @@ export const AliasCodeSchema: z.ZodSchema<AliasCode> = z.object({
   // Alternative combinations of symbols used to represent aliases or alternatives to the standard code.
   standardCodeAliases: z.array(z.lazy(() => CodeSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -112,7 +112,7 @@ export const QuantitySchema: z.ZodSchema<Quantity> = z.object({
   // The type of unit of measure being used to express a quantity.
   unit: z.lazy(() => AliasCodeSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -129,7 +129,7 @@ export const RangeSchema: z.ZodSchema<Range> = z.object({
   // An indication as to whether the value range is almost, but not quite, exact.
   isApproximate: z.boolean(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -138,7 +138,7 @@ export const ExtensionClassSchema: z.ZodSchema<ExtensionClass> = z.object({
   id: z.string(),
   url: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(1),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -156,7 +156,7 @@ export const ExtensionAttributeSchema: z.ZodSchema<ExtensionAttribute> = z.objec
   valueAliasCode: z.lazy(() => AliasCodeSchema).optional(),
   valueExtensionClass: z.lazy(() => ExtensionClassSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -175,7 +175,7 @@ export const CodeSchema: z.ZodSchema<Code> = z.object({
   // Standardized or dictionary-derived human readable text associated with a code.
   decode: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -190,7 +190,7 @@ export const CommentAnnotationSchema: z.ZodSchema<CommentAnnotation> = z.object(
   // A symbol or combination of symbols which is assigned to the comment annotation.
   codes: z.array(z.lazy(() => CodeSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -207,7 +207,7 @@ export const AbbreviationSchema: z.ZodSchema<Abbreviation> = z.object({
   // A brief written record relevant to the abbreviation.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -226,7 +226,7 @@ export const DurationSchema: z.ZodSchema<Duration> = z.object({
   // The explanation for why the event duration will vary within and/or across subjects.
   reasonDurationWillVary: z.string().optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -251,7 +251,7 @@ export const AddressSchema: z.ZodSchema<Address> = z.object({
   // A sovereign nation occupying a distinct territory and ruled by an autonomous government.
   country: z.lazy(() => CodeSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -270,7 +270,7 @@ export const StudySiteSchema: z.ZodSchema<StudySite> = z.object({
   // The country in which the study site is located.
   country: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -295,7 +295,7 @@ export const OrganizationSchema: z.ZodSchema<Organization> = z.object({
   // A USDM relationship between the Organization and StudySite classes which identifies the set of study sites managed by the organization.
   managedSites: z.array(z.lazy(() => StudySiteSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -308,9 +308,9 @@ export const AdministrableProductIdentifierSchema: z.ZodSchema<AdministrableProd
   // An instance of structured text that represents the administrable product.
   text: z.string(),
   // A USDM relationship between the AdministrableProductIdentifier and Organization class which provides the details associated with which provides the details associated with each organization that has assigned the administrable product identifier.
-  scopeId: z.lazy(() => OrganizationSchema),
+  scopeId: z.union([z.string(), z.lazy(() => OrganizationSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -329,7 +329,7 @@ export const AdministrableProductPropertySchema: z.ZodSchema<AdministrableProduc
   // The numeric value associated with an administrable product property.
   quantity: z.lazy(() => QuantitySchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -350,7 +350,7 @@ export const StrengthSchema: z.ZodSchema<Strength> = z.object({
   // The divisor of a fraction.
   denominator: z.lazy(() => QuantitySchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -373,7 +373,7 @@ export const SubstanceSchema: z.ZodSchema<Substance> = z.object({
   // A USDM relationship within the Substance class that identifies the association between two substances, one of which is used as a reference for the other.
   referenceSubstance: z.lazy(() => SubstanceSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -388,7 +388,7 @@ export const IngredientSchema: z.ZodSchema<Ingredient> = z.object({
   // A USDM relationship between the Ingredient and Substance classes that identifies the substance associated with the ingredient.
   substance: z.lazy(() => SubstanceSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -421,7 +421,7 @@ export const AdministrableProductSchema: z.ZodSchema<AdministrableProduct> = z.o
   // A USDM relationship between the AdministrableProduct and Ingredient classes which provides the set of ingredients related to the administrable product.
   ingredients: z.array(z.lazy(() => IngredientSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -434,11 +434,11 @@ export const MedicalDeviceIdentifierSchema: z.ZodSchema<MedicalDeviceIdentifier>
   // An instance of structured text that represents the medical device identifier.
   text: z.string(),
   // A USDM relationship between the MedicalDeviceIdentifier and Organization classes which provides the details associated with each organization that has assigned the identifier.
-  scopeId: z.lazy(() => OrganizationSchema),
+  scopeId: z.union([z.string(), z.lazy(() => OrganizationSchema)]),
   // A characterization or classification of the medical device identifier.
   type: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -463,11 +463,11 @@ export const MedicalDeviceSchema: z.ZodSchema<MedicalDevice> = z.object({
   // A brief written record relevant to the medical device.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the MedicalDevice and AdministrableProduct classes which identifies the administrable product that is an integral component of the medical device.
-  embeddedProductId: z.lazy(() => AdministrableProductSchema).optional(),
+  embeddedProductId: z.union([z.string(), z.lazy(() => AdministrableProductSchema)]).optional(),
   // A USDM relationship between the MedicalDevice and MedicalDeviceIdentifier classes which provides the set of identifiers related to the medical device.
   identifiers: z.array(z.lazy(() => MedicalDeviceIdentifierSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -494,11 +494,11 @@ export const AdministrationSchema: z.ZodSchema<Administration> = z.object({
   // A brief written record relevant to the administration of the product, agent, or therapy.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the Administration and AdministrableProductDefinition classes which identifies the administrable product associated with the administration of the product, agent, or therapy.
-  administrableProductId: z.lazy(() => AdministrableProductSchema).optional(),
+  administrableProductId: z.union([z.string(), z.lazy(() => AdministrableProductSchema)]).optional(),
   // A USDM relationship between the Administration and MedicalDevice classes which identifies the medical device associated with an instance of product, agent, or therapy administration.
-  medicalDeviceId: z.lazy(() => MedicalDeviceSchema).optional(),
+  medicalDeviceId: z.union([z.string(), z.lazy(() => MedicalDeviceSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -527,7 +527,7 @@ export const StudyInterventionSchema: z.ZodSchema<StudyIntervention> = z.object(
   // A USDM relationship between the StudyIntervention and AgentAdministration classes which identifies the set of agent administrations associated with the study intervention.
   administrations: z.array(z.lazy(() => AdministrationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -550,9 +550,9 @@ export const ProcedureSchema: z.ZodSchema<Procedure> = z.object({
   // A brief written record relevant to the procedure.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the Procedure and StudyInterventionclasses which provides the details associated with an instance of an intervention performed during the conduct of a procedure.
-  studyInterventionId: z.lazy(() => StudyInterventionSchema).optional(),
+  studyInterventionId: z.union([z.string(), z.lazy(() => StudyInterventionSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -571,7 +571,7 @@ export const ResponseCodeSchema: z.ZodSchema<ResponseCode> = z.object({
   // The literal value of a response code.
   code: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -598,7 +598,7 @@ export const BiomedicalConceptPropertySchema: z.ZodSchema<BiomedicalConceptPrope
   // A USDM relationship between the BiomedicalConceptProperty and ResponseCode classes which identifies the set of response codes associated with the biomedical concept property.
   responseCodes: z.array(z.lazy(() => ResponseCodeSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -623,7 +623,7 @@ export const BiomedicalConceptSchema: z.ZodSchema<BiomedicalConcept> = z.object(
   // A USDM relationship between the BiomedicalConcept and BiomedicalConceptProperty classes which identifies the set of properties associated with the biomedical concept.
   properties: z.array(z.lazy(() => BiomedicalConceptPropertySchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -634,7 +634,7 @@ export const BiomedicalConceptSchema: z.ZodSchema<BiomedicalConcept> = z.object(
 export const ScheduleTimelineExitSchema: z.ZodSchema<ScheduleTimelineExit> = z.object({
   id: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -665,11 +665,11 @@ export const TimingSchema: z.ZodSchema<Timing> = z.object({
   // The latest chronological value of an allowable period of time during which a temporal event takes place.
   windowUpper: z.string().optional(),
   // A USDM relationship between the Timing and ScheduledInstance classes which identifies the scheduled instance (e.g., scheduled activity instances or scheduled decision instances) to which the timing is relative to.
-  relativeToScheduledInstanceId: z.lazy(() => ScheduledInstanceSchema).optional(),
+  relativeToScheduledInstanceId: z.union([z.string(), z.lazy(() => ScheduledInstanceSchema)]).optional(),
   // A USDM relationship between the Timing and ScheduledInstance classes which identifies the scheduled instance (e.g., scheduled activity instances or scheduled decision instances) to which the timing applies.
-  relativeFromScheduledInstanceId: z.lazy(() => ScheduledInstanceSchema),
+  relativeFromScheduledInstanceId: z.union([z.string(), z.lazy(() => ScheduledInstanceSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -694,13 +694,13 @@ export const ScheduleTimelineSchema: z.ZodSchema<ScheduleTimeline> = z.object({
   // A USDM relationship between the ScheduleTimeline and ScheduledInstance classes which identifies the set of scheduled instances (e.g., scheduled activity instances or scheduled decision instances) associated with the scheduled timeline.
   instances: z.array(z.lazy(() => ScheduledInstanceSchema)).min(0).optional(),
   // A USDM relationship between the ScheduleTimeline and ScheduledInstance classes which defines the entry into a scheduled instance (e.g., scheduled activity instances or scheduled decision instances) for a timeline.
-  entryId: z.lazy(() => ScheduledInstanceSchema),
+  entryId: z.union([z.string(), z.lazy(() => ScheduledInstanceSchema)]),
   // A USDM relationship between the ScheduleTimeline and ScheduleTimelineExit classes which identifies the set of exits from the scheduled timeline.
   exits: z.array(z.lazy(() => ScheduleTimelineExitSchema)).min(0).optional(),
   // A USDM relationship between the ScheduleTimeline and Timing classes which identifies the set of timings associated with the scheduled timeline.
   timings: z.array(z.lazy(() => TimingSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -721,7 +721,7 @@ export const BiomedicalConceptSurrogateSchema: z.ZodSchema<BiomedicalConceptSurr
   // A brief written record relevant to the biomedical concept surrogate.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -742,11 +742,11 @@ export const BiomedicalConceptCategorySchema: z.ZodSchema<BiomedicalConceptCateg
   // A brief written record relevant to the biomedical concept category.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the BiomedicalConceptCategory and BiomedicalConcept classes which identifies the set of biomedical concept members associated with the biomedical concept category.
-  memberIds: z.array(z.lazy(() => BiomedicalConceptSchema)).min(0).optional(),
+  memberIds: z.array(z.union([z.string(), z.lazy(() => BiomedicalConceptSchema)])).min(0).optional(),
   // A USDM relationship within the BiomedicalConceptCategory class which identifies the set of child categories of a biomedical concept.
-  childIds: z.array(z.lazy(() => BiomedicalConceptCategorySchema)).min(0).optional(),
+  childIds: z.array(z.union([z.string(), z.lazy(() => BiomedicalConceptCategorySchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -767,21 +767,21 @@ export const ActivitySchema: z.ZodSchema<Activity> = z.object({
   // A USDM relationship between the Activity and Procedure classes which identifies the set of defined procedures associated with the activity.
   definedProcedures: z.array(z.lazy(() => ProcedureSchema)).min(0).optional(),
   // A USDM relationship between the Activity and BiomedicalConcept classes which identifies the set of biomedical concepts associated with the activity.
-  biomedicalConceptIds: z.array(z.lazy(() => BiomedicalConceptSchema)).min(0).optional(),
+  biomedicalConceptIds: z.array(z.union([z.string(), z.lazy(() => BiomedicalConceptSchema)])).min(0).optional(),
   // A USDM relationship within the Activity class which identifies the activity that follows the current activity in the display order.
-  nextId: z.lazy(() => ActivitySchema).optional(),
+  nextId: z.union([z.string(), z.lazy(() => ActivitySchema)]).optional(),
   // A USDM relationship between the Activity and ScheduleTimeline classes which provides the details associated with an instance of the scheduled timeline related to the activity.
-  timelineId: z.lazy(() => ScheduleTimelineSchema).optional(),
+  timelineId: z.union([z.string(), z.lazy(() => ScheduleTimelineSchema)]).optional(),
   // A USDM relationship within the Activity class which identifies the set of child activities associated with an activity.
-  childIds: z.array(z.lazy(() => ActivitySchema)).min(0).optional(),
+  childIds: z.array(z.union([z.string(), z.lazy(() => ActivitySchema)])).min(0).optional(),
   // A USDM relationship within the Activity class which identifies the activity that precedes the current activity in the display order.
-  previousId: z.lazy(() => ActivitySchema).optional(),
+  previousId: z.union([z.string(), z.lazy(() => ActivitySchema)]).optional(),
   // A USDM relationship between the Activity and BiomedicalConceptSurrogate classes which identifies the set of biomedical concept surrogates associated with the activity.
-  bcSurrogateIds: z.array(z.lazy(() => BiomedicalConceptSurrogateSchema)).min(0).optional(),
+  bcSurrogateIds: z.array(z.union([z.string(), z.lazy(() => BiomedicalConceptSurrogateSchema)])).min(0).optional(),
   // A USDM relationship between the Activity and BiomedicalConceptCategory classes which identifies the set of biomedical concept categories associated with the activity.
-  bcCategoryIds: z.array(z.lazy(() => BiomedicalConceptCategorySchema)).min(0).optional(),
+  bcCategoryIds: z.array(z.union([z.string(), z.lazy(() => BiomedicalConceptCategorySchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -802,9 +802,9 @@ export const AnalysisPopulationSchema: z.ZodSchema<AnalysisPopulation> = z.objec
   // A brief written record relevant to the analysis population.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the AnalysisPopulation and PopulationDefinition classes which identifies the population definition of which the analysis population is a subset.
-  subsetOfIds: z.array(z.lazy(() => PopulationDefinitionSchema)).min(0).optional(),
+  subsetOfIds: z.array(z.union([z.string(), z.lazy(() => PopulationDefinitionSchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -825,7 +825,7 @@ export const PersonNameSchema: z.ZodSchema<PersonName> = z.object({
   // An affix occurring at the end of the person name, usually denoting educational or professional degrees and certifications, and/or filial rank.
   suffixes: z.array(z.string()).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -846,9 +846,9 @@ export const AssignedPersonSchema: z.ZodSchema<AssignedPerson> = z.object({
   // An identifying designation related to the assigned person's occupation.
   jobTitle: z.string(),
   // A USDM relationship between the AssignedPerson and Organization classes that identifies that organization to which the assigned person belongs.
-  organizationId: z.lazy(() => OrganizationSchema).optional(),
+  organizationId: z.union([z.string(), z.lazy(() => OrganizationSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -869,7 +869,7 @@ export const BiospecimenRetentionSchema: z.ZodSchema<BiospecimenRetention> = z.o
   // An indication as to whether retained biospecimens contain DNA.
   includesDNA: z.boolean().optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -884,7 +884,7 @@ export const ParameterMapSchema: z.ZodSchema<ParameterMap> = z.object({
   // The reference for a tag used in programming languages, such as a markup language (e.g., HTML, XML), to store attributes and elements.
   reference: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -903,7 +903,7 @@ export const SyntaxTemplateDictionarySchema: z.ZodSchema<SyntaxTemplateDictionar
   // A USDM relationship between the SyntaxTemplateDictionary and ParameterMap classes which identifies the set of parameter maps (parameter map entries) associated with a syntax template dictionary.
   parameterMaps: z.array(z.lazy(() => ParameterMapSchema)).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -924,9 +924,9 @@ export const CharacteristicSchema: z.ZodSchema<Characteristic> = z.object({
   // A brief written record relevant to the characteristic.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the Characteristic and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to characteristics.
-  dictionaryId: z.lazy(() => SyntaxTemplateDictionarySchema).optional(),
+  dictionaryId: z.union([z.string(), z.lazy(() => SyntaxTemplateDictionarySchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -947,11 +947,11 @@ export const StudyEpochSchema: z.ZodSchema<StudyEpoch> = z.object({
   // A brief written record relevant to the study epoch.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship within the StudyEpoch class which identifies the study epoch that chronologically precedes the current study epoch.
-  previousId: z.lazy(() => StudyEpochSchema).optional(),
+  previousId: z.union([z.string(), z.lazy(() => StudyEpochSchema)]).optional(),
   // A USDM relationship within the StudyEpoch class which identifies the study epoch that chronologically follows the current study epoch.
-  nextId: z.lazy(() => StudyEpochSchema).optional(),
+  nextId: z.union([z.string(), z.lazy(() => StudyEpochSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -970,7 +970,7 @@ export const TransitionRuleSchema: z.ZodSchema<TransitionRule> = z.object({
   // An instance of unstructured text that represents the transition rule.
   text: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -997,15 +997,15 @@ export const EncounterSchema: z.ZodSchema<Encounter> = z.object({
   // A USDM relationship between the Encounter and TransitionRule classes which provides the details associated with a transition rule used to trigger the end of an encounter.
   transitionEndRule: z.lazy(() => TransitionRuleSchema).optional(),
   // A USDM relationship within the Encounter class which identifies the encounter that chronologically follows the current encounter.
-  nextId: z.lazy(() => EncounterSchema).optional(),
+  nextId: z.union([z.string(), z.lazy(() => EncounterSchema)]).optional(),
   // A USDM relationship between the Encounter and TransitionRule classes which provides the details associated with a transition rule used to trigger the start of an encounter.
   transitionStartRule: z.lazy(() => TransitionRuleSchema).optional(),
   // A USDM relationship between the Encounter and Timing classes which provides information related to the scheduled timing of an encounter.
-  scheduledAtId: z.lazy(() => TimingSchema).optional(),
+  scheduledAtId: z.union([z.string(), z.lazy(() => TimingSchema)]).optional(),
   // A USDM relationship within the Encounter class which identifies the encounter that chronologically precedes the current encounter.
-  previousId: z.lazy(() => EncounterSchema).optional(),
+  previousId: z.union([z.string(), z.lazy(() => EncounterSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1022,19 +1022,19 @@ export const ScheduledActivityInstanceSchema: z.ZodSchema<ScheduledActivityInsta
   // A narrative representation of the scheduled activity instance.
   description: z.string().optional(),
   // A USDM relationship within the ScheduledActivityInstance class which identifies the default condition within a scheduled activity instance.
-  defaultConditionId: z.lazy(() => ScheduledInstanceSchema).optional(),
+  defaultConditionId: z.union([z.string(), z.lazy(() => ScheduledInstanceSchema)]).optional(),
   // A USDM relationship between the ScheduledActivityInstance and StudyEpoch classes which identifies the study epoch associated with a scheduled activity instance.
-  epochId: z.lazy(() => StudyEpochSchema).optional(),
+  epochId: z.union([z.string(), z.lazy(() => StudyEpochSchema)]).optional(),
   // A USDM relationship between the ScheduledActivityInstance and Activity classes which identifies the set of activities associated with a scheduled activity instance.
-  activityIds: z.array(z.lazy(() => ActivitySchema)).min(0).optional(),
+  activityIds: z.array(z.union([z.string(), z.lazy(() => ActivitySchema)])).min(0).optional(),
   // A USDM relationship between the ScheduledActivityInstance and Encounter classes which defines the subject encounter associated with the ScheduleActivityInstance.
-  encounterId: z.lazy(() => EncounterSchema).optional(),
+  encounterId: z.union([z.string(), z.lazy(() => EncounterSchema)]).optional(),
   // A USDM relationship between the ScheduledActivityInstance and ScheduleTimeline classes which provides the details associated with an instance of a scheduled timeline related to a scheduled activity instance.
-  timelineId: z.lazy(() => ScheduleTimelineSchema).optional(),
+  timelineId: z.union([z.string(), z.lazy(() => ScheduleTimelineSchema)]).optional(),
   // A USDM relationship between the ScheduledActivityInstance and ScheduleTimelineExit classes which provides the details associated with the exit from a timeline related to a scheduled activity instance.
-  timelineExitId: z.lazy(() => ScheduleTimelineExitSchema).optional(),
+  timelineExitId: z.union([z.string(), z.lazy(() => ScheduleTimelineExitSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1055,13 +1055,13 @@ export const ConditionSchema: z.ZodSchema<Condition> = z.object({
   // A brief written record relevant to the condition.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the Condition and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to conditions.
-  dictionaryId: z.lazy(() => SyntaxTemplateDictionarySchema).optional(),
+  dictionaryId: z.union([z.string(), z.lazy(() => SyntaxTemplateDictionarySchema)]).optional(),
   // A USDM relationship between the Condition and the ScheduledActivityInstance or Activity classes which identifies the scheduled activity instance or activity to which the condition belongs.
-  contextIds: z.array(z.union([z.lazy(() => ActivitySchema), z.lazy(() => ScheduledActivityInstanceSchema)])).min(0).optional(),
+  contextIds: z.array(z.union([z.string(), z.union([z.lazy(() => ActivitySchema), z.lazy(() => ScheduledActivityInstanceSchema)])])).min(0).optional(),
   // A USDM relationship between the Condition and the Activity, Procedure, BiomedicalConcept, BiomedicalConceptSurrogate, or BiomedicalConceptCategory classes which identifies the procedure, activity, biomedical concept, biomedical concept surrogate, or biomedical concept category that applies to the condition.
-  appliesToIds: z.array(z.union([z.lazy(() => BiomedicalConceptCategorySchema), z.lazy(() => ProcedureSchema), z.lazy(() => ActivitySchema), z.lazy(() => BiomedicalConceptSchema), z.lazy(() => BiomedicalConceptSurrogateSchema)])).min(0).optional(),
+  appliesToIds: z.array(z.union([z.string(), z.union([z.lazy(() => BiomedicalConceptCategorySchema), z.lazy(() => ProcedureSchema), z.lazy(() => ActivitySchema), z.lazy(() => BiomedicalConceptSchema), z.lazy(() => BiomedicalConceptSurrogateSchema)])])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1074,9 +1074,9 @@ export const ConditionAssignmentSchema: z.ZodSchema<ConditionAssignment> = z.obj
   // An assumption on which rests the validity or effect of something else.
   condition: z.string(),
   // A USDM relationship between the ConditionAssignment and ScheduledInstance classes which identifies the scheduled instance associated with the condition assignment.
-  conditionTargetId: z.lazy(() => ScheduledInstanceSchema),
+  conditionTargetId: z.union([z.string(), z.lazy(() => ScheduledInstanceSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1091,7 +1091,7 @@ export const GeographicScopeSchema: z.ZodSchema<GeographicScope> = z.object({
   // A symbol or combination of symbols which is assigned to the geographic scope.
   code: z.lazy(() => AliasCodeSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1114,7 +1114,7 @@ export const GovernanceDateSchema: z.ZodSchema<GovernanceDate> = z.object({
   // A USDM relationship between the GovernanceDate and GeographicScope classes which identifies the set of geographic scopes associated with the governance date.
   geographicScopes: z.array(z.lazy(() => GeographicScopeSchema)).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1129,7 +1129,7 @@ export const NarrativeContentItemSchema: z.ZodSchema<NarrativeContentItem> = z.o
   // An instance of unstructured text that represents the narrative content item.
   text: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1150,15 +1150,15 @@ export const NarrativeContentSchema: z.ZodSchema<NarrativeContent> = z.object({
   // An indication as to whether the section number is to be displayed in the document containing narrative content.
   displaySectionNumber: z.boolean(),
   // A USDM relationship between the NarrativeContent and NarrativeContentItem classes which identifies the content item associated with the narrative content.
-  contentItemId: z.lazy(() => NarrativeContentItemSchema).optional(),
+  contentItemId: z.union([z.string(), z.lazy(() => NarrativeContentItemSchema)]).optional(),
   // A USDM relationship within the NarrativeContent class which identifies the narrative content that precedes the current narrative content in the display order.
-  previousId: z.lazy(() => NarrativeContentSchema).optional(),
+  previousId: z.union([z.string(), z.lazy(() => NarrativeContentSchema)]).optional(),
   // A USDM relationship within the NarrativeContent class which identifies the narrative content that follows the current narrative content in the display order.
-  nextId: z.lazy(() => NarrativeContentSchema).optional(),
+  nextId: z.union([z.string(), z.lazy(() => NarrativeContentSchema)]).optional(),
   // A USDM relationship within the NarrativeContent class which identifies the set of child content associated with an instance of narrative content.
-  childIds: z.array(z.lazy(() => NarrativeContentSchema)).min(0).optional(),
+  childIds: z.array(z.union([z.string(), z.lazy(() => NarrativeContentSchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1179,7 +1179,7 @@ export const StudyDefinitionDocumentVersionSchema: z.ZodSchema<StudyDefinitionDo
   // A USDM relationship between the StudyDefinitionDocumentVersion and NarrativeContent classes which identifies the set of narrative content associated with the version of the study definition document.
   contents: z.array(z.lazy(() => NarrativeContentSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1204,11 +1204,11 @@ export const StudyDefinitionDocumentSchema: z.ZodSchema<StudyDefinitionDocument>
   // A brief written record relevant to the study definition document.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship within the StudyDefinitionDocument class which identifies the set of child documents of a study definition document.
-  childIds: z.array(z.lazy(() => StudyDefinitionDocumentSchema)).min(0).optional(),
+  childIds: z.array(z.union([z.string(), z.lazy(() => StudyDefinitionDocumentSchema)])).min(0).optional(),
   // A USDM relationship between the StudyDefinitionDocument and StudyDefinitionDocumentVersion classes which identifies the set of versions associated with the study definition document.
   versions: z.array(z.lazy(() => StudyDefinitionDocumentVersionSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1223,9 +1223,9 @@ export const DocumentContentReferenceSchema: z.ZodSchema<DocumentContentReferenc
   // An identifying designation for a particular section for the document content reference.
   sectionTitle: z.string(),
   // A USDM relationship between the DocumentContentReference and StudyDefinitionDocument classes which identifies the study definition document to which the document content reference applies.
-  appliesToId: z.lazy(() => StudyDefinitionDocumentSchema),
+  appliesToId: z.union([z.string(), z.lazy(() => StudyDefinitionDocumentSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1246,9 +1246,9 @@ export const EligibilityCriterionItemSchema: z.ZodSchema<EligibilityCriterionIte
   // A brief written record relevant to the eligibility criterion item.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the EligibilityCriterionItem and SyntaxTemplateDictionary classes which provides the dictionary entry associated with a eligibility criterion item.
-  dictionaryId: z.lazy(() => SyntaxTemplateDictionarySchema).optional(),
+  dictionaryId: z.union([z.string(), z.lazy(() => SyntaxTemplateDictionarySchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1271,13 +1271,13 @@ export const EligibilityCriterionSchema: z.ZodSchema<EligibilityCriterion> = z.o
   // A brief written record relevant to the eligibility criterion.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the EligibilityCriterion and EligibilityCriterionItem classes which identifies the item belonging to the eligibility criterion.
-  criterionItemId: z.lazy(() => EligibilityCriterionItemSchema),
+  criterionItemId: z.union([z.string(), z.lazy(() => EligibilityCriterionItemSchema)]),
   // A USDM relationship within the EligibilityCriterion class which identifies the eligibility criterion that follows the current eligibility criterion in the display order.
-  nextId: z.lazy(() => EligibilityCriterionSchema).optional(),
+  nextId: z.union([z.string(), z.lazy(() => EligibilityCriterionSchema)]).optional(),
   // A USDM relationship within the EligibilityCriterion class which identifies the eligibility criterion that precedes the current eligibility criterion in the display order.
-  previousId: z.lazy(() => EligibilityCriterionSchema).optional(),
+  previousId: z.union([z.string(), z.lazy(() => EligibilityCriterionSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1298,13 +1298,13 @@ export const EndpointSchema: z.ZodSchema<Endpoint> = z.object({
   // A brief written record relevant to the study endpoint.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the Endpoint and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to study endpoints.
-  dictionaryId: z.lazy(() => SyntaxTemplateDictionarySchema).optional(),
+  dictionaryId: z.union([z.string(), z.lazy(() => SyntaxTemplateDictionarySchema)]).optional(),
   // A characterization or classification of the study endpoint that determines its category of importance relative to other study endpoints.
   level: z.lazy(() => CodeSchema),
   // The textual representation of the study endpoint purpose.
   purpose: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1325,11 +1325,11 @@ export const IntercurrentEventSchema: z.ZodSchema<IntercurrentEvent> = z.object(
   // A brief written record relevant to the intercurrent event.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the IntercurrentEvent and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to the intercurrent event.
-  dictionaryId: z.lazy(() => SyntaxTemplateDictionarySchema).optional(),
+  dictionaryId: z.union([z.string(), z.lazy(() => SyntaxTemplateDictionarySchema)]).optional(),
   // A textual description of the planned strategy to manage and/or mitigate intercurrent events.
   strategy: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1350,15 +1350,15 @@ export const EstimandSchema: z.ZodSchema<Estimand> = z.object({
   // A brief written record relevant to the study estimand.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the Estimand and AnalysisPopulation classes which provides the details associated with an instance of the analysis population used to partially define a study estimand.
-  analysisPopulationId: z.lazy(() => AnalysisPopulationSchema),
+  analysisPopulationId: z.union([z.string(), z.lazy(() => AnalysisPopulationSchema)]),
   // A USDM relationship between the Estimand and Endpoint classes which provides the details associated with an instance of the variable of interest within a study endpoint used to partially define a study estimand.
-  variableOfInterestId: z.lazy(() => EndpointSchema),
+  variableOfInterestId: z.union([z.string(), z.lazy(() => EndpointSchema)]),
   // A USDM relationship between the Estimand and IntercurrentEvent classes which identifies the set of intercurrent events associated with a study estimand.
   intercurrentEvents: z.array(z.lazy(() => IntercurrentEventSchema)).min(1),
   // A USDM relationship between the Estimand and StudyIntervention classes which identifies the set of study interventions associated with the Estimand.
-  interventionIds: z.array(z.lazy(() => StudyInterventionSchema)).min(1),
+  interventionIds: z.array(z.union([z.string(), z.lazy(() => StudyInterventionSchema)])).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1381,7 +1381,7 @@ export const IndicationSchema: z.ZodSchema<Indication> = z.object({
   // A brief written record relevant to the disease/condition indication.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1402,13 +1402,13 @@ export const ObjectiveSchema: z.ZodSchema<Objective> = z.object({
   // A brief written record relevant to the study objective.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the Objective and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to study objectives.
-  dictionaryId: z.lazy(() => SyntaxTemplateDictionarySchema).optional(),
+  dictionaryId: z.union([z.string(), z.lazy(() => SyntaxTemplateDictionarySchema)]).optional(),
   // A characterization or classification of the study objective that determines its category of importance relative to other study objectives.
   level: z.lazy(() => CodeSchema),
   // A USDM relationship between the Objective and Endpoint classes which identifies the set of endpoints associated with the study objective.
   endpoints: z.array(z.lazy(() => EndpointSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1433,9 +1433,9 @@ export const StudyArmSchema: z.ZodSchema<StudyArm> = z.object({
   // A brief written record relevant to the study arm.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the StudyArm and PopulationDefinition classes which identifies the set of populations associated with the study arm.
-  populationIds: z.array(z.lazy(() => PopulationDefinitionSchema)).min(0).optional(),
+  populationIds: z.array(z.union([z.string(), z.lazy(() => PopulationDefinitionSchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1456,11 +1456,11 @@ export const StudyElementSchema: z.ZodSchema<StudyElement> = z.object({
   // A USDM relationship between the StudyElement and TransitionRule classes which provides the details associated with a transition rule used to trigger the end of a study element.
   transitionEndRule: z.lazy(() => TransitionRuleSchema).optional(),
   // A USDM relationship between the StudyElement and StudyIntervention classes which identifies the set of study interventions associated with the study element.
-  studyInterventionIds: z.array(z.lazy(() => StudyInterventionSchema)).min(0).optional(),
+  studyInterventionIds: z.array(z.union([z.string(), z.lazy(() => StudyInterventionSchema)])).min(0).optional(),
   // A USDM relationship between the StudyElement and TransitionRule classes which provides the details associated with a transition rule used to trigger the start of a study element.
   transitionStartRule: z.lazy(() => TransitionRuleSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1471,13 +1471,13 @@ export const StudyElementSchema: z.ZodSchema<StudyElement> = z.object({
 export const StudyCellSchema: z.ZodSchema<StudyCell> = z.object({
   id: z.string(),
   // A USDM relationship between the StudyCell and StudyArm classes which identifies the study arm associated with a study cell.
-  armId: z.lazy(() => StudyArmSchema),
+  armId: z.union([z.string(), z.lazy(() => StudyArmSchema)]),
   // A USDM relationship between the StudyCell and StudyEpoch classes which identifies the study epoch associated with a study cell.
-  epochId: z.lazy(() => StudyEpochSchema),
+  epochId: z.union([z.string(), z.lazy(() => StudyEpochSchema)]),
   // A USDM relationship between the StudyCell and StudyElement classes which identifies the set of study elements associated with the study cell.
-  elementIds: z.array(z.lazy(() => StudyElementSchema)).min(1),
+  elementIds: z.array(z.union([z.string(), z.lazy(() => StudyElementSchema)])).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1506,13 +1506,13 @@ export const StudyCohortSchema: z.ZodSchema<StudyCohort> = z.object({
   // A brief written record relevant to the study cohort.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the StudyCohort and EligibilityCriterion classes which identifies the set of eligibility criteria associated with the study cohort.
-  criterionIds: z.array(z.lazy(() => EligibilityCriterionSchema)).min(0).optional(),
+  criterionIds: z.array(z.union([z.string(), z.lazy(() => EligibilityCriterionSchema)])).min(0).optional(),
   // A USDM relationship between the StudyCohort and Characteristic classes which identifies the set of subject characteristics associated with the study cohort.
   characteristics: z.array(z.lazy(() => CharacteristicSchema)).min(0).optional(),
   // A USDM relationship between the StudyCohort and Indication classes which identifies the set of indications associated with the study cohort.
-  indicationIds: z.array(z.lazy(() => IndicationSchema)).min(0).optional(),
+  indicationIds: z.array(z.union([z.string(), z.lazy(() => IndicationSchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1541,11 +1541,11 @@ export const StudyDesignPopulationSchema: z.ZodSchema<StudyDesignPopulation> = z
   // A brief written record relevant to the study design population.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   // A USDM relationship between the StudyDesignPopulation and EligibilityCriterion classes which identifies the set of eligibility criteria associated with the study design population.
-  criterionIds: z.array(z.lazy(() => EligibilityCriterionSchema)).min(0).optional(),
+  criterionIds: z.array(z.union([z.string(), z.lazy(() => EligibilityCriterionSchema)])).min(0).optional(),
   // A USDM relationship between the StudyDesignPopulation and StudyCohort classes which identifies the set of study cohorts associated with the study design population.
   cohorts: z.array(z.lazy(() => StudyCohortSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1594,11 +1594,11 @@ export const InterventionalStudyDesignSchema: z.ZodSchema<InterventionalStudyDes
   // A USDM relationship between the InterventionalStudyDesign and StudyCell classes which identifies the set of study cells associated with the interventional study design.
   studyCells: z.array(z.lazy(() => StudyCellSchema)).min(1),
   // A USDM relationship between the InterventionalStudyDesign and StudyDefinitionDocumentVersion classes which identifies the version of the study definition documents associated with the interventional study design.
-  documentVersionIds: z.array(z.lazy(() => StudyDefinitionDocumentVersionSchema)).min(0).optional(),
+  documentVersionIds: z.array(z.union([z.string(), z.lazy(() => StudyDefinitionDocumentVersionSchema)])).min(0).optional(),
   // A USDM relationship between the InterventionalStudyDesign and StudyElement classes which identifies the set of study elements associated with the interventional study design.
   elements: z.array(z.lazy(() => StudyElementSchema)).min(0).optional(),
   // A USDM relationship between the InterventionalStudyDesign and StudyIntervention classes which identifies the set of study interventions associated with interventional study design.
-  studyInterventionIds: z.array(z.lazy(() => StudyInterventionSchema)).min(0).optional(),
+  studyInterventionIds: z.array(z.union([z.string(), z.lazy(() => StudyInterventionSchema)])).min(0).optional(),
   // A USDM relationship between the InterventionalStudyDesign and StudyEpoch classes which identifies the set of study epochs associated with the interventional study design.
   epochs: z.array(z.lazy(() => StudyEpochSchema)).min(1),
   // A USDM relationship between the InterventionalStudyDesign and StudyDesignPopulation classes which identifies the population associated with the interventional study design.
@@ -1613,7 +1613,7 @@ export const InterventionalStudyDesignSchema: z.ZodSchema<InterventionalStudyDes
   // The planned purpose of the therapy, device, or agent under study in the clinical trial.
   intentTypes: z.array(z.lazy(() => CodeSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1628,7 +1628,7 @@ export const MaskingSchema: z.ZodSchema<Masking> = z.object({
   // An indication as to whether the study role is masked.
   isMasked: z.boolean(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1677,11 +1677,11 @@ export const ObservationalStudyDesignSchema: z.ZodSchema<ObservationalStudyDesig
   // A USDM relationship between the ObservationalStudyDesign and StudyCell classes which identifies the set of study cells associated with the observational study design.
   studyCells: z.array(z.lazy(() => StudyCellSchema)).min(1),
   // A USDM relationship between the ObservationalStudyDesign and StudyDefinitionDocumentVersion classes which identifies the version of the study definition documents associated with the observational study design.
-  documentVersionIds: z.array(z.lazy(() => StudyDefinitionDocumentVersionSchema)).min(0).optional(),
+  documentVersionIds: z.array(z.union([z.string(), z.lazy(() => StudyDefinitionDocumentVersionSchema)])).min(0).optional(),
   // A USDM relationship between the ObservationalStudyDesign and StudyElement classes which identifies the set of study elements associated with the observational study design.
   elements: z.array(z.lazy(() => StudyElementSchema)).min(0).optional(),
   // A USDM relationship between the ObservationalStudyDesign and StudyIntervention classes which identifies the set of study interventions associated with observational study design.
-  studyInterventionIds: z.array(z.lazy(() => StudyInterventionSchema)).min(0).optional(),
+  studyInterventionIds: z.array(z.union([z.string(), z.lazy(() => StudyInterventionSchema)])).min(0).optional(),
   // A USDM relationship between the ObservationalStudyDesign and StudyEpoch classes which identifies the set of study epochs associated with the observational study design.
   epochs: z.array(z.lazy(() => StudyEpochSchema)).min(1),
   // A USDM relationship between the ObservationalStudyDesign and StudyDesignPopulation classes which identifies the population associated with the observational study design.
@@ -1696,7 +1696,7 @@ export const ObservationalStudyDesignSchema: z.ZodSchema<ObservationalStudyDesig
   // The sampling method used to assign study participants into groups or cohorts within an observational study.
   samplingMethod: z.lazy(() => CodeSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1715,11 +1715,11 @@ export const ProductOrganizationRoleSchema: z.ZodSchema<ProductOrganizationRole>
   // A symbol or combination of symbols which is assigned to the product organization role.
   code: z.lazy(() => CodeSchema),
   // A USDM relationship between the ProductOrganizationRole and either the AdministrableProduct or MedicalDevice class that identifies the administrable product or medical device to which the product organization role applies.
-  appliesToIds: z.array(z.union([z.lazy(() => AdministrableProductSchema), z.lazy(() => MedicalDeviceSchema)])).min(0).optional(),
+  appliesToIds: z.array(z.union([z.string(), z.union([z.lazy(() => AdministrableProductSchema), z.lazy(() => MedicalDeviceSchema)])])).min(0).optional(),
   // A USDM relationship between the ProductOrganizationRole and Organization classes which identifies the organization associated with the product organization role.
-  organizationId: z.lazy(() => OrganizationSchema),
+  organizationId: z.union([z.string(), z.lazy(() => OrganizationSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1732,11 +1732,11 @@ export const ReferenceIdentifierSchema: z.ZodSchema<ReferenceIdentifier> = z.obj
   // An instance of structured text that represents the reference identifier.
   text: z.string(),
   // A USDM relationship between the ReferenceIdentifier and Organization classes which provides the details associated with each organization that has assigned the reference identifier.
-  scopeId: z.lazy(() => OrganizationSchema),
+  scopeId: z.union([z.string(), z.lazy(() => OrganizationSchema)]),
   // A characterization or classification of the reference identifier.
   type: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1753,13 +1753,13 @@ export const ScheduledDecisionInstanceSchema: z.ZodSchema<ScheduledDecisionInsta
   // A narrative representation of the scheduled Decision instance.
   description: z.string().optional(),
   // A USDM relationship within the ScheduledDecisionInstance class which identifies the default condition within a scheduled decision instance.
-  defaultConditionId: z.lazy(() => ScheduledInstanceSchema).optional(),
+  defaultConditionId: z.union([z.string(), z.lazy(() => ScheduledInstanceSchema)]).optional(),
   // A USDM relationship between the ScheduledDecisionInstance and StudyEpoch classes which identifies the study epoch associated with a scheduled decision instance.
-  epochId: z.lazy(() => StudyEpochSchema).optional(),
+  epochId: z.union([z.string(), z.lazy(() => StudyEpochSchema)]).optional(),
   // A USDM relationship between the ScheduledDecisionInstance and ConditionAssignment classes which identifies the set of condition assignments associated with a scheduled decision instance.
   conditionAssignments: z.array(z.lazy(() => ConditionAssignmentSchema)).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1778,7 +1778,7 @@ export const StudyAmendmentImpactSchema: z.ZodSchema<StudyAmendmentImpact> = z.o
   // A brief written record relevant to the study amendment impact.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1799,11 +1799,11 @@ export const SubjectEnrollmentSchema: z.ZodSchema<SubjectEnrollment> = z.object(
   // A USDM relationship between the SubjectEnrollment and GeographicScope classes which identifies the geographic scope to which the subject enrollment applies.
   forGeographicScope: z.lazy(() => GeographicScopeSchema).optional(),
   // A USDM relationship between the SubjectEnrollment and StudyCohort classes which identifies the study cohort to which the subject enrollment applies.
-  forStudyCohortId: z.lazy(() => StudyCohortSchema).optional(),
+  forStudyCohortId: z.union([z.string(), z.lazy(() => StudyCohortSchema)]).optional(),
   // A USDM relationship between the SubjectEnrollment and StudySite classes which identifies the study site to which the subject enrollment applies.
-  forStudySiteId: z.lazy(() => StudySiteSchema).optional(),
+  forStudySiteId: z.union([z.string(), z.lazy(() => StudySiteSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1818,7 +1818,7 @@ export const StudyAmendmentReasonSchema: z.ZodSchema<StudyAmendmentReason> = z.o
   // A symbol or combination of symbols which is assigned to the study amendment reason.
   code: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1841,7 +1841,7 @@ export const StudyChangeSchema: z.ZodSchema<StudyChange> = z.object({
   // A USDM relationship between the StudyChange and DocumentContentReference class which provides the set of changed document sections related to the study change.
   changedSections: z.array(z.lazy(() => DocumentContentReferenceSchema)).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1876,11 +1876,11 @@ export const StudyAmendmentSchema: z.ZodSchema<StudyAmendment> = z.object({
   // A USDM relationship between the StudyAmendment and  StudyChange classes which identifies the set of changes associated with the study amendment.
   changes: z.array(z.lazy(() => StudyChangeSchema)).min(1),
   // A USDM relationship within the StudyAmendment class which identifies the study amendment that chronologically precedes the current study amendment.
-  previousId: z.lazy(() => StudyAmendmentSchema).optional(),
+  previousId: z.union([z.string(), z.lazy(() => StudyAmendmentSchema)]).optional(),
   // A USDM relationship between the StudyAmendment and StudyAmendmentReason classes which identifies the primary reason for issuing the study amendment.
   primaryReason: z.lazy(() => StudyAmendmentReasonSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1893,9 +1893,9 @@ export const StudyIdentifierSchema: z.ZodSchema<StudyIdentifier> = z.object({
   // An instance of structured text that represents the study identifier.
   text: z.string(),
   // A USDM relationship between the StudyIdentifier and Organization classes which provides the details associated with each organization that has assigned the study identifier.
-  scopeId: z.lazy(() => OrganizationSchema),
+  scopeId: z.union([z.string(), z.lazy(() => OrganizationSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1910,7 +1910,7 @@ export const StudyTitleSchema: z.ZodSchema<StudyTitle> = z.object({
   // An instance of unstructured text that represents the study title.
   text: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1935,11 +1935,11 @@ export const StudyRoleSchema: z.ZodSchema<StudyRole> = z.object({
   // A USDM relationship between the StudyRole and Masking classes which describes the masking associated with the study role.
   masking: z.lazy(() => MaskingSchema).optional(),
   // A USDM relationship between the StudyRole and Organization classes which identifies the set of organizations associated with the study role.
-  organizationIds: z.array(z.lazy(() => OrganizationSchema)).min(0).optional(),
+  organizationIds: z.array(z.union([z.string(), z.lazy(() => OrganizationSchema)])).min(0).optional(),
   // A USDM relationship between the StudyRole and either StudyVersion or StudyDesign classes that identifies the study version or study design to which the study role applies.
-  appliesToIds: z.array(z.union([z.lazy(() => StudyVersionSchema), z.lazy(() => StudyDesignSchema)])).min(0).optional(),
+  appliesToIds: z.array(z.union([z.string(), z.union([z.lazy(() => StudyVersionSchema), z.lazy(() => StudyDesignSchema)])])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -1966,7 +1966,7 @@ export const StudyVersionSchema: z.ZodSchema<StudyVersion> = z.object({
   // A USDM relationship between the StudyVersion and StudyAmendment classes which identifies the set of study amendments associated with the study version.
   amendments: z.array(z.lazy(() => StudyAmendmentSchema)).min(0).optional(),
   // A USDM relationship between the StudyVersion and StudyDefinitionDocumentVersion classes which identifies the version of the study definition document associated with the study version.
-  documentVersionIds: z.array(z.lazy(() => StudyDefinitionDocumentVersionSchema)).min(0).optional(),
+  documentVersionIds: z.array(z.union([z.string(), z.lazy(() => StudyDefinitionDocumentVersionSchema)])).min(0).optional(),
   // A USDM relationship between the StudyVersion and StudyDesign classes which identifies the set of study designs associated with the study version.
   studyDesigns: z.array(z.lazy(() => StudyDesignSchema)).min(0).optional(),
   // A USDM relationship between the StudyVersion and StudyIdentifier classes which identifies the set of study identifiers associated with the study version.
@@ -1987,7 +1987,7 @@ export const StudyVersionSchema: z.ZodSchema<StudyVersion> = z.object({
   bcSurrogates: z.array(z.lazy(() => BiomedicalConceptSurrogateSchema)).min(0).optional(),
   dictionaries: z.array(z.lazy(() => SyntaxTemplateDictionarySchema)).min(0).optional(),
   conditions: z.array(z.lazy(() => ConditionSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 /**
@@ -2008,7 +2008,7 @@ export const StudySchema: z.ZodSchema<Study> = z.object({
   // A USDM relationship between the Study and StudyDefinitionDocument classes signifying that the study is documented in a study definition document.
   documentedBy: z.array(z.lazy(() => StudyDefinitionDocumentSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.string(),
 })
 
 // Union schemas for abstract classes
@@ -2141,5 +2141,5 @@ export const schemas: Record<string, z.ZodTypeAny> = {
   QuantityRange: QuantityRangeSchema,
   ScheduledInstance: ScheduledInstanceSchema,
   StudyDesign: StudyDesignSchema,
-  SyntaxTemplate: SyntaxTemplateSchema
+  SyntaxTemplate: SyntaxTemplateSchema,
 }

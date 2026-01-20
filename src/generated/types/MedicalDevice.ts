@@ -105,7 +105,7 @@ export interface MedicalDevice {
    * @modelName embeddedProduct
    * @modelRepresentation Relationship
    */
-  embeddedProductId?: AdministrableProduct
+  embeddedProductId?: (string | AdministrableProduct)
 
   /**
    * A USDM relationship between the MedicalDevice and MedicalDeviceIdentifier classes which provides the set of identifiers related to the medical device.
