@@ -334,6 +334,25 @@ class TypeScriptInterfaceGenerator {
     lines.push("// Re-exports all USDM types")
     lines.push("")
 
+    // Collect all imports needed for union types (sorted)
+    const unionImports = new Set<string>()
+    if (this.abstractClassUnions.size > 0) {
+      for (const [, subClasses] of this.abstractClassUnions) {
+        for (const subClass of subClasses) {
+          unionImports.add(subClass)
+        }
+      }
+    }
+
+    // Generate imports for union types first (sorted alphabetically)
+    if (unionImports.size > 0) {
+      const sortedImports = [...unionImports].sort()
+      for (const subClass of sortedImports) {
+        lines.push(`import type { ${subClass} } from "./${subClass}"`)
+      }
+      lines.push("")
+    }
+
     // Export all interfaces (sorted)
     const sortedNames = [...entityNames].sort()
     for (const name of sortedNames) {
@@ -349,15 +368,6 @@ class TypeScriptInterfaceGenerator {
     // Generate union type aliases for abstract classes
     if (this.abstractClassUnions.size > 0) {
       lines.push("// Union types for abstract classes")
-
-      // Need to import the concrete types for unions
-      for (const [, subClasses] of this.abstractClassUnions) {
-        for (const subClass of subClasses) {
-          lines.push(`import type { ${subClass} } from "./${subClass}"`)
-        }
-      }
-      lines.push("")
-
       for (const [abstractName, subClasses] of this.abstractClassUnions) {
         lines.push(`export type ${abstractName} = ${subClasses.join(" | ")}`)
       }
@@ -630,7 +640,8 @@ class ZodSchemaGenerator {
     lines.push(`export const ${name}Schema: z.ZodSchema<${name}> = z.object({`)
 
     // Generate properties
-    for (const [attrName, attr] of Object.entries(allAttributes)) {
+    const attrEntries = Object.entries(allAttributes)
+    attrEntries.forEach(([attrName, attr], index) => {
       const cardinalityInfo = this.parseCardinality(attr.Cardinality)
       const zodType = this.convertTypeToZod(attr.Type, cardinalityInfo, name, attr["Relationship Type"])
 
@@ -639,8 +650,10 @@ class ZodSchemaGenerator {
         lines.push(`  // ${attr.Definition.trim()}`)
       }
 
-      lines.push(`  ${attrName}: ${zodType},`)
-    }
+      // No trailing comma on last property
+      const isLast = index === attrEntries.length - 1
+      lines.push(`  ${attrName}: ${zodType}${isLast ? "" : ","}`)
+    })
 
     lines.push("})")
     lines.push("")
@@ -671,8 +684,9 @@ class ZodSchemaGenerator {
     output.push("// Import types for schema inference")
     output.push("import type {")
     // Import concrete types only (abstract/union types are not used in schema definitions)
-    concreteEntities.forEach(name => {
-      output.push(`  ${name},`)
+    concreteEntities.forEach((name, index) => {
+      const isLast = index === concreteEntities.length - 1
+      output.push(`  ${name}${isLast ? "" : ","}`)
     })
     output.push("} from \"./types/index\"")
     output.push("")
@@ -711,13 +725,11 @@ class ZodSchemaGenerator {
     // Generate a master schema object
     output.push("// Master schema object for easy access")
     output.push("export const schemas: Record<string, z.ZodTypeAny> = {")
-    for (const name of sorted) {
-      output.push(`  ${name}: ${name}Schema,`)
-    }
-    // Add union schemas to master object
-    for (const abstractName of this.abstractClassUnions.keys()) {
-      output.push(`  ${abstractName}: ${abstractName}Schema,`)
-    }
+    const allSchemaNames = [...sorted, ...this.abstractClassUnions.keys()]
+    allSchemaNames.forEach((name, index) => {
+      const isLast = index === allSchemaNames.length - 1
+      output.push(`  ${name}: ${name}Schema${isLast ? "" : ","}`)
+    })
     output.push("}")
     output.push("")
 

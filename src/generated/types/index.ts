@@ -1,6 +1,25 @@
 // Auto-generated - do not edit
 // Re-exports all USDM types
 
+import type { AdministrableProductIdentifier } from "./AdministrableProductIdentifier"
+import type { Characteristic } from "./Characteristic"
+import type { Condition } from "./Condition"
+import type { EligibilityCriterionItem } from "./EligibilityCriterionItem"
+import type { Endpoint } from "./Endpoint"
+import type { IntercurrentEvent } from "./IntercurrentEvent"
+import type { InterventionalStudyDesign } from "./InterventionalStudyDesign"
+import type { MedicalDeviceIdentifier } from "./MedicalDeviceIdentifier"
+import type { Objective } from "./Objective"
+import type { ObservationalStudyDesign } from "./ObservationalStudyDesign"
+import type { Quantity } from "./Quantity"
+import type { Range } from "./Range"
+import type { ReferenceIdentifier } from "./ReferenceIdentifier"
+import type { ScheduledActivityInstance } from "./ScheduledActivityInstance"
+import type { ScheduledDecisionInstance } from "./ScheduledDecisionInstance"
+import type { StudyCohort } from "./StudyCohort"
+import type { StudyDesignPopulation } from "./StudyDesignPopulation"
+import type { StudyIdentifier } from "./StudyIdentifier"
+
 export type { Abbreviation } from "./Abbreviation"
 export type { Activity } from "./Activity"
 export type { Address } from "./Address"
@@ -89,25 +108,6 @@ export type { Timing } from "./Timing"
 export type { TransitionRule } from "./TransitionRule"
 
 // Union types for abstract classes
-import type { AdministrableProductIdentifier } from "./AdministrableProductIdentifier"
-import type { MedicalDeviceIdentifier } from "./MedicalDeviceIdentifier"
-import type { ReferenceIdentifier } from "./ReferenceIdentifier"
-import type { StudyIdentifier } from "./StudyIdentifier"
-import type { StudyCohort } from "./StudyCohort"
-import type { StudyDesignPopulation } from "./StudyDesignPopulation"
-import type { Quantity } from "./Quantity"
-import type { Range } from "./Range"
-import type { ScheduledActivityInstance } from "./ScheduledActivityInstance"
-import type { ScheduledDecisionInstance } from "./ScheduledDecisionInstance"
-import type { InterventionalStudyDesign } from "./InterventionalStudyDesign"
-import type { ObservationalStudyDesign } from "./ObservationalStudyDesign"
-import type { Characteristic } from "./Characteristic"
-import type { Condition } from "./Condition"
-import type { EligibilityCriterionItem } from "./EligibilityCriterionItem"
-import type { Endpoint } from "./Endpoint"
-import type { IntercurrentEvent } from "./IntercurrentEvent"
-import type { Objective } from "./Objective"
-
 export type Identifier = AdministrableProductIdentifier | MedicalDeviceIdentifier | ReferenceIdentifier | StudyIdentifier
 export type PopulationDefinition = StudyCohort | StudyDesignPopulation
 export type QuantityRange = Quantity | Range
