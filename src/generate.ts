@@ -138,8 +138,9 @@ class TypeScriptInterfaceGenerator {
             case "float": return "number"
             case "integer": return "number"
             case "boolean": return "boolean"
-            case "date": return "Date"
-            case "datetime": return "Date"
+            // USDM documents are a JSON interchange format: dates are ISO strings on the wire
+            case "date": return "string"
+            case "datetime": return "string"
             default: return refType
           }
         }
@@ -155,8 +156,9 @@ class TypeScriptInterfaceGenerator {
         case "float": return "number"
         case "integer": return "number"
         case "boolean": return "boolean"
-        case "date": return "Date"
-        case "datetime": return "Date"
+        // USDM documents are a JSON interchange format: dates are ISO strings on the wire
+        case "date": return "string"
+        case "datetime": return "string"
         default: return type
       }
     })
@@ -497,8 +499,9 @@ class ZodSchemaGenerator {
           case "float": return "z.number()"
           case "integer": return "z.number().int()"
           case "boolean": return "z.boolean()"
-          case "date": return "z.date()"
-          case "datetime": return "z.date()"
+          // USDM documents are a JSON interchange format: dates are ISO strings on the wire
+          case "date": return "z.iso.date()"
+          case "datetime": return "z.iso.datetime()"
           default: return "z.unknown()"
         }
       } else if (type.$ref) {
@@ -511,8 +514,9 @@ class ZodSchemaGenerator {
             case "float": return "z.number()"
             case "integer": return "z.number().int()"
             case "boolean": return "z.boolean()"
-            case "date": return "z.date()"
-            case "datetime": return "z.date()"
+            // USDM documents are a JSON interchange format: dates are ISO strings on the wire
+            case "date": return "z.iso.date()"
+            case "datetime": return "z.iso.datetime()"
             default: return "z.unknown()"
           }
         }

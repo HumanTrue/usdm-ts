@@ -72,7 +72,7 @@ export interface GovernanceDate {
    * @modelName dateValue
    * @modelRepresentation Attribute
    */
-  dateValue: Date
+  dateValue: string
 
   /**
    * A USDM relationship between the GovernanceDate and GeographicScope classes which identifies the set of geographic scopes associated with the governance date.
