@@ -1110,7 +1110,7 @@ export const GovernanceDateSchema: z.ZodSchema<GovernanceDate> = z.object({
   // A characterization or classification of the study governance date.
   type: z.lazy(() => CodeSchema),
   // The information contained in the date field.
-  dateValue: z.date(),
+  dateValue: z.iso.date(),
   // A USDM relationship between the GovernanceDate and GeographicScope classes which identifies the set of geographic scopes associated with the governance date.
   geographicScopes: z.array(z.lazy(() => GeographicScopeSchema)).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
