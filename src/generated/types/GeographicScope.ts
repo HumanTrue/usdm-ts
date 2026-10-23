@@ -51,6 +51,6 @@ export interface GeographicScope {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "GeographicScope"
 
 }

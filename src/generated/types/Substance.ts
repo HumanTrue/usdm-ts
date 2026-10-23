@@ -91,6 +91,6 @@ export interface Substance {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Substance"
 
 }

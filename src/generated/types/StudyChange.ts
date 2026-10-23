@@ -92,6 +92,6 @@ export interface StudyChange {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "StudyChange"
 
 }

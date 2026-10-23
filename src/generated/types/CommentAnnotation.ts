@@ -50,6 +50,6 @@ export interface CommentAnnotation {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "CommentAnnotation"
 
 }

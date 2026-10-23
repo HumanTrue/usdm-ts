@@ -28,6 +28,6 @@ export interface ExtensionClass {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ExtensionClass"
 
 }

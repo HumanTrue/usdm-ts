@@ -65,6 +65,6 @@ export interface ReferenceIdentifier extends IdentifierAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ReferenceIdentifier"
 
 }

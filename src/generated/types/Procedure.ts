@@ -105,6 +105,6 @@ export interface Procedure {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Procedure"
 
 }

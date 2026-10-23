@@ -163,6 +163,6 @@ export interface StudyDesignPopulation extends PopulationDefinitionAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "StudyDesignPopulation"
 
 }

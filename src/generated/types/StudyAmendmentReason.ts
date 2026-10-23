@@ -50,6 +50,6 @@ export interface StudyAmendmentReason {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "StudyAmendmentReason"
 
 }

@@ -49,6 +49,6 @@ export interface ParameterMap {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ParameterMap"
 
 }

@@ -103,6 +103,6 @@ export interface Organization {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Organization"
 
 }

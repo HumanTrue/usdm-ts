@@ -98,6 +98,6 @@ export interface ScheduledDecisionInstance extends ScheduledInstanceAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ScheduledDecisionInstance"
 
 }

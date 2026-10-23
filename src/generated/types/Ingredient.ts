@@ -49,6 +49,6 @@ export interface Ingredient {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Ingredient"
 
 }

@@ -82,6 +82,6 @@ export interface StudyDefinitionDocumentVersion {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "StudyDefinitionDocumentVersion"
 
 }

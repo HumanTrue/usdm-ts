@@ -139,6 +139,6 @@ export interface Administration {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Administration"
 
 }

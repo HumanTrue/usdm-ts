@@ -148,6 +148,6 @@ export interface AdministrableProduct {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "AdministrableProduct"
 
 }

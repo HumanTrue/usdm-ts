@@ -93,6 +93,6 @@ export interface AnalysisPopulation {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "AnalysisPopulation"
 
 }

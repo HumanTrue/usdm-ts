@@ -113,6 +113,6 @@ export interface IntercurrentEvent extends SyntaxTemplateAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "IntercurrentEvent"
 
 }

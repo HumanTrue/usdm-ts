@@ -93,6 +93,6 @@ export interface GovernanceDate {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "GovernanceDate"
 
 }

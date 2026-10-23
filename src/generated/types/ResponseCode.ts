@@ -72,6 +72,6 @@ export interface ResponseCode {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ResponseCode"
 
 }

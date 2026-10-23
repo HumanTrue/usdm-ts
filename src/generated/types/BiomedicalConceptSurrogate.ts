@@ -83,6 +83,6 @@ export interface BiomedicalConceptSurrogate {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "BiomedicalConceptSurrogate"
 
 }

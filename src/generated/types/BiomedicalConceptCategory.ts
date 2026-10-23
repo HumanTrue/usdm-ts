@@ -103,6 +103,6 @@ export interface BiomedicalConceptCategory {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "BiomedicalConceptCategory"
 
 }
