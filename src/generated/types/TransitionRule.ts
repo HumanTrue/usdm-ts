@@ -71,6 +71,6 @@ export interface TransitionRule {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "TransitionRule"
 
 }

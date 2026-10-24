@@ -102,6 +102,6 @@ export interface EligibilityCriterionItem extends SyntaxTemplateAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "EligibilityCriterionItem"
 
 }

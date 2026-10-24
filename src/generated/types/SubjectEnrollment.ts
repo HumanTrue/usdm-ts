@@ -102,6 +102,6 @@ export interface SubjectEnrollment {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "SubjectEnrollment"
 
 }

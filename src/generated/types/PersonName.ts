@@ -82,6 +82,6 @@ export interface PersonName {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "PersonName"
 
 }

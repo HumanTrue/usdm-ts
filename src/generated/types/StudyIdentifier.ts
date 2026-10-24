@@ -53,6 +53,6 @@ export interface StudyIdentifier extends IdentifierAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "StudyIdentifier"
 
 }

@@ -357,6 +357,6 @@ export interface ObservationalStudyDesign extends StudyDesignAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ObservationalStudyDesign"
 
 }

@@ -123,6 +123,6 @@ export interface EligibilityCriterion {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "EligibilityCriterion"
 
 }

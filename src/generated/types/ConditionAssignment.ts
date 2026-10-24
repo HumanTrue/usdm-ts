@@ -48,6 +48,6 @@ export interface ConditionAssignment {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ConditionAssignment"
 
 }

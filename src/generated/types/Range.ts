@@ -64,6 +64,6 @@ export interface Range extends QuantityRangeAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Range"
 
 }

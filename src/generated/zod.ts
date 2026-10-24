@@ -90,14 +90,14 @@ import type {
  * @preferredTerm Alias Code
  * @nciCode C201344
  */
-export const AliasCodeSchema: z.ZodSchema<AliasCode> = z.object({
+export const AliasCodeSchema: z.ZodSchema<AliasCode> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // A combination of symbols that is used to represent the standard code.
   standardCode: z.lazy(() => CodeSchema),
   // Alternative combinations of symbols used to represent aliases or alternatives to the standard code.
   standardCodeAliases: z.array(z.lazy(() => CodeSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("AliasCode")
 })
 
 /**
@@ -105,14 +105,14 @@ export const AliasCodeSchema: z.ZodSchema<AliasCode> = z.object({
  * @preferredTerm Quantity
  * @nciCode C25256
  */
-export const QuantitySchema: z.ZodSchema<Quantity> = z.object({
+export const QuantitySchema: z.ZodSchema<Quantity> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // A numerical quantity measured or assigned or computed.
   value: z.number(),
   // The type of unit of measure being used to express a quantity.
   unit: z.lazy(() => AliasCodeSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Quantity")
 })
 
 /**
@@ -120,7 +120,7 @@ export const QuantitySchema: z.ZodSchema<Quantity> = z.object({
  * @preferredTerm Range
  * @nciCode C38013
  */
-export const RangeSchema: z.ZodSchema<Range> = z.object({
+export const RangeSchema: z.ZodSchema<Range> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The smallest value in quantity or degree in a set of values.
   minValue: z.lazy(() => QuantitySchema),
@@ -129,21 +129,21 @@ export const RangeSchema: z.ZodSchema<Range> = z.object({
   // An indication as to whether the value range is almost, but not quite, exact.
   isApproximate: z.boolean(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Range")
 })
 
 /**
  */
-export const ExtensionClassSchema: z.ZodSchema<ExtensionClass> = z.object({
+export const ExtensionClassSchema: z.ZodSchema<ExtensionClass> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   url: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(1),
-  instanceType: z.string()
+  instanceType: z.literal("ExtensionClass")
 })
 
 /**
  */
-export const ExtensionAttributeSchema: z.ZodSchema<ExtensionAttribute> = z.object({
+export const ExtensionAttributeSchema: z.ZodSchema<ExtensionAttribute> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   url: z.string(),
   valueString: z.string().optional(),
@@ -156,7 +156,7 @@ export const ExtensionAttributeSchema: z.ZodSchema<ExtensionAttribute> = z.objec
   valueAliasCode: z.lazy(() => AliasCodeSchema).optional(),
   valueExtensionClass: z.lazy(() => ExtensionClassSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ExtensionAttribute")
 })
 
 /**
@@ -164,7 +164,7 @@ export const ExtensionAttributeSchema: z.ZodSchema<ExtensionAttribute> = z.objec
  * @preferredTerm Code
  * @nciCode C25162
  */
-export const CodeSchema: z.ZodSchema<Code> = z.object({
+export const CodeSchema: z.ZodSchema<Code> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal value of a code.
   code: z.string(),
@@ -175,7 +175,7 @@ export const CodeSchema: z.ZodSchema<Code> = z.object({
   // Standardized or dictionary-derived human readable text associated with a code.
   decode: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Code")
 })
 
 /**
@@ -183,14 +183,14 @@ export const CodeSchema: z.ZodSchema<Code> = z.object({
  * @preferredTerm Comment Annotation
  * @nciCode C44272
  */
-export const CommentAnnotationSchema: z.ZodSchema<CommentAnnotation> = z.object({
+export const CommentAnnotationSchema: z.ZodSchema<CommentAnnotation> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of unstructured text that represents the comment annotation.
   text: z.string(),
   // A symbol or combination of symbols which is assigned to the comment annotation.
   codes: z.array(z.lazy(() => CodeSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("CommentAnnotation")
 })
 
 /**
@@ -198,7 +198,7 @@ export const CommentAnnotationSchema: z.ZodSchema<CommentAnnotation> = z.object(
  * @preferredTerm Abbreviation
  * @nciCode C42610
  */
-export const AbbreviationSchema: z.ZodSchema<Abbreviation> = z.object({
+export const AbbreviationSchema: z.ZodSchema<Abbreviation> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal value of an instance of unstructured text that is used as the abbreviation.
   abbreviatedText: z.string(),
@@ -207,7 +207,7 @@ export const AbbreviationSchema: z.ZodSchema<Abbreviation> = z.object({
   // A brief written record relevant to the abbreviation.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Abbreviation")
 })
 
 /**
@@ -215,7 +215,7 @@ export const AbbreviationSchema: z.ZodSchema<Abbreviation> = z.object({
  * @preferredTerm Duration
  * @nciCode C25330
  */
-export const DurationSchema: z.ZodSchema<Duration> = z.object({
+export const DurationSchema: z.ZodSchema<Duration> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of unstructured text that represents the event duration.
   text: z.string().optional(),
@@ -226,7 +226,7 @@ export const DurationSchema: z.ZodSchema<Duration> = z.object({
   // The explanation for why the event duration will vary within and/or across subjects.
   reasonDurationWillVary: z.string().optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Duration")
 })
 
 /**
@@ -234,7 +234,7 @@ export const DurationSchema: z.ZodSchema<Duration> = z.object({
  * @preferredTerm Address
  * @nciCode C25407
  */
-export const AddressSchema: z.ZodSchema<Address> = z.object({
+export const AddressSchema: z.ZodSchema<Address> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // A standardized representation of the complete set of components denoting the physical address of the person, business, building, or organization.
   text: z.string().optional(),
@@ -251,7 +251,7 @@ export const AddressSchema: z.ZodSchema<Address> = z.object({
   // A sovereign nation occupying a distinct territory and ruled by an autonomous government.
   country: z.lazy(() => CodeSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Address")
 })
 
 /**
@@ -259,7 +259,7 @@ export const AddressSchema: z.ZodSchema<Address> = z.object({
  * @preferredTerm Study Site
  * @nciCode C80403
  */
-export const StudySiteSchema: z.ZodSchema<StudySite> = z.object({
+export const StudySiteSchema: z.ZodSchema<StudySite> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study site.
   name: z.string(),
@@ -270,7 +270,7 @@ export const StudySiteSchema: z.ZodSchema<StudySite> = z.object({
   // The country in which the study site is located.
   country: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudySite")
 })
 
 /**
@@ -278,7 +278,7 @@ export const StudySiteSchema: z.ZodSchema<StudySite> = z.object({
  * @preferredTerm Organization
  * @nciCode C19711
  */
-export const OrganizationSchema: z.ZodSchema<Organization> = z.object({
+export const OrganizationSchema: z.ZodSchema<Organization> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the organization.
   name: z.string(),
@@ -295,7 +295,7 @@ export const OrganizationSchema: z.ZodSchema<Organization> = z.object({
   // A USDM relationship between the Organization and StudySite classes which identifies the set of study sites managed by the organization.
   managedSites: z.array(z.lazy(() => StudySiteSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Organization")
 })
 
 /**
@@ -303,14 +303,14 @@ export const OrganizationSchema: z.ZodSchema<Organization> = z.object({
  * @preferredTerm Administrable Product Identifier
  * @nciCode C215493
  */
-export const AdministrableProductIdentifierSchema: z.ZodSchema<AdministrableProductIdentifier> = z.object({
+export const AdministrableProductIdentifierSchema: z.ZodSchema<AdministrableProductIdentifier> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of structured text that represents the administrable product.
   text: z.string(),
   // A USDM relationship between the AdministrableProductIdentifier and Organization class which provides the details associated with which provides the details associated with each organization that has assigned the administrable product identifier.
   scopeId: z.union([z.string(), z.lazy(() => OrganizationSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("AdministrableProductIdentifier")
 })
 
 /**
@@ -318,7 +318,7 @@ export const AdministrableProductIdentifierSchema: z.ZodSchema<AdministrableProd
  * @preferredTerm Administrable Product Property
  * @nciCode C215494
  */
-export const AdministrableProductPropertySchema: z.ZodSchema<AdministrableProductProperty> = z.object({
+export const AdministrableProductPropertySchema: z.ZodSchema<AdministrableProductProperty> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the administrable product property.
   name: z.string(),
@@ -329,7 +329,7 @@ export const AdministrableProductPropertySchema: z.ZodSchema<AdministrableProduc
   // The numeric value associated with an administrable product property.
   quantity: z.lazy(() => QuantitySchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("AdministrableProductProperty")
 })
 
 /**
@@ -337,7 +337,7 @@ export const AdministrableProductPropertySchema: z.ZodSchema<AdministrableProduc
  * @preferredTerm Substance Strength
  * @nciCode C215495
  */
-export const StrengthSchema: z.ZodSchema<Strength> = z.object({
+export const StrengthSchema: z.ZodSchema<Strength> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the substance strength.
   name: z.string(),
@@ -350,7 +350,7 @@ export const StrengthSchema: z.ZodSchema<Strength> = z.object({
   // The divisor of a fraction.
   denominator: z.lazy(() => QuantitySchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Strength")
 })
 
 /**
@@ -358,7 +358,7 @@ export const StrengthSchema: z.ZodSchema<Strength> = z.object({
  * @preferredTerm Substance
  * @nciCode C45306
  */
-export const SubstanceSchema: z.ZodSchema<Substance> = z.object({
+export const SubstanceSchema: z.ZodSchema<Substance> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the substance.
   name: z.string(),
@@ -373,7 +373,7 @@ export const SubstanceSchema: z.ZodSchema<Substance> = z.object({
   // A USDM relationship within the Substance class that identifies the association between two substances, one of which is used as a reference for the other.
   referenceSubstance: z.lazy(() => SubstanceSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Substance")
 })
 
 /**
@@ -381,14 +381,14 @@ export const SubstanceSchema: z.ZodSchema<Substance> = z.object({
  * @preferredTerm Ingredient
  * @nciCode C51981
  */
-export const IngredientSchema: z.ZodSchema<Ingredient> = z.object({
+export const IngredientSchema: z.ZodSchema<Ingredient> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The intended use of the ingredient within the context of the compounded substance or mixture.
   role: z.lazy(() => CodeSchema),
   // A USDM relationship between the Ingredient and Substance classes that identifies the substance associated with the ingredient.
   substance: z.lazy(() => SubstanceSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Ingredient")
 })
 
 /**
@@ -396,7 +396,7 @@ export const IngredientSchema: z.ZodSchema<Ingredient> = z.object({
  * @preferredTerm Administrable Product
  * @nciCode C215492
  */
-export const AdministrableProductSchema: z.ZodSchema<AdministrableProduct> = z.object({
+export const AdministrableProductSchema: z.ZodSchema<AdministrableProduct> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the administrable product.
   name: z.string(),
@@ -421,7 +421,7 @@ export const AdministrableProductSchema: z.ZodSchema<AdministrableProduct> = z.o
   // A USDM relationship between the AdministrableProduct and Ingredient classes which provides the set of ingredients related to the administrable product.
   ingredients: z.array(z.lazy(() => IngredientSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("AdministrableProduct")
 })
 
 /**
@@ -429,7 +429,7 @@ export const AdministrableProductSchema: z.ZodSchema<AdministrableProduct> = z.o
  * @preferredTerm Medical Device Identifier
  * @nciCode C215501
  */
-export const MedicalDeviceIdentifierSchema: z.ZodSchema<MedicalDeviceIdentifier> = z.object({
+export const MedicalDeviceIdentifierSchema: z.ZodSchema<MedicalDeviceIdentifier> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of structured text that represents the medical device identifier.
   text: z.string(),
@@ -438,7 +438,7 @@ export const MedicalDeviceIdentifierSchema: z.ZodSchema<MedicalDeviceIdentifier>
   // A characterization or classification of the medical device identifier.
   type: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("MedicalDeviceIdentifier")
 })
 
 /**
@@ -446,7 +446,7 @@ export const MedicalDeviceIdentifierSchema: z.ZodSchema<MedicalDeviceIdentifier>
  * @preferredTerm Medical Device
  * @nciCode C16830
  */
-export const MedicalDeviceSchema: z.ZodSchema<MedicalDevice> = z.object({
+export const MedicalDeviceSchema: z.ZodSchema<MedicalDevice> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the medical device.
   name: z.string(),
@@ -467,7 +467,7 @@ export const MedicalDeviceSchema: z.ZodSchema<MedicalDevice> = z.object({
   // A USDM relationship between the MedicalDevice and MedicalDeviceIdentifier classes which provides the set of identifiers related to the medical device.
   identifiers: z.array(z.lazy(() => MedicalDeviceIdentifierSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("MedicalDevice")
 })
 
 /**
@@ -475,7 +475,7 @@ export const MedicalDeviceSchema: z.ZodSchema<MedicalDevice> = z.object({
  * @preferredTerm Administration
  * @nciCode C25409
  */
-export const AdministrationSchema: z.ZodSchema<Administration> = z.object({
+export const AdministrationSchema: z.ZodSchema<Administration> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) for the administration of a product, agent, or therapy.
   name: z.string(),
@@ -498,7 +498,7 @@ export const AdministrationSchema: z.ZodSchema<Administration> = z.object({
   // A USDM relationship between the Administration and MedicalDevice classes which identifies the medical device associated with an instance of product, agent, or therapy administration.
   medicalDeviceId: z.union([z.string(), z.lazy(() => MedicalDeviceSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Administration")
 })
 
 /**
@@ -506,7 +506,7 @@ export const AdministrationSchema: z.ZodSchema<Administration> = z.object({
  * @preferredTerm Study Intervention
  * @nciCode C207649
  */
-export const StudyInterventionSchema: z.ZodSchema<StudyIntervention> = z.object({
+export const StudyInterventionSchema: z.ZodSchema<StudyIntervention> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study intervention.
   name: z.string(),
@@ -527,7 +527,7 @@ export const StudyInterventionSchema: z.ZodSchema<StudyIntervention> = z.object(
   // A USDM relationship between the StudyIntervention and AgentAdministration classes which identifies the set of agent administrations associated with the study intervention.
   administrations: z.array(z.lazy(() => AdministrationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyIntervention")
 })
 
 /**
@@ -535,7 +535,7 @@ export const StudyInterventionSchema: z.ZodSchema<StudyIntervention> = z.object(
  * @preferredTerm Procedure
  * @nciCode C98769
  */
-export const ProcedureSchema: z.ZodSchema<Procedure> = z.object({
+export const ProcedureSchema: z.ZodSchema<Procedure> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the procedure.
   name: z.string(),
@@ -552,7 +552,7 @@ export const ProcedureSchema: z.ZodSchema<Procedure> = z.object({
   // A USDM relationship between the Procedure and StudyInterventionclasses which provides the details associated with an instance of an intervention performed during the conduct of a procedure.
   studyInterventionId: z.union([z.string(), z.lazy(() => StudyInterventionSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Procedure")
 })
 
 /**
@@ -560,7 +560,7 @@ export const ProcedureSchema: z.ZodSchema<Procedure> = z.object({
  * @preferredTerm Response Code
  * @nciCode C201347
  */
-export const ResponseCodeSchema: z.ZodSchema<ResponseCode> = z.object({
+export const ResponseCodeSchema: z.ZodSchema<ResponseCode> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the response code.
   name: z.string(),
@@ -571,7 +571,7 @@ export const ResponseCodeSchema: z.ZodSchema<ResponseCode> = z.object({
   // The literal value of a response code.
   code: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ResponseCode")
 })
 
 /**
@@ -579,7 +579,7 @@ export const ResponseCodeSchema: z.ZodSchema<ResponseCode> = z.object({
  * @preferredTerm Biomedical Concept Property
  * @nciCode C202493
  */
-export const BiomedicalConceptPropertySchema: z.ZodSchema<BiomedicalConceptProperty> = z.object({
+export const BiomedicalConceptPropertySchema: z.ZodSchema<BiomedicalConceptProperty> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the biomedical concept property.
   name: z.string(),
@@ -598,7 +598,7 @@ export const BiomedicalConceptPropertySchema: z.ZodSchema<BiomedicalConceptPrope
   // A USDM relationship between the BiomedicalConceptProperty and ResponseCode classes which identifies the set of response codes associated with the biomedical concept property.
   responseCodes: z.array(z.lazy(() => ResponseCodeSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("BiomedicalConceptProperty")
 })
 
 /**
@@ -606,7 +606,7 @@ export const BiomedicalConceptPropertySchema: z.ZodSchema<BiomedicalConceptPrope
  * @preferredTerm Biomedical Concept
  * @nciCode C201345
  */
-export const BiomedicalConceptSchema: z.ZodSchema<BiomedicalConcept> = z.object({
+export const BiomedicalConceptSchema: z.ZodSchema<BiomedicalConcept> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the biomedical concept.
   name: z.string(),
@@ -623,7 +623,7 @@ export const BiomedicalConceptSchema: z.ZodSchema<BiomedicalConcept> = z.object(
   // A USDM relationship between the BiomedicalConcept and BiomedicalConceptProperty classes which identifies the set of properties associated with the biomedical concept.
   properties: z.array(z.lazy(() => BiomedicalConceptPropertySchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("BiomedicalConcept")
 })
 
 /**
@@ -631,10 +631,10 @@ export const BiomedicalConceptSchema: z.ZodSchema<BiomedicalConcept> = z.object(
  * @preferredTerm Schedule Timeline Exit
  * @nciCode C201349
  */
-export const ScheduleTimelineExitSchema: z.ZodSchema<ScheduleTimelineExit> = z.object({
+export const ScheduleTimelineExitSchema: z.ZodSchema<ScheduleTimelineExit> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ScheduleTimelineExit")
 })
 
 /**
@@ -642,7 +642,7 @@ export const ScheduleTimelineExitSchema: z.ZodSchema<ScheduleTimelineExit> = z.o
  * @preferredTerm Timing
  * @nciCode C80484
  */
-export const TimingSchema: z.ZodSchema<Timing> = z.object({
+export const TimingSchema: z.ZodSchema<Timing> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the timing.
   name: z.string(),
@@ -669,7 +669,7 @@ export const TimingSchema: z.ZodSchema<Timing> = z.object({
   // A USDM relationship between the Timing and ScheduledInstance classes which identifies the scheduled instance (e.g., scheduled activity instances or scheduled decision instances) to which the timing applies.
   relativeFromScheduledInstanceId: z.union([z.string(), z.lazy(() => ScheduledInstanceSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Timing")
 })
 
 /**
@@ -677,7 +677,7 @@ export const TimingSchema: z.ZodSchema<Timing> = z.object({
  * @preferredTerm Schedule Timeline
  * @nciCode C201348
  */
-export const ScheduleTimelineSchema: z.ZodSchema<ScheduleTimeline> = z.object({
+export const ScheduleTimelineSchema: z.ZodSchema<ScheduleTimeline> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the schedule timeline.
   name: z.string(),
@@ -700,7 +700,7 @@ export const ScheduleTimelineSchema: z.ZodSchema<ScheduleTimeline> = z.object({
   // A USDM relationship between the ScheduleTimeline and Timing classes which identifies the set of timings associated with the scheduled timeline.
   timings: z.array(z.lazy(() => TimingSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ScheduleTimeline")
 })
 
 /**
@@ -708,7 +708,7 @@ export const ScheduleTimelineSchema: z.ZodSchema<ScheduleTimeline> = z.object({
  * @preferredTerm Biomedical Concept Surrogate
  * @nciCode C207590
  */
-export const BiomedicalConceptSurrogateSchema: z.ZodSchema<BiomedicalConceptSurrogate> = z.object({
+export const BiomedicalConceptSurrogateSchema: z.ZodSchema<BiomedicalConceptSurrogate> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the biomedical concept surrogate.
   name: z.string(),
@@ -721,7 +721,7 @@ export const BiomedicalConceptSurrogateSchema: z.ZodSchema<BiomedicalConceptSurr
   // A brief written record relevant to the biomedical concept surrogate.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("BiomedicalConceptSurrogate")
 })
 
 /**
@@ -729,7 +729,7 @@ export const BiomedicalConceptSurrogateSchema: z.ZodSchema<BiomedicalConceptSurr
  * @preferredTerm Biomedical Concept Category
  * @nciCode C201346
  */
-export const BiomedicalConceptCategorySchema: z.ZodSchema<BiomedicalConceptCategory> = z.object({
+export const BiomedicalConceptCategorySchema: z.ZodSchema<BiomedicalConceptCategory> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the biomedical concept category.
   name: z.string(),
@@ -746,7 +746,7 @@ export const BiomedicalConceptCategorySchema: z.ZodSchema<BiomedicalConceptCateg
   // A USDM relationship within the BiomedicalConceptCategory class which identifies the set of child categories of a biomedical concept.
   childIds: z.array(z.union([z.string(), z.lazy(() => BiomedicalConceptCategorySchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("BiomedicalConceptCategory")
 })
 
 /**
@@ -754,7 +754,7 @@ export const BiomedicalConceptCategorySchema: z.ZodSchema<BiomedicalConceptCateg
  * @preferredTerm Study Activity
  * @nciCode C71473
  */
-export const ActivitySchema: z.ZodSchema<Activity> = z.object({
+export const ActivitySchema: z.ZodSchema<Activity> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study activity.
   name: z.string(),
@@ -781,7 +781,7 @@ export const ActivitySchema: z.ZodSchema<Activity> = z.object({
   // A USDM relationship between the Activity and BiomedicalConceptCategory classes which identifies the set of biomedical concept categories associated with the activity.
   bcCategoryIds: z.array(z.union([z.string(), z.lazy(() => BiomedicalConceptCategorySchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Activity")
 })
 
 /**
@@ -789,7 +789,7 @@ export const ActivitySchema: z.ZodSchema<Activity> = z.object({
  * @preferredTerm Analysis Population
  * @nciCode C188814
  */
-export const AnalysisPopulationSchema: z.ZodSchema<AnalysisPopulation> = z.object({
+export const AnalysisPopulationSchema: z.ZodSchema<AnalysisPopulation> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of unstructured text that represents the analysis population.
   text: z.string(),
@@ -804,7 +804,7 @@ export const AnalysisPopulationSchema: z.ZodSchema<AnalysisPopulation> = z.objec
   // A USDM relationship between the AnalysisPopulation and PopulationDefinition classes which identifies the population definition of which the analysis population is a subset.
   subsetOfIds: z.array(z.union([z.string(), z.lazy(() => PopulationDefinitionSchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("AnalysisPopulation")
 })
 
 /**
@@ -812,7 +812,7 @@ export const AnalysisPopulationSchema: z.ZodSchema<AnalysisPopulation> = z.objec
  * @preferredTerm Person Name
  * @nciCode C25191
  */
-export const PersonNameSchema: z.ZodSchema<PersonName> = z.object({
+export const PersonNameSchema: z.ZodSchema<PersonName> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of structured text that represents the person's full name.
   text: z.string().optional(),
@@ -825,7 +825,7 @@ export const PersonNameSchema: z.ZodSchema<PersonName> = z.object({
   // An affix occurring at the end of the person name, usually denoting educational or professional degrees and certifications, and/or filial rank.
   suffixes: z.array(z.string()).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("PersonName")
 })
 
 /**
@@ -833,7 +833,7 @@ export const PersonNameSchema: z.ZodSchema<PersonName> = z.object({
  * @preferredTerm Assigned Person
  * @nciCode C215496
  */
-export const AssignedPersonSchema: z.ZodSchema<AssignedPerson> = z.object({
+export const AssignedPersonSchema: z.ZodSchema<AssignedPerson> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the assigned person.
   name: z.string(),
@@ -848,7 +848,7 @@ export const AssignedPersonSchema: z.ZodSchema<AssignedPerson> = z.object({
   // A USDM relationship between the AssignedPerson and Organization classes that identifies that organization to which the assigned person belongs.
   organizationId: z.union([z.string(), z.lazy(() => OrganizationSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("AssignedPerson")
 })
 
 /**
@@ -856,7 +856,7 @@ export const AssignedPersonSchema: z.ZodSchema<AssignedPerson> = z.object({
  * @preferredTerm Biospecimen Retention
  * @nciCode C215505
  */
-export const BiospecimenRetentionSchema: z.ZodSchema<BiospecimenRetention> = z.object({
+export const BiospecimenRetentionSchema: z.ZodSchema<BiospecimenRetention> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the biospecimen retention.
   name: z.string(),
@@ -869,7 +869,7 @@ export const BiospecimenRetentionSchema: z.ZodSchema<BiospecimenRetention> = z.o
   // An indication as to whether retained biospecimens contain DNA.
   includesDNA: z.boolean().optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("BiospecimenRetention")
 })
 
 /**
@@ -877,14 +877,14 @@ export const BiospecimenRetentionSchema: z.ZodSchema<BiospecimenRetention> = z.o
  * @preferredTerm Parameter Map
  * @nciCode C207456
  */
-export const ParameterMapSchema: z.ZodSchema<ParameterMap> = z.object({
+export const ParameterMapSchema: z.ZodSchema<ParameterMap> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // Character strings bounded by angle brackets that act as containers for programming language elements.
   tag: z.string(),
   // The reference for a tag used in programming languages, such as a markup language (e.g., HTML, XML), to store attributes and elements.
   reference: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ParameterMap")
 })
 
 /**
@@ -892,7 +892,7 @@ export const ParameterMapSchema: z.ZodSchema<ParameterMap> = z.object({
  * @preferredTerm Syntax Template Dictionary
  * @nciCode C207597
  */
-export const SyntaxTemplateDictionarySchema: z.ZodSchema<SyntaxTemplateDictionary> = z.object({
+export const SyntaxTemplateDictionarySchema: z.ZodSchema<SyntaxTemplateDictionary> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the syntax template dictionary.
   name: z.string(),
@@ -903,7 +903,7 @@ export const SyntaxTemplateDictionarySchema: z.ZodSchema<SyntaxTemplateDictionar
   // A USDM relationship between the SyntaxTemplateDictionary and ParameterMap classes which identifies the set of parameter maps (parameter map entries) associated with a syntax template dictionary.
   parameterMaps: z.array(z.lazy(() => ParameterMapSchema)).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("SyntaxTemplateDictionary")
 })
 
 /**
@@ -911,7 +911,7 @@ export const SyntaxTemplateDictionarySchema: z.ZodSchema<SyntaxTemplateDictionar
  * @preferredTerm Characteristic
  * @nciCode C25447
  */
-export const CharacteristicSchema: z.ZodSchema<Characteristic> = z.object({
+export const CharacteristicSchema: z.ZodSchema<Characteristic> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the characteristic.
   name: z.string(),
@@ -926,7 +926,7 @@ export const CharacteristicSchema: z.ZodSchema<Characteristic> = z.object({
   // A USDM relationship between the Characteristic and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to characteristics.
   dictionaryId: z.union([z.string(), z.lazy(() => SyntaxTemplateDictionarySchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Characteristic")
 })
 
 /**
@@ -934,7 +934,7 @@ export const CharacteristicSchema: z.ZodSchema<Characteristic> = z.object({
  * @preferredTerm Study Epoch
  * @nciCode C71738
  */
-export const StudyEpochSchema: z.ZodSchema<StudyEpoch> = z.object({
+export const StudyEpochSchema: z.ZodSchema<StudyEpoch> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study epoch, i.e., the named time period defined in the protocol, wherein a study activity is specified and unchanging throughout the interval, to support a study-specific purpose.
   name: z.string(),
@@ -951,7 +951,7 @@ export const StudyEpochSchema: z.ZodSchema<StudyEpoch> = z.object({
   // A USDM relationship within the StudyEpoch class which identifies the study epoch that chronologically follows the current study epoch.
   nextId: z.union([z.string(), z.lazy(() => StudyEpochSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyEpoch")
 })
 
 /**
@@ -959,7 +959,7 @@ export const StudyEpochSchema: z.ZodSchema<StudyEpoch> = z.object({
  * @preferredTerm Transition Rule
  * @nciCode C82567
  */
-export const TransitionRuleSchema: z.ZodSchema<TransitionRule> = z.object({
+export const TransitionRuleSchema: z.ZodSchema<TransitionRule> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the transition rule.
   name: z.string(),
@@ -970,7 +970,7 @@ export const TransitionRuleSchema: z.ZodSchema<TransitionRule> = z.object({
   // An instance of unstructured text that represents the transition rule.
   text: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("TransitionRule")
 })
 
 /**
@@ -978,7 +978,7 @@ export const TransitionRuleSchema: z.ZodSchema<TransitionRule> = z.object({
  * @preferredTerm Study Encounter
  * @nciCode C215488
  */
-export const EncounterSchema: z.ZodSchema<Encounter> = z.object({
+export const EncounterSchema: z.ZodSchema<Encounter> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) for a protocol-defined study encounter.
   name: z.string(),
@@ -1005,7 +1005,7 @@ export const EncounterSchema: z.ZodSchema<Encounter> = z.object({
   // A USDM relationship within the Encounter class which identifies the encounter that chronologically precedes the current encounter.
   previousId: z.union([z.string(), z.lazy(() => EncounterSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Encounter")
 })
 
 /**
@@ -1013,7 +1013,7 @@ export const EncounterSchema: z.ZodSchema<Encounter> = z.object({
  * @preferredTerm Scheduled Activity Instance
  * @nciCode C201350
  */
-export const ScheduledActivityInstanceSchema: z.ZodSchema<ScheduledActivityInstance> = z.object({
+export const ScheduledActivityInstanceSchema: z.ZodSchema<ScheduledActivityInstance> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the scheduled activity instance.
   name: z.string(),
@@ -1034,7 +1034,7 @@ export const ScheduledActivityInstanceSchema: z.ZodSchema<ScheduledActivityInsta
   // A USDM relationship between the ScheduledActivityInstance and ScheduleTimelineExit classes which provides the details associated with the exit from a timeline related to a scheduled activity instance.
   timelineExitId: z.union([z.string(), z.lazy(() => ScheduleTimelineExitSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ScheduledActivityInstance")
 })
 
 /**
@@ -1042,7 +1042,7 @@ export const ScheduledActivityInstanceSchema: z.ZodSchema<ScheduledActivityInsta
  * @preferredTerm Condition
  * @nciCode C25457
  */
-export const ConditionSchema: z.ZodSchema<Condition> = z.object({
+export const ConditionSchema: z.ZodSchema<Condition> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the condition.
   name: z.string(),
@@ -1057,11 +1057,11 @@ export const ConditionSchema: z.ZodSchema<Condition> = z.object({
   // A USDM relationship between the Condition and SyntaxTemplateDictionary classes which provides the set of dictionary entries related to conditions.
   dictionaryId: z.union([z.string(), z.lazy(() => SyntaxTemplateDictionarySchema)]).optional(),
   // A USDM relationship between the Condition and the ScheduledActivityInstance or Activity classes which identifies the scheduled activity instance or activity to which the condition belongs.
-  contextIds: z.array(z.union([z.string(), z.union([z.lazy(() => ActivitySchema), z.lazy(() => ScheduledActivityInstanceSchema)])])).min(0).optional(),
+  contextIds: z.array(z.union([z.string(), z.discriminatedUnion("instanceType", [z.lazy(() => ActivitySchema), z.lazy(() => ScheduledActivityInstanceSchema)])])).min(0).optional(),
   // A USDM relationship between the Condition and the Activity, Procedure, BiomedicalConcept, BiomedicalConceptSurrogate, or BiomedicalConceptCategory classes which identifies the procedure, activity, biomedical concept, biomedical concept surrogate, or biomedical concept category that applies to the condition.
-  appliesToIds: z.array(z.union([z.string(), z.union([z.lazy(() => BiomedicalConceptCategorySchema), z.lazy(() => ProcedureSchema), z.lazy(() => ActivitySchema), z.lazy(() => BiomedicalConceptSchema), z.lazy(() => BiomedicalConceptSurrogateSchema)])])).min(0).optional(),
+  appliesToIds: z.array(z.union([z.string(), z.discriminatedUnion("instanceType", [z.lazy(() => BiomedicalConceptCategorySchema), z.lazy(() => ProcedureSchema), z.lazy(() => ActivitySchema), z.lazy(() => BiomedicalConceptSchema), z.lazy(() => BiomedicalConceptSurrogateSchema)])])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Condition")
 })
 
 /**
@@ -1069,14 +1069,14 @@ export const ConditionSchema: z.ZodSchema<Condition> = z.object({
  * @preferredTerm Condition Assignment
  * @nciCode C201335
  */
-export const ConditionAssignmentSchema: z.ZodSchema<ConditionAssignment> = z.object({
+export const ConditionAssignmentSchema: z.ZodSchema<ConditionAssignment> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An assumption on which rests the validity or effect of something else.
   condition: z.string(),
   // A USDM relationship between the ConditionAssignment and ScheduledInstance classes which identifies the scheduled instance associated with the condition assignment.
   conditionTargetId: z.union([z.string(), z.lazy(() => ScheduledInstanceSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ConditionAssignment")
 })
 
 /**
@@ -1084,14 +1084,14 @@ export const ConditionAssignmentSchema: z.ZodSchema<ConditionAssignment> = z.obj
  * @preferredTerm Geographic Scope
  * @nciCode C207591
  */
-export const GeographicScopeSchema: z.ZodSchema<GeographicScope> = z.object({
+export const GeographicScopeSchema: z.ZodSchema<GeographicScope> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // A characterization or classification of the geographic scope.
   type: z.lazy(() => CodeSchema),
   // A symbol or combination of symbols which is assigned to the geographic scope.
   code: z.lazy(() => AliasCodeSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("GeographicScope")
 })
 
 /**
@@ -1099,7 +1099,7 @@ export const GeographicScopeSchema: z.ZodSchema<GeographicScope> = z.object({
  * @preferredTerm Study Governance Date
  * @nciCode C207595
  */
-export const GovernanceDateSchema: z.ZodSchema<GovernanceDate> = z.object({
+export const GovernanceDateSchema: z.ZodSchema<GovernanceDate> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study governance date
   name: z.string(),
@@ -1114,7 +1114,7 @@ export const GovernanceDateSchema: z.ZodSchema<GovernanceDate> = z.object({
   // A USDM relationship between the GovernanceDate and GeographicScope classes which identifies the set of geographic scopes associated with the governance date.
   geographicScopes: z.array(z.lazy(() => GeographicScopeSchema)).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("GovernanceDate")
 })
 
 /**
@@ -1122,14 +1122,14 @@ export const GovernanceDateSchema: z.ZodSchema<GovernanceDate> = z.object({
  * @preferredTerm Narrative Content Item
  * @nciCode C215489
  */
-export const NarrativeContentItemSchema: z.ZodSchema<NarrativeContentItem> = z.object({
+export const NarrativeContentItemSchema: z.ZodSchema<NarrativeContentItem> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the narrative content item.
   name: z.string(),
   // An instance of unstructured text that represents the narrative content item.
   text: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("NarrativeContentItem")
 })
 
 /**
@@ -1137,7 +1137,7 @@ export const NarrativeContentItemSchema: z.ZodSchema<NarrativeContentItem> = z.o
  * @preferredTerm Narrative Content
  * @nciCode C207592
  */
-export const NarrativeContentSchema: z.ZodSchema<NarrativeContent> = z.object({
+export const NarrativeContentSchema: z.ZodSchema<NarrativeContent> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the narrative content.
   name: z.string(),
@@ -1158,7 +1158,7 @@ export const NarrativeContentSchema: z.ZodSchema<NarrativeContent> = z.object({
   // A USDM relationship within the NarrativeContent class which identifies the set of child content associated with an instance of narrative content.
   childIds: z.array(z.union([z.string(), z.lazy(() => NarrativeContentSchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("NarrativeContent")
 })
 
 /**
@@ -1166,7 +1166,7 @@ export const NarrativeContentSchema: z.ZodSchema<NarrativeContent> = z.object({
  * @preferredTerm Study Definition Document Version
  * @nciCode C215491
  */
-export const StudyDefinitionDocumentVersionSchema: z.ZodSchema<StudyDefinitionDocumentVersion> = z.object({
+export const StudyDefinitionDocumentVersionSchema: z.ZodSchema<StudyDefinitionDocumentVersion> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // A condition of the study definition document at a point in time with respect to its state of readiness for implementation.
   status: z.lazy(() => CodeSchema),
@@ -1179,7 +1179,7 @@ export const StudyDefinitionDocumentVersionSchema: z.ZodSchema<StudyDefinitionDo
   // A USDM relationship between the StudyDefinitionDocumentVersion and NarrativeContent classes which identifies the set of narrative content associated with the version of the study definition document.
   contents: z.array(z.lazy(() => NarrativeContentSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyDefinitionDocumentVersion")
 })
 
 /**
@@ -1187,7 +1187,7 @@ export const StudyDefinitionDocumentVersionSchema: z.ZodSchema<StudyDefinitionDo
  * @preferredTerm Study Definition Document
  * @nciCode C215490
  */
-export const StudyDefinitionDocumentSchema: z.ZodSchema<StudyDefinitionDocument> = z.object({
+export const StudyDefinitionDocumentSchema: z.ZodSchema<StudyDefinitionDocument> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study definition document.
   name: z.string(),
@@ -1208,7 +1208,7 @@ export const StudyDefinitionDocumentSchema: z.ZodSchema<StudyDefinitionDocument>
   // A USDM relationship between the StudyDefinitionDocument and StudyDefinitionDocumentVersion classes which identifies the set of versions associated with the study definition document.
   versions: z.array(z.lazy(() => StudyDefinitionDocumentVersionSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyDefinitionDocument")
 })
 
 /**
@@ -1216,7 +1216,7 @@ export const StudyDefinitionDocumentSchema: z.ZodSchema<StudyDefinitionDocument>
  * @preferredTerm Document Content Reference
  * @nciCode C215499
  */
-export const DocumentContentReferenceSchema: z.ZodSchema<DocumentContentReference> = z.object({
+export const DocumentContentReferenceSchema: z.ZodSchema<DocumentContentReference> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The numeric identifier of a particular section for the document content reference.
   sectionNumber: z.string(),
@@ -1225,7 +1225,7 @@ export const DocumentContentReferenceSchema: z.ZodSchema<DocumentContentReferenc
   // A USDM relationship between the DocumentContentReference and StudyDefinitionDocument classes which identifies the study definition document to which the document content reference applies.
   appliesToId: z.union([z.string(), z.lazy(() => StudyDefinitionDocumentSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("DocumentContentReference")
 })
 
 /**
@@ -1233,7 +1233,7 @@ export const DocumentContentReferenceSchema: z.ZodSchema<DocumentContentReferenc
  * @preferredTerm Eligibility Criterion Item
  * @nciCode C215506
  */
-export const EligibilityCriterionItemSchema: z.ZodSchema<EligibilityCriterionItem> = z.object({
+export const EligibilityCriterionItemSchema: z.ZodSchema<EligibilityCriterionItem> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the eligibility criterion item.
   name: z.string(),
@@ -1248,7 +1248,7 @@ export const EligibilityCriterionItemSchema: z.ZodSchema<EligibilityCriterionIte
   // A USDM relationship between the EligibilityCriterionItem and SyntaxTemplateDictionary classes which provides the dictionary entry associated with a eligibility criterion item.
   dictionaryId: z.union([z.string(), z.lazy(() => SyntaxTemplateDictionarySchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("EligibilityCriterionItem")
 })
 
 /**
@@ -1256,7 +1256,7 @@ export const EligibilityCriterionItemSchema: z.ZodSchema<EligibilityCriterionIte
  * @preferredTerm Study Eligibility Criterion
  * @nciCode C16112
  */
-export const EligibilityCriterionSchema: z.ZodSchema<EligibilityCriterion> = z.object({
+export const EligibilityCriterionSchema: z.ZodSchema<EligibilityCriterion> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study eligibility criterion.
   name: z.string(),
@@ -1277,7 +1277,7 @@ export const EligibilityCriterionSchema: z.ZodSchema<EligibilityCriterion> = z.o
   // A USDM relationship within the EligibilityCriterion class which identifies the eligibility criterion that precedes the current eligibility criterion in the display order.
   previousId: z.union([z.string(), z.lazy(() => EligibilityCriterionSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("EligibilityCriterion")
 })
 
 /**
@@ -1285,7 +1285,7 @@ export const EligibilityCriterionSchema: z.ZodSchema<EligibilityCriterion> = z.o
  * @preferredTerm Study Endpoint
  * @nciCode C25212
  */
-export const EndpointSchema: z.ZodSchema<Endpoint> = z.object({
+export const EndpointSchema: z.ZodSchema<Endpoint> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study endpoint.
   name: z.string(),
@@ -1304,7 +1304,7 @@ export const EndpointSchema: z.ZodSchema<Endpoint> = z.object({
   // The textual representation of the study endpoint purpose.
   purpose: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Endpoint")
 })
 
 /**
@@ -1312,7 +1312,7 @@ export const EndpointSchema: z.ZodSchema<Endpoint> = z.object({
  * @preferredTerm Intercurrent Event
  * @nciCode C188815
  */
-export const IntercurrentEventSchema: z.ZodSchema<IntercurrentEvent> = z.object({
+export const IntercurrentEventSchema: z.ZodSchema<IntercurrentEvent> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the intercurrent event.
   name: z.string(),
@@ -1329,7 +1329,7 @@ export const IntercurrentEventSchema: z.ZodSchema<IntercurrentEvent> = z.object(
   // A textual description of the planned strategy to manage and/or mitigate intercurrent events.
   strategy: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("IntercurrentEvent")
 })
 
 /**
@@ -1337,7 +1337,7 @@ export const IntercurrentEventSchema: z.ZodSchema<IntercurrentEvent> = z.object(
  * @preferredTerm Estimand
  * @nciCode C188813
  */
-export const EstimandSchema: z.ZodSchema<Estimand> = z.object({
+export const EstimandSchema: z.ZodSchema<Estimand> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // A synopsis of the clinical endpoint of interest within the analysis target study population.
   populationSummary: z.string(),
@@ -1358,7 +1358,7 @@ export const EstimandSchema: z.ZodSchema<Estimand> = z.object({
   // A USDM relationship between the Estimand and StudyIntervention classes which identifies the set of study interventions associated with the Estimand.
   interventionIds: z.array(z.union([z.string(), z.lazy(() => StudyInterventionSchema)])).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Estimand")
 })
 
 /**
@@ -1366,7 +1366,7 @@ export const EstimandSchema: z.ZodSchema<Estimand> = z.object({
  * @preferredTerm Disease/Condition Indication
  * @nciCode C41184
  */
-export const IndicationSchema: z.ZodSchema<Indication> = z.object({
+export const IndicationSchema: z.ZodSchema<Indication> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the disease/condition indication.
   name: z.string(),
@@ -1381,7 +1381,7 @@ export const IndicationSchema: z.ZodSchema<Indication> = z.object({
   // A brief written record relevant to the disease/condition indication.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Indication")
 })
 
 /**
@@ -1389,7 +1389,7 @@ export const IndicationSchema: z.ZodSchema<Indication> = z.object({
  * @preferredTerm Study Objective
  * @nciCode C142450
  */
-export const ObjectiveSchema: z.ZodSchema<Objective> = z.object({
+export const ObjectiveSchema: z.ZodSchema<Objective> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study objective.
   name: z.string(),
@@ -1408,7 +1408,7 @@ export const ObjectiveSchema: z.ZodSchema<Objective> = z.object({
   // A USDM relationship between the Objective and Endpoint classes which identifies the set of endpoints associated with the study objective.
   endpoints: z.array(z.lazy(() => EndpointSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Objective")
 })
 
 /**
@@ -1416,7 +1416,7 @@ export const ObjectiveSchema: z.ZodSchema<Objective> = z.object({
  * @preferredTerm Study Arm
  * @nciCode C174447
  */
-export const StudyArmSchema: z.ZodSchema<StudyArm> = z.object({
+export const StudyArmSchema: z.ZodSchema<StudyArm> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study arm.
   name: z.string(),
@@ -1435,7 +1435,7 @@ export const StudyArmSchema: z.ZodSchema<StudyArm> = z.object({
   // A USDM relationship between the StudyArm and PopulationDefinition classes which identifies the set of populations associated with the study arm.
   populationIds: z.array(z.union([z.string(), z.lazy(() => PopulationDefinitionSchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyArm")
 })
 
 /**
@@ -1443,7 +1443,7 @@ export const StudyArmSchema: z.ZodSchema<StudyArm> = z.object({
  * @preferredTerm Study Design Element
  * @nciCode C142735
  */
-export const StudyElementSchema: z.ZodSchema<StudyElement> = z.object({
+export const StudyElementSchema: z.ZodSchema<StudyElement> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study design element.
   name: z.string(),
@@ -1460,7 +1460,7 @@ export const StudyElementSchema: z.ZodSchema<StudyElement> = z.object({
   // A USDM relationship between the StudyElement and TransitionRule classes which provides the details associated with a transition rule used to trigger the start of a study element.
   transitionStartRule: z.lazy(() => TransitionRuleSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyElement")
 })
 
 /**
@@ -1468,7 +1468,7 @@ export const StudyElementSchema: z.ZodSchema<StudyElement> = z.object({
  * @preferredTerm Study Design Cell
  * @nciCode C188810
  */
-export const StudyCellSchema: z.ZodSchema<StudyCell> = z.object({
+export const StudyCellSchema: z.ZodSchema<StudyCell> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // A USDM relationship between the StudyCell and StudyArm classes which identifies the study arm associated with a study cell.
   armId: z.union([z.string(), z.lazy(() => StudyArmSchema)]),
@@ -1477,7 +1477,7 @@ export const StudyCellSchema: z.ZodSchema<StudyCell> = z.object({
   // A USDM relationship between the StudyCell and StudyElement classes which identifies the set of study elements associated with the study cell.
   elementIds: z.array(z.union([z.string(), z.lazy(() => StudyElementSchema)])).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyCell")
 })
 
 /**
@@ -1485,7 +1485,7 @@ export const StudyCellSchema: z.ZodSchema<StudyCell> = z.object({
  * @preferredTerm Study Cohort
  * @nciCode C61512
  */
-export const StudyCohortSchema: z.ZodSchema<StudyCohort> = z.object({
+export const StudyCohortSchema: z.ZodSchema<StudyCohort> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study cohort.
   name: z.string(),
@@ -1512,7 +1512,7 @@ export const StudyCohortSchema: z.ZodSchema<StudyCohort> = z.object({
   // A USDM relationship between the StudyCohort and Indication classes which identifies the set of indications associated with the study cohort.
   indicationIds: z.array(z.union([z.string(), z.lazy(() => IndicationSchema)])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyCohort")
 })
 
 /**
@@ -1520,7 +1520,7 @@ export const StudyCohortSchema: z.ZodSchema<StudyCohort> = z.object({
  * @preferredTerm Study Design Population
  * @nciCode C142728
  */
-export const StudyDesignPopulationSchema: z.ZodSchema<StudyDesignPopulation> = z.object({
+export const StudyDesignPopulationSchema: z.ZodSchema<StudyDesignPopulation> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study design population.
   name: z.string(),
@@ -1545,7 +1545,7 @@ export const StudyDesignPopulationSchema: z.ZodSchema<StudyDesignPopulation> = z
   // A USDM relationship between the StudyDesignPopulation and StudyCohort classes which identifies the set of study cohorts associated with the study design population.
   cohorts: z.array(z.lazy(() => StudyCohortSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyDesignPopulation")
 })
 
 /**
@@ -1553,7 +1553,7 @@ export const StudyDesignPopulationSchema: z.ZodSchema<StudyDesignPopulation> = z
  * @preferredTerm Interventional Study Design
  * @nciCode C215503
  */
-export const InterventionalStudyDesignSchema: z.ZodSchema<InterventionalStudyDesign> = z.object({
+export const InterventionalStudyDesignSchema: z.ZodSchema<InterventionalStudyDesign> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the interventional study design.
   name: z.string(),
@@ -1613,7 +1613,7 @@ export const InterventionalStudyDesignSchema: z.ZodSchema<InterventionalStudyDes
   // The planned purpose of the therapy, device, or agent under study in the clinical trial.
   intentTypes: z.array(z.lazy(() => CodeSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("InterventionalStudyDesign")
 })
 
 /**
@@ -1621,14 +1621,14 @@ export const InterventionalStudyDesignSchema: z.ZodSchema<InterventionalStudyDes
  * @preferredTerm Masking
  * @nciCode C191278
  */
-export const MaskingSchema: z.ZodSchema<Masking> = z.object({
+export const MaskingSchema: z.ZodSchema<Masking> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of unstructured text that represents how the masking is performed and maintained.
   text: z.string(),
   // An indication as to whether the study role is masked.
   isMasked: z.boolean(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Masking")
 })
 
 /**
@@ -1636,7 +1636,7 @@ export const MaskingSchema: z.ZodSchema<Masking> = z.object({
  * @preferredTerm Observational Study Design
  * @nciCode C215504
  */
-export const ObservationalStudyDesignSchema: z.ZodSchema<ObservationalStudyDesign> = z.object({
+export const ObservationalStudyDesignSchema: z.ZodSchema<ObservationalStudyDesign> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the observational study design.
   name: z.string(),
@@ -1696,7 +1696,7 @@ export const ObservationalStudyDesignSchema: z.ZodSchema<ObservationalStudyDesig
   // The sampling method used to assign study participants into groups or cohorts within an observational study.
   samplingMethod: z.lazy(() => CodeSchema).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ObservationalStudyDesign")
 })
 
 /**
@@ -1704,7 +1704,7 @@ export const ObservationalStudyDesignSchema: z.ZodSchema<ObservationalStudyDesig
  * @preferredTerm Product Organization Role
  * @nciCode C215502
  */
-export const ProductOrganizationRoleSchema: z.ZodSchema<ProductOrganizationRole> = z.object({
+export const ProductOrganizationRoleSchema: z.ZodSchema<ProductOrganizationRole> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the product organization role.
   name: z.string(),
@@ -1715,11 +1715,11 @@ export const ProductOrganizationRoleSchema: z.ZodSchema<ProductOrganizationRole>
   // A symbol or combination of symbols which is assigned to the product organization role.
   code: z.lazy(() => CodeSchema),
   // A USDM relationship between the ProductOrganizationRole and either the AdministrableProduct or MedicalDevice class that identifies the administrable product or medical device to which the product organization role applies.
-  appliesToIds: z.array(z.union([z.string(), z.union([z.lazy(() => AdministrableProductSchema), z.lazy(() => MedicalDeviceSchema)])])).min(0).optional(),
+  appliesToIds: z.array(z.union([z.string(), z.discriminatedUnion("instanceType", [z.lazy(() => AdministrableProductSchema), z.lazy(() => MedicalDeviceSchema)])])).min(0).optional(),
   // A USDM relationship between the ProductOrganizationRole and Organization classes which identifies the organization associated with the product organization role.
   organizationId: z.union([z.string(), z.lazy(() => OrganizationSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ProductOrganizationRole")
 })
 
 /**
@@ -1727,7 +1727,7 @@ export const ProductOrganizationRoleSchema: z.ZodSchema<ProductOrganizationRole>
  * @preferredTerm Reference Identifier
  * @nciCode C82531
  */
-export const ReferenceIdentifierSchema: z.ZodSchema<ReferenceIdentifier> = z.object({
+export const ReferenceIdentifierSchema: z.ZodSchema<ReferenceIdentifier> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of structured text that represents the reference identifier.
   text: z.string(),
@@ -1736,7 +1736,7 @@ export const ReferenceIdentifierSchema: z.ZodSchema<ReferenceIdentifier> = z.obj
   // A characterization or classification of the reference identifier.
   type: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ReferenceIdentifier")
 })
 
 /**
@@ -1744,7 +1744,7 @@ export const ReferenceIdentifierSchema: z.ZodSchema<ReferenceIdentifier> = z.obj
  * @preferredTerm Scheduled Decision Instance
  * @nciCode C201351
  */
-export const ScheduledDecisionInstanceSchema: z.ZodSchema<ScheduledDecisionInstance> = z.object({
+export const ScheduledDecisionInstanceSchema: z.ZodSchema<ScheduledDecisionInstance> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the scheduled Decision instance.
   name: z.string(),
@@ -1759,7 +1759,7 @@ export const ScheduledDecisionInstanceSchema: z.ZodSchema<ScheduledDecisionInsta
   // A USDM relationship between the ScheduledDecisionInstance and ConditionAssignment classes which identifies the set of condition assignments associated with a scheduled decision instance.
   conditionAssignments: z.array(z.lazy(() => ConditionAssignmentSchema)).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("ScheduledDecisionInstance")
 })
 
 /**
@@ -1767,7 +1767,7 @@ export const ScheduledDecisionInstanceSchema: z.ZodSchema<ScheduledDecisionInsta
  * @preferredTerm Study Amendment Impact
  * @nciCode C215500
  */
-export const StudyAmendmentImpactSchema: z.ZodSchema<StudyAmendmentImpact> = z.object({
+export const StudyAmendmentImpactSchema: z.ZodSchema<StudyAmendmentImpact> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of unstructured text that represents the study amendment impact.
   text: z.string(),
@@ -1778,7 +1778,7 @@ export const StudyAmendmentImpactSchema: z.ZodSchema<StudyAmendmentImpact> = z.o
   // A brief written record relevant to the study amendment impact.
   notes: z.array(z.lazy(() => CommentAnnotationSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyAmendmentImpact")
 })
 
 /**
@@ -1786,7 +1786,7 @@ export const StudyAmendmentImpactSchema: z.ZodSchema<StudyAmendmentImpact> = z.o
  * @preferredTerm Subject Enrollment
  * @nciCode C37948
  */
-export const SubjectEnrollmentSchema: z.ZodSchema<SubjectEnrollment> = z.object({
+export const SubjectEnrollmentSchema: z.ZodSchema<SubjectEnrollment> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the subject enrollment.
   name: z.string(),
@@ -1803,7 +1803,7 @@ export const SubjectEnrollmentSchema: z.ZodSchema<SubjectEnrollment> = z.object(
   // A USDM relationship between the SubjectEnrollment and StudySite classes which identifies the study site to which the subject enrollment applies.
   forStudySiteId: z.union([z.string(), z.lazy(() => StudySiteSchema)]).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("SubjectEnrollment")
 })
 
 /**
@@ -1811,14 +1811,14 @@ export const SubjectEnrollmentSchema: z.ZodSchema<SubjectEnrollment> = z.object(
  * @preferredTerm Study Amendment Reason
  * @nciCode C207457
  */
-export const StudyAmendmentReasonSchema: z.ZodSchema<StudyAmendmentReason> = z.object({
+export const StudyAmendmentReasonSchema: z.ZodSchema<StudyAmendmentReason> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The rationale for the change(s) to, or formal clarification of, a protocol that is not otherwise specified.
   otherReason: z.string().optional(),
   // A symbol or combination of symbols which is assigned to the study amendment reason.
   code: z.lazy(() => CodeSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyAmendmentReason")
 })
 
 /**
@@ -1826,7 +1826,7 @@ export const StudyAmendmentReasonSchema: z.ZodSchema<StudyAmendmentReason> = z.o
  * @preferredTerm Study Change
  * @nciCode C215498
  */
-export const StudyChangeSchema: z.ZodSchema<StudyChange> = z.object({
+export const StudyChangeSchema: z.ZodSchema<StudyChange> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study change.
   name: z.string(),
@@ -1841,7 +1841,7 @@ export const StudyChangeSchema: z.ZodSchema<StudyChange> = z.object({
   // A USDM relationship between the StudyChange and DocumentContentReference class which provides the set of changed document sections related to the study change.
   changedSections: z.array(z.lazy(() => DocumentContentReferenceSchema)).min(1),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyChange")
 })
 
 /**
@@ -1849,7 +1849,7 @@ export const StudyChangeSchema: z.ZodSchema<StudyChange> = z.object({
  * @preferredTerm Study Amendment
  * @nciCode C207594
  */
-export const StudyAmendmentSchema: z.ZodSchema<StudyAmendment> = z.object({
+export const StudyAmendmentSchema: z.ZodSchema<StudyAmendment> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study amendment.
   name: z.string(),
@@ -1880,7 +1880,7 @@ export const StudyAmendmentSchema: z.ZodSchema<StudyAmendment> = z.object({
   // A USDM relationship between the StudyAmendment and StudyAmendmentReason classes which identifies the primary reason for issuing the study amendment.
   primaryReason: z.lazy(() => StudyAmendmentReasonSchema),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyAmendment")
 })
 
 /**
@@ -1888,14 +1888,14 @@ export const StudyAmendmentSchema: z.ZodSchema<StudyAmendment> = z.object({
  * @preferredTerm Study Identifier
  * @nciCode C83082
  */
-export const StudyIdentifierSchema: z.ZodSchema<StudyIdentifier> = z.object({
+export const StudyIdentifierSchema: z.ZodSchema<StudyIdentifier> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // An instance of structured text that represents the study identifier.
   text: z.string(),
   // A USDM relationship between the StudyIdentifier and Organization classes which provides the details associated with each organization that has assigned the study identifier.
   scopeId: z.union([z.string(), z.lazy(() => OrganizationSchema)]),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyIdentifier")
 })
 
 /**
@@ -1903,14 +1903,14 @@ export const StudyIdentifierSchema: z.ZodSchema<StudyIdentifier> = z.object({
  * @preferredTerm Study Title
  * @nciCode C49802
  */
-export const StudyTitleSchema: z.ZodSchema<StudyTitle> = z.object({
+export const StudyTitleSchema: z.ZodSchema<StudyTitle> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // A characterization or classification of the study title.
   type: z.lazy(() => CodeSchema),
   // An instance of unstructured text that represents the study title.
   text: z.string(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyTitle")
 })
 
 /**
@@ -1918,7 +1918,7 @@ export const StudyTitleSchema: z.ZodSchema<StudyTitle> = z.object({
  * @preferredTerm Study Role
  * @nciCode C215497
  */
-export const StudyRoleSchema: z.ZodSchema<StudyRole> = z.object({
+export const StudyRoleSchema: z.ZodSchema<StudyRole> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the study role.
   name: z.string(),
@@ -1937,9 +1937,9 @@ export const StudyRoleSchema: z.ZodSchema<StudyRole> = z.object({
   // A USDM relationship between the StudyRole and Organization classes which identifies the set of organizations associated with the study role.
   organizationIds: z.array(z.union([z.string(), z.lazy(() => OrganizationSchema)])).min(0).optional(),
   // A USDM relationship between the StudyRole and either StudyVersion or StudyDesign classes that identifies the study version or study design to which the study role applies.
-  appliesToIds: z.array(z.union([z.string(), z.union([z.lazy(() => StudyVersionSchema), z.lazy(() => StudyDesignSchema)])])).min(0).optional(),
+  appliesToIds: z.array(z.union([z.string(), z.discriminatedUnion("instanceType", [z.lazy(() => StudyVersionSchema), z.lazy(() => StudyDesignSchema)])])).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyRole")
 })
 
 /**
@@ -1947,7 +1947,7 @@ export const StudyRoleSchema: z.ZodSchema<StudyRole> = z.object({
  * @preferredTerm Study Version
  * @nciCode C188816
  */
-export const StudyVersionSchema: z.ZodSchema<StudyVersion> = z.object({
+export const StudyVersionSchema: z.ZodSchema<StudyVersion> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // A sequence of characters used to identify, name, or characterize the study version.
   versionIdentifier: z.string(),
@@ -1987,7 +1987,7 @@ export const StudyVersionSchema: z.ZodSchema<StudyVersion> = z.object({
   bcSurrogates: z.array(z.lazy(() => BiomedicalConceptSurrogateSchema)).min(0).optional(),
   dictionaries: z.array(z.lazy(() => SyntaxTemplateDictionarySchema)).min(0).optional(),
   conditions: z.array(z.lazy(() => ConditionSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("StudyVersion")
 })
 
 /**
@@ -1995,7 +1995,7 @@ export const StudyVersionSchema: z.ZodSchema<StudyVersion> = z.object({
  * @preferredTerm Clinical Study
  * @nciCode C15206
  */
-export const StudySchema: z.ZodSchema<Study> = z.object({
+export const StudySchema: z.ZodSchema<Study> & z.core.$ZodTypeDiscriminable = z.object({
   id: z.string(),
   // The literal identifier (i.e., distinctive designation) of the clinical study.
   name: z.string(),
@@ -2008,7 +2008,7 @@ export const StudySchema: z.ZodSchema<Study> = z.object({
   // A USDM relationship between the Study and StudyDefinitionDocument classes signifying that the study is documented in a study definition document.
   documentedBy: z.array(z.lazy(() => StudyDefinitionDocumentSchema)).min(0).optional(),
   extensionAttributes: z.array(z.lazy(() => ExtensionAttributeSchema)).min(0).optional(),
-  instanceType: z.string()
+  instanceType: z.literal("Study")
 })
 
 // Union schemas for abstract classes
@@ -2017,42 +2017,42 @@ export const StudySchema: z.ZodSchema<Study> = z.object({
  * @preferredTerm Identifier
  * @nciCode C25364
  */
-export const IdentifierSchema: z.ZodUnion<[typeof AdministrableProductIdentifierSchema, typeof MedicalDeviceIdentifierSchema, typeof ReferenceIdentifierSchema, typeof StudyIdentifierSchema]> = z.union([AdministrableProductIdentifierSchema, MedicalDeviceIdentifierSchema, ReferenceIdentifierSchema, StudyIdentifierSchema])
+export const IdentifierSchema: z.ZodDiscriminatedUnion<[typeof AdministrableProductIdentifierSchema, typeof MedicalDeviceIdentifierSchema, typeof ReferenceIdentifierSchema, typeof StudyIdentifierSchema]> = z.discriminatedUnion("instanceType", [AdministrableProductIdentifierSchema, MedicalDeviceIdentifierSchema, ReferenceIdentifierSchema, StudyIdentifierSchema])
 
 /**
  * A concise explanation of the meaning of a population.
  * @preferredTerm Population Definition
  * @nciCode C207593
  */
-export const PopulationDefinitionSchema: z.ZodUnion<[typeof StudyCohortSchema, typeof StudyDesignPopulationSchema]> = z.union([StudyCohortSchema, StudyDesignPopulationSchema])
+export const PopulationDefinitionSchema: z.ZodDiscriminatedUnion<[typeof StudyCohortSchema, typeof StudyDesignPopulationSchema]> = z.discriminatedUnion("instanceType", [StudyCohortSchema, StudyDesignPopulationSchema])
 
 /**
  * The total amount (number), or the limits (minimum and maximum) of a variation.
  * @preferredTerm Quantity or Range
  * @nciCode C217000
  */
-export const QuantityRangeSchema: z.ZodUnion<[typeof QuantitySchema, typeof RangeSchema]> = z.union([QuantitySchema, RangeSchema])
+export const QuantityRangeSchema: z.ZodDiscriminatedUnion<[typeof QuantitySchema, typeof RangeSchema]> = z.discriminatedUnion("instanceType", [QuantitySchema, RangeSchema])
 
 /**
  * A scheduled occurrence of a temporal event.
  * @preferredTerm Scheduled Instance
  * @nciCode C201299
  */
-export const ScheduledInstanceSchema: z.ZodUnion<[typeof ScheduledActivityInstanceSchema, typeof ScheduledDecisionInstanceSchema]> = z.union([ScheduledActivityInstanceSchema, ScheduledDecisionInstanceSchema])
+export const ScheduledInstanceSchema: z.ZodDiscriminatedUnion<[typeof ScheduledActivityInstanceSchema, typeof ScheduledDecisionInstanceSchema]> = z.discriminatedUnion("instanceType", [ScheduledActivityInstanceSchema, ScheduledDecisionInstanceSchema])
 
 /**
  * A plan detailing how a study will be performed in order to represent the phenomenon under examination, to answer the research questions that have been asked, and informing the statistical approach.
  * @preferredTerm Study Design
  * @nciCode C15320
  */
-export const StudyDesignSchema: z.ZodUnion<[typeof InterventionalStudyDesignSchema, typeof ObservationalStudyDesignSchema]> = z.union([InterventionalStudyDesignSchema, ObservationalStudyDesignSchema])
+export const StudyDesignSchema: z.ZodDiscriminatedUnion<[typeof InterventionalStudyDesignSchema, typeof ObservationalStudyDesignSchema]> = z.discriminatedUnion("instanceType", [InterventionalStudyDesignSchema, ObservationalStudyDesignSchema])
 
 /**
  * A standardized pattern used for the arrangement of words and phrases to create well-formed, structured sentences.
  * @preferredTerm Syntax Template
  * @nciCode C207596
  */
-export const SyntaxTemplateSchema: z.ZodUnion<[typeof CharacteristicSchema, typeof ConditionSchema, typeof EligibilityCriterionItemSchema, typeof EndpointSchema, typeof IntercurrentEventSchema, typeof ObjectiveSchema]> = z.union([CharacteristicSchema, ConditionSchema, EligibilityCriterionItemSchema, EndpointSchema, IntercurrentEventSchema, ObjectiveSchema])
+export const SyntaxTemplateSchema: z.ZodDiscriminatedUnion<[typeof CharacteristicSchema, typeof ConditionSchema, typeof EligibilityCriterionItemSchema, typeof EndpointSchema, typeof IntercurrentEventSchema, typeof ObjectiveSchema]> = z.discriminatedUnion("instanceType", [CharacteristicSchema, ConditionSchema, EligibilityCriterionItemSchema, EndpointSchema, IntercurrentEventSchema, ObjectiveSchema])
 
 // Master schema object for easy access
 export const schemas: Record<string, z.ZodTypeAny> = {

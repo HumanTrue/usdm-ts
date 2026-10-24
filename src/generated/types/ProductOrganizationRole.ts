@@ -93,6 +93,6 @@ export interface ProductOrganizationRole {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ProductOrganizationRole"
 
 }

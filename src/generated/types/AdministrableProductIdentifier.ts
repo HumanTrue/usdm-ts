@@ -53,6 +53,6 @@ export interface AdministrableProductIdentifier extends IdentifierAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "AdministrableProductIdentifier"
 
 }

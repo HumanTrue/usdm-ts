@@ -61,6 +61,6 @@ export interface Abbreviation {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Abbreviation"
 
 }

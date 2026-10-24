@@ -123,6 +123,6 @@ export interface Estimand {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Estimand"
 
 }

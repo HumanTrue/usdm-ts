@@ -30,6 +30,11 @@ type Schema = Record<string, SchemaEntity>
 const PRIMITIVE_TYPES = ["string", "float", "integer", "boolean", "date", "datetime"] as const
 type PrimitiveType = typeof PRIMITIVE_TYPES[number]
 
+// The USDM JSON schema fixes every concrete class's instanceType to its class name (`const`), so it is
+// what a union of classes discriminates on. Matching by shape instead lets z.union pick the first
+// sibling that fits and strip the fields only the real class has.
+const INSTANCE_TYPE = "instanceType"
+
 class TypeScriptInterfaceGenerator {
   private schema: Schema
   private generatedInterfaces: Set<string> = new Set()
@@ -275,7 +280,7 @@ class TypeScriptInterfaceGenerator {
 
     for (const [attrName, attr] of Object.entries(entity.Attributes)) {
       const { optional, isArray } = this.parseCardinality(attr.Cardinality)
-      let baseType = this.convertType(attr.Type, attr["Relationship Type"])
+      let baseType = attrName === INSTANCE_TYPE ? `"${name}"` : this.convertType(attr.Type, attr["Relationship Type"])
       if (baseType.includes(" | ")) {
         baseType = `(${baseType})`
       }
@@ -533,9 +538,9 @@ class ZodSchemaGenerator {
       return "z.unknown()"
     })
 
-    // Create union if multiple types
+    // Every multi-type attribute in the model is a choice of classes
     let baseSchema = zodTypes.length > 1
-      ? `z.union([${zodTypes.join(", ")}])`
+      ? `z.discriminatedUnion("${INSTANCE_TYPE}", [${zodTypes.join(", ")}])`
       : (zodTypes[0] ?? "z.unknown()")
 
     // If this is a Ref relationship and doesn't already include string, add string as an alternative
@@ -640,14 +645,16 @@ class ZodSchemaGenerator {
     // Get all attributes including inherited
     const allAttributes = this.getAllAttributes(name)
 
-    // Start schema definition with explicit type
-    lines.push(`export const ${name}Schema: z.ZodSchema<${name}> = z.object({`)
+    // Start schema definition with explicit type; $ZodTypeDiscriminable lets it be a z.discriminatedUnion option
+    lines.push(`export const ${name}Schema: z.ZodSchema<${name}> & z.core.$ZodTypeDiscriminable = z.object({`)
 
     // Generate properties
     const attrEntries = Object.entries(allAttributes)
     attrEntries.forEach(([attrName, attr], index) => {
       const cardinalityInfo = this.parseCardinality(attr.Cardinality)
-      const zodType = this.convertTypeToZod(attr.Type, cardinalityInfo, name, attr["Relationship Type"])
+      const zodType = attrName === INSTANCE_TYPE
+        ? `z.literal("${name}")`
+        : this.convertTypeToZod(attr.Type, cardinalityInfo, name, attr["Relationship Type"])
 
       // Add description as comment
       if (attr.Definition != null) {
@@ -721,7 +728,7 @@ class ZodSchemaGenerator {
         }
 
         // Use consistent naming: QuantityRangeSchema validates QuantityRange
-        output.push(`export const ${abstractName}Schema: z.ZodUnion<[${subSchemas.map(s => `typeof ${s}`).join(", ")}]> = z.union([${subSchemas.join(", ")}])`)
+        output.push(`export const ${abstractName}Schema: z.ZodDiscriminatedUnion<[${subSchemas.map(s => `typeof ${s}`).join(", ")}]> = z.discriminatedUnion("${INSTANCE_TYPE}", [${subSchemas.join(", ")}])`)
         output.push("")
       }
     }

@@ -49,6 +49,6 @@ export interface Masking {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Masking"
 
 }

@@ -73,6 +73,6 @@ export interface AdministrableProductProperty {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "AdministrableProductProperty"
 
 }

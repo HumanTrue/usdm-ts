@@ -50,6 +50,6 @@ export interface AliasCode {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "AliasCode"
 
 }

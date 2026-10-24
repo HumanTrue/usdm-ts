@@ -157,6 +157,6 @@ export interface Timing {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Timing"
 
 }

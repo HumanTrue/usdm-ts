@@ -133,6 +133,6 @@ export interface ScheduleTimeline {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ScheduleTimeline"
 
 }

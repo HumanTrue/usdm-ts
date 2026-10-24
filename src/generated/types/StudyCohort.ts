@@ -173,6 +173,6 @@ export interface StudyCohort extends PopulationDefinitionAbstract {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "StudyCohort"
 
 }

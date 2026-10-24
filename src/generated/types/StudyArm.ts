@@ -116,6 +116,6 @@ export interface StudyArm {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "StudyArm"
 
 }

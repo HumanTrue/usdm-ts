@@ -86,6 +86,6 @@ export interface ExtensionAttribute {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "ExtensionAttribute"
 
 }

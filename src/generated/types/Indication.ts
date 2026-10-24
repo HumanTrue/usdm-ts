@@ -95,6 +95,6 @@ export interface Indication {
    * @cardinality 1
    * @relationshipType Value
    */
-  instanceType: string
+  instanceType: "Indication"
 
 }
