@@ -475,7 +475,7 @@
         "code": "C147145",
         "term": "Stratified Randomisation",
         "synonyms": null,
-        "definition": "A type of block randomization in which participants are stratified into groups based on prognostic variables and then randomized into balanced treatment groups."
+        "definition": "The process of grouping trial participants into strata according to important prognostic factors and then assigning participants within each stratum to different treatment or control groups using an element of chance and in order to reduce bias."
       }
     ]
   },
@@ -685,7 +685,7 @@
         "code": "C25936",
         "term": "Investigator",
         "synonyms": null,
-        "definition": "A person responsible for the conduct of the study, ensuring adherence to the protocol and good clinical practices. (CDISC Glossary)"
+        "definition": "A person responsible for the conduct of the clinical trial at a trial site. If a trial is conducted by a team of individuals at the trial site, the investigator is the responsible leader of the team and may be called the principal investigator. [ICH E6]"
       },
       {
         "code": "C37984",
@@ -715,7 +715,7 @@
         "code": "C207599",
         "term": "Outcomes Assessor",
         "synonyms": null,
-        "definition": "The individual who evaluates the outcome(s) of interest. (Clinicaltrials.gov)"
+        "definition": "The individual who evaluates the outcome(s) of interest."
       },
       {
         "code": "C215673",
@@ -853,7 +853,7 @@
         "code": "C70848",
         "term": "Lot Number",
         "synonyms": "Lot Identifier, Lot Number",
-        "definition": "A distinctive alpha-numeric identification code assigned by the manufacturer or distributor to a specific quantity of manufactured material or product within a batch."
+        "definition": "A short sequence of characters assigned by the manufacturer or distributor to a specific quantity of manufactured material or product."
       },
       {
         "code": "C99285",
@@ -1994,6 +1994,12 @@
         "term": "VAGINAL",
         "synonyms": null,
         "definition": "Administration into the vagina. (FDA)"
+      },
+      {
+        "code": "C188193",
+        "term": "INTRAMURAL",
+        "synonyms": null,
+        "definition": "Administration within the wall of a cavity, organ, or blood vessel."
       },
       {
         "code": "C221683",
@@ -3158,6 +3164,24 @@
         "term": "UNKNOWN",
         "synonyms": "U, UNK, Unknown",
         "definition": "Not known, not observed, not recorded, or refused. (NCI)"
+      },
+      {
+        "code": "C228253",
+        "term": "EVERY 2 YEARS",
+        "synonyms": null,
+        "definition": "Every two years."
+      },
+      {
+        "code": "C228254",
+        "term": "EVERY 6 YEARS",
+        "synonyms": null,
+        "definition": "Every six years."
+      },
+      {
+        "code": "C228255",
+        "term": "EVERY 7 YEARS",
+        "synonyms": null,
+        "definition": "Every seven years."
       }
     ]
   },
@@ -8722,6 +8746,12 @@
         "definition": "A unit of measure for the pressure difference in dynes times seconds per centimeter to the fifth power."
       },
       {
+        "code": "C225759",
+        "term": "E-CIGARETTE",
+        "synonyms": "eCigarette Dosing Unit, Electronic Cigarette Dosing Unit",
+        "definition": "A dosing measurement based on the electronic cigarette unit."
+      },
+      {
         "code": "C221688",
         "term": "Endotoxin U",
         "synonyms": "Endotoxin Unit, EU",
@@ -8732,6 +8762,36 @@
         "term": "Endotoxin U/mL",
         "synonyms": "Endotoxin Unit per Milliliter, EU/mL",
         "definition": "A unit of measure equal to one endotoxin unit per milliliter, which is equivalent to approximately 0.1 to 0.2 ng/mL endotoxin."
+      },
+      {
+        "code": "C225760",
+        "term": "Enzyme U/mg Protein",
+        "synonyms": "Enzyme U/mg Tprot, Enzyme Unit per Milligram of Protein",
+        "definition": "A unit of concentration (biologic activity) equal to one enzyme unit of substance per milligram of total protein."
+      },
+      {
+        "code": "C225761",
+        "term": "g IODINE",
+        "synonyms": "gI, Grams Iodine",
+        "definition": "A dosing unit defined as the number of grams of iodine in an administered dose."
+      },
+      {
+        "code": "C225762",
+        "term": "g IODINE/L",
+        "synonyms": "gI/L, Grams Iodine Per Liter, mgI/mL",
+        "definition": "A dosing concentration unit defined as the number of grams of iodine per liter of volume in an administered dose."
+      },
+      {
+        "code": "C222688",
+        "term": "g/100g",
+        "synonyms": "Grams per 100 Grams",
+        "definition": "A concentration unit expressed as the amount of a substance (in grams) contained in 100 grams of a sample or specimen."
+      },
+      {
+        "code": "C225763",
+        "term": "gEq/L",
+        "synonyms": "mgEq/mL, Milligram Equivalents/Milliliter, ngEq/nL, ugEq/uL",
+        "definition": "A concentration unit measured as a number of milligram equivalents of solute per milliliter of solution."
       },
       {
         "code": "C85624",
@@ -8758,10 +8818,22 @@
         "definition": "A logarithmic-scale (base 10) unit for measuring concentration of a substance in a solution as determined by the quantitative reaction with added measured volume(s) of a solution of the precisely known concentration(s) of a standard reagent."
       },
       {
+        "code": "C225764",
+        "term": "mg IODINE",
+        "synonyms": "mgI, Milligrams Iodine",
+        "definition": "A dosing unit defined as the number of milligrams of iodine in an administered dose."
+      },
+      {
         "code": "C221686",
         "term": "mg/L DDU",
         "synonyms": null,
         "definition": "A unit of equivalent concentration equal to the number of milligrams of D-dimer per unit volume equal to one liter."
+      },
+      {
+        "code": "C225765",
+        "term": "mg/TABLET",
+        "synonyms": null,
+        "definition": "A unit of measure expressed in milligram(s) per tablet."
       },
       {
         "code": "C214756",
@@ -8776,10 +8848,46 @@
         "definition": "A dose calculation unit expressed in millimole(s) per kilogram per period of time equal to one second."
       },
       {
+        "code": "C105511",
+        "term": "mmol/mol CREATININE",
+        "synonyms": "mmol/mol CREAT, umol/mmol CREATININE",
+        "definition": "A unit of fraction expressed as the ratio of the amount of a substance in solution, in millimoles, to the amount of creatinine in the mixture, in moles."
+      },
+      {
+        "code": "C225766",
+        "term": "RNA copies/ug",
+        "synonyms": null,
+        "definition": "A unit of measurement equal to the number of ribonucleic acid (RNA) copies per unit of mass equal to one microgram."
+      },
+      {
+        "code": "C225767",
+        "term": "SAU",
+        "synonyms": "Standard IgA Anti-Beta 2 Glycoprotein 1 Units, Standard IgA Anti-Beta 2 GP1 Units",
+        "definition": "An arbitrary unit for the quantitation of IgA antibodies to beta-2 glycoprotein 1, which has been normalized and calibrated to an assay standard."
+      },
+      {
         "code": "C214757",
         "term": "SFC/WELL",
         "synonyms": "SFU/Well, Spot Forming Cells/Well, Spots/Well",
         "definition": "A unit of activity of cell-mediated immunity expressed as a quantity of spot forming cells per one culture plate well."
+      },
+      {
+        "code": "C225768",
+        "term": "SGU",
+        "synonyms": "Standard IgG Anti-Beta 2 Glycoprotein 1 Units, Standard IgG Anti-Beta 2 GP1 Units",
+        "definition": "An arbitrary unit for the quantitation of IgG antibodies to beta-2 glycoprotein 1, which has been normalized and calibrated to an assay standard."
+      },
+      {
+        "code": "C225769",
+        "term": "SMU",
+        "synonyms": "Standard IgM Anti-Beta 2 Glycoprotein 1 Units, Standard IgM Anti-Beta 2 GP1 Units",
+        "definition": "An arbitrary unit for the quantitation of IgM antibodies to beta-2 glycoprotein 1, which has been normalized and calibrated to an assay standard."
+      },
+      {
+        "code": "C166087",
+        "term": "ugEq/g",
+        "synonyms": "mgEq/kg, Milligram Equivalents/Kilogram, ngEq/mg, ugEq/g",
+        "definition": "Microgram equivalents of a substance per gram of matrix or tissue (e.g., radiolabeled dose)."
       }
     ]
   },
