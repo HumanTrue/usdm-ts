@@ -9112,5 +9112,1247 @@
         "definition": "Observational studies which include an organized system that uses observational methods to collect uniform data (clinical and other) prospectively for a population defined by a particular disorder/disease, condition (including susceptibility to a disorder), or exposure (including products, health care services, and/or procedures) and that serves a predetermined scientific, clinical, or policy purpose. Patient registries may be single purpose or on-going data collection programs that address one or more questions. (AHRQ)"
       }
     ]
+  },
+  "AdministrableProduct.administrableDoseForm": {
+    "codelist_code": "C66726",
+    "extensible": true,
+    "values": [
+      {
+        "code": "C42887",
+        "term": "AEROSOL",
+        "synonyms": "aer",
+        "definition": "A product that is packaged under pressure and contains therapeutically active ingredients that are released upon activation of an appropriate valve system; it is intended for topical application to the skin as well as local application into the nose (nasal aerosols), mouth (lingual aerosols), or lungs (inhalation aerosols)."
+      },
+      {
+        "code": "C42888",
+        "term": "AEROSOL, FOAM",
+        "synonyms": null,
+        "definition": "A dosage form containing one or more active ingredients, surfactants, aqueous or non-aqueous liquids, and the propellants; if the propellant is in the internal (discontinuous) phase (i.e., of the oil-in-water type), a stable foam is discharged, and if the propellant is in the external (continuous) phase (i.e., of the water-in-oil type), a spray or a quick-breaking foam is discharged."
+      },
+      {
+        "code": "C42960",
+        "term": "AEROSOL, METERED",
+        "synonyms": null,
+        "definition": "A pressurized dosage form consisting of metered dose valves which allow for the delivery of a uniform quantity of spray upon each activation. (NCI)"
+      },
+      {
+        "code": "C42971",
+        "term": "AEROSOL, POWDER",
+        "synonyms": null,
+        "definition": "A product that is packaged under pressure and contains therapeutically active ingredients, in the form of a powder, that are released upon activation of an appropriate valve system. (NCI)"
+      },
+      {
+        "code": "C42889",
+        "term": "AEROSOL, SPRAY",
+        "synonyms": null,
+        "definition": "An aerosol product which utilizes a compressed gas as the propellant to provide the force necessary to expel the product as a wet spray; it is applicable to solutions of medicinal agents in aqueous solvents. (NCI)"
+      },
+      {
+        "code": "C42892",
+        "term": "BAR, CHEWABLE",
+        "synonyms": null,
+        "definition": "A solid dosage form usually in the form of a rectangle that is meant to be chewed. (NCI)"
+      },
+      {
+        "code": "C42890",
+        "term": "BEAD",
+        "synonyms": null,
+        "definition": "A solid dosage form in the shape of a small ball. (NCI)"
+      },
+      {
+        "code": "C43451",
+        "term": "BEAD, IMPLANT, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A small sterile solid mass consisting of a highly purified drug intended for implantation in the body which would allow at least a reduction in dosing frequency as compared to that drug presented as a conventional dosage form. (NCI)"
+      },
+      {
+        "code": "C42891",
+        "term": "BLOCK",
+        "synonyms": null,
+        "definition": "Solid dosage form, usually in the shape of a square or rectangle. (NCI)"
+      },
+      {
+        "code": "C97197",
+        "term": "CAPLET",
+        "synonyms": null,
+        "definition": "A solid dosage form in which a tablet has been compacted into capsule shape."
+      },
+      {
+        "code": "C25158",
+        "term": "CAPSULE",
+        "synonyms": "cap",
+        "definition": "A solid pharmaceutical dosage form that contains medicinal agent within either a hard or soft soluble container or shell, usually used for the oral administration of medicine. The shells are made of a suitable form of gelatin or other substance. (NCI)"
+      },
+      {
+        "code": "C42896",
+        "term": "CAPSULE, COATED PELLETS",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within either a hard or soft soluble container or 'shell' made from a suitable form of gelatin; the drug itself is in the form of granules to which varying amounts of coating have been applied. (NCI)"
+      },
+      {
+        "code": "C42895",
+        "term": "CAPSULE, COATED",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within either a hard or soft soluble container or \"shell\" made from a suitable form of gelatin; additionally, the capsule is covered in a designated coating."
+      },
+      {
+        "code": "C42917",
+        "term": "CAPSULE, COATED, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within either a hard or soft soluble container or \"shell\" made from a suitable form of gelatin; additionally, the capsule is covered in a designated coating, and which releases a drug (or drugs) in such a manner to allow at least a reduction in dosing frequency as compared to that drug (or drugs) presented as a conventional dosage form."
+      },
+      {
+        "code": "C42904",
+        "term": "CAPSULE, DELAYED RELEASE PELLETS",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within either a hard or soft soluble container or \"shell\" made from a suitable form of gelatin; the drug itself is in the form of granules to which enteric coating has been applied, thus delaying release of the drug until its passage into the intestines."
+      },
+      {
+        "code": "C42902",
+        "term": "CAPSULE, DELAYED RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within either a hard or soft soluble container made from a suitable form of gelatin, and which releases a drug (or drugs) at a time other than promptly after administration. Enteric-coated articles are delayed release dosage forms. (NCI)"
+      },
+      {
+        "code": "C42916",
+        "term": "CAPSULE, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within either a hard or soft soluble container made from a suitable form of gelatin, and which releases a drug (or drugs) in such a manner to allow a reduction in dosing frequency as compared to that drug (or drugs) presented as a conventional dosage form. (NCI)"
+      },
+      {
+        "code": "C42928",
+        "term": "CAPSULE, FILM COATED, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within either a hard or soft soluble container or 'shell' made from a suitable form of gelatin; additionally, the capsule is covered in a designated film coating, and which releases a drug (or drugs) in such a manner to allow at least a reduction in dosing frequency as compared to that drug (or drugs) presented as a conventional dosage form."
+      },
+      {
+        "code": "C42936",
+        "term": "CAPSULE, GELATIN COATED",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within either a hard or soft soluble container made from a suitable form of gelatin; through a banding process, the capsule is coated with additional layers of gelatin so as to form a complete seal. (NCI)"
+      },
+      {
+        "code": "C158214",
+        "term": "CAPSULE, HARD, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A capsule, covered with a rigid outer shell, that is designed to release active and/or inert ingredient(s) at a controlled, prolonged rate so as to reduce dosing frequency."
+      },
+      {
+        "code": "C142247",
+        "term": "CAPSULE, IMMEDIATE RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within either a hard or soft soluble container, which is designed to release its active and/or inert ingredient(s) immediately upon administration."
+      },
+      {
+        "code": "C42954",
+        "term": "CAPSULE, LIQUID FILLED",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug is enclosed within a soluble, gelatin shell which is plasticized by the addition of a polyol, such as sorbitol or glycerin, and is therefore of a somewhat thicker consistency than that of a hard shell capsule; typically, the active ingredients are dissolved or suspended in a liquid vehicle. (NCI)"
+      },
+      {
+        "code": "C184506",
+        "term": "CAPSULE, SOFTGEL",
+        "synonyms": null,
+        "definition": "A capsule, covered with a soft gelatin shell and containing a liquid, suspension, or semisolid, that is designed to release active and/or inert ingredient(s)."
+      },
+      {
+        "code": "C158215",
+        "term": "CAPSULE, SOFTGEL, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A capsule, covered with a soft gelatin shell and containing a liquid, suspension, or semisolid, that is designed to release active and/or inert ingredient(s) at a controlled, prolonged rate so as to reduce dosing frequency."
+      },
+      {
+        "code": "C45414",
+        "term": "CEMENT",
+        "synonyms": null,
+        "definition": "A substance that serves to produce solid union between two surfaces. (NCI)"
+      },
+      {
+        "code": "C42678",
+        "term": "CIGARETTE",
+        "synonyms": null,
+        "definition": "A dosage form containing finely cut tobacco leaves, with or without additives, that are rolled in a paper wrapper and burned, releasing smoke that is inhaled."
+      },
+      {
+        "code": "C60884",
+        "term": "CLOTH",
+        "synonyms": null,
+        "definition": "A large piece of relatively flat, absorbent material that contains a drug. It is typically used for applying medication or for cleansing."
+      },
+      {
+        "code": "C60891",
+        "term": "CONCENTRATE",
+        "synonyms": null,
+        "definition": "A liquid preparation of increased strength and reduced volume which is usually diluted prior to administration. (NCI)"
+      },
+      {
+        "code": "C42900",
+        "term": "CONE",
+        "synonyms": null,
+        "definition": "A solid dosage form bounded by a circular base and the surface formed by line segments joining every point of the boundary of the base to a common vertex. A cone (usually containing antibiotics) is normally placed below the gingiva after a dental extraction. (NCI)"
+      },
+      {
+        "code": "C42919",
+        "term": "CORE, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "An ocular system placed in the eye from which the drug diffuses through a membrane at a constant rate over a specified period. (NCI)"
+      },
+      {
+        "code": "C28944",
+        "term": "CREAM",
+        "synonyms": null,
+        "definition": "A semisolid emulsion of either the oil-in-water or the water-in-oil type, ordinarily intended for topical use. (NCI)"
+      },
+      {
+        "code": "C60897",
+        "term": "CREAM, AUGMENTED",
+        "synonyms": null,
+        "definition": "A cream dosage form that enhances drug delivery. Augmentation does not refer to the strength of the drug in the dosage form. NOTE: CDER has decided to refrain from expanding the use of this dosage form due to difficulties in setting specific criteria that must be met to be considered augmented."
+      },
+      {
+        "code": "C42901",
+        "term": "CRYSTAL",
+        "synonyms": null,
+        "definition": "A naturally produced angular solid of definite form in which the ultimate units from which it is built up are systematically arranged; they are usually evenly spaced on a regular space lattice."
+      },
+      {
+        "code": "C45415",
+        "term": "CULTURE",
+        "synonyms": null,
+        "definition": "The propagation of microorganisms or of living tissue cells in special media conducive to their growth. (NCI)"
+      },
+      {
+        "code": "C106178",
+        "term": "DEPOT",
+        "synonyms": "Depot Extended Release Dosage Form",
+        "definition": "Parenteral sustained-release systems of microparticles, implants, or biodegradable polymer-excipients designed to release their active pharmaceutical ingredient over a prolonged period of time."
+      },
+      {
+        "code": "C47890",
+        "term": "DIAPHRAGM",
+        "synonyms": null,
+        "definition": "A device usually dome-shaped, worn during copulation over the cervical mouth for prevention of conception or infection. (NCI)"
+      },
+      {
+        "code": "C43525",
+        "term": "DISC",
+        "synonyms": null,
+        "definition": "A circular plate-like organ or structure."
+      },
+      {
+        "code": "C42679",
+        "term": "DOUCHE",
+        "synonyms": null,
+        "definition": "A liquid preparation, intended for the irrigative cleansing of the vagina, that is prepared from powders, liquid solutions, or liquid concentrates and contains one or more chemical substances dissolved in a suitable solvent or mutually miscible solvents. (NCI)"
+      },
+      {
+        "code": "C42763",
+        "term": "DRESSING",
+        "synonyms": null,
+        "definition": "The application of various materials for protecting a wound."
+      },
+      {
+        "code": "C17423",
+        "term": "DRUG DELIVERY SYSTEM",
+        "synonyms": null,
+        "definition": "Modern technology, distributed with or as a part of a drug product that allows for the uniform release or targeting of drugs to the body."
+      },
+      {
+        "code": "C42912",
+        "term": "ELIXIR",
+        "synonyms": null,
+        "definition": "A clear, pleasantly flavored, sweetened hydroalcoholic liquid containing dissolved medicinal agents; it is intended for oral use. (NCI)"
+      },
+      {
+        "code": "C42913",
+        "term": "EMULSION",
+        "synonyms": null,
+        "definition": "A dosage form consisting of a two-phase system comprised of at least two immiscible liquids (1), one of which is dispersed as droplets (internal or dispersed phase) within the other liquid (external or continuous phase), generally stabilized with one or more emulsifying agents. Note 1: A liquid is pourable; it flows and conforms to its container at room temperature. It displays Newtonian or pseudoplastic flow behavior. Note 2: Emulsion is used as a dosage form term unless a more specific term is applicable, e.g. cream, lotion, ointment. (NCI)"
+      },
+      {
+        "code": "C42915",
+        "term": "ENEMA",
+        "synonyms": null,
+        "definition": "A rectal preparation for therapeutic, diagnostic, or nutritive purposes. (NCI)"
+      },
+      {
+        "code": "C42929",
+        "term": "EXTRACT",
+        "synonyms": null,
+        "definition": "A concentrated preparation of vegetable or animal drugs obtained by removal of the active constituents of the respective drugs with a suitable menstrua, evaporation of all or nearly all of the solvent, and adjustment of the residual masses or powders to the prescribed standards. (NCI)"
+      },
+      {
+        "code": "C60926",
+        "term": "FIBER, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A slender and elongated solid thread-like substance that delivers drug in such a manner to allow a reduction in dosing frequency as compared to that drug (or drugs) presented as a conventional dosage form."
+      },
+      {
+        "code": "C42932",
+        "term": "FILM",
+        "synonyms": null,
+        "definition": "A thin layer or coating. (NCI)"
+      },
+      {
+        "code": "C42920",
+        "term": "FILM, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A drug delivery system in the form of a film that releases the drug over an extended period in such a way as to maintain constant drug levels in the blood or target tissue. (NCI)"
+      },
+      {
+        "code": "C42984",
+        "term": "FILM, SOLUBLE",
+        "synonyms": null,
+        "definition": "A thin layer or coating which is susceptible to being dissolved when in contact with a liquid. (NCI)"
+      },
+      {
+        "code": "C60927",
+        "term": "FOR SOLUTION",
+        "synonyms": null,
+        "definition": "A product, usually a solid, intended for solution prior to administration."
+      },
+      {
+        "code": "C60928",
+        "term": "FOR SUSPENSION",
+        "synonyms": null,
+        "definition": "A product, usually a solid, intended for suspension prior to administration."
+      },
+      {
+        "code": "C60929",
+        "term": "FOR SUSPENSION, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A product, usually a solid, intended for suspension prior to administration; once the suspension is administered, the drug will be released at a constant rate over a specified period."
+      },
+      {
+        "code": "C42933",
+        "term": "GAS",
+        "synonyms": null,
+        "definition": "Any elastic aeriform fluid in which the molecules are separated from one another and have free paths. (NCI)"
+      },
+      {
+        "code": "C42934",
+        "term": "GEL",
+        "synonyms": null,
+        "definition": "A semisolid (1) dosage form that contains a gelling agent to provide stiffness to a solution or a colloidal dispersion (2). A gel may contain suspended particles. Note 1: A semisolid is not pourable; it does not flow or conform to its container at room temperature. It does not flow at low shear stress and generally exhibits plastic flow behavior. Note 2: A colloidal dispersion is a system in which particles of colloidal dimension (i.e., typically between 1 nm and 1 micrometer) are distributed uniformly throughout a liquid."
+      },
+      {
+        "code": "C134876",
+        "term": "GEL, CHEWABLE",
+        "synonyms": "Gummie, Gummy",
+        "definition": "A formed or molded oral gel dosage form that maintains its shape, is elastic, and yields to mastication. (NCI)"
+      },
+      {
+        "code": "C42906",
+        "term": "GEL, DENTIFRICE",
+        "synonyms": null,
+        "definition": "A combination of a dentifrice (formulation intended to clean and/or polish the teeth, and which may contain certain additional agents), and a gel. It is used with a toothbrush for the purpose of cleaning and polishing the teeth. (NCI)"
+      },
+      {
+        "code": "C60930",
+        "term": "GEL, METERED",
+        "synonyms": null,
+        "definition": "A gel preparation, with metered dose valves, which allow for the delivery of a uniform quantity of gel upon each activation."
+      },
+      {
+        "code": "C48193",
+        "term": "GENERATOR",
+        "synonyms": null,
+        "definition": "An apparatus for the formation of vapor or gas from a liquid or solid by heat or chemical action. The term GENERATOR also applies to radioactive columns from which radionuclides are provided. (NCI)"
+      },
+      {
+        "code": "C42937",
+        "term": "GLOBULE",
+        "synonyms": null,
+        "definition": "Also called pellets or pilules, are made of pure sucrose, lactose, or other polysaccharides. They are formed into small globular masses of various sizes, and are medicated by placing them in a vial and adding the liquid drug attenuation in the proportion not less than one percent (v/w). After shaking, the medicated globules are dried at temperatures not to exceed 40 degrees Centigrade. (NCI)"
+      },
+      {
+        "code": "C45416",
+        "term": "GRAFT",
+        "synonyms": null,
+        "definition": "A slip of skin or of other tissue for implantation. (NCI)"
+      },
+      {
+        "code": "C42938",
+        "term": "GRANULE",
+        "synonyms": null,
+        "definition": "A small particle or grain. (NCI)"
+      },
+      {
+        "code": "C148551",
+        "term": "GRANULE, COATED",
+        "synonyms": null,
+        "definition": "A small medicinal particle or grain that is covered in a designated coating."
+      },
+      {
+        "code": "C42903",
+        "term": "GRANULE, DELAYED RELEASE",
+        "synonyms": null,
+        "definition": "A small medicinal particle or grain to which an enteric or other coating has been applied, thus delaying release of the drug until its passage into the intestines. (NCI)"
+      },
+      {
+        "code": "C42909",
+        "term": "GRANULE, EFFERVESCENT",
+        "synonyms": null,
+        "definition": "A small particle or grain containing a medicinal agent in a dry mixture usually composed of sodium bicarbonate, citric acid, and tartaric acid which, when in contact with water, has the capability to release gas, resulting in effervescence. (NCI)"
+      },
+      {
+        "code": "C42939",
+        "term": "GRANULE, FOR SOLUTION",
+        "synonyms": null,
+        "definition": "A small medicinal particle or grain made available in its more stable dry form, to be reconstituted with solvent just before dispensing; the granules are so prepared to contain not only the medicinal agent, but the colorants, flavorants, and any other desired pharmaceutic ingredient. (NCI)"
+      },
+      {
+        "code": "C42940",
+        "term": "GRANULE, FOR SUSPENSION",
+        "synonyms": null,
+        "definition": "A small medicinal particle or grain made available in its more stable dry form, to be reconstituted with solvent just before dispensing to form a suspension; the granules are so prepared to contain not only the medicinal agent, but the colorants, flavorants, and any other desired pharmaceutic ingredient. (NCI)"
+      },
+      {
+        "code": "C42921",
+        "term": "GRANULE, FOR SUSPENSION, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A small medicinal particle or grain made available in its more stable dry form, to be reconstituted with solvent just before dispensing to form a suspension; the extended release system achieves slow release of the drug over an extended period of time and maintains constant drug levels in the blood or target tissue. (NCI)"
+      },
+      {
+        "code": "C42941",
+        "term": "GUM",
+        "synonyms": null,
+        "definition": "A mucilaginous excretion from various plants. (NCI)"
+      },
+      {
+        "code": "C42894",
+        "term": "GUM, CHEWING",
+        "synonyms": null,
+        "definition": "A sweetened and flavored insoluble plastic material of various shapes which when chewed, releases a drug substance into the oral cavity. (NCI)"
+      },
+      {
+        "code": "C42978",
+        "term": "GUM, RESIN",
+        "synonyms": null,
+        "definition": "Natural mixture of gum and resin, usually obtained as exudations from plants. (NCI)"
+      },
+      {
+        "code": "C42942",
+        "term": "IMPLANT",
+        "synonyms": null,
+        "definition": "A material containing drug intended to be inserted securely and deeply in a living site for growth, slow release, or formation of an organic union. (NCI)"
+      },
+      {
+        "code": "C42944",
+        "term": "INHALANT",
+        "synonyms": null,
+        "definition": "A special class of inhalations consisting of a drug or combination of drugs, that by virtue of their high vapor pressure, can be carried by an air current into the nasal passage where they exert their effect; the container from which the inhalant generally is administered is known as an inhaler. (NCI)"
+      },
+      {
+        "code": "C149582",
+        "term": "INHALATION VAPOR, CAPSULE",
+        "synonyms": "Capsule for Inhalation",
+        "definition": "Solid preparation consisting of a capsule formulation intended for generation of vapor to be inhaled to obtain a local effect. The vapor is usually generated by adding the whole capsule or the capsule contents to hot water. (EDQM)"
+      },
+      {
+        "code": "C60931",
+        "term": "INJECTABLE, LIPOSOMAL",
+        "synonyms": null,
+        "definition": "An injection, which either consists of or forms liposomes (a lipid bilayer vesicle usually composed of phospholipids which is used to encapsulate an active drug substance)."
+      },
+      {
+        "code": "C42946",
+        "term": "INJECTION",
+        "synonyms": null,
+        "definition": "A sterile preparation intended for parenteral use; five distinct classes of injections exist as defined by the USP. (NCI)"
+      },
+      {
+        "code": "C42914",
+        "term": "INJECTION, EMULSION",
+        "synonyms": null,
+        "definition": "An emulsion consisting of a sterile, pyrogen-free preparation intended to be administered parenterally."
+      },
+      {
+        "code": "C42950",
+        "term": "INJECTION, LIPID COMPLEX",
+        "synonyms": null,
+        "definition": "A substance composed of complexed active and/or inert ingredient(s) with natural or synthetic lipids that is intended for injection. (NCI)"
+      },
+      {
+        "code": "C42974",
+        "term": "INJECTION, POWDER, FOR SOLUTION",
+        "synonyms": null,
+        "definition": "A sterile preparation intended for reconstitution to form a solution for parenteral use. (NCI)"
+      },
+      {
+        "code": "C42976",
+        "term": "INJECTION, POWDER, FOR SUSPENSION",
+        "synonyms": null,
+        "definition": "A sterile preparation intended for reconstitution to form a suspension for parenteral use. (NCI)"
+      },
+      {
+        "code": "C42977",
+        "term": "INJECTION, POWDER, FOR SUSPENSION, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A dried preparation intended for reconstitution to form a suspension for parenteral use which has been formulated in a manner to allow at least a reduction in dosing frequency as compared to that drug presented as a conventional dosage form (e.g., as a solution)."
+      },
+      {
+        "code": "C42959",
+        "term": "INJECTION, POWDER, LYOPHILIZED, FOR LIPOSOMAL SUSPENSION",
+        "synonyms": null,
+        "definition": "A sterile freeze dried preparation intended for reconstitution for parenteral use which has been formulated in a manner that would allow liposomes (a lipid bilayer vesicle usually composed of phospholipids which is used to encapsulate an active drug substance, either within a lipid bilayer or in an aqueous space) to be formed upon reconstitution. (NCI)"
+      },
+      {
+        "code": "C42957",
+        "term": "INJECTION, POWDER, LYOPHILIZED, FOR SOLUTION",
+        "synonyms": null,
+        "definition": "A dosage form intended for the solution prepared by lyophilization ('freeze drying'), a process which involves the removal of water from products in the frozen state at extremely low pressures; this is intended for subsequent addition of liquid to create a solution that conforms in all respects to the requirements for Injections. (NCI)"
+      },
+      {
+        "code": "C42958",
+        "term": "INJECTION, POWDER, LYOPHILIZED, FOR SUSPENSION",
+        "synonyms": null,
+        "definition": "A liquid preparation, intended for parenteral use, that contains solids suspended in a suitable fluid medium and conforms in all respects to the requirements for Sterile Suspensions; the medicinal agents intended for the suspension are prepared by lyophilization (\"freeze drying\"), a process which involves the removal of water from products in the frozen state at extremely low pressures."
+      },
+      {
+        "code": "C42956",
+        "term": "INJECTION, POWDER, LYOPHILIZED, FOR SUSPENSION, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A sterile freeze dried preparation intended for reconstitution for parenteral use which has been formulated in a manner to allow at least a reduction in dosing frequency as compared to that drug presented as a conventional dosage form (e.g., as a solution). (NCI)"
+      },
+      {
+        "code": "C42945",
+        "term": "INJECTION, SOLUTION",
+        "synonyms": null,
+        "definition": "A liquid preparation containing one or more drug substances dissolved in a suitable solvent or mixture of mutually miscible solvents that is suitable for injection. (NCI)"
+      },
+      {
+        "code": "C42899",
+        "term": "INJECTION, SOLUTION, CONCENTRATE",
+        "synonyms": null,
+        "definition": "A sterile preparation for parenteral use which, upon the addition of suitable solvents, yields a solution conforming in all respects to the requirements for Injections. (NCI)"
+      },
+      {
+        "code": "C42995",
+        "term": "INJECTION, SUSPENSION",
+        "synonyms": null,
+        "definition": "A liquid preparation, suitable for injection, which consists of solid particles dispersed throughout a liquid phase in which the particles are not soluble. It can also consist of an oil phase dispersed throughout an aqueous phase, or vice-versa. (NCI)"
+      },
+      {
+        "code": "C42926",
+        "term": "INJECTION, SUSPENSION, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A sterile preparation intended for parenteral use which has been formulated in a manner to allow at least a reduction in dosing frequency as compared to that drug presented as a conventional dosage form (e.g., as a solution or a prompt drug-releasing, conventional solid dosage form). (NCI)"
+      },
+      {
+        "code": "C42951",
+        "term": "INJECTION, SUSPENSION, LIPOSOMAL",
+        "synonyms": null,
+        "definition": "A liquid parenteral pharmaceutical dosage form structured as a multilamellar composition of concentric phospholipid spheres that encapsulate the drug (drug delivery systems) separated by layers of water. Drug release is facilitated and controlled by in vivo erosion of the liposomes. To further increase the in vivo circulation time, liposomes in some preparations are covalently derivatized with PEG to produce PEGylated or stealth liposomes. Covalent attachment of drugs to the outer surface of liposomes can potentially serve as a delayed-release product. (NCI)"
+      },
+      {
+        "code": "C42988",
+        "term": "INJECTION, SUSPENSION, SONICATED",
+        "synonyms": null,
+        "definition": "A liquid preparation, suitable for injection, which consists of solid particles dispersed throughout a liquid phase in which the particles are not soluble. In addition, the product is sonicated while a gas is bubbled through the suspension, and this results in the formation of microspheres by the solid particles. (NCI)"
+      },
+      {
+        "code": "C60933",
+        "term": "INSERT",
+        "synonyms": null,
+        "definition": "A specially formulated and shaped non-encapsulated solid preparation intended to be placed into a non-rectal orifice of the body, where drug is released, generally for localized effects."
+      },
+      {
+        "code": "C42922",
+        "term": "INSERT, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A specially formulated and shaped solid preparation (e.g., ring, tablet, or stick) intended to be placed in the vagina by special inserters, where the medication is released, generally for localized effects; the extended release preparation is designed to allow a reduction in dosing frequency. (NCI)"
+      },
+      {
+        "code": "C47915",
+        "term": "INTRAUTERINE DEVICE",
+        "synonyms": null,
+        "definition": "A device inserted and left in the uterus to prevent effective conception. (NCI)"
+      },
+      {
+        "code": "C42947",
+        "term": "IRRIGANT",
+        "synonyms": null,
+        "definition": "A sterile solution intended to bathe or flush open wounds or body cavities; they're used topically, never parenterally. (NCI)"
+      },
+      {
+        "code": "C42948",
+        "term": "JELLY",
+        "synonyms": null,
+        "definition": "A class of gels--semisolid systems which consist of suspensions made up of either small inorganic particles or large organic molecules interpenetrated by a liquid--in which the structural coherent matrix contains a high portion of liquid, usually water. (NCI)"
+      },
+      {
+        "code": "C47916",
+        "term": "KIT",
+        "synonyms": null,
+        "definition": "A packaged collection of related material. (NCI)"
+      },
+      {
+        "code": "C45413",
+        "term": "LINER, DENTAL",
+        "synonyms": null,
+        "definition": "A material applied to the inside of the dental cavity, for protection or insulation of the surface."
+      },
+      {
+        "code": "C42949",
+        "term": "LINIMENT",
+        "synonyms": null,
+        "definition": "A solution or mixture of various substances in oil, alcoholic solutions of soap, or emulsions intended for external application. (NCI)"
+      },
+      {
+        "code": "C42952",
+        "term": "LIPSTICK",
+        "synonyms": null,
+        "definition": "A waxy solid, usually colored cosmetic, in stick form for the lips. (NCI)"
+      },
+      {
+        "code": "C42953",
+        "term": "LIQUID",
+        "synonyms": null,
+        "definition": "A dosage form consisting of a pure chemical in its liquid state. This dosage form term should not be applied to solutions. Note: A liquid is pourable; it flows and conforms to its container at room temperature. It displays Newtonian or pseudoplastic flow behavior."
+      },
+      {
+        "code": "C60934",
+        "term": "LIQUID, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A liquid that delivers a drug in such a manner to allow a reduction in dosing frequency as compared to that drug (or drugs) presented as a conventional dosage form."
+      },
+      {
+        "code": "C29167",
+        "term": "LOTION",
+        "synonyms": null,
+        "definition": "An emulsion, liquid (1) dosage form. This dosage form is generally for external application to the skin (2). Note 1: A liquid is pourable; it flows and conforms to its container at room temperature. It displays Newtonian or pseudoplastic flow behavior. Note 2: Previously the definition of a lotion was: The term lotion has been used to categorize many topical suspensions, solutions, and emulsions intended for application to the skin. The current definition of a lotion is restricted to an emulsion."
+      },
+      {
+        "code": "C60957",
+        "term": "LOTION, AUGMENTED",
+        "synonyms": null,
+        "definition": "A lotion dosage form that enhances drug delivery. Augmentation does not refer to the strength of the drug in the dosage form. NOTE: CDER has decided to refrain from expanding the use of this dosage form due to difficulties in setting specific criteria that must be met to be considered augmented."
+      },
+      {
+        "code": "C60958",
+        "term": "LOTION/SHAMPOO",
+        "synonyms": null,
+        "definition": "A lotion dosage form which has a soap or detergent that is usually used to clean the hair and scalp; it is often used as a vehicle for dermatologic agents."
+      },
+      {
+        "code": "C42955",
+        "term": "LOZENGE",
+        "synonyms": null,
+        "definition": "A solid preparation containing one or more medicaments, usually in a flavored, sweetened base which is intended to dissolve or disintegrate slowly in the mouth. A lollipop is a lozenge on a stick."
+      },
+      {
+        "code": "C29269",
+        "term": "MOUTHWASH",
+        "synonyms": null,
+        "definition": "An aqueous solution which is most often used for its deodorant, refreshing, or antiseptic effect. (NCI)"
+      },
+      {
+        "code": "C48624",
+        "term": "NOT APPLICABLE",
+        "synonyms": null,
+        "definition": "The use of a dosage form term is not relevant or appropriate. (NCI)"
+      },
+      {
+        "code": "C42965",
+        "term": "OIL",
+        "synonyms": null,
+        "definition": "An unctuous, combustible substance which is liquid, or easily liquefiable, on warming, and is soluble in ether but insoluble in water. Such substances, depending on their origin, are classified as animal, mineral, or vegetable oils. (NCI)"
+      },
+      {
+        "code": "C42966",
+        "term": "OINTMENT",
+        "synonyms": "oint",
+        "definition": "A suspension or emulsion, semisolid (1) dosage form, usually containing less than 20 percent water and volatiles (2) and greater than 50 percent hydrocarbons, waxes, or polyols as the vehicle. This dosage form is generally for external application to the skin or mucous membranes. Note 1: A semisolid is not pourable; it does not flow or conform to its container at room temperature. It does not flow at low shear stress and generally exhibits plastic flow behavior. Note 2: Percent water and volatiles are measured by a loss on drying test in which the sample is heated at 105 degrees C until constant weight is achieved."
+      },
+      {
+        "code": "C60984",
+        "term": "OINTMENT, AUGMENTED",
+        "synonyms": null,
+        "definition": "An ointment dosage form that enhances drug delivery. Augmentation does not refer to the strength of the drug in the dosage form. NOTE: CDER has decided to refrain from expanding the use of this dosage form due to difficulties in setting specific criteria that must be met to be considered augmented."
+      },
+      {
+        "code": "C47887",
+        "term": "PACKING",
+        "synonyms": null,
+        "definition": "A material, usually covered by or impregnated with a drug, that is inserted into a body cavity or between the tooth enamel and the gingival margin."
+      },
+      {
+        "code": "C42967",
+        "term": "PASTE",
+        "synonyms": null,
+        "definition": "A semisolid dosage form, containing a large proportion (20 - 50%) of solids finely dispersed in a fatty vehicle. This dosage form is generally for external application to the skin or mucous membranes. Note: A semisolid is not pourable; it does not flow or conform to its container at room temperature. It does not flow at low shear stress and generally exhibits plastic flow behavior. (NCI)"
+      },
+      {
+        "code": "C42907",
+        "term": "PASTE, DENTIFRICE",
+        "synonyms": null,
+        "definition": "A paste formulation intended to clean and/or polish the teeth, and which may contain certain additional agents. (NCI)"
+      },
+      {
+        "code": "C60985",
+        "term": "PASTILLE",
+        "synonyms": null,
+        "definition": "An aromatic preparation, often with a pleasing flavor, usually intended to dissolve in the mouth."
+      },
+      {
+        "code": "C42968",
+        "term": "PATCH",
+        "synonyms": null,
+        "definition": "A drug delivery system that often contains an adhesive backing that is usually applied to an external site on the body. Its ingredients either passively diffuse from, or are actively transported from, some portion of the patch. Depending upon the patch, the ingredients are either delivered to the outer surface of the body or into the body. A patch is sometimes synonymous with the terms Extended Release Film and System."
+      },
+      {
+        "code": "C42923",
+        "term": "PATCH, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A drug delivery system in the form of a patch that releases the drug in such a manner that a reduction in dosing frequency compared to that drug presented as a conventional dosage form (e.g., a solution or a prompt drug-releasing, conventional solid dosage form). (NCI)"
+      },
+      {
+        "code": "C42911",
+        "term": "PATCH, EXTENDED RELEASE, ELECTRICALLY CONTROLLED",
+        "synonyms": null,
+        "definition": "A drug delivery system in the form of a patch which is controlled by an electric current that releases the drug in such a manner that a reduction in dosing frequency compared to that drug presented as a conventional dosage form (e.g., a solution or a prompt drug-releasing, conventional solid dosage form). (NCI)"
+      },
+      {
+        "code": "C42969",
+        "term": "PELLET",
+        "synonyms": null,
+        "definition": "A small sterile solid mass consisting of a highly purified drug (with or without excipients) made by the formation of granules, or by compression and molding. (NCI)"
+      },
+      {
+        "code": "C42943",
+        "term": "PELLET, IMPLANTABLE",
+        "synonyms": null,
+        "definition": "A small sterile solid mass consisting of a highly purified drug (with or without excipients) made by the formation of granules, or by compression and molding; they are intended for implantation in the body (usually subcutaneously) for the purpose of providing continuous release of the drug over long periods of time."
+      },
+      {
+        "code": "C42918",
+        "term": "PELLETS, COATED, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form in which the drug itself is in the form of granules to which varying amounts of coating have been applied, and which releases a drug (or drugs) in such a manner to allow a reduction in dosing frequency as compared to that drug (or drugs) presented as a conventional dosage form. (NCI)"
+      },
+      {
+        "code": "C25394",
+        "term": "PILL",
+        "synonyms": null,
+        "definition": "A dose of medicine in the form of a small pellet. (NCI)"
+      },
+      {
+        "code": "C42970",
+        "term": "PLASTER",
+        "synonyms": null,
+        "definition": "Substance intended for external application made of such materials and of such consistency as to adhere to the skin and attach to a dressing; plasters are intended to afford protection and support and/or to furnish an occlusion and macerating action and to bring medication into close contact with the skin."
+      },
+      {
+        "code": "C47913",
+        "term": "POULTICE",
+        "synonyms": null,
+        "definition": "A soft, moist mass of meal, herbs, seed, etc., usually applied hot in cloth that consists of gruel-like consistency. (NCI)"
+      },
+      {
+        "code": "C42972",
+        "term": "POWDER",
+        "synonyms": null,
+        "definition": "An intimate mixture of dry, finely divided drugs and/or chemicals that may be intended for internal or external use. (NCI)"
+      },
+      {
+        "code": "C42908",
+        "term": "POWDER, DENTIFRICE",
+        "synonyms": null,
+        "definition": "A powder formulation intended to clean and/or polish the teeth, and which may contain certain additional agents. (NCI)"
+      },
+      {
+        "code": "C42973",
+        "term": "POWDER, FOR SOLUTION",
+        "synonyms": null,
+        "definition": "An intimate mixture of dry, finely divided drugs and/or chemicals, which, upon the addition of suitable vehicles, yields a solution. (NCI)"
+      },
+      {
+        "code": "C42975",
+        "term": "POWDER, FOR SUSPENSION",
+        "synonyms": null,
+        "definition": "An intimate mixture of dry, finely divided drugs and/or chemicals, which, upon the addition of suitable vehicles, yields a suspension (a liquid preparation containing the solid particles dispersed in the liquid vehicle). (NCI)"
+      },
+      {
+        "code": "C87541",
+        "term": "POWDER, LYOPHILIZED",
+        "synonyms": null,
+        "definition": "An intimate mixture of dry, finely divided drugs and/or chemicals that is lyophilized."
+      },
+      {
+        "code": "C42961",
+        "term": "POWDER, METERED",
+        "synonyms": null,
+        "definition": "A powder dosage form that is situated inside a container that has a mechanism to deliver a specified quantity. (NCI)"
+      },
+      {
+        "code": "C60988",
+        "term": "RING",
+        "synonyms": null,
+        "definition": "A small circular object with a vacant circular center that is usually intended to be placed in the body by special inserters, where the medication is released, generally for localized effects."
+      },
+      {
+        "code": "C42979",
+        "term": "RINSE",
+        "synonyms": null,
+        "definition": "A liquid used to cleanse by flushing. (NCI)"
+      },
+      {
+        "code": "C42980",
+        "term": "SALVE",
+        "synonyms": null,
+        "definition": "A thick ointment or cerate (a fat or wax based preparation with a consistency between an ointment and a plaster). (NCI)"
+      },
+      {
+        "code": "C42981",
+        "term": "SHAMPOO",
+        "synonyms": null,
+        "definition": "A liquid soap or detergent used to clean the hair and scalp and is often used as a vehicle for dermatologic agents. (NCI)"
+      },
+      {
+        "code": "C42982",
+        "term": "SHAMPOO, SUSPENSION",
+        "synonyms": null,
+        "definition": "A liquid soap or detergent containing one or more solid, insoluble substances dispersed in a liquid vehicle that is used to clean the hair and scalp and is often used as a vehicle for dermatologic agents. (NCI)"
+      },
+      {
+        "code": "C42983",
+        "term": "SOAP",
+        "synonyms": null,
+        "definition": "Any compound of one or more fatty acids, or their equivalents, with an alkali; soap is detergent and is much employed in liniments, enemas, and in making pills. It is also a mild aperient, antacid and antiseptic. (NCI)"
+      },
+      {
+        "code": "C45235",
+        "term": "SOLID",
+        "synonyms": null,
+        "definition": "A substance having definite shape and volume manufactured for the administration of active and/or inert ingredient(s). Solids may include, but are not limited to, tablets, capsules, powders, granules, and certain suppositories."
+      },
+      {
+        "code": "C42986",
+        "term": "SOLUTION",
+        "synonyms": null,
+        "definition": "A clear, homogeneous liquid dosage form that contains one or more chemical substances dissolved in a solvent or mixture of mutually miscible solvents. Note: A liquid is pourable; it flows and conforms to its container at room temperature. It displays Newtonian or pseudoplastic flow behavior."
+      },
+      {
+        "code": "C42898",
+        "term": "SOLUTION, CONCENTRATE",
+        "synonyms": null,
+        "definition": "A liquid preparation (i.e., a substance that flows readily in its natural state) that contains a drug dissolved in a suitable solvent or mixture of mutually miscible solvents; the drug has been strengthened by the evaporation of its non-active parts. (NCI)"
+      },
+      {
+        "code": "C42987",
+        "term": "SOLUTION, FOR SLUSH",
+        "synonyms": null,
+        "definition": "A solution for the preparation of an iced saline slush, which is administered by irrigation and used to induce regional hypothermia (in conditions such as certain open heart and kidney surgical procedures) by its direct application. (NCI)"
+      },
+      {
+        "code": "C60994",
+        "term": "SOLUTION, GEL FORMING / DROPS",
+        "synonyms": null,
+        "definition": "A solution, which after usually being administered in a drop-wise fashion, forms a gel."
+      },
+      {
+        "code": "C42935",
+        "term": "SOLUTION, GEL FORMING, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A solution that forms a gel when it comes in contact with ocular fluid, and which allows at least a reduction in dosing frequency."
+      },
+      {
+        "code": "C60992",
+        "term": "SOLUTION/ DROPS",
+        "synonyms": null,
+        "definition": "A solution which is usually administered in a drop-wise fashion."
+      },
+      {
+        "code": "C47912",
+        "term": "SPONGE",
+        "synonyms": null,
+        "definition": "A porous, interlacing, absorbent material that contains a drug. It is typically used for applying or introducing medication, or for cleansing. A sponge usually retains its shape."
+      },
+      {
+        "code": "C42989",
+        "term": "SPRAY",
+        "synonyms": null,
+        "definition": "A liquid minutely divided as by a jet of air or steam. (NCI)"
+      },
+      {
+        "code": "C42962",
+        "term": "SPRAY, METERED",
+        "synonyms": null,
+        "definition": "A non-pressurized dosage form consisting of valves which allow the dispensing of a specified quantity of spray upon each activation. (NCI)"
+      },
+      {
+        "code": "C42990",
+        "term": "SPRAY, SUSPENSION",
+        "synonyms": null,
+        "definition": "A liquid preparation containing solid particles dispersed in a liquid vehicle and in the form of coarse droplets or as finely divided solids to be applied locally, most usually to the nasal-pharyngeal tract, or topically to the skin. (NCI)"
+      },
+      {
+        "code": "C42991",
+        "term": "STICK",
+        "synonyms": null,
+        "definition": "A dosage form prepared in a relatively long and slender often cylindrical form. (NCI)"
+      },
+      {
+        "code": "C47914",
+        "term": "STRIP",
+        "synonyms": null,
+        "definition": "A long narrow piece of material."
+      },
+      {
+        "code": "C42993",
+        "term": "SUPPOSITORY",
+        "synonyms": "supp",
+        "definition": "A solid body of various weights and shapes, adapted for introduction into the rectal, vaginal, or urethral orifice of the human body; they usually melt, soften, or dissolve at body temperature."
+      },
+      {
+        "code": "C42924",
+        "term": "SUPPOSITORY, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A drug delivery system in the form of a suppository that allows at least a reduction in dosing frequency. (NCI)"
+      },
+      {
+        "code": "C42994",
+        "term": "SUSPENSION",
+        "synonyms": "Ready to Use Suspension, susp",
+        "definition": "A liquid dosage form that contains solid particles dispersed in a liquid vehicle. Note: A liquid is pourable; it flows and conforms to its container at room temperature. It displays Newtonian or pseudoplastic flow behavior."
+      },
+      {
+        "code": "C42925",
+        "term": "SUSPENSION, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A liquid preparation consisting of solid particles dispersed throughout a liquid phase in which the particles are not soluble; the suspension has been formulated in a manner to allow at least a reduction in dosing frequency as compared to that drug presented as a conventional dosage form (e.g., as a solution or a prompt drug-releasing, conventional solid dosage form). (NCI)"
+      },
+      {
+        "code": "C60995",
+        "term": "SUSPENSION/DROPS",
+        "synonyms": null,
+        "definition": "A suspension which is usually administered in a dropwise fashion."
+      },
+      {
+        "code": "C47889",
+        "term": "SUTURE",
+        "synonyms": null,
+        "definition": "A strand or fiber used to hold wound edges in apposition during healing. (NCI)"
+      },
+      {
+        "code": "C47898",
+        "term": "SWAB",
+        "synonyms": null,
+        "definition": "A small piece of relatively flat absorbent material that contains a drug. A swab may also be attached to one end of a small stick. A swab is typically used for applying medication or for cleansing."
+      },
+      {
+        "code": "C42996",
+        "term": "SYRUP",
+        "synonyms": null,
+        "definition": "An oral solution containing high concentrations of sucrose or other sugars; the term has also been used to include any other liquid dosage form prepared in a sweet and viscid vehicle, including oral suspensions. (NCI)"
+      },
+      {
+        "code": "C42998",
+        "term": "TABLET",
+        "synonyms": "tab",
+        "definition": "A solid dosage form containing medicinal substances with or without suitable diluents. (NCI)"
+      },
+      {
+        "code": "C42893",
+        "term": "TABLET, CHEWABLE",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances with or without suitable diluents that is intended to be chewed, producing a pleasant tasting residue in the oral cavity that is easily swallowed and does not leave a bitter or unpleasant after-taste. (NCI)"
+      },
+      {
+        "code": "C60997",
+        "term": "TABLET, COATED PARTICLES",
+        "synonyms": null,
+        "definition": "A solid dosage form containing a conglomerate of medicinal particles that have each been covered with a coating."
+      },
+      {
+        "code": "C42897",
+        "term": "TABLET, COATED",
+        "synonyms": null,
+        "definition": "A solid dosage form that contains medicinal substances with or without suitable diluents and is covered with a designated coating. (NCI)"
+      },
+      {
+        "code": "C202340",
+        "term": "TABLET, CRUSHED",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances with or without suitable diluents that is crushed prior to administration."
+      },
+      {
+        "code": "C42997",
+        "term": "TABLET, DELAYED RELEASE PARTICLES",
+        "synonyms": null,
+        "definition": "A solid dosage form containing a conglomerate of medicinal particles that have been covered with a coating which releases a drug (or drugs) at a time other than promptly after administration. Enteric-coated articles are delayed release dosage forms. (NCI)"
+      },
+      {
+        "code": "C42905",
+        "term": "TABLET, DELAYED RELEASE",
+        "synonyms": "Tablet, Gastro-Resistant",
+        "definition": "A solid dosage form which releases a drug (or drugs) at a time other than promptly after administration. Enteric-coated articles are delayed release dosage forms. (NCI)"
+      },
+      {
+        "code": "C42910",
+        "term": "TABLET, EFFERVESCENT",
+        "synonyms": null,
+        "definition": "A solid dosage form containing mixtures of acids (e.g., citric acid, tartaric acid) and sodium bicarbonate, which release carbon dioxide when dissolved in water; it is intended to be dissolved or dispersed in water before administration."
+      },
+      {
+        "code": "C42927",
+        "term": "TABLET, EXTENDED RELEASE",
+        "synonyms": "Tablet, Prolonged Release",
+        "definition": "A solid dosage form containing a drug which allows at least a reduction in dosing frequency as compared to that drug presented in conventional dosage form. (NCI)"
+      },
+      {
+        "code": "C42931",
+        "term": "TABLET, FILM COATED",
+        "synonyms": null,
+        "definition": "A solid dosage form that contains medicinal substances with or without suitable diluents and is coated with a thin layer of a water-insoluble or water-soluble polymer. (NCI)"
+      },
+      {
+        "code": "C42930",
+        "term": "TABLET, FILM COATED, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form that contains medicinal substances with or without suitable diluents and is coated with a thin layer of a water-insoluble or water-soluble polymer; the tablet is formulated in such manner as to make the contained medicament available over an extended period of time following ingestion."
+      },
+      {
+        "code": "C202346",
+        "term": "TABLET, FILM COATED, IMMEDIATE RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form that contains medicinal substances with or without suitable diluents and is coated with a thin layer of a water-insoluble or water-soluble polymer; the tablet is designed to release its active and/or inert ingredient(s) immediately upon administration."
+      },
+      {
+        "code": "C202345",
+        "term": "TABLET, FILM COATED, IMMEDIATE RELEASE, CRUSHED",
+        "synonyms": null,
+        "definition": "A solid dosage form that contains medicinal substances with or without suitable diluents and is coated with a thin layer of a water-insoluble or water-soluble polymer that is crushed prior to administration. The tablet is designed to release its active and/or inert ingredient(s) immediately upon administration."
+      },
+      {
+        "code": "C61004",
+        "term": "TABLET, FOR SOLUTION",
+        "synonyms": null,
+        "definition": "A tablet that forms a solution when placed in a liquid."
+      },
+      {
+        "code": "C61005",
+        "term": "TABLET, FOR SUSPENSION",
+        "synonyms": null,
+        "definition": "A tablet that forms a suspension when placed in a liquid (formerly referred to as a Dispersible Tablet)."
+      },
+      {
+        "code": "C142248",
+        "term": "TABLET, IMMEDIATE RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances with or without suitable diluents, which is designed to release its active and/or inert ingredient(s) immediately upon administration."
+      },
+      {
+        "code": "C162112",
+        "term": "TABLET, IMMEDIATE RELEASE, SOLID DISPERSION",
+        "synonyms": null,
+        "definition": "A solid dosage form containing one or more active pharmaceutical ingredient which can be dispersed in a carrier at solid state, and immediately released upon administration. (NCI)"
+      },
+      {
+        "code": "C170453",
+        "term": "TABLET, MODIFIED RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form exhibiting an altered inherent rate of release of active and/or inert ingredient(s)."
+      },
+      {
+        "code": "C170573",
+        "term": "TABLET, MODIFIED RELEASE, LONG DURATION",
+        "synonyms": null,
+        "definition": "A solid dosage form exhibiting an altered inherent rate of release of active and/or inert ingredient(s) that is classified as long."
+      },
+      {
+        "code": "C170574",
+        "term": "TABLET, MODIFIED RELEASE, SHORT DURATION",
+        "synonyms": null,
+        "definition": "A solid dosage form exhibiting an altered inherent rate of release of active and/or inert ingredient(s) that is classified as short."
+      },
+      {
+        "code": "C42964",
+        "term": "TABLET, MULTILAYER",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances that have been compressed to form a multiple-layered tablet or a tablet-within-a-tablet, the inner tablet being the core and the outer portion being the shell. (NCI)"
+      },
+      {
+        "code": "C42963",
+        "term": "TABLET, MULTILAYER, EXTENDED RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances that have been compressed to form a multiple-layered tablet or a tablet-within-a-tablet, the inner tablet being the core and the outer portion being the shell, which, additionally, is covered in a designated coating; the tablet is formulated in such manner as to allow at least a reduction in dosing frequency as compared to that drug presented as a conventional dosage form. (NCI)"
+      },
+      {
+        "code": "C42999",
+        "term": "TABLET, ORALLY DISINTEGRATING",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances which disintegrates rapidly, usually within a matter of seconds, when placed upon the tongue. (NCI)"
+      },
+      {
+        "code": "C61006",
+        "term": "TABLET, ORALLY DISINTEGRATING, DELAYED RELEASE",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances which disintegrates rapidly, usually within a matter of seconds, when placed upon the tongue, but which releases a drug (or drugs) at a time other than promptly after administration."
+      },
+      {
+        "code": "C42985",
+        "term": "TABLET, SOLUBLE",
+        "synonyms": null,
+        "definition": "A solid dosage form that contains medicinal substances with or without suitable diluents and possesses the ability to dissolve in fluids. (NCI)"
+      },
+      {
+        "code": "C42992",
+        "term": "TABLET, SUGAR COATED",
+        "synonyms": null,
+        "definition": "A solid dosage form that contains medicinal substances with or without suitable diluents and is coated with a colored or an uncolored water-soluble sugar. (NCI)"
+      },
+      {
+        "code": "C47892",
+        "term": "TAMPON",
+        "synonyms": null,
+        "definition": "A plug made of cotton, sponge, or oakum variously used in surgery to plug the nose, vagina, etc., for the control of hemorrhage or the absorption of secretions. (NCI)"
+      },
+      {
+        "code": "C47897",
+        "term": "TAPE",
+        "synonyms": null,
+        "definition": "A narrow woven fabric, or a narrow extruded synthetic (such as plastic), usually with an adhesive on one or both sides. (NCI)"
+      },
+      {
+        "code": "C43000",
+        "term": "TINCTURE",
+        "synonyms": null,
+        "definition": "An alcoholic or hydroalcoholic solution prepared from vegetable materials or from chemical substances. (NCI)"
+      },
+      {
+        "code": "C43001",
+        "term": "TROCHE",
+        "synonyms": null,
+        "definition": "A discoid-shaped solid containing the medicinal agent in a suitably flavored base; troches are placed in the mouth where they slowly dissolve, liberating the active ingredients. (NCI)"
+      },
+      {
+        "code": "C43002",
+        "term": "UNASSIGNED",
+        "synonyms": null,
+        "definition": "A dosage form has yet to be assigned. (NCI)"
+      },
+      {
+        "code": "C150001",
+        "term": "UNKNOWN",
+        "synonyms": null,
+        "definition": "The type of pharmaceutical dose form is unknown, or has unspecified or variable physical characteristics. (EDQM)"
+      },
+      {
+        "code": "C91199",
+        "term": "VAGINAL RING",
+        "synonyms": null,
+        "definition": "A ring composed of active and/or inert ingredient(s), intended for administration in or around the vagina."
+      },
+      {
+        "code": "C43003",
+        "term": "WAFER",
+        "synonyms": null,
+        "definition": "A thin slice of material containing a medicinal agent. (NCI)"
+      },
+      {
+        "code": "C214665",
+        "term": "NANOSUSPENSION",
+        "synonyms": "Nanoparticle Suspension",
+        "definition": "A dosage form that contains nano-sized solid particles dispersed in a liquid vehicle."
+      },
+      {
+        "code": "C214660",
+        "term": "TABLET, GASTRORETENTIVE",
+        "synonyms": "TABLET, GASTRO-RETENTIVE",
+        "definition": "A solid dosage form containing medicinal substances with or without suitable diluents, which is designed to remain in the stomach for a prolonged period of time."
+      },
+      {
+        "code": "C214664",
+        "term": "TABLET, MODIFIED RELEASE, BILAYER (1:1)",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances that have been compressed to form a two-layered tablet with a 1:1 ratio of immediate release and modified release components and exhibiting an altered inherent rate of release of active and/or inert ingredient(s)."
+      },
+      {
+        "code": "C214663",
+        "term": "TABLET, MODIFIED RELEASE, BILAYER (1:2)",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances that have been compressed to form a two-layered tablet with a 1:2 ratio of immediate release and modified release components and exhibiting an altered inherent rate of release of active and/or inert ingredient(s)."
+      },
+      {
+        "code": "C214529",
+        "term": "TABLET, MODIFIED RELEASE, BILAYER",
+        "synonyms": null,
+        "definition": "A solid dosage form containing medicinal substances that have been compressed to form a two-layered tablet of immediate release and modified release components and exhibiting an altered inherent rate of release of active and/or inert ingredient(s)."
+      },
+      {
+        "code": "C214662",
+        "term": "TABLET, MODIFIED RELEASE, EXTRUDABLE CORE SYSTEM",
+        "synonyms": "Tablet, Modified Release, ECS",
+        "definition": "A solid dosage form exhibiting an altered inherent rate of release of active and/or inert ingredient(s) from an extrudable core system."
+      },
+      {
+        "code": "C214661",
+        "term": "TABLET, MODIFIED RELEASE, MATRIX",
+        "synonyms": null,
+        "definition": "A solid dosage form exhibiting an altered inherent rate of release of active and/or inert ingredient(s) from a polymer matrix system."
+      }
+    ]
+  },
+  "Encounter.contactModes": {
+    "codelist_code": "C171445",
+    "extensible": true,
+    "values": [
+      {
+        "code": "C25170",
+        "term": "E-MAIL",
+        "synonyms": "Electronic Mail",
+        "definition": "Composing, sending, and receiving messages over electronic communication systems."
+      },
+      {
+        "code": "C175574",
+        "term": "IN PERSON",
+        "synonyms": "In-Person",
+        "definition": "An interaction that takes place in the physical presence of someone else."
+      },
+      {
+        "code": "C177933",
+        "term": "IVRS",
+        "synonyms": "Interactive Voice Response System",
+        "definition": "A type of automated system in which individuals can access information menus containing pre-recorded or dynamically generated information with voice prompts, without the need for an agent or operator."
+      },
+      {
+        "code": "C70805",
+        "term": "LETTER",
+        "synonyms": null,
+        "definition": "A written message addressed to a person or organization."
+      },
+      {
+        "code": "C171525",
+        "term": "REMOTE AUDIO VIDEO",
+        "synonyms": null,
+        "definition": "A form of remote communication by audio video technology."
+      },
+      {
+        "code": "C171524",
+        "term": "REMOTE AUDIO",
+        "synonyms": null,
+        "definition": "A form of remote communication by audio technology."
+      },
+      {
+        "code": "C171533",
+        "term": "SHIPMENT CONFIRMED BY SIGNATURE",
+        "synonyms": null,
+        "definition": "Receipt of shipped material was confirmed by signature."
+      },
+      {
+        "code": "C171537",
+        "term": "TELEPHONE CALL",
+        "synonyms": null,
+        "definition": "Communication by way of telephone."
+      },
+      {
+        "code": "C157352",
+        "term": "TEXT MESSAGE",
+        "synonyms": null,
+        "definition": "A short electronic communication, usually sent and received by a mobile phone."
+      }
+    ]
   }
 }
