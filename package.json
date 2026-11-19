@@ -10,6 +10,7 @@
     "generate-docs": "tsx scripts/generate-docs.ts",
     "schema": "python3 scripts/extract-usdm-schema.py",
     "update-codelists": "python3 scripts/update-codelists-from-sdtmct.py",
+    "update-ct-packages": "python3 scripts/build-ct-packages.py",
     "lint": "eslint .",
     "prepare": "pnpm build",
     "prepublishOnly": "pnpm build && pnpm generate-docs",
@@ -51,6 +52,10 @@
     "./codelists": {
       "types": "./dist/codelists.d.ts",
       "default": "./dist/codelists.js"
+    },
+    "./ct-packages": {
+      "types": "./dist/ct-packages.d.ts",
+      "default": "./dist/ct-packages.js"
     }
   },
   "dependencies": {

@@ -23,81 +23,47 @@ const filesToKeep = [
   "codelists.js",
   "codelists.d.ts",
   "codelists.js.map",
-  "codelists.d.ts.map"
+  "codelists.d.ts.map",
+  "ct-packages.js",
+  "ct-packages.d.ts",
+  "ct-packages.js.map",
+  "ct-packages.d.ts.map"
 ]
 
-console.log("Embedding schema data...")
-// Save original schema.ts content before replacing
-const originalSchemaSource = readFileSync("src/schema.ts", "utf-8")
+// Source files that import a JSON data file. dist/ keeps only the exported .js
+// files, so for the build each JSON import is replaced with the data itself.
+const embeds = [
+  { source: "src/schema.ts", json: "src/USDM_schema_4_0.json" },
+  { source: "src/codelists.ts", json: "src/codelist_index.json" },
+  { source: "src/ct-packages.ts", json: "src/ct_packages.json" }
+]
 
-const schemaData = JSON.parse(readFileSync("src/USDM_schema_4_0.json", "utf-8"))
-const schemaSource = `/**
- * USDM Schema with embedded data
- * This file is auto-generated during the build process
- * @packageDocumentation
- */
+const importPattern = /^import (\w+) from "\.\/([\w.-]+\.json)" with \{ type: "json" \}$/m
 
-export interface USDMSchema {
-  $schema: string
-  $id: string
-  definitions: Record<string, {
-    type?: string | string[]
-    properties?: Record<string, any>
-    required?: string[]
-    additionalProperties?: boolean
-    [key: string]: any
-  }>
-  [key: string]: any
+console.log("Embedding JSON data...")
+const originalSources = new Map<string, string>()
+try {
+  for (const { source, json } of embeds) {
+    const original = readFileSync(source, "utf-8")
+    const match = importPattern.exec(original)
+    if (!match || `src/${match[2]}` !== json) {
+      throw new Error(`${source}: expected a JSON import of ${json}`)
+    }
+    const data = JSON.stringify(JSON.parse(readFileSync(json, "utf-8")))
+    originalSources.set(source, original)
+    // Replacer function, so "$" in the data is not read as a replacement pattern
+    writeFileSync(source, original.replace(importPattern, () => `const ${match[1]} = ${data}`))
+  }
+
+  console.log("Building TypeScript...")
+  execSync("tsc", { stdio: "inherit" })
+} finally {
+  // Restore even when tsc fails, so the embedded data never stays in src/
+  console.log("Restoring source files for development...")
+  for (const [source, original] of originalSources) {
+    writeFileSync(source, original)
+  }
 }
-
-const usdmSchema: USDMSchema = ${JSON.stringify(schemaData, null, 2)}
-
-export default usdmSchema
-`
-writeFileSync("src/schema.ts", schemaSource)
-
-console.log("Embedding codelist data...")
-// Save original codelists.ts content before replacing
-const originalCodelistsSource = readFileSync("src/codelists.ts", "utf-8")
-
-const codelistData = JSON.parse(readFileSync("src/codelist_index.json", "utf-8"))
-const codelistsSource = `/**
- * Codelist index with embedded data
- * This file is auto-generated during the build process
- * @packageDocumentation
- */
-
-export interface CodelistValue {
-  code: string
-  term: string
-  synonyms?: string | null
-  definition: string
-  [key: string]: any
-}
-
-export interface CodelistEntry {
-  codelist_code: string
-  extensible: boolean
-  values: CodelistValue[]
-  [key: string]: any
-}
-
-export interface CodelistIndex {
-  [key: string]: CodelistEntry
-}
-
-const codelistIndex: CodelistIndex = ${JSON.stringify(codelistData, null, 2)}
-
-export default codelistIndex
-`
-writeFileSync("src/codelists.ts", codelistsSource)
-
-console.log("Building TypeScript...")
-execSync("tsc", { stdio: "inherit" })
-
-console.log("Restoring source files for development...")
-writeFileSync("src/schema.ts", originalSchemaSource)
-writeFileSync("src/codelists.ts", originalCodelistsSource)
 
 console.log("Cleaning dist directory to keep only exported files...")
 

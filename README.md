@@ -97,6 +97,29 @@ ScheduledActivityInstanceSchema.parse({
 })
 ```
 
+## Controlled Terminology
+
+`usdm-ts/codelists` is a single merged snapshot of the CDISC codelists, keyed by `Entity.attribute`.
+
+`usdm-ts/ct-packages` has the same codelists as they were published in each CDISC CT package, with the submission value and preferred term of every term. Use it to check a coded value against the package named by its `codeSystemVersion`, as CDISC CORE does.
+
+```typescript
+import { getCtAttributeCodelist, getCtCodelist, isCtPackageVersion } from "usdm-ts/ct-packages"
+
+const attribute = getCtAttributeCodelist("Objective.level")
+// { codelistCode: "C188725", packageType: "DDF" }
+
+isCtPackageVersion("DDF", "2025-03-28") // false: no DDF package was published on that date
+
+const codelist = getCtCodelist("C188725", "2024-09-27")
+// { codelistCode: "C188725", packageType: "DDF", version: "2024-09-27", extensible: false,
+//   terms: [{ code: "C85826", submissionValue: "Study Primary Objective", preferredTerm: "Trial Primary Objective" }, ...] }
+
+getCtCodelist("C215477", "2024-09-27") // undefined: the codelist is not in that package
+```
+
+Each codelist is looked up in the packages of one package type (SDTM or DDF), taken from the CDISC CORE rules. Regenerate the data with `pnpm references` followed by `pnpm update-ct-packages`.
+
 # Building / Development
 
 We use `pnpm` as our package manager. To install dependencies, run:
