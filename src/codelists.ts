@@ -25,5 +25,5 @@ export interface CodelistIndex {
   [key: string]: CodelistEntry
 }
 
-const codelistIndex: CodelistIndex = codelistIndexJson as CodelistIndex
+const codelistIndex: CodelistIndex = codelistIndexJson
 export default codelistIndex

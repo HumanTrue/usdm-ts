@@ -19,5 +19,5 @@ export interface USDMSchema {
   [key: string]: any
 }
 
-const usdmSchema: USDMSchema = usdmSchemaJson as USDMSchema
+const usdmSchema: USDMSchema = usdmSchemaJson
 export default usdmSchema
